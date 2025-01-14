@@ -18,9 +18,9 @@ import {
 import ImageCarousel from "./ImageCarousel";
 
 // Assuming these images are in the public folder
-const logoConf = "/images/logo_conf.png";
-const logoBrain = "/images/logo_brain.png";
-const logoUtama = "/images/logo_utama.png";
+const logoConf = "/src/assets/logo_conf.png";
+const logoBrain = "/src/assets/logo_brain.png";
+const logoUtama = "/src/assets/logo_utama.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
