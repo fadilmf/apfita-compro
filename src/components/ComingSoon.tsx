@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import logo from "@/assets/logo_apfita.png"; // Path logo
+import logo from "@/assets/logo_conf.png"; // Path logo
 import logo_brain from "@/assets/logo_brain.png";
 import logo_utama from "@/assets/logo_utama.png";
 import { Leaf, Paperclip, PlaneTakeoff, Tractor } from "lucide-react";
@@ -70,11 +70,6 @@ export default function ComingSoon() {
       {/* Logos */}
       <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
         <img
-          src={logo_brain}
-          alt="Brain Logo"
-          className="w-24 sm:w-28 h-auto object-contain"
-        />
-        <img
           src={logo_utama}
           alt="Utama Logo"
           className="w-24 sm:w-28 h-auto object-contain"
@@ -82,6 +77,11 @@ export default function ComingSoon() {
         <img
           src={logo}
           alt="APFITA Logo"
+          className="w-24 sm:w-28 h-auto object-contain"
+        />
+        <img
+          src={logo_brain}
+          alt="Brain Logo"
           className="w-24 sm:w-28 h-auto object-contain"
         />
       </div>
