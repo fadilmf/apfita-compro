@@ -87,7 +87,7 @@ export default function ComingSoon() {
       </div>
 
       {/* Logos */}
-      <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
+      <div className="flex flex-row space-x-4 sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
         <img
           src={logo_utama}
           alt="Utama Logo"
@@ -125,7 +125,7 @@ export default function ComingSoon() {
         </div>
         <div
           ref={(el) => textRefs.current.push(el!)}
-          className="text-lg sm:text-xl text-black mt-4 drop-shadow-md max-w-lg mx-auto"
+          className="text-lg sm:text-xl text-black mt-4 drop-shadow-md max-w-xs md:max-w-lg mx-auto"
         >
           The 15th International Conference of Asia-Pacific Federation for
           Information Technology in Agriculture
