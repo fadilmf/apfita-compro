@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import logo from "@/assets/logo_conf.png"; // Path logo
+import logo from "@/assets/logo_conf.png";
 import logo_brain from "@/assets/logo_brain.png";
 import logo_utama from "@/assets/logo_utama.png";
 import { Leaf, Paperclip, PlaneTakeoff, Tractor } from "lucide-react";
@@ -11,17 +11,36 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ComingSoon() {
   const sectionRef = useRef<HTMLDivElement | null>(null); // Reference for the whole section
   const iconsRef = useRef<HTMLDivElement[]>([]); // Reference for all the icons
-  const textRefs = useRef<HTMLDivElement[]>([]); // References for text lines
+  const comingSoonRef = useRef<HTMLDivElement | null>(null); // Reference for "Coming Soon" text
+  const textRefs = useRef<HTMLDivElement[]>([]); // References for other text lines
 
   useEffect(() => {
-    // Text Animation
-    const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // Animasi bergoyang untuk teks "Coming Soon"
+    if (comingSoonRef.current) {
+      gsap.fromTo(
+        comingSoonRef.current,
+        { y: 0, boxShadow: "0 0 0px rgba(0, 0, 0, 0)" }, // Start position
+        {
+          y: -15, // Bounce height
+          repeat: -1, // Infinite loop
+          yoyo: true, // Reverse motion
+          duration: 2, // Slower bounce
+          ease: "power1.inOut", // Smooth motion
+        }
+      );
+      gsap.to(comingSoonRef.current, {
+        textShadow: "0px 0px 20px rgba(255, 255, 255, 1)", // Glow effect
+        repeat: -1, // Infinite
+        yoyo: true, // Reverse the glow
+        duration: 2,
+      });
+    }
 
-    // Staggered text animation
-    timeline.fromTo(
+    // Staggered animation untuk teks lainnya
+    gsap.fromTo(
       textRefs.current,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, stagger: 0.3 }
+      { opacity: 1, y: 0, stagger: 0.3, duration: 1 }
     );
 
     // Floating icons animation
@@ -89,7 +108,7 @@ export default function ComingSoon() {
       {/* Text Content */}
       <div className="text-center">
         <div
-          ref={(el) => textRefs.current.push(el!)}
+          ref={comingSoonRef}
           className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-black"
           style={{
             fontFamily: "'Poppins', sans-serif",
