@@ -15,10 +15,9 @@ import {
 } from "lucide-react";
 import ImageCarousel from "./ImageCarousel";
 
-// Assuming these images are in the public folder
-const logoConf = "/src/assets/logo_conf.png";
-const logoBrain = "/src/assets/logo_brain.png";
-const logoUtama = "/src/assets/logo_utama.png";
+import logoConf from "/src/assets/logo_conf.png";
+import logoBrain from "/src/assets/logo_brain.png";
+import logoUtama from "/src/assets/logo_utama.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
