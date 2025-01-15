@@ -107,7 +107,6 @@ export default function ComingSoon() {
         position="top-10 left-10"
         delay={0}
       />
-      {/* tes */}
       <FloatingIcon
         icon={<Tractor className="w-8 h-8 text-white" />}
         color="bg-yellow-500"
