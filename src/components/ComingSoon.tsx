@@ -173,13 +173,20 @@ export default function ComingSoon() {
       />
 
       {/* Logos */}
-      <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
+      <div className="relative flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12 p-8 rounded-2xl bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-lg border border-white/40 shadow-2xl overflow-hidden">
+        {/* Shiny Animation */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-0 rounded-2xl animate-shiny pointer-events-none"></div>
+
+        {/* Decorative Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/50 to-green-200/50 opacity-10 rounded-2xl pointer-events-none"></div>
+
+        {/* Main Logos */}
         <img
           src={logoUtama}
           alt="Utama Logo"
-          className="w-64 sm:w-80 h-auto object-contain"
+          className="w-64 sm:w-80 h-auto object-contain z-10"
         />
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 z-10">
           <img
             src={logoConf}
             alt="APFITA Logo"
@@ -197,7 +204,7 @@ export default function ComingSoon() {
       <div className="text-center max-w-4xl mx-auto">
         <h1
           ref={comingSoonRef}
-          className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 text-blue-600 tracking-wider"
+          className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 text-blue-600 tracking-wider"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           Coming Soon
