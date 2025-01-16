@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import img from "/src/assets/Crsl1.jpg";
+import img1 from "/src/assets/Crsl2.jpg";
+import img2 from "/src/assets/Crsl3.jpg";
+import img3 from "/src/assets/Crsl4.jpg";
 
-const images = [
-  "/src/assets/logo_conf.png",
-  "/src/assets/logo_brain.png",
-  "/src/assets/logo_utama.png",
-]; // Use an array of image paths
+const images = [img, img1, img2, img3]; // Use an array of image paths
 
 const ImageCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

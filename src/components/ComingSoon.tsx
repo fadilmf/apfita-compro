@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -9,59 +9,17 @@ import {
   Wheat,
   Cpu,
   Satellite,
-  Smartphone,
   Cloud,
   Database,
 } from "lucide-react";
 import ImageCarousel from "./ImageCarousel";
+import FloatingIcon from "./FloatingIcon";
 
 import logoConf from "/src/assets/logo_conf.png";
 import logoBrain from "/src/assets/logo_brain.png";
 import logoUtama from "/src/assets/logo_utama.png";
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface FloatingIconProps {
-  icon: React.ReactNode;
-  color: string;
-  size: string;
-  position: string;
-  delay: number;
-}
-
-const FloatingIcon: React.FC<FloatingIconProps> = ({
-  icon,
-  color,
-  size,
-  position,
-  delay,
-}) => {
-  const iconRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (iconRef.current) {
-      gsap.to(iconRef.current, {
-        y: "+=20",
-        x: "+=10",
-        rotate: "+=5",
-        repeat: -1,
-        yoyo: true,
-        duration: 3 + Math.random(),
-        ease: "sine.inOut",
-        delay: delay,
-      });
-    }
-  }, [delay]);
-
-  return (
-    <div
-      ref={iconRef}
-      className={`absolute ${position} ${size} ${color} rounded-full shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110`}
-    >
-      {icon}
-    </div>
-  );
-};
 
 export default function ComingSoon() {
   const comingSoonRef = useRef<HTMLDivElement>(null);
@@ -102,14 +60,14 @@ export default function ComingSoon() {
       {/* Floating Icons */}
       <FloatingIcon
         icon={<Leaf className="w-6 h-6 text-white" />}
-        color="bg-green-400"
+        color="bg-emerald-400"
         size="w-14 h-14"
         position="top-10 left-10"
         delay={0}
       />
       <FloatingIcon
         icon={<Tractor className="w-8 h-8 text-white" />}
-        color="bg-yellow-500"
+        color="bg-sky-500"
         size="w-20 h-20"
         position="top-1/4 right-16"
         delay={0.5}
@@ -125,74 +83,60 @@ export default function ComingSoon() {
         icon={<Fish className="w-5 h-5 text-white" />}
         color="bg-cyan-400"
         size="w-12 h-12"
-        position="top-1/3 left-1/4"
+        position="top-1/3 left-20"
         delay={1.5}
       />
       <FloatingIcon
         icon={<Wheat className="w-6 h-6 text-white" />}
-        color="bg-amber-500"
+        color="bg-blue-500"
         size="w-14 h-14"
-        position="bottom-16 right-1/4"
+        position="bottom-30 right-16"
         delay={2}
       />
       <FloatingIcon
         icon={<Cpu className="w-5 h-5 text-white" />}
-        color="bg-purple-500"
+        color="bg-indigo-500"
         size="w-12 h-12"
-        position="top-20 right-1/3"
+        position="top-20 right-16"
         delay={2.5}
       />
       <FloatingIcon
         icon={<Satellite className="w-7 h-7 text-white" />}
         color="bg-indigo-500"
         size="w-16 h-16"
-        position="bottom-1/3 left-16"
+        position="bottom-1/2 left-16"
         delay={3}
-      />
-      <FloatingIcon
-        icon={<Smartphone className="w-5 h-5 text-white" />}
-        color="bg-red-400"
-        size="w-12 h-12"
-        position="top-1/2 right-20"
-        delay={3.5}
       />
       <FloatingIcon
         icon={<Cloud className="w-6 h-6 text-white" />}
         color="bg-sky-400"
         size="w-14 h-14"
-        position="bottom-24 right-1/3"
+        position="bottom-24 right-16"
         delay={4}
       />
       <FloatingIcon
         icon={<Database className="w-5 h-5 text-white" />}
         color="bg-emerald-500"
         size="w-12 h-12"
-        position="top-3/4 left-1/4"
+        position="bottom-24 left-20"
         delay={4.5}
       />
 
       {/* Logos */}
-      <div className="relative flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12 p-8 rounded-2xl bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-lg border border-white/40 shadow-2xl overflow-hidden">
-        {/* Shiny Animation */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-0 rounded-2xl animate-shiny pointer-events-none"></div>
-
-        {/* Decorative Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/50 to-green-200/50 opacity-10 rounded-2xl pointer-events-none"></div>
-
-        {/* Main Logos */}
+      <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
         <img
-          src={logoUtama}
+          src={logoUtama || "/placeholder.svg"}
           alt="Utama Logo"
-          className="w-64 sm:w-80 h-auto object-contain z-10"
+          className="w-64 sm:w-80 h-auto object-contain"
         />
-        <div className="flex space-x-4 z-10">
+        <div className="flex space-x-4">
           <img
-            src={logoConf}
+            src={logoConf || "/placeholder.svg"}
             alt="APFITA Logo"
             className="w-24 sm:w-28 h-auto object-contain"
           />
           <img
-            src={logoBrain}
+            src={logoBrain || "/placeholder.svg"}
             alt="Brain Logo"
             className="w-24 sm:w-28 h-auto object-contain"
           />
@@ -203,7 +147,7 @@ export default function ComingSoon() {
       <div className="text-center max-w-4xl mx-auto">
         <h1
           ref={comingSoonRef}
-          className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 text-blue-600 tracking-wider"
+          className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 text-blue-600 tracking-wider"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           Coming Soon
