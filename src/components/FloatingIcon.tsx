@@ -97,11 +97,11 @@ const FloatingIcon: React.FC<FloatingIconProps> = ({
   return (
     <div
       ref={constraintsRef}
-      className={`absolute ${position} w-48 h-48 bg-transparent border border-dashed border-gray-300`}
+      className={`absolute hidden sm:flex ${position} w-48 h-48 bg-transparent border border-transparent border-gray-300`}
     >
       <div
         ref={iconRef}
-        className={`${size} ${color} rounded-full shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110 cursor-move`}
+        className={`${size} ${color} hidden sm:flex rounded-full shadow-lg items-center justify-center transform transition-all duration-300 hover:scale-110 cursor-move`}
       >
         {icon}
       </div>

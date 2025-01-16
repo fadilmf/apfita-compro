@@ -26,17 +26,21 @@ export default function ComingSoon() {
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Animasi teks "Coming Soon"
     if (comingSoonRef.current) {
       gsap.fromTo(
         comingSoonRef.current,
-        { y: 0, textShadow: "0 0 0px rgba(0, 100, 200, 0)" },
         {
-          y: -10,
-          textShadow: "0px 0px 20px rgba(0, 100, 200, 0.7)",
-          repeat: -1,
-          yoyo: true,
-          duration: 2,
-          ease: "power1.inOut",
+          opacity: 0, // Mulai dari transparan
+          y: 50, // Mulai dari posisi lebih rendah
+          scale: 0.8, // Mulai dengan ukuran lebih kecil
+        },
+        {
+          opacity: 1, // Akhirnya penuh terlihat
+          y: 0, // Posisi akhir di posisi normal
+          scale: 1, // Ukuran teks kembali ke normal
+          duration: 1.5, // Durasi animasi
+          ease: "power3.out", // Ease out untuk pergerakan lebih halus
         }
       );
     }
@@ -56,7 +60,6 @@ export default function ComingSoon() {
     <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden flex flex-col items-center justify-center px-4 py-12">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] -z-10" />
-
       {/* Floating Icons */}
       <FloatingIcon
         icon={<Leaf className="w-6 h-6 text-white" />}
@@ -123,7 +126,14 @@ export default function ComingSoon() {
       />
 
       {/* Logos */}
-      <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
+      <div className="relative flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12 p-8 rounded-2xl bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-lg border border-white/40 shadow-2xl overflow-hidden">
+        {/* Shiny Animation */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-0 rounded-2xl animate-shiny pointer-events-none"></div>
+
+        {/* Decorative Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/50 to-green-200/50 opacity-10 rounded-2xl pointer-events-none"></div>
+
+        {/* Main Logos */}
         <img
           src={logoUtama || "/placeholder.svg"}
           alt="Utama Logo"
@@ -147,7 +157,7 @@ export default function ComingSoon() {
       <div className="text-center max-w-4xl mx-auto">
         <h1
           ref={comingSoonRef}
-          className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 text-blue-600 tracking-wider"
+          className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 text-blue-600 tracking-wider"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           Coming Soon
