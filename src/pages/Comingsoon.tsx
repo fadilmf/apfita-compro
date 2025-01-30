@@ -1,19 +1,15 @@
 // import Endorsement from "@/components/Endorsement";
-import Navbar from "@/components/Navbar";
-import Comingsoon from "@/components/ComingSoon";
-import Hero from "@/components/Hero";
-import Sponsors from "@/components/Sponsors";
+import ComingSoon from "@/components/ComingSoon";
 // import Hero from "@/components/Hero";
 // import Sponsors from "@/components/Sponsors";
 // import Welcome from "@/components/Welcome";
 
-const Home = () => {
+const Comingsoon = () => {
   return (
     <>
-      <Hero />
-      <Navbar />
-      <Comingsoon />
-      <Sponsors />
+      {/* <Hero /> */}
+      <ComingSoon />
+      {/* <Sponsors /> */}
       {/* <Endorsement /> */}
 
       {/* <Welcome /> */}
@@ -34,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Comingsoon;

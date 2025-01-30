@@ -160,7 +160,7 @@ export default function ComingSoon() {
           className="text-6xl sm:text-7xl md:text-8xl font-extrabold mb-6 text-blue-600 tracking-wider"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Coming Soon
+          COMING SOON
         </h1>
         <div
           ref={(el) => (textRefs.current[0] = el)}
