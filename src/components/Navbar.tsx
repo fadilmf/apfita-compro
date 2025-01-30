@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0 z-50">
+    <nav className="bg-gradient-to-br from-blue-50 via-white to-green-50 shadow-md fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
@@ -72,15 +72,15 @@ const Navbar = () => {
                   >
                     DOWNLOAD
                   </NavLink>
-                  <NavLink
-                    to="/contact"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    CONTACT
-                  </NavLink>
                 </div>
               )}
             </div>
+            <NavLink
+              to="/contact"
+              className="hover:text-blue-600 transition animate-pulse"
+            >
+              CONTACT US!
+            </NavLink>
           </div>
 
           {/* Mobile Menu (Burger) */}

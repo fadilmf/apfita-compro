@@ -1,133 +1,148 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; // Import ScrollTrigger
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import logo_tes from "@/assets/tes.png";
 
-gsap.registerPlugin(ScrollTrigger); // Daftarkan ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Sponsors() {
-  const sectionRef = useRef<HTMLDivElement | null>(null); // Reference for the section container
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const cards = sectionRef.current?.querySelectorAll(".sponsor-card");
+    const grandSponsor = sectionRef.current?.querySelector(".grand-sponsor");
+    const sponsorCards = sectionRef.current?.querySelectorAll(".sponsor-card");
 
-    if (cards) {
-      // GSAP Timeline for a sequence animation
+    if (grandSponsor && sponsorCards) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top bottom", // Mulai saat bagian atas section sponsor mencapai bagian bawah viewport
-          end: "bottom top", // Berhenti saat bagian bawah section mencapai bagian atas viewport
-          scrub: 1, // Memberikan efek smooth scroll
-          onEnter: () => console.log("Section entered!"),
-          onLeave: () => console.log("Section left!"),
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
         },
-        defaults: { duration: 1.5, ease: "power3.out" }, // Menambahkan durasi lebih lama
+        defaults: { duration: 1.5, ease: "power3.out" },
       });
 
       tl.fromTo(
         sectionRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.5 } // Fade in the whole section
+        { opacity: 1, duration: 0.5 }
       );
 
-      cards.forEach((card, i) => {
-        // Animating each card with delay and unique effects
+      // Animate Grand Sponsor
+      tl.fromTo(
+        grandSponsor,
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.8,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.2,
+        },
+        "-=0.3"
+      );
+
+      // Animate Sponsor Cards
+      sponsorCards.forEach((card, i) => {
         tl.fromTo(
           card,
           {
             opacity: 0,
-            y: 100,
-            rotate: -15,
-            scale: 0.8,
-            transformOrigin: "center",
-          }, // Start state
+            y: 50,
+            scale: 0.9,
+          },
           {
             opacity: 1,
             y: 0,
-            rotate: 0,
-            scale: 1, // End state
-            delay: i * 0.2, // Stagger effect
-            duration: 1.2,
+            scale: 1,
+            duration: 1,
+            delay: i * 0.1,
           },
-          "-=0.5" // Overlap animations slightly
+          "-=0.8"
         );
       });
 
-      // Add a subtle floating effect after the initial animations
-      cards.forEach((card) => {
-        gsap.to(card, {
-          y: "+=10", // Float up and down
-          repeat: -1, // Infinite loop
-          yoyo: true, // Reverse direction
-          ease: "sine.inOut",
-          duration: 2,
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom", // Mulai saat card terlihat di viewport
-            end: "bottom top", // Berhenti saat card keluar dari viewport
-            scrub: 1, // Efek smooth scroll
-            onEnter: () => console.log(`Card ${card} entered`), // Debugging
-            onLeave: () => console.log(`Card ${card} left`), // Debugging
-          },
-        });
+      // Subtle floating effect
+      gsap.to([grandSponsor, ...sponsorCards], {
+        y: "+=10",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        duration: 2,
+        stagger: 0.1,
       });
     }
   }, []);
 
   return (
-    <div ref={sectionRef}>
-      {/* Sponsors Section */}
-      <section className="py-32 bg-gray-100">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Sponsors</h2>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="sponsor-card">
-            <h3 className="text-2xl font-semibold mb-4 text-center">
-              Platinum Sponsors
-            </h3>
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              src={logo_tes}
-              alt="Platinum Sponsor"
-              className="mx-auto"
+    <div ref={sectionRef} className="py-24 bg-gray-100">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-16">Our Sponsors</h2>
+
+        {/* Grand Sponsor Section */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-semibold text-center mb-8">
+            Grand Sponsors
+          </h3>
+          <motion.div
+            className="grand-sponsor flex justify-center"
+            whileHover={{ scale: 1.05 }}
+          >
+            <img
+              src={logo_tes || "/placeholder.svg"}
+              alt="Grand Sponsor"
+              className="w-64 h-64 object-contain"
             />
-          </div>
-          <div className="sponsor-card">
-            <h3 className="text-2xl font-semibold mb-4 text-center">
-              Gold Sponsors
-            </h3>
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              src={logo_tes}
-              alt="Gold Sponsor"
-              className="mx-auto"
-            />
-          </div>
-          <div className="sponsor-card">
-            <h3 className="text-2xl font-semibold mb-4 text-center">
-              Silver Sponsors
-            </h3>
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              src={logo_tes}
-              alt="Silver Sponsor"
-              className="mx-auto"
-            />
-          </div>
-          <div className="sponsor-card">
-            <h3 className="text-2xl font-semibold mb-4 text-center">
-              Bronze Sponsors
-            </h3>
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              src={logo_tes}
-              alt="Bronze Sponsor"
-              className="mx-auto"
-            />
+          </motion.div>
+        </div>
+
+        {/* Sponsors and Partnerships Section */}
+        <div>
+          <h3 className="text-3xl font-semibold text-center mb-8">Sponsors</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {[...Array(8)].map((_, index) => (
+              <motion.div
+                key={index}
+                className="sponsor-card flex justify-center items-center"
+                whileHover={{ scale: 1.1 }}
+              >
+                <img
+                  src={logo_tes || "/placeholder.svg"}
+                  alt={`Sponsor ${index + 1}`}
+                  className="w-32 h-32 object-contain"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+        <div>
+          <h3 className="text-3xl font-semibold text-center mb-8">
+            Patnership
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {[...Array(8)].map((_, index) => (
+              <motion.div
+                key={index}
+                className="sponsor-card flex justify-center items-center"
+                whileHover={{ scale: 1.1 }}
+              >
+                <img
+                  src={logo_tes || "/placeholder.svg"}
+                  alt={`Sponsor ${index + 1}`}
+                  className="w-32 h-32 object-contain"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

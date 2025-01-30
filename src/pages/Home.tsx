@@ -1,22 +1,22 @@
 // import Endorsement from "@/components/Endorsement";
 import Navbar from "@/components/Navbar";
-import Comingsoon from "@/components/ComingSoon";
+// import Comingsoon from "@/components/ComingSoon";
 import Hero from "@/components/Hero";
 import Sponsors from "@/components/Sponsors";
+import Welcome from "@/components/Welcome";
+import Imdates from "@/components/ImportantDates";
 // import Hero from "@/components/Hero";
 // import Sponsors from "@/components/Sponsors";
-// import Welcome from "@/components/Welcome";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <Navbar />
-      <Comingsoon />
+      <Welcome />
+      <Imdates />
       <Sponsors />
       {/* <Endorsement /> */}
-
-      {/* <Welcome /> */}
 
       {/* Important Dates */}
       {/* <section className="py-16 bg-blue-600 text-white">
