@@ -1,5 +1,4 @@
 // import Endorsement from "@/components/Endorsement";
-import "./index.css";
 // ... rest of your code
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
@@ -22,7 +21,7 @@ const Home = () => {
       <div className="container mx-auto px-4 py-12">
         <Map
           title="EVENT VENUE"
-          location="College of Vocational Studies of IPB University, Bogor, Indonesia"
+          location="IPB International Convention Center"
           description="College of Vocational Studies IPB University prioritizes practical education which is more than theoretical education."
           isOnline={true}
         />

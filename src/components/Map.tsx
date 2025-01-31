@@ -1,3 +1,5 @@
+import { MapPin } from "lucide-react";
+
 interface VenueMapProps {
   title: string;
   location: string;
@@ -11,12 +13,12 @@ export default function Map({
   description,
   isOnline = false,
 }: VenueMapProps) {
-  // Replace spaces with plus signs for the query parameter
-  const query = encodeURIComponent("Sekolah Vokasi Institut Pertanian Bogor");
+  const query = encodeURIComponent("IPB International Convention Center");
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6 bg-gradient-to-br from-blue-950 to-blue-900 rounded-lg overflow-hidden">
-      <div className="w-full h-[400px] lg:h-full min-h-[400px]">
+    <div className="flex flex-col lg:flex-row bg-[#001B3F] rounded-lg overflow-hidden">
+      {/* Map Section */}
+      <div className="w-full lg:w-1/2 h-[400px]">
         <iframe
           width="100%"
           height="100%"
@@ -24,17 +26,30 @@ export default function Map({
           loading="lazy"
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${query}`}
+          src={`https://www.google.com/maps/embed/v1/place?key=${
+            import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+          }&q=${query}`}
         ></iframe>
       </div>
-      <div className="p-8 flex flex-col justify-center">
-        <h2 className="text-4xl font-bold text-white mb-4">{title}</h2>
-        <div className="inline-flex items-center bg-blue-800/50 text-blue-100 rounded-full px-4 py-1 text-sm mb-6">
-          {isOnline ? "Online" : "On-site"}
-        </div>
-        <div className="space-y-4 text-gray-200">
-          <p className="text-xl font-semibold">{location}</p>
-          <p className="text-gray-300">{description}</p>
+
+      {/* Content Section */}
+      <div className="w-full lg:w-1/2 p-8 flex flex-col items-start justify-center bg-gradient-to-br from-[#001B3F] to-[#002B5C]">
+        <div className="max-w-md mx-auto w-full">
+          <h2 className="text-4xl font-bold text-white tracking-tight">
+            {title}
+          </h2>
+          <div className="mt-2 mb-6">
+            <span className="text-blue-100 text-sm">
+              {isOnline ? "Online" : "On-site"}
+            </span>
+          </div>
+
+          <div className="flex items-start gap-2 mb-4">
+            <MapPin className="w-5 h-5 mt-1 text-white/80" />
+            <p className="text-lg font-semibold text-white">{location}</p>
+          </div>
+
+          <p className="text-gray-300 leading-relaxed">{description}</p>
         </div>
       </div>
     </div>

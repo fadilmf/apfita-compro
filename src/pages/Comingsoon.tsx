@@ -1,5 +1,4 @@
 // import Endorsement from "@/components/Endorsement";
-import "./index.css";
 // ... rest of your code
 import ComingSoon from "@/components/ComingSoon";
 // import Hero from "@/components/Hero";
