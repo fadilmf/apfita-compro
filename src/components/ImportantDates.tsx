@@ -58,77 +58,62 @@ const dates: DateEntry[] = [
     icon: <CreditCard className="w-6 h-6" />,
   },
   {
-    date: "November 17–19, 2025",
+    date: "November 17-19, 2025",
     event: "The 15th APFITA event",
     icon: <Users className="w-6 h-6" />,
   },
 ];
 
 const ImportantDates: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<SVGPathElement>(null);
-  const markerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
+  const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
-    if (!containerRef.current || !timelineRef.current || !markerRef.current)
-      return;
+    const ctx = gsap.context(() => {
+      elementsRef.current.forEach((el) => {
+        if (el) {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+      });
+    }, containerRef);
 
-    gsap.set(markerRef.current, {
-      motionPath: { path: timelineRef.current, alignOrigin: [0.5, 0.5] },
-    });
-
-    gsap.to(markerRef.current, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-      motionPath: { path: timelineRef.current, alignOrigin: [0.5, 0.5] },
-      ease: "none",
-    });
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="py-20 bg-gray-100 relative overflow-hidden"
-    >
+    <div ref={containerRef} className="py-20 bg-white relative overflow-hidden">
       <h2 className="text-4xl font-bold text-center mb-16 text-primary">
         Important Dates
       </h2>
-      <div className="max-w-5xl mx-auto px-6 relative flex flex-col items-start">
-        <svg
-          className="absolute left-10 w-1 h-full"
-          style={{ overflow: "visible" }}
-        >
-          <path
-            ref={timelineRef}
-            d="M0,0 L0,1600"
-            stroke="hsl(var(--primary))"
-            strokeWidth="4"
-            strokeDasharray="8,8"
-          />
-        </svg>
-        <div
-          ref={markerRef}
-          className="absolute w-5 h-5 bg-primary rounded-full left-10 transform -translate-x-1/2 z-10"
-        ></div>
-
+      <div className="w-full mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {dates.map((entry, index) => (
           <div
             key={index}
-            className="date-entry flex items-center mb-16 relative ml-16"
+            ref={(el) => (elementsRef.current[index] = el)}
+            className="date-entry flex items-center opacity-0"
           >
-            <div className="w-5 h-5 bg-primary rounded-full absolute left-10"></div>
-            <div className="ml-10 bg-white rounded-lg shadow-lg p-6 w-80 text-center">
+            <div className="bg-gray-50 rounded-lg shadow-lg p-6 w-full h-full flex flex-col items-center text-center">
               <div className="icon-container mb-4 bg-primary p-3 rounded-full text-white mx-auto w-fit">
                 {entry.icon}
               </div>
               <h3 className="text-lg font-semibold text-primary">
-                {entry.date}
+                {entry.event}
               </h3>
-              <p className="mt-2 text-gray-600">{entry.event}</p>
+              <p className="mt-2 text-gray-600">{entry.date}</p>
             </div>
           </div>
         ))}

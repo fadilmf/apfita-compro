@@ -1,11 +1,14 @@
 // import Endorsement from "@/components/Endorsement";
+import "./index.css";
+// ... rest of your code
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Hero from "@/components/Hero";
 import Sponsors from "@/components/Sponsors";
 import Welcome from "@/components/Welcome";
 import Imdates from "@/components/ImportantDates";
-// import Hero from "@/components/Hero";
+import Map from "@/components/Map";
+import Footer from "@/components/Footer";
 // import Sponsors from "@/components/Sponsors";
 
 const Home = () => {
@@ -16,6 +19,15 @@ const Home = () => {
       <Welcome />
       <Imdates />
       <Sponsors />
+      <div className="container mx-auto px-4 py-12">
+        <Map
+          title="EVENT VENUE"
+          location="College of Vocational Studies of IPB University, Bogor, Indonesia"
+          description="College of Vocational Studies IPB University prioritizes practical education which is more than theoretical education."
+          isOnline={true}
+        />
+      </div>
+      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}
