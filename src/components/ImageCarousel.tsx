@@ -12,12 +12,12 @@ import img8 from "/src/assets/APFITA 2024.jpg";
 
 const images = [
   { src: img, title: "APFITA 2018" },
-  { src: img1, title: "APFITA 2018a" },
-  { src: img2, title: "APFITA 2018b" },
-  { src: img3, title: "APFITA 2018c" },
+  { src: img1, title: "APFITA 2018" },
+  { src: img2, title: "APFITA 2018" },
+  { src: img3, title: "APFITA 2018" },
   { src: img4, title: "APFITA 2019" },
-  { src: img5, title: "APFITA 2019a" },
-  { src: img6, title: "APFITA 2019b" },
+  { src: img5, title: "APFITA 2019" },
+  { src: img6, title: "APFITA 2019" },
   { src: img7, title: "APFITA 2022" },
   { src: img8, title: "APFITA 2024" },
 ];

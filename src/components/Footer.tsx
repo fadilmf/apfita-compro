@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="space-y-4 text-gray-300">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                <p>Gedung Zeta Sekolah Vokasi IPB West Java, Indonesia</p>
+                <p>IPB Baranangsiang, Indonesia</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
@@ -91,8 +91,7 @@ export default function Footer() {
         {/* Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-blue-800">
           <p className="text-center text-gray-400">
-            © {new Date().getFullYear()} ICAS - International Conference on
-            Applied Sciences. All rights reserved.
+            © {new Date().getFullYear()} APFITA 2025. All rights reserved.
           </p>
         </div>
       </div>
