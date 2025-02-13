@@ -25,7 +25,10 @@ const Navbar = () => {
             >
               CONFERENCE
             </NavLink>
-            <NavLink to="/schedule" className="hover:text-blue-600 transition">
+            <NavLink
+              to="/time-schedule"
+              className="hover:text-blue-600 transition"
+            >
               TIME SCHEDULE
             </NavLink>
             <NavLink

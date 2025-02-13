@@ -11,14 +11,14 @@ export default function Header() {
   const location = useLocation();
 
   const pageTitles: { [key: string]: string } = {
-    "/conference": "Conference",
-    "/time-schedule": "Time Schedule",
-    "/guidelines": "Guidelines",
-    "/submissions": "Submissions",
-    "/venue": "Venue",
-    "/committees": "Committees",
-    "/download": "Download",
-    "/contact-us": "Contact Us!",
+    "/conference": "CONFERENCE",
+    "/time-schedule": "TIME SCHEDULE",
+    "/guidelines": "GUIDELINES",
+    "/submissions": "SUBMISSIONS",
+    "/venue": "VENUE",
+    "/committees": "COMMITTEES",
+    "/download": "DOWNLOAD",
+    "/contact-us": "CONTACT US!",
   };
 
   const pageTitle = pageTitles[location.pathname] || "APFITA 2025";
@@ -34,7 +34,7 @@ export default function Header() {
   }, [pageTitle]);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24">
+    <div className="relative flex flex-col items-center justify-center text-center px-4 py-6 min-h-[500px] max-h-[500px] mx-auto">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -43,7 +43,7 @@ export default function Header() {
             "url('https://www.djkn.kemenkeu.go.id/files/images/2024/03/tugu_kujang_bogor.jpeg')",
         }}
       ></div>
-      <div className="absolute inset-0 bg-black/45"></div>
+      <div className="absolute inset-0 bg-black/35"></div>
 
       {/* Blur & Gray Transparent Overlay */}
       <div className="absolute inset-0 bg-black/65"></div>
