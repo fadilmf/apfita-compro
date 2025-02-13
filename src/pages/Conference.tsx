@@ -3,28 +3,17 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Hero from "@/components/Hero";
-import Sponsors from "@/components/Sponsors";
-import Welcome from "@/components/Welcome";
-import Imdates from "@/components/ImportantDates";
-import Map from "@/components/Map";
+import ConferenceTopics from "@/components/ConferenceTopics";
 import Footer from "@/components/Footer";
 // import Sponsors from "@/components/Sponsors";
 
-const Home = () => {
+const Conference = () => {
   return (
     <>
       <Hero />
       <Navbar />
-      <Welcome />
-      <Imdates />
-      <Sponsors />
-      <div className="container mx-auto px-4 py-12">
-        <Map
-          title="EVENT VENUE"
-          location="IPB International Convention Center"
-          description="A distinguished convention center in Bogor, West Java, proudly managed by IPB University. It combines academic excellence with world-class facilities, making it the perfect venue for conferences, exhibitions, and prestigious events."
-          isOnline={true}
-        />
+      <div className="min-h-screen bg-gray-50">
+        <ConferenceTopics />
       </div>
       <Footer />
       {/* <Endorsement /> */}
@@ -45,4 +34,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Conference;

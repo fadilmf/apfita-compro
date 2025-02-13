@@ -23,16 +23,16 @@ const partners = [
 
 export default function Sponsors() {
   return (
-    <div className="py-24 bg-white">
+    <div className="py-24 bg-slate-50 pb-4">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">Our Sponsors</h2>
+        <h2 className="text-4xl font-bold text-center mb-16">OUR SPONSORS</h2>
 
         {/* Grand Sponsor Section */}
         <div className="mb-20">
           {" "}
           {/* Increased margin-bottom */}
           <h3 className="text-3xl font-semibold text-center mb-8">
-            Grand Sponsors
+            GRAND SPONSORS
           </h3>
           <motion.div
             className="grand-sponsor flex justify-center"
@@ -50,7 +50,7 @@ export default function Sponsors() {
         <div className="mb-20">
           {" "}
           {/* Increased margin-bottom */}
-          <h3 className="text-3xl font-semibold text-center mb-8">Sponsors</h3>
+          <h3 className="text-3xl font-semibold text-center mb-8">SPONSORS</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {sponsors.map((sponsor) => (
               <motion.div
@@ -71,7 +71,7 @@ export default function Sponsors() {
         {/* Partnership Section */}
         <div>
           <h3 className="text-3xl font-semibold text-center mb-8">
-            Partnership
+            PARTNERSHIPS
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {partners.map((partner) => (

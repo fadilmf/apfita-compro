@@ -8,7 +8,7 @@ import logoUtama from "/src/assets/logo_utama.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ComingSoon() {
+export default function Hero() {
   const comingSoonRef = useRef<HTMLDivElement>(null);
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);
 

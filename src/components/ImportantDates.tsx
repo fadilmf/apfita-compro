@@ -97,7 +97,7 @@ const ImportantDates: React.FC = () => {
   return (
     <div ref={containerRef} className="py-20 bg-white relative overflow-hidden">
       <h2 className="text-4xl font-bold text-center mb-16 text-primary">
-        Important Dates
+        IMPORTANT DATES
       </h2>
       <div className="w-full mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {dates.map((entry, index) => (

@@ -11,7 +11,7 @@ export default function Map({
   title,
   location,
   description,
-  isOnline = false,
+  isOnline = true,
 }: VenueMapProps) {
   const query = encodeURIComponent("IPB International Convention Center");
 
