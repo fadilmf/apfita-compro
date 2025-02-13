@@ -2,18 +2,26 @@
 // ... rest of your code
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
-import Hero from "@/components/Hero";
+import Header from "@/components/Header";
 import ConferenceTopics from "@/components/ConferenceTopics";
+import ConferenceTnV from "@/components/ConferenceTnV";
+import ConferencePricing from "@/components/ConferencePricing";
 import Footer from "@/components/Footer";
 // import Sponsors from "@/components/Sponsors";
 
 const Conference = () => {
   return (
     <>
-      <Hero />
+      <Header />
       <Navbar />
       <div className="min-h-screen bg-gray-50">
         <ConferenceTopics />
+      </div>
+      <div className="min-h-screen bg-white py-12">
+        <ConferenceTnV />
+      </div>
+      <div className="min-h-screen bg-gray-50">
+        <ConferencePricing />
       </div>
       <Footer />
       {/* <Endorsement /> */}

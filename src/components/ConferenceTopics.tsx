@@ -49,7 +49,7 @@ export default function ConferenceTopics() {
       {/* Topics Timeline */}
       <div className="relative">
         {/* Vertical Line */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-green-500 ml-6" />
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 ml-6" />
 
         {/* Topics */}
         <div className="space-y-8">
@@ -58,7 +58,7 @@ export default function ConferenceTopics() {
               {/* Timeline Dot */}
               <div
                 className={`absolute left-0 w-12 h-12 rounded-full flex items-center justify-center
-                ${index === 0 ? "bg-blue-500" : "bg-green-500"}`}
+                ${index === 0 ? "bg-blue-500" : "bg-blue-400"}`}
               >
                 <span className="text-white font-bold">{index + 1}</span>
               </div>
