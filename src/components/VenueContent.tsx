@@ -3,6 +3,9 @@
 import { useEffect, useRef } from "react";
 import { MapPin, Navigation2 } from "lucide-react";
 
+import Outdoor from "/src/assets/OutdoorVenue.jpg";
+import Indoor from "/src/assets/IndoorVenue.jpg";
+
 export default function VenueSection() {
   const progressRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +26,8 @@ export default function VenueSection() {
 
     return () => window.removeEventListener("scroll", updateProgress);
   }, []);
+
+  const query = encodeURIComponent("IPB International Convention Center");
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -57,7 +62,7 @@ export default function VenueSection() {
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <div className="aspect-video relative rounded-lg overflow-hidden">
                 <img
-                  src="/placeholder.svg"
+                  src={Outdoor || "/placeholder.svg"}
                   alt="IPB Convention Center Exterior"
                   className="w-full h-auto object-cover rounded-lg"
                 />
@@ -66,7 +71,7 @@ export default function VenueSection() {
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <div className="aspect-video relative rounded-lg overflow-hidden">
                 <img
-                  src="/placeholder.svg"
+                  src={Indoor || "/placeholder.svg"}
                   alt="IPB Convention Center Interior"
                   className="w-full h-auto object-cover rounded-lg"
                 />
@@ -88,9 +93,9 @@ export default function VenueSection() {
                   <p className="text-gray-600">
                     IPB Convention Center
                     <br />
-                    Jl. Raya Pajajaran, Bogor
-                    <br />
-                    West Java, Indonesia
+                    Botani Square Building, Jl. Raya Pajajaran Raya Lt. 2,
+                    RT.04/RW.05, Tegallega, Kecamatan Bogor Tengah, Kota Bogor,
+                    Jawa Barat 16127
                   </p>
                 </div>
                 <a
@@ -107,16 +112,17 @@ export default function VenueSection() {
 
             {/* Map Card */}
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="aspect-video relative rounded-lg overflow-hidden">
+              <div className="w-full lg:w-full h-[400px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5c!5e0!3m2!1sen!2sid!4v1"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen
                   loading="lazy"
+                  allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0"
+                  src={`https://www.google.com/maps/embed/v1/place?key=${
+                    import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+                  }&q=${query}`}
                 ></iframe>
               </div>
             </div>

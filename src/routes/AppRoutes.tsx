@@ -4,8 +4,9 @@ import Conference from "@/pages/Conference";
 import Comingsoon from "@/pages/Comingsoon";
 import TimeSchedule from "@/pages/TimeSchedule";
 import Venue from "@/pages/Venue";
-import GuideLines from "@/pages/Guidelines";
+import GuideLines from "@/pages/GuideLines";
 import Submissions from "@/pages/Submissions";
+import Committees from "@/pages/Committees";
 // import About from "../pages/About";
 
 const AppRoutes = () => (
@@ -18,6 +19,7 @@ const AppRoutes = () => (
       <Route path="/guidelines" element={<GuideLines />} />
       <Route path="/submissions" element={<Submissions />} />
       <Route path="/venue" element={<Venue />} />
+      <Route path="/committees" element={<Committees />} />
       {/* <Route path="/about" element={<About />} /> */}
     </Routes>
   </BrowserRouter>
