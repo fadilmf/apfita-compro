@@ -64,7 +64,7 @@ export default function GuidelinesContent() {
               className="group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
             >
               {/* Date Badge */}
-              <div className="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
+              <div className="animate-pulse absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
                 POSTED : {guide.date}
               </div>
 

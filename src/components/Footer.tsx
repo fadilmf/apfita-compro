@@ -94,7 +94,7 @@ export default function Footer() {
         {/* Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-blue-800">
           <p className="text-center text-blue-700">
-            © {new Date().getFullYear()} APFITA 2025. All rights reserved.
+            © {new Date().getFullYear()} APFITA 15th. All rights reserved.
           </p>
         </div>
       </div>

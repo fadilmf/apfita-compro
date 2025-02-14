@@ -88,6 +88,8 @@ export default function ConferencePricing() {
     },
   ];
 
+  const [disabled] = useState(true);
+
   const formatPrice = (amount: number) => {
     if (currency === "IDR") {
       return new Intl.NumberFormat("id-ID", {
@@ -151,14 +153,12 @@ export default function ConferencePricing() {
                   {tier.badge}
                 </span>
               )}
-
               {tier.discount && (
                 <span className="absolute -top-4 right-4 flex items-center gap-1 px-3 py-1 bg-rose-500 text-white text-sm font-semibold rounded-full">
                   <Tag className="w-4 h-4" />
                   Save {tier.discount}%
                 </span>
               )}
-
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Icon
@@ -176,7 +176,6 @@ export default function ConferencePricing() {
                   {tier.description}
                 </p>
               </div>
-
               <div className="mb-6">
                 <div className="flex items-end gap-2 mb-1">
                   <p className="text-3xl font-bold">
@@ -206,7 +205,6 @@ export default function ConferencePricing() {
                   </p>
                 )}
               </div>
-
               <ul className="space-y-4 mb-8">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -221,12 +219,12 @@ export default function ConferencePricing() {
               </ul>
 
               <button
-                className={`w-full py-3 px-6 rounded-lg text-sm font-semibold transition-transform hover:scale-105 
-                  ${
-                    index === 0
-                      ? "bg-white text-blue-600"
-                      : "bg-blue-600 text-white"
-                  }`}
+                disabled={disabled}
+                className={`w-full py-3 px-6 rounded-lg text-sm font-semibold ${
+                  disabled
+                    ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                    : "bg-blue-600 text-white"
+                }`}
               >
                 Register Now
               </button>
