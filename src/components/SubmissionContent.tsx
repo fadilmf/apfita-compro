@@ -334,10 +334,10 @@ export default function SubmissionsContent() {
                     notify the committee immediately after manuscript
                     acceptance. Send requests to{" "}
                     <a
-                      href="mailto:icas.sv@apps.ipb.ac.id"
+                      href="mailto:@apps.ipb.ac.id"
                       className="text-blue-600 hover:text-blue-700 underline"
                     >
-                      icas.sv@apps.ipb.ac.id
+                      mas arci
                     </a>{" "}
                     with subject "Participation without publication" followed by
                     your Submission Number.

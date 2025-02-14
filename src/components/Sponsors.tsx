@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Zap, Globe } from "lucide-react";
 import logoBrain from "/src/assets/logo_brain.png";
+import Sponsor1 from "/src/assets/SponsorsMasArci.png";
 
 // Placeholder untuk gambar sponsor
 const logo_brain = { logoBrain };
-const placeholderImage = "/placeholder.svg";
+// const spons1 = { Sponsor1 };
+// const placeholderImage = "/placeholder.svg";
 
 // Array sponsor
 const sponsors = [
-  { id: 1, logo: placeholderImage, alt: "Sponsor 1", type: "grand" },
-  { id: 2, logo: placeholderImage, alt: "Sponsor 2", type: "regular" },
+  { id: 1, logo: Sponsor1, alt: "Sponsor 1", type: "grand" },
+  { id: 2, logo: Sponsor1, alt: "Sponsor 2", type: "regular" },
 ];
 
 const partners = [{ id: 1, logo: logo_brain.logoBrain, alt: "Partner 1" }];

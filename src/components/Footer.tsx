@@ -1,12 +1,13 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 
 import image from "../assets/logo_brain.png";
+import logo from "../assets/logo_conf.png";
 
 export default function Footer() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Conference", href: "/conference" },
-    { name: "Time Schedule", href: "/schedule" },
+    { name: "Time Schedule", href: "/time-schedule" },
     { name: "Guidelines", href: "/guidelines" },
     { name: "Submissions", href: "/submissions" },
     { name: "Venue", href: "/venue" },
@@ -21,11 +22,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Contact Section */}
           <div className="space-y-6">
-            <img
-              src="/src/assets/logo_conf.png"
-              alt="Logo APFITA 2025"
-              className="w-48"
-            />
+            <img src={logo} alt="Logo APFITA 2025" className="w-48" />
             <div className="space-y-4 text-blue-600">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
