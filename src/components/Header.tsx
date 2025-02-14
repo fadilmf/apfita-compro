@@ -18,7 +18,7 @@ export default function Header() {
     "/venue": "VENUE",
     "/committees": "COMMITTEES",
     "/download": "DOWNLOAD",
-    "/contact-us": "CONTACT US!",
+    "/contact": "CONTACT US!",
   };
 
   const pageTitle = pageTitles[location.pathname] || "APFITA 2025";

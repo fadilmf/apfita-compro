@@ -306,7 +306,7 @@ export default function SubmissionsContent() {
                       href="https://easychair.org/cfp/icas2024"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300 font-semibold text-center"
+                      className="block w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300 font-semibold text-center pointer-events-none opacity-50"
                     >
                       Submit Manuscript
                     </a>

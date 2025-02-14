@@ -8,6 +8,7 @@ import GuideLines from "@/pages/GuideLines";
 import Submissions from "@/pages/Submissions";
 import Committees from "@/pages/Committees";
 import Download from "@/pages/DownloadFile";
+import ContactUs from "@/pages/ContactUs";
 // import About from "../pages/About";
 
 const AppRoutes = () => (
@@ -22,6 +23,7 @@ const AppRoutes = () => (
       <Route path="/venue" element={<Venue />} />
       <Route path="/committees" element={<Committees />} />
       <Route path="/download" element={<Download />} />
+      <Route path="/contact" element={<ContactUs />} />
       {/* <Route path="/about" element={<About />} /> */}
     </Routes>
   </BrowserRouter>

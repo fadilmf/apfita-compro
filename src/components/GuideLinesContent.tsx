@@ -82,7 +82,7 @@ export default function GuidelinesContent() {
                 {/* Button */}
                 <a
                   href={guide.href}
-                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-amber-400 text-amber-900 rounded-lg font-medium hover:bg-amber-500 transition-colors duration-300 group/btn"
+                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-amber-400 text-amber-900 rounded-lg font-medium hover:bg-amber-500 transition-colors duration-300 group/btn pointer-events-none opacity-50"
                 >
                   <span>Download PDF</span>
                   <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
