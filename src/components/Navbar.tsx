@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // ✅ Tambahkan state untuk mobile menu
 
   return (
     <nav className="bg-gradient-to-br from-blue-50 via-white to-green-50 shadow-md fixed w-full top-0 z-50">
@@ -14,7 +15,7 @@ const Navbar = () => {
             APFITA
           </NavLink>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Desktop */}
           <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <NavLink to="/" className="hover:text-blue-600 transition">
               HOME
@@ -88,10 +89,90 @@ const Navbar = () => {
 
           {/* Mobile Menu (Burger) */}
           <div className="md:hidden">
-            <button onClick={() => setDropdownOpen(!isDropdownOpen)}>☰</button>
+            <button
+              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-700 cursor-pointer"
+            >
+              ☰
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg absolute top-16 left-0 w-full px-4 py-4 z-50">
+          <NavLink
+            to="/"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            HOME
+          </NavLink>
+          <NavLink
+            to="/conference"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            CONFERENCE
+          </NavLink>
+          <NavLink
+            to="/time-schedule"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            TIME SCHEDULE
+          </NavLink>
+          <NavLink
+            to="/guidelines"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            GUIDELINES
+          </NavLink>
+          <NavLink
+            to="/submissions"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            SUBMISSIONS
+          </NavLink>
+
+          {/* Dropdown MORE di Mobile */}
+          <button
+            onClick={() => setDropdownOpen(!isDropdownOpen)}
+            className="flex items-center justify-between w-full py-2 text-gray-700 hover:text-blue-600"
+          >
+            <span>MORE</span>
+            <ChevronDown size={18} />
+          </button>
+
+          {isDropdownOpen && (
+            <div className="ml-4">
+              <NavLink
+                to="/venue"
+                className="block py-2 text-gray-700 hover:text-blue-600"
+              >
+                VENUE
+              </NavLink>
+              <NavLink
+                to="/committees"
+                className="block py-2 text-gray-700 hover:text-blue-600"
+              >
+                COMMITTEES
+              </NavLink>
+              <NavLink
+                to="/download"
+                className="block py-2 text-gray-700 hover:text-blue-600"
+              >
+                DOWNLOAD
+              </NavLink>
+            </div>
+          )}
+
+          <NavLink
+            to="/contact"
+            className="block py-2 text-gray-700 hover:text-blue-600"
+          >
+            CONTACT US!
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 };
