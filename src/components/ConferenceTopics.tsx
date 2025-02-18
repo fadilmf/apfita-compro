@@ -40,9 +40,8 @@ export default function ConferenceTopics() {
           Themes and Topics
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          The 4th International Conference on Applied Sciences (ICAS) 2024
-          "Multidisciplinary Research Collaboration for Environmental, Social
-          and Governance (ESG) Issues"
+          The 15th International Conference on APFITA 2025 "Innovative Digital
+          Technology for Global Agro-Maritime Industry"
         </p>
       </div>
 

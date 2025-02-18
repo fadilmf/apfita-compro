@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import logoConf from "/src/assets/logo_conf.png";
 import logoBrain from "/src/assets/logo_brain.png";
 import logoUtama from "/src/assets/logo_utama.png";
+import logoIPB from "/src/assets/logo_ipb.png";
+import logoFW from "/src/assets/logo_FW.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,13 +76,23 @@ export default function Hero() {
         />
         <div className="flex space-x-4">
           <img
-            src={logoConf || "/placeholder.svg"}
-            alt="APFITA Logo"
+            src={logoIPB || "/placeholder.svg"}
+            alt="Logo IPB"
             className="w-24 sm:w-28 h-auto object-contain"
           />
           <img
             src={logoBrain || "/placeholder.svg"}
             alt="Brain Logo"
+            className="w-24 sm:w-28 h-auto object-contain"
+          />
+          <img
+            src={logoFW || "/placeholder.svg"}
+            alt="Logo FW"
+            className="w-24 sm:w-28 h-auto object-contain"
+          />
+          <img
+            src={logoConf || "/placeholder.svg"}
+            alt="APFITA Logo"
             className="w-24 sm:w-28 h-auto object-contain"
           />
         </div>
