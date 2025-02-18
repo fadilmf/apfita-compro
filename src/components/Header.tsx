@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import logoConf from "/src/assets/logo_conf.png";
 import logoBrain from "/src/assets/logo_brain.png";
 import logoUtama from "/src/assets/logo_utama.png";
+import logoIPB from "/src/assets/logo_ipb.png";
+import logoFW from "/src/assets/logo_FW.png";
 
 export default function Header() {
   const titleRef = useRef<HTMLDivElement>(null);
@@ -46,26 +48,29 @@ export default function Header() {
       <div className="absolute inset-0 bg-black/35"></div>
 
       {/* Blur & Gray Transparent Overlay */}
-      <div className="absolute inset-0 bg-black/65"></div>
+      <div className="absolute inset-0 bg-black/15"></div>
+      {/* Logos Section */}
+      <div className="mb-5 relative flex flex-col sm:flex-row items-center space-y-8 sm:space-y-0 sm:space-x-12 p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
+        {/* Soft Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-3xl pointer-events-none"></div>
 
-      {/* Logos */}
-      <div className="relative flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12 p-8 rounded-2xl bg-gradient-to-br from-white/70 via-white/60 to-white/50 backdrop-blur-lg border border-white/40 shadow-2xl overflow-hidden">
+        {/* Main Logo with Highlight */}
         <img
           src={logoUtama || "/placeholder.svg"}
           alt="Utama Logo"
-          className="w-64 sm:w-80 h-auto object-contain"
+          className="w-64 sm:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
         />
-        <div className="flex space-x-4">
-          <img
-            src={logoConf || "/placeholder.svg"}
-            alt="APFITA Logo"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
-          <img
-            src={logoBrain || "/placeholder.svg"}
-            alt="Brain Logo"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
+
+        {/* Other Logos */}
+        <div className="flex space-x-6 sm:space-x-8">
+          {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
+            <img
+              key={index}
+              src={logo || "/placeholder.svg"}
+              alt={`Logo ${index + 1}`}
+              className="w-24 sm:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
+            />
+          ))}
         </div>
       </div>
 

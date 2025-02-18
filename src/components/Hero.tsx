@@ -57,44 +57,31 @@ export default function Hero() {
       ></div>
 
       {/* Blur & Gray Transparent Overlay */}
-      <div className="absolute inset-0 bg-black/65"></div>
+      <div className="absolute inset-0 bg-black/45"></div>
       {/* Background pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] -z-10" />
-      {/* Logos */}
-      <div className="relative flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12 p-8 rounded-2xl bg-gradient-to-br from-white/70 via-white/60 to-white/50 backdrop-blur-lg border border-white/40 shadow-2xl overflow-hidden">
-        {/* Shiny Animation */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-0 rounded-2xl animate-shiny pointer-events-none"></div>
+      {/* Logos Section */}
+      <div className="mb-5 relative flex flex-col sm:flex-row items-center space-y-8 sm:space-y-0 sm:space-x-12 p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
+        {/* Soft Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-3xl pointer-events-none"></div>
 
-        {/* Decorative Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-200/50 to-green-200/50 opacity-10 rounded-2xl pointer-events-none"></div>
-
-        {/* Main Logos */}
+        {/* Main Logo with Highlight */}
         <img
           src={logoUtama || "/placeholder.svg"}
           alt="Utama Logo"
-          className="w-64 sm:w-80 h-auto object-contain"
+          className="w-64 sm:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
         />
-        <div className="flex space-x-4">
-          <img
-            src={logoIPB || "/placeholder.svg"}
-            alt="Logo IPB"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
-          <img
-            src={logoBrain || "/placeholder.svg"}
-            alt="Brain Logo"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
-          <img
-            src={logoFW || "/placeholder.svg"}
-            alt="Logo FW"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
-          <img
-            src={logoConf || "/placeholder.svg"}
-            alt="APFITA Logo"
-            className="w-24 sm:w-28 h-auto object-contain"
-          />
+
+        {/* Other Logos */}
+        <div className="flex space-x-6 sm:space-x-8">
+          {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
+            <img
+              key={index}
+              src={logo || "/placeholder.svg"}
+              alt={`Logo ${index + 1}`}
+              className="w-24 sm:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
+            />
+          ))}
         </div>
       </div>
 

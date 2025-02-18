@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Conference from "@/pages/Conference";
 // import Comingsoon from "@/pages/Comingsoon";
@@ -12,20 +12,18 @@ import ContactUs from "@/pages/ContactUs";
 import NotFound from "@/pages/NotFound"; // Import halaman 404
 
 const AppRoutes = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/conference" element={<Conference />} />
-      <Route path="/time-schedule" element={<TimeSchedule />} />
-      <Route path="/guidelines" element={<GuideLines />} />
-      <Route path="/submissions" element={<Submissions />} />
-      <Route path="/venue" element={<Venue />} />
-      <Route path="/committees" element={<Committees />} />
-      <Route path="/download" element={<Download />} />
-      <Route path="/contact" element={<ContactUs />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/conference" element={<Conference />} />
+    <Route path="/time-schedule" element={<TimeSchedule />} />
+    <Route path="/guidelines" element={<GuideLines />} />
+    <Route path="/submissions" element={<Submissions />} />
+    <Route path="/venue" element={<Venue />} />
+    <Route path="/committees" element={<Committees />} />
+    <Route path="/download" element={<Download />} />
+    <Route path="/contact" element={<ContactUs />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
 );
 
 export default AppRoutes;

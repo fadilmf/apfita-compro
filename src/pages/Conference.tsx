@@ -3,10 +3,11 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
+import Speakers from "@/components/Speakers";
 import ConferenceTopics from "@/components/ConferenceTopics";
 import ConferenceTnV from "@/components/ConferenceTnV";
 import ConferencePricing from "@/components/ConferencePricing";
-import Footer from "@/components/Footer";
+
 // import Sponsors from "@/components/Sponsors";
 
 const Conference = () => {
@@ -17,13 +18,15 @@ const Conference = () => {
       <div className="min-h-screen bg-gray-50">
         <ConferenceTopics />
       </div>
-      <div className="min-h-screen bg-white py-12">
-        <ConferenceTnV />
+      <div className="min-h-screen bg-white">
+        <Speakers />
       </div>
       <div className="min-h-screen bg-gray-50">
+        <ConferenceTnV />
+      </div>
+      <div className="min-h-screen bg-white">
         <ConferencePricing />
       </div>
-      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

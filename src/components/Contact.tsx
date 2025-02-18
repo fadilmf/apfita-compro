@@ -5,7 +5,7 @@ const contactMethods = [
   {
     name: "WhatsApp",
     icon: WhatsApp,
-    href: "https://wa.me/1234567890",
+    href: "https://wa.me/6282214269503",
     color: "bg-green-500",
   },
   {
