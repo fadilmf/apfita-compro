@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
 import GuideLinesContent from "@/components/GuideLinesContent";
-import Footer from "@/components/Footer";
 // import Sponsors from "@/components/Sponsors";
 
 const GuideLines = () => {
@@ -15,7 +14,6 @@ const GuideLines = () => {
       <div className="min-h-screen bg-gray-50">
         <GuideLinesContent />
       </div>
-      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

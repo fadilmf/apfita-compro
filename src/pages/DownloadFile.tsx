@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Download from "@/components/Download";
 import GuideLinesContent from "@/components/GuideLinesContent";
-import Footer from "@/components/Footer";
+
 // import Sponsors from "@/components/Sponsors";
 
 const DownloadFile = () => {
@@ -19,7 +19,6 @@ const DownloadFile = () => {
       <div className="min-h-screen bg-white">
         <GuideLinesContent />
       </div>
-      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

@@ -1,95 +1,325 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Users, ChevronDown, ChevronUp } from "lucide-react";
+import type React from "react";
+
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type React from "react"; // Added import for React
+import {
+  ChevronDown,
+  Users,
+  User,
+  UserPlus,
+  Briefcase,
+  PenTool,
+  Megaphone,
+  Monitor,
+  Package,
+  Share2,
+  Award,
+  Building,
+} from "lucide-react";
 
-interface CommitteeMemberProps {
+interface CommitteeMember {
   name: string;
-  role?: string;
-  photo?: string;
   title?: string;
+  icon: React.ElementType;
 }
 
-const CommitteeMember: React.FC<CommitteeMemberProps> = ({
-  name,
-  role,
-  photo,
-  title,
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-  >
-    {photo ? (
-      <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-        <img
-          src={photo || "/placeholder.svg"}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
-      </div>
-    ) : (
-      <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-        <Users className="w-8 h-8 text-blue-600" />
-      </div>
-    )}
-    <div>
-      <h4 className="font-medium text-blue-950">{name}</h4>
-      {role && <p className="text-sm text-blue-600">{role}</p>}
-      {title && <p className="text-sm text-gray-500">{title}</p>}
-    </div>
-  </motion.div>
-);
-
-interface CommitteeSectionProps {
-  title: string;
-  color: string;
-  children: React.ReactNode;
+interface CommitteeSection {
+  name: string;
+  icon: React.ElementType;
+  members: CommitteeMember[];
 }
 
-const CommitteeSection: React.FC<CommitteeSectionProps> = ({
-  title,
-  color,
-  children,
+const committees: CommitteeSection[] = [
+  {
+    name: "Steering Committee",
+    icon: Briefcase,
+    members: [
+      {
+        name: "Prof. Dr. Arif Satria, SP, M.Si",
+        title: "Chair (Rector of IPB University)",
+        icon: Award,
+      },
+      {
+        name: "Prof. Dr. Ir. Kudang Boro Seminar, M.Sc.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Prof. Dr. Ir. Marimin, M.Sc.", title: "Member", icon: User },
+      {
+        name: "Prof. Dr. Ir. Setyo Pertiwi, M.Agr.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Dr. Ir. Bayu Mulyana, M.M., IPM.", title: "Member", icon: User },
+      {
+        name: "Prof. Dr. Ir. Anas Miftah Fauzi, M.Eng.",
+        title: "Member",
+        icon: User,
+      },
+      {
+        name: "Prof. Dr. Ir. Agus Buono, M.Si., M.Kom.",
+        title: "Member",
+        icon: User,
+      },
+      {
+        name: "Prof. Dr. Ir. Noer Azam Achsani, M.S.",
+        title: "Member",
+        icon: User,
+      },
+      {
+        name: "Prof. Dr. Ir. Yandra Arkeman, M.Eng.",
+        title: "Member",
+        icon: User,
+      },
+    ],
+  },
+  {
+    name: "Organizing Committee",
+    icon: Users,
+    members: [
+      {
+        name: "Prof. Dr. Ir. Yandra Arkeman, M.Eng.",
+        title: "Chair",
+        icon: Award,
+      },
+      {
+        name: "Irman Hermadi, Ph.D.",
+        title: "Vice Chair 1 (Program)",
+        icon: User,
+      },
+      {
+        name: "Dr. Shelvie Nidya Neyman, S.Kom, M.Si.",
+        title: "Vice Chair 2 (Funding)",
+        icon: User,
+      },
+      {
+        name: "Dr. Muhammad Syukur Sarfat, S.TP., M.Sc.",
+        title: "Vice Chair 3 (Publication)",
+        icon: User,
+      },
+    ],
+  },
+  {
+    name: "Executive Secretaries",
+    icon: UserPlus,
+    members: [
+      { name: "Verry Surya Hendrawan, S.T., M.M.", title: "Head", icon: Award },
+      { name: "Firman Arief Soejana, S.T., M.T.", title: "Member", icon: User },
+      { name: "Andry Polos, S.Kom., M.Si.", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Secretariat",
+    icon: User,
+    members: [
+      { name: "Fatimah Alfi, S.Kom.", title: "Head", icon: Award },
+      { name: "Fathin Humaira, S.Kom.", title: "Member", icon: User },
+      { name: "Shabrina Basyasyah, S.Kom.", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Treasury",
+    icon: Briefcase,
+    members: [
+      {
+        name: "Nizmah Jatisari Hidayah, S.P., M.P.",
+        title: "Treasurer",
+        icon: Award,
+      },
+      {
+        name: "Deasy Kartika Rahayu Kuncoro, S.T., M.T.",
+        title: "Vice Treasurer",
+        icon: User,
+      },
+    ],
+  },
+  {
+    name: "Funding and Sponsorship",
+    icon: Briefcase,
+    members: [
+      { name: "Dr. Kursehi Falgenti, M.Kom", title: "Head", icon: Award },
+      {
+        name: "Stania Puspawardhani, S.Si., M.Si.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Asaduddin Abdullah B.Sc. M.Sc.", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Technical Programme",
+    icon: PenTool,
+    members: [
+      { name: "Dr. Harry Imantho, S.Si., M.Sc.", title: "Head", icon: Award },
+      {
+        name: "Novian Adi Prasetyo, S.Kom., M.Kom.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Balqis Iklil Habiba, S.T.P.", title: "Member", icon: User },
+      { name: "Ir. Rini Prasetyani, M.T.", title: "Member", icon: User },
+      { name: "Ichsan Ramdhani, S.Tp., M.T.I.", title: "Member", icon: User },
+      { name: "Dewi Ayu Nur Wulandari, M.Kom", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Publication",
+    icon: Megaphone,
+    members: [
+      { name: "Dr. Supriyanto, STP., M.Kom.", title: "Head", icon: Award },
+      { name: "Dr. Eng. Obie Farobie, M.Si.", title: "Member", icon: User },
+      {
+        name: "Dra. Medria Kusuma Dewi, M.T., PhD",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Irawan Afrianto, S.T., M.T.", title: "Member", icon: User },
+      { name: "Supriyadi, S.T., MT.", title: "Member", icon: User },
+      {
+        name: "Ganjar Saefurahman, S.Pi., M.Phil., M.Sc.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Muhammad Fajar Sidiq, S.T., M.T.", title: "Member", icon: User },
+      { name: "Siti Nur Asiyah Wardah, S. Hut", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Event",
+    icon: Users,
+    members: [
+      { name: "Dr. Dhani S. Wibawa, S.TP., M.Si.", title: "Head", icon: Award },
+      { name: "Dr. Ir. Sri Wahjuni, M.T.", title: "Member", icon: User },
+      {
+        name: "Dr. Yani Nurhadryani, S.Si., M.T.",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Theresia Roselinda, P.D., S.T.P.", title: "Member", icon: User },
+      { name: "Fachry (KBS)", title: "Member", icon: User },
+      { name: "Ali Usman, S.TP.", title: "Member", icon: User },
+      { name: "Muhammad Fauzi, S.Pt., M.Si.", title: "Member", icon: User },
+      { name: "M. Iqbal, S.Kom.", title: "Member", icon: User },
+      { name: "Shafira Rahmania, S.Pi", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Virtual Arrangement",
+    icon: Monitor,
+    members: [
+      { name: "Dr. Liyantono, S.TP., M.Agr.", title: "Head", icon: Award },
+      {
+        name: "Dr. Bonang Waspadadi Ligar, S.Si., MMSI.",
+        title: "Member",
+        icon: User,
+      },
+      {
+        name: "Archy Renaldy Pratama Nugraha, M.T",
+        title: "Member",
+        icon: User,
+      },
+      { name: "Aries Suharso, S.Si., M.Kom.", title: "Member", icon: User },
+      { name: "Muhamad Risqiwahid, S.Kom.", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Logistics & Support",
+    icon: Package,
+    members: [
+      { name: "Hendri Wijaya, S.TP., M.Si.", title: "Head", icon: Award },
+      { name: "Falahah, S.Si., M.T.", title: "Member", icon: User },
+      { name: "Febry Aryawan, S.P.", title: "Member", icon: User },
+      { name: "Surya Fatihah Helmianto", title: "Member", icon: User },
+    ],
+  },
+  {
+    name: "Promotion, Social Media, Homepage",
+    icon: Share2,
+    members: [
+      { name: "Efri Yulistika, S.TP, M.T.", title: "Head", icon: Award },
+      { name: "Yulianida Tamala, S.T.P.", title: "Member", icon: User },
+      {
+        name: "Dinda Aslam Nurul Hida, S.P., M.Si.",
+        title: "Member",
+        icon: User,
+      },
+      {
+        name: "Nazla Atikah Hikmatias Nasution, S.P.",
+        title: "Member",
+        icon: User,
+      },
+    ],
+  },
+];
+
+const collaboratingInstitutions = [
+  "Center for Agricultural Data and Information Systems (PUSDATIN)",
+  "Indonesian Association of Agricultural Informatics (HIPI)",
+  "IPB University",
+  "Padjadjaran University (UNPAD)",
+  "Telkom University",
+  "Indonesian Computer University (UNIKOM)",
+  "Gunadarma University",
+  "Other collaborating parties",
+];
+
+const CommitteeSection: React.FC<{ section: CommitteeSection }> = ({
+  section,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const Icon = section.icon;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl p-6 shadow-xl"
+      transition={{ duration: 0.5 }}
+      className="mb-8 bg-white rounded-xl shadow-lg overflow-hidden"
     >
-      <div className={`h-2 ${color} rounded-full mb-6`}></div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-blue-950">{title}</h2>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="p-2 hover:bg-blue-50 rounded-full transition-colors"
-        >
-          {isExpanded ? (
-            <ChevronUp className="w-5 h-5 text-blue-600" />
-          ) : (
-            <ChevronDown className="w-5 h-5 text-blue-600" />
-          )}
-        </motion.button>
-      </div>
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors duration-300"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+      >
+        <div className="flex items-center">
+          <Icon className="w-8 h-8 mr-4 text-blue-600" />
+          <h3 className="text-xl font-bold text-gray-800">{section.name}</h3>
+        </div>
+        <ChevronDown
+          className={`w-6 h-6 text-blue-600 transform transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </motion.button>
       <AnimatePresence>
-        {isExpanded && (
+        {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="space-y-4 overflow-hidden"
+            className="px-6 pb-6"
           >
-            {children}
+            {section.members.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="mb-4 last:mb-0 flex items-center"
+              >
+                <member.icon className="w-6 h-6 mr-3 text-blue-500" />
+                <div>
+                  <p className="font-semibold text-gray-800">{member.name}</p>
+                  {member.title && (
+                    <p className="text-sm text-gray-600">{member.title}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
@@ -97,230 +327,55 @@ const CommitteeSection: React.FC<CommitteeSectionProps> = ({
   );
 };
 
-export default function CommitteesContent() {
-  const progressRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const el = progressRef.current;
-      if (!el) return;
-
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const progress = scrollTop / (documentHeight - windowHeight);
-
-      el.style.width = `${progress * 100}%`;
-    };
-
-    window.addEventListener("scroll", updateProgress);
-    updateProgress();
-
-    return () => window.removeEventListener("scroll", updateProgress);
-  }, []);
-
+const CommitteesContent: React.FC = () => {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <div className="container mx-auto px-4">
+        <motion.h2
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative w-full overflow-hidden bg-white rounded-xl shadow-lg mb-12"
+          className="text-4xl font-bold text-navy-900 mb-6 text-center "
         >
-          <div className="absolute top-0 left-0 right-0 h-1 bg-blue-100">
-            <div
-              ref={progressRef}
-              className="h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-200"
-            />
-          </div>
+          Conference Committees
+        </motion.h2>
+        <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-5 text-center">
+          Committees for The 15th International Conference of Asia-Pacific
+          Federation for Information Technology in Agriculture 2025
+        </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-16 bg-white rounded-xl shadow-lg overflow-hidden"
+        >
           <div className="p-6">
-            <h1 className="text-3xl md:text-4xl font-bold text-blue-950 text-center mb-2">
-              Committee Members
-            </h1>
-            <p className="text-center text-blue-600">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <Building className="w-8 h-8 mr-4 text-blue-600" />
+              Collaborating Institutions
+            </h3>
+            <p className="text-gray-600 mb-4">
               The 15th International Conference of Asia-Pacific Federation for
-              Information Technology in Agriculture 2025
+              Information Technology in Agriculture 2025 is a collaboration
+              between:
             </p>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {collaboratingInstitutions.map((institution, index) => (
+                <li key={index}>{institution}</li>
+              ))}
+            </ul>
           </div>
         </motion.div>
 
-        <div className="space-y-8">
-          <CommitteeSection title="Steering Committee" color="bg-blue-600">
-            <CommitteeMember
-              name="Prof. Dr. Arif Satria, SP, M.Si"
-              role="Chair"
-              title="Rector of IPB University"
-              photo="/placeholder.svg"
-            />
-            {[
-              "Prof. Dr. Ir. Kudang Boro Seminar, M.Sc.",
-              "Prof. Dr. Ir. Marimin, M.Sc.",
-              "Prof. Dr. Ir. Setyo Pertiwi, M.Agr.",
-              "Dr. Ir. Bayu Mulyana, M.M., IPM.",
-              "Prof. Dr. Ir. Anas Miftah Fauzi, M.Eng.",
-              "Prof. Dr. Ir. Agus Buono, M.Si., M.Kom.",
-              "Prof. Dr. Ir. Noer Azam Achsani, M.S.",
-            ].map((name) => (
-              <CommitteeMember
-                key={name}
-                name={name}
-                photo="/placeholder.svg"
-              />
-            ))}
-          </CommitteeSection>
-
-          <CommitteeSection title="Organizing Committee" color="bg-blue-400">
-            <CommitteeMember
-              name="Prof. Dr. Ir. Yandra Arkeman, M.Eng."
-              role="Chair"
-              photo="/placeholder.svg"
-            />
-            <CommitteeMember
-              name="Irman Hermadi, Ph.D."
-              role="Vice Chair 1 (Program)"
-              photo="/placeholder.svg"
-            />
-            <CommitteeMember
-              name="Dr. Shelvie Nidya Neyman, S.Kom, M.Si."
-              role="Vice Chair 2 (Funding)"
-              photo="/placeholder.svg"
-            />
-            <CommitteeMember
-              name="Dr. Muhammad Syukur Sarfat, S.TP., M.Sc."
-              role="Vice Chair 3 (Publication)"
-              photo="/placeholder.svg"
-            />
-
-            <div className="mt-6">
-              <h3 className="font-semibold text-blue-950 mb-3">
-                Executive Secretaries
-              </h3>
-              <div className="space-y-2">
-                {[
-                  "Verry Surya Hendrawan, S.T, M.M.",
-                  "Firman Arief Soejana, S.T., M.T.",
-                  "Andry Polos, S.Kom., M.Si.",
-                ].map((name) => (
-                  <CommitteeMember key={name} name={name} />
-                ))}
-              </div>
-            </div>
-          </CommitteeSection>
-
-          <CommitteeSection title="Other Committees" color="bg-blue-300">
-            {[
-              {
-                title: "Secretariat",
-                members: [
-                  "Fatimah Alfi, S.Kom.",
-                  "Fathin Humaira, S.Kom.",
-                  "Shabrina Basyasyah, S.Kom.",
-                ],
-              },
-              {
-                title: "Treasury",
-                members: [
-                  {
-                    name: "Nizmah Jatisari Hidayah, S.P., M.P.",
-                    role: "Treasurer",
-                  },
-                  {
-                    name: "Deasy Kartika Rahayu Kuncoro, S.T., M.T.",
-                    role: "Vice Treasurer",
-                  },
-                ],
-              },
-              {
-                title: "Funding and Sponsorship",
-                members: [
-                  "Dr. Kursehi Falgenti, M.Kom",
-                  "Stania Puspawardhani, S.Si., M.Si.",
-                  "Asaduddin Abdullah B.Sc. M.Sc.",
-                ],
-              },
-              {
-                title: "Technical Programme",
-                members: [
-                  "Dr. Harry Imantho, S.Si., M.Sc.",
-                  "Novian Adi Prasetyo, S.Kom., M.Kom.",
-                  "Balqis Ikli Habiba, S.T",
-                  "Ir. Rini Prasetyani, M.T.",
-                  "Ichsan Ramdhani, S.Tp., M.T.I.",
-                  "Dewi Ayu Nur Wulandari, M.Kom",
-                ],
-              },
-              {
-                title: "Publication",
-                members: [
-                  "Dr. Supriyanto, STP., M.Kom.",
-                  "Dr. Eng. Obie Farobie, M.Si.",
-                  "Irawan Arianto, S.T., M.T.",
-                  "Supriyadi, S.T., M.T.",
-                  "Ganjar Saefurahman, S.Pi., M.Phil., M.Sc.",
-                  "Muhammad Fajar Sidiq, S.T., M.T.",
-                ],
-              },
-              {
-                title: "Event (Program)",
-                members: [
-                  "Dr. Dhani S. Wibawa, S.TP., M.Si.",
-                  "Theresia Roselinda, S.T.",
-                  "Fachry (KBS)",
-                  "Ali Usman, S.TP.",
-                  "Muhammad Fauzi, S.Pt., M.Si.",
-                ],
-              },
-              {
-                title: "Virtual Arrangement",
-                members: [
-                  "Dr. Liyantono, S.TP., M.Agr.",
-                  "Dr. Bonang Waspadadi Ligar, S.Si., MMSI.",
-                  "Archy Renaldy Pratama Nugraha, M.T",
-                  "Aries Suharso, S.Si., M.Kom.",
-                  "M. Iqbal, S.Kom.",
-                ],
-              },
-              {
-                title: "Logistics & Support",
-                members: [
-                  "Hendri Wijaya, S.TP., M.Si.",
-                  "Falahah, S.Si., M.T.",
-                  "Surya Fatihah Helmianto",
-                  "Fadil Muhammad Fauzan",
-                ],
-              },
-              {
-                title: "Promotion, Social Media, Homepage",
-                members: [
-                  "Efri Yulistika, S.TP, M.T.",
-                  "Yulianida Tamala, S.TP.",
-                ],
-              },
-            ].map((section) => (
-              <div key={section.title} className="mt-6">
-                <h3 className="font-semibold text-blue-950 mb-3">
-                  {section.title}
-                </h3>
-                <div className="space-y-2">
-                  {section.members.map((member) =>
-                    typeof member === "string" ? (
-                      <CommitteeMember key={member} name={member} />
-                    ) : (
-                      <CommitteeMember
-                        key={member.name}
-                        name={member.name}
-                        role={member.role}
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            ))}
-          </CommitteeSection>
+        <div className="max-w-5xl mx-auto">
+          {committees.map((committee, index) => (
+            <CommitteeSection key={index} section={committee} />
+          ))}
         </div>
       </div>
-    </main>
+    </section>
   );
-}
+};
+
+export default CommitteesContent;

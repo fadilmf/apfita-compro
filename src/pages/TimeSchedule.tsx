@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
 import TimeScheduleContent from "@/components/TimeScheduleContent";
-import Footer from "@/components/Footer";
+
 // import Sponsors from "@/components/Sponsors";
 
 const TimeSchedule = () => {
@@ -15,7 +15,7 @@ const TimeSchedule = () => {
       <div className="min-h-screen bg-gray-50">
         <TimeScheduleContent />
       </div>
-      <Footer />
+
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

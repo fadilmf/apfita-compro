@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Zap, Globe } from "lucide-react";
 import logoBrain from "/src/assets/logo_brain.png";
-import Sponsor1 from "/src/assets/SponsorsMasArci.png";
+import logoTelU from "/src/assets/Logo Tel U.png";
+import logoKementan from "/src/assets/Logo Kementan.png";
+import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
+import logoUNPAD from "/src/assets/Logo UNPAD.png";
 
 // Placeholder untuk gambar sponsor
 const logo_brain = { logoBrain };
@@ -10,11 +13,17 @@ const logo_brain = { logoBrain };
 
 // Array sponsor
 const sponsors = [
-  { id: 1, logo: Sponsor1, alt: "Sponsor 1", type: "grand" },
-  { id: 2, logo: Sponsor1, alt: "Sponsor 2", type: "regular" },
+  { id: 1, logo: logoBrain, alt: "Sponsor 1", type: "grand" },
+  { id: 2, logo: logoBrain, alt: "Sponsor 2", type: "regular" },
 ];
 
-const partners = [{ id: 1, logo: logo_brain.logoBrain, alt: "Partner 1" }];
+const partners = [
+  { id: 1, logo: logoKementan, alt: "Partner 1" },
+  { id: 2, logo: logo_brain.logoBrain, alt: "Partner 2" },
+  { id: 3, logo: logoTelU, alt: "Partner 3" },
+  { id: 4, logo: logoUNIKOM, alt: "Partner 4" },
+  { id: 5, logo: logoUNPAD, alt: "Partner 5" },
+];
 
 // Variants animasi
 const containerVariants = {
@@ -201,7 +210,7 @@ export default function Sponsors() {
               variants={itemVariants}
               className="text-3xl font-semibold text-center mb-12"
             >
-              Our Valued Partners
+              Our Valued Partners and Co-Host
             </motion.h3>
             <motion.div
               variants={itemVariants}

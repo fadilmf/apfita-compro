@@ -7,7 +7,6 @@ import Sponsors from "@/components/Sponsors";
 import Welcome from "@/components/Welcome";
 import Imdates from "@/components/ImportantDates";
 import Map from "@/components/Map";
-import Footer from "@/components/Footer";
 // import Sponsors from "@/components/Sponsors";
 
 const Home = () => {
@@ -26,7 +25,6 @@ const Home = () => {
           isOnline={true}
         />
       </div>
-      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

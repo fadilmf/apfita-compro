@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
 import CommitteesContent from "@/components/CommitteesContent";
-import Footer from "@/components/Footer";
+
 // import Sponsors from "@/components/Sponsors";
 
 const Venue = () => {
@@ -15,7 +15,6 @@ const Venue = () => {
       <div className="min-h-screen bg-gray-50">
         <CommitteesContent />
       </div>
-      <Footer />
       {/* <Endorsement /> */}
 
       {/* Important Dates */}
