@@ -1,9 +1,10 @@
 import { MapPin, Phone, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import image from "../assets/logo_brain.png";
 import logo from "../assets/logo_conf.png";
 
 export default function Footer() {
+  const navigate = useNavigate();
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Conference", href: "/conference" },
@@ -60,20 +61,20 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Links (New Code) */}
+          {/* Navigation Links */}
           <div className="lg:col-span-2">
             <h3 className="text-blue-800 font-semibold text-lg mb-6">
               Navigation
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {navigation.map((item) => (
-                <Link
+                <button
                   key={item.name}
-                  to={item.href}
+                  onClick={() => navigate(item.href)}
                   className="text-blue-600 hover:text-blue-950 transition-colors"
                 >
                   {item.name}
-                </Link>
+                </button>
               ))}
             </div>
           </div>
@@ -90,7 +91,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={image} // Ganti dengan nama file logo yang benar
+                  src={image}
                   alt="BRAIN IPB"
                   className="bg-white p-2 rounded-lg w-[150px] hover:opacity-80 transition-opacity"
                 />
@@ -106,7 +107,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={image} // Ganti dengan nama file logo yang benar
+                  src={image}
                   alt="BRAIN IPB"
                   className="bg-white p-2 rounded-lg w-[150px] hover:opacity-80 transition-opacity"
                 />
