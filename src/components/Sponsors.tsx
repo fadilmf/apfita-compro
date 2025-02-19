@@ -5,6 +5,7 @@ import logoTelU from "/src/assets/Logo Tel U.png";
 import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
+import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
 
 // Placeholder untuk gambar sponsor
 const logo_brain = { logoBrain };
@@ -23,6 +24,7 @@ const partners = [
   { id: 3, logo: logoTelU, alt: "Partner 3" },
   { id: 4, logo: logoUNIKOM, alt: "Partner 4" },
   { id: 5, logo: logoUNPAD, alt: "Partner 5" },
+  { id: 6, logo: logoGUNDAR, alt: "Partner 6" },
 ];
 
 // Variants animasi

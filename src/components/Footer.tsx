@@ -6,6 +6,7 @@ import logoTelU from "/src/assets/Logo Tel U.png";
 import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
+import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
 
 export default function Footer() {
   const navigation = [
@@ -23,17 +24,18 @@ export default function Footer() {
   const coHosts = [
     { name: "BRAIN IPB", logo: image, url: "https://brain.ipb.ac.id" },
     {
+      name: "Kementerian Pertanian",
+      logo: logoKementan,
+      url: "https://www.pertanian.go.id",
+    },
+    {
       name: "Telkom University",
       logo: logoTelU,
       url: "https://telkomuniversity.ac.id",
     },
     { name: "UNIKOM", logo: logoUNIKOM, url: "https://www.unikom.ac.id" },
     { name: "UNPAD", logo: logoUNPAD, url: "https://www.unpad.ac.id" },
-    {
-      name: "Kementerian Pertanian",
-      logo: logoKementan,
-      url: "https://www.pertanian.go.id",
-    },
+    { name: "GUNDAR", logo: logoGUNDAR, url: "https://www.gunadarma.ac.id" },
   ];
 
   return (
