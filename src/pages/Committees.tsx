@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
+import Reviewers from "@/components/Reviewers";
 import CommitteesContent from "@/components/CommitteesContent";
 
 // import Sponsors from "@/components/Sponsors";
@@ -14,6 +15,9 @@ const Venue = () => {
       <Navbar />
       <div className="min-h-screen bg-gray-50">
         <CommitteesContent />
+      </div>
+      <div className="min-h-screen bg-white">
+        <Reviewers />
       </div>
       {/* <Endorsement /> */}
 

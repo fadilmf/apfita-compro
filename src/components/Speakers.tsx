@@ -1,88 +1,285 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Download, Eye, X } from "lucide-react"; // Using X icon as the close button
-import { useState } from "react";
+import type React from "react";
 
-const handleDownload = () => {
-  const link = document.createElement("a");
-  link.href = "/src/assets/SpeakersofAPFITA2025.jpeg"; // Ensure this file is in the assets folder
-  link.download = "speakers_list.jpeg";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Star, Award, Users } from "lucide-react";
+
+interface Speaker {
+  name: string;
+  title: string;
+  organization: string;
+  image: string;
+  category: "opening" | "honorary" | "prominent";
+  confirmed?: boolean;
+}
+
+const speakers: Speaker[] = [
+  {
+    name: "Prof. Dr. Arif Satria, S.P., M.Si.",
+    title: "Rector",
+    organization: "IPB University",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "opening",
+  },
+  {
+    name: "Prof. Dr. Ir. Rachmat Pambudy, M.S.",
+    title: "Minister of National Development Planning",
+    organization: "Republic of Indonesia",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Dr. Ir. H. Andi Amran Sulaiman, M.P.",
+    title: "Minister of Agriculture",
+    organization: "Republic of Indonesia",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Ir. Sakti Wahyu Trenggono, M.M.",
+    title: "Minister of Maritime Affairs and Fisheries",
+    organization: "Republic of Indonesia",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Dr. Hanif Faisol Nurofiq, S.Hut., M.P.",
+    title: "Minister of the Environment",
+    organization: "Republic of Indonesia",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Arief Prasetyo Adi, S.T., M.T., Ph.D. (h.c)",
+    title: "Head",
+    organization: "Indonesian National Food Agency",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Prof. Dr. Ir. Dadan Hindayana",
+    title: "Head",
+    organization: "National Nutrition Agency",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "honorary",
+    confirmed: false,
+  },
+  {
+    name: "Prof. Dan A lancu",
+    title: "Professor of Operations, Information and Technology",
+    organization: "Stanford University",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Prof. Robert De Souza",
+    title: "Professor",
+    organization:
+      "Department of Industrial Systems Engineering and Management & The Logistics Institute - Asia Pacific, NUS",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Prof. Dr. Ir. Kudang B. Seminar, M.Sc.",
+    title: "Professor in Computer Technology",
+    organization: "IPB University",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Dr. Sari Intan Kailaku, S.TP., M.Si.",
+    title: "Researcher",
+    organization: "National Research and Innovation Agency (BRIN)",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Prof. Dr. Ir. Bambang Riyanto Trilaksono",
+    title: "Professor of Electrical Engineering and Informatics",
+    organization: "Bandung Institute of Technology",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Prof. Drs. Ec. Ir. Riyanarto Sarno, M.Sc Ph.D.",
+    title: "Head of Intelligent Information Management Laboratory",
+    organization: "Sepuluh Nopember Institute of Technology (ITS)",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Dr. Karlisa Priandana, S.T., M.Eng.",
+    title:
+      "AI Expert and Director of Talent Development and Research Development",
+    organization:
+      "Directorate General of Research and Development, Ministry of Higher Education, Science and Technology, Republic of Indonesia",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Dr. Mira Maulida, S.TP., M.M.",
+    title: "Lecturer",
+    organization: "School of Business Management, BINUS University",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+  {
+    name: "Prof.Dr. Ir.Yandra Arkeman, M.Eng.",
+    title:
+      "Chairman of BRAIN (Blockchain, Robotics, & Artificial Intelligence Networks)",
+    organization: "IPB University",
+    image: "/placeholder.svg?height=400&width=300",
+    category: "prominent",
+  },
+];
 
 const Speakers: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const nextSpeaker = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % speakers.length);
+  };
+
+  const prevSpeaker = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + speakers.length) % speakers.length
+    );
+  };
+
+  const openingSpeakers = speakers.filter(
+    (speaker) => speaker.category === "opening"
+  );
+  const honorarySpeakers = speakers.filter(
+    (speaker) => speaker.category === "honorary"
+  );
+  const prominentSpeakers = speakers.filter(
+    (speaker) => speaker.category === "prominent"
+  );
 
   return (
-    <section className="py-12 px-6 text-center md:px-12 max-w-lg mx-auto">
-      <motion.h2
-        className="text-3xl font-bold text-navy-900 mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        List of Speakers
-      </motion.h2>
-      <p className="text-lg text-gray-600 mb-6">
-        Speakers in 15th International Conference of Asia-Pacific Federation for
-        Information Technology in Agriculture 2025
-      </p>
-
-      <div className="flex justify-center gap-4">
-        <motion.button
-          onClick={handleDownload}
-          className="px-5 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-all flex items-center gap-2"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          className="text-5xl font-bold text-center text-blue-900 mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <Download className="w-5 h-5" /> Download List
-        </motion.button>
+          Conference Speakers
+        </motion.h2>
 
-        <motion.button
-          onClick={openModal}
-          className="px-5 py-2 bg-gray-600 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 transition-all flex items-center gap-2"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Eye className="w-5 h-5" /> View List
-        </motion.button>
-      </div>
+        {/* Opening Speaker */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
+            Opening Speaker
+          </h3>
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {openingSpeakers.map((speaker, index) => (
+              <SpeakerCard key={index} speaker={speaker} />
+            ))}
+          </div>
+        </div>
 
-      {/* Full-Screen Modal */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-          onClick={closeModal}
-        >
-          {/* Modal content (image) */}
-          <div
-            className="relative w-full h-full flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
-          >
-            <img
-              src="/src/assets/SpeakersofAPFITA2025.jpeg" // Replace with dynamic image if needed
-              alt="Speakers List"
-              className="max-w-full max-h-full object-contain"
-            />
+        {/* Honorary Speakers */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
+            Honorary Speakers
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {honorarySpeakers.map((speaker, index) => (
+              <SpeakerCard key={index} speaker={speaker} />
+            ))}
+          </div>
+        </div>
+
+        {/* Prominent Speakers */}
+        <div>
+          <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
+            Prominent Speakers
+          </h3>
+
+          {/* Desktop Grid */}
+          <div className="hidden lg:grid grid-cols-3 gap-8">
+            {prominentSpeakers.map((speaker, index) => (
+              <SpeakerCard key={index} speaker={speaker} />
+            ))}
           </div>
 
-          {/* Close Icon */}
-          <button
-            onClick={closeModal}
-            className="absolute top-6 right-6 text-white text-3xl bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-all z-60"
-            style={{ zIndex: 9999 }}
-          >
-            <X className="w-6 h-6" />
-          </button>
+          {/* Mobile Carousel */}
+          <div className="lg:hidden relative">
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex"
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                {prominentSpeakers.map((speaker, index) => (
+                  <div key={index} className="w-full flex-shrink-0">
+                    <SpeakerCard speaker={speaker} />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            <motion.button
+              onClick={prevSpeaker}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronLeft className="w-6 h-6 text-blue-600" />
+            </motion.button>
+            <motion.button
+              onClick={nextSpeaker}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronRight className="w-6 h-6 text-blue-600" />
+            </motion.button>
+          </div>
         </div>
-      )}
+      </div>
     </section>
+  );
+};
+
+const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
+  let Icon = Users;
+  if (speaker.category === "opening") Icon = Star;
+  if (speaker.category === "honorary") Icon = Award;
+
+  return (
+    <motion.div
+      className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <div className="relative h-64">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-green-400 opacity-80"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Icon className="text-white opacity-20 w-24 h-24" />
+        </div>
+        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+          <h3 className="text-2xl font-bold mb-1">{speaker.name}</h3>
+          <p className="text-sm opacity-90">{speaker.title}</p>
+        </div>
+      </div>
+      <div className="p-4 bg-white bg-opacity-90">
+        <p className="text-blue-600 font-medium">{speaker.organization}</p>
+        {speaker.category === "honorary" && (
+          <p className="text-sm text-gray-500 mt-2">
+            {speaker.confirmed ? "Confirmed" : "To be confirmed"}
+          </p>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
