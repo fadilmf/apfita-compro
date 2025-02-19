@@ -1,201 +1,88 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Download, Eye, X } from "lucide-react"; // Using X icon as the close button
+import { useState } from "react";
 
-interface Speaker {
-  name: string;
-  title: string;
-  organization: string;
-  image: string;
-}
-
-const speakers: Speaker[] = [
-  {
-    name: "Dr. Arif Satria, S.P., M.Si.",
-    title: "Rector",
-    organization: "IPB University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Prof. Dr. Ir. Rachmat Pambudy, M.S.",
-    title: "Minister of National Development Planning",
-    organization: "Republic of Indonesia",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Ir. H. Andi Amran Sulaiman, M.P.",
-    title: "Minister of Agriculture",
-    organization: "Republic of Indonesia",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Ir. Sakti Wahyu Trenggono, M.M.",
-    title: "Minister of Maritime Affairs and Fisheries",
-    organization: "Republic of Indonesia",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Hanif Faisol Nurofiq, S.Hut., M.P.",
-    title: "Minister of the Environment",
-    organization: "Republic of Indonesia",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Arief Prasetyo Adi, S.T., M.T., Ph.D. (h.c)",
-    title: "Head",
-    organization: "Indonesian National Food Agency",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Ir. Dadan Hindayana",
-    title: "Head",
-    organization: "National Nutrition Agency",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Astie Darmayantie, ST., MSc., MMSI.",
-    title: "Professor",
-    organization: "Gunadarma University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Shelvie Nidya Neyman, S.Kom., M.Si.",
-    title: "Professor",
-    organization: "IPB University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Prof. Ir. Setyo Pertiwi, M.Agr.",
-    title: "Professor",
-    organization: "IPB University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Dr. Karlisa Priandana, S.T., M.Eng.",
-    title: "Professor",
-    organization: "IPB University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Prof. Dan A Lancu, Ph.D.",
-    title: "Associate Professor of Operations, Information and Technology",
-    organization: "Stanford University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Prof. Robert De Souza",
-    title: "Professor",
-    organization:
-      "Department of Industrial Systems Engineering and Management & The Logistics Institute - Asia Pacific, NUS",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-  {
-    name: "Prof. Dr. Ir. Kudang B. Seminar, M.Sc.",
-    title: "Professor in Computer Technology",
-    organization: "IPB University",
-    image: "/placeholder.svg?height=400&width=300",
-  },
-];
-
-const Speakers: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSpeaker = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % speakers.length);
-  };
-
-  const prevSpeaker = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + speakers.length) % speakers.length
-    );
-  };
-
-  return (
-    <section className="py-20">
-      <div className="text-center mb-12">
-        <motion.h2
-          className="text-4xl font-bold text-navy-900 mb-6"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Prominent Speakers
-        </motion.h2>
-        <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-5">
-          Prominent Speakers in APFITA 2025.
-        </p>
-
-        {/* Desktop Grid */}
-        <div className="hidden lg:grid grid-cols-3 gap-8">
-          {speakers.map((speaker, index) => (
-            <SpeakerCard key={index} speaker={speaker} />
-          ))}
-        </div>
-
-        {/* Mobile Carousel */}
-        <div className="lg:hidden relative">
-          <div className="overflow-hidden">
-            <motion.div
-              className="flex"
-              animate={{ x: `-${currentIndex * 100}%` }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-              {speakers.map((speaker, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <SpeakerCard speaker={speaker} />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-          <motion.button
-            onClick={prevSpeaker}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronLeft className="w-6 h-6 text-blue-600" />
-          </motion.button>
-          <motion.button
-            onClick={nextSpeaker}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronRight className="w-6 h-6 text-blue-600" />
-          </motion.button>
-        </div>
-      </div>
-    </section>
-  );
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/src/assets/SpeakersofAPFITA2025.jpeg"; // Ensure this file is in the assets folder
+  link.download = "speakers_list.jpeg";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 };
 
-const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
+const Speakers: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <motion.div
-      className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      <div className="relative h-64">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-green-400 opacity-80"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-6xl font-bold text-white opacity-20">
-            {speaker.name.charAt(0)}
-          </span>
-        </div>
-        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-          <h3 className="text-2xl font-bold mb-1">{speaker.name}</h3>
-          <p className="text-sm opacity-90">{speaker.title}</p>
-        </div>
+    <section className="py-12 px-6 text-center md:px-12 max-w-lg mx-auto">
+      <motion.h2
+        className="text-3xl font-bold text-navy-900 mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        List of Speakers
+      </motion.h2>
+      <p className="text-lg text-gray-600 mb-6">
+        Speakers in 15th International Conference of Asia-Pacific Federation for
+        Information Technology in Agriculture 2025
+      </p>
+
+      <div className="flex justify-center gap-4">
+        <motion.button
+          onClick={handleDownload}
+          className="px-5 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-all flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Download className="w-5 h-5" /> Download List
+        </motion.button>
+
+        <motion.button
+          onClick={openModal}
+          className="px-5 py-2 bg-gray-600 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 transition-all flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Eye className="w-5 h-5" /> View List
+        </motion.button>
       </div>
-      <div className="p-4 bg-white bg-opacity-90">
-        <p className="text-blue-600 font-medium">{speaker.organization}</p>
-      </div>
-    </motion.div>
+
+      {/* Full-Screen Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+          onClick={closeModal}
+        >
+          {/* Modal content (image) */}
+          <div
+            className="relative w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
+          >
+            <img
+              src="/src/assets/SpeakersofAPFITA2025.jpeg" // Replace with dynamic image if needed
+              alt="Speakers List"
+              className="max-w-full max-h-full object-contain"
+            />
+          </div>
+
+          {/* Close Icon */}
+          <button
+            onClick={closeModal}
+            className="absolute top-6 right-6 text-white text-3xl bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-all z-60"
+            style={{ zIndex: 9999 }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+      )}
+    </section>
   );
 };
 
