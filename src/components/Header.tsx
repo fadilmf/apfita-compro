@@ -50,25 +50,25 @@ export default function Header() {
       {/* Blur & Gray Transparent Overlay */}
       <div className="absolute inset-0 bg-black/15"></div>
       {/* Logos Section */}
-      <div className="mb-5 relative flex flex-col sm:flex-row items-center space-y-8 sm:space-y-0 sm:space-x-12 p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
+      <div className="mb-5 relative flex flex-col items-center sm:flex-row sm:justify-center space-y-6 sm:space-y-0 sm:space-x-12 p-6 sm:p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
         {/* Soft Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-3xl pointer-events-none"></div>
 
-        {/* Main Logo with Highlight */}
+        {/* Main Logo */}
         <img
           src={logoUtama || "/placeholder.svg"}
           alt="Utama Logo"
-          className="w-64 sm:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+          className="w-48 sm:w-64 md:w-72 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
         />
 
-        {/* Other Logos */}
-        <div className="flex space-x-6 sm:space-x-8">
+        {/* Other Logos in Responsive Grid */}
+        <div className="grid grid-cols-2 sm:flex sm:space-x-6 gap-4">
           {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
             <img
               key={index}
               src={logo || "/placeholder.svg"}
               alt={`Logo ${index + 1}`}
-              className="w-24 sm:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
+              className="w-20 sm:w-24 md:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
             />
           ))}
         </div>

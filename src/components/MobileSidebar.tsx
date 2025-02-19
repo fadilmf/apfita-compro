@@ -87,7 +87,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
                 className="text-2xl font-bold text-blue-600"
                 onClick={onClose}
               >
-                APFITA
+                APFITA 2025
               </NavLink>
               <button
                 onClick={onClose}
