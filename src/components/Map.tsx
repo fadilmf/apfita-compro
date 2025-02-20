@@ -11,7 +11,7 @@ export default function Map({
   title,
   location,
   description,
-  isOnline = true,
+  isOnline = false,
 }: VenueMapProps) {
   const query = encodeURIComponent("IPB International Convention Center");
 
@@ -40,7 +40,7 @@ export default function Map({
           </h2>
           <div className="mt-2 mb-6">
             <span className="text-blue-100 text-sm">
-              {isOnline ? "Online" : "On-site"}
+              {isOnline ? "On-site" : "On-site"}
             </span>
           </div>
 

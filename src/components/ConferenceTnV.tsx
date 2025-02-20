@@ -1,7 +1,7 @@
 import {
   Calendar,
   MapPin,
-  Video,
+  // Video,
   Map,
   Building,
   Clock,
@@ -63,11 +63,11 @@ export default function ConferenceTnV() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {/* Offline Venue */}
                 <div className="p-4 rounded-lg border-2 border-blue-500">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 min-w-full">
                     <Building className="h-5 w-5 text-blue-600 shrink-0 mt-1" />
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-medium">Offline Venue</p>
+                        <p className="font-medium">Venue</p>
                         <span className="px-2 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full">
                           Available
                         </span>
@@ -93,9 +93,11 @@ export default function ConferenceTnV() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Online Venue */}
-                <div className="p-4 rounded-lg border-2 border-gray-200">
+            {/* Online Venue */}
+            {/* <div className="p-4 rounded-lg border-2 border-gray-200">
                   <div className="flex items-start gap-3">
                     <Video className="h-5 w-5 text-blue-600 shrink-0 mt-1" />
                     <div>
@@ -118,7 +120,7 @@ export default function ConferenceTnV() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Action Buttons */}
             <div className="grid gap-3 sm:grid-cols-2 mt-4">
@@ -131,7 +133,7 @@ export default function ConferenceTnV() {
                 <Map className="h-4 w-4" />
                 View Venue Location
               </a>
-              <a
+              {/* <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -140,7 +142,7 @@ export default function ConferenceTnV() {
               >
                 <Video className="h-4 w-4" />
                 Join Virtual Meeting
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

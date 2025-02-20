@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
-import Download from "@/components/Download";
+// import Download from "@/components/Download";
 import GuideLinesContent from "@/components/GuideLinesContent";
 
 // import Sponsors from "@/components/Sponsors";
@@ -13,9 +13,9 @@ const DownloadFile = () => {
     <>
       <Header />
       <Navbar />
-      <div className="min-h-screen bg-gray-50">
+      {/* <div className="min-h-screen bg-gray-50">
         <Download />
-      </div>
+      </div> */}
       <div className="min-h-screen bg-white">
         <GuideLinesContent />
       </div>

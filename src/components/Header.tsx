@@ -50,7 +50,7 @@ export default function Header() {
       {/* Blur & Gray Transparent Overlay */}
       <div className="absolute inset-0 bg-black/15"></div>
       {/* Logos Section */}
-      <div className="mb-5 relative flex flex-col items-center sm:flex-row sm:justify-center space-y-6 sm:space-y-0 sm:space-x-12 p-6 sm:p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
+      <div className="mb-5 mt-5 relative flex flex-col items-center sm:flex-row sm:justify-center space-y-6 sm:space-y-0 sm:space-x-12 p-6 sm:p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
         {/* Soft Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-3xl pointer-events-none"></div>
 

@@ -5,7 +5,7 @@ import Conference from "@/pages/Conference";
 import TimeSchedule from "@/pages/TimeSchedule";
 import Venue from "@/pages/Venue";
 import GuideLines from "@/pages/GuideLines";
-import Submissions from "@/pages/Submissions";
+// import Submissions from "@/pages/Submissions";
 import Committees from "@/pages/Committees";
 import Download from "@/pages/DownloadFile";
 import ContactUs from "@/pages/ContactUs";
@@ -17,7 +17,7 @@ const AppRoutes = () => (
     <Route path="/conference" element={<Conference />} />
     <Route path="/time-schedule" element={<TimeSchedule />} />
     <Route path="/guidelines" element={<GuideLines />} />
-    <Route path="/submissions" element={<Submissions />} />
+    {/* <Route path="/submissions" element={<Submissions />} /> */}
     <Route path="/venue" element={<Venue />} />
     <Route path="/committees" element={<Committees />} />
     <Route path="/download" element={<Download />} />

@@ -257,7 +257,6 @@ const committees: CommitteeSection[] = [
 const collaboratingInstitutions = [
   "Center for Agricultural Data and Information Systems (PUSDATIN)",
   "Indonesian Association of Agricultural Informatics (HIPI)",
-  "IPB University",
   "Padjadjaran University (UNPAD)",
   "Telkom University",
   "Indonesian Computer University (UNIKOM)",
@@ -276,17 +275,19 @@ const CommitteeSection: React.FC<{ section: CommitteeSection }> = ({
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-8 bg-white rounded-xl shadow-lg overflow-hidden"
+      className="mb-8 bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
     >
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors duration-300"
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
+        className="w-full flex items-center justify-between p-6 hover:bg-blue-50 transition-colors duration-300"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
         <div className="flex items-center">
-          <Icon className="w-8 h-8 mr-4 text-blue-600" />
-          <h3 className="text-xl font-bold text-gray-800">{section.name}</h3>
+          <div className="bg-blue-100 p-3 rounded-full mr-4">
+            <Icon className="w-8 h-8 text-blue-600" />
+          </div>
+          <h3 className="text-2xl font-bold text-gray-800">{section.name}</h3>
         </div>
         <ChevronDown
           className={`w-6 h-6 text-blue-600 transform transition-transform duration-300 ${
@@ -303,23 +304,27 @@ const CommitteeSection: React.FC<{ section: CommitteeSection }> = ({
             transition={{ duration: 0.3 }}
             className="px-6 pb-6"
           >
-            {section.members.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="mb-4 last:mb-0 flex items-center"
-              >
-                <member.icon className="w-6 h-6 mr-3 text-blue-500" />
-                <div>
-                  <p className="font-semibold text-gray-800">{member.name}</p>
-                  {member.title && (
-                    <p className="text-sm text-gray-600">{member.title}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {section.members.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center bg-blue-50 p-4 rounded-xl"
+                >
+                  <div className="bg-white p-2 rounded-full mr-4">
+                    <member.icon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800">{member.name}</p>
+                    {member.title && (
+                      <p className="text-sm text-gray-600">{member.title}</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -331,44 +336,54 @@ const CommitteesContent: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
       <div className="container mx-auto px-4">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-navy-900 mb-6 text-center "
+          className="text-center mb-16"
         >
-          Conference Committees
-        </motion.h2>
-        <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-5 text-center">
-          Committees for The 15th International Conference of Asia-Pacific
-          Federation for Information Technology in Agriculture 2025
-        </p>
+          <h2 className="text-5xl font-bold text-navy-900 mb-6">
+            Conference Committees
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Committees for The 15th International Conference of Asia-Pacific
+            Federation for Information Technology in Agriculture 2025
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-16 bg-white rounded-xl shadow-lg overflow-hidden"
+          className="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
         >
-          <div className="p-6">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <Building className="w-8 h-8 mr-4 text-blue-600" />
+          <div className="p-8">
+            <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+              <Building className="w-10 h-10 mr-4 text-blue-600" />
               Collaborating Institutions
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-lg text-gray-600 mb-6">
               The 15th International Conference of Asia-Pacific Federation for
               Information Technology in Agriculture 2025 is a collaboration
               between:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {collaboratingInstitutions.map((institution, index) => (
-                <li key={index}>{institution}</li>
+                <div
+                  key={index}
+                  className="bg-blue-50 p-4 rounded-xl flex items-center"
+                >
+                  <div className="bg-blue-100 p-2 rounded-full mr-3">
+                    <Building className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <span className="text-gray-700">{institution}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="mb-1 rounded-2xl shadow-l  border-blue-100">
           {committees.map((committee, index) => (
             <CommitteeSection key={index} section={committee} />
           ))}
