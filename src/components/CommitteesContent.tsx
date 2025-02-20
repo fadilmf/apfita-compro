@@ -279,7 +279,7 @@ const CommitteeSection: React.FC<{ section: CommitteeSection }> = ({
     >
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 hover:bg-blue-50 transition-colors duration-300"
+        className="w-full flex text-left justify-between p-6 hover:bg-blue-50 transition-colors duration-300"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -357,7 +357,7 @@ const CommitteesContent: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
         >
-          <div className="p-8">
+          <div className="p-8 text-left">
             <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
               <Building className="w-10 h-10 mr-4 text-blue-600" />
               Collaborating Institutions
@@ -383,7 +383,7 @@ const CommitteesContent: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="mb-1 rounded-2xl shadow-l  border-blue-100">
+        <div className="">
           {committees.map((committee, index) => (
             <CommitteeSection key={index} section={committee} />
           ))}

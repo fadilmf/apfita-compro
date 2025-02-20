@@ -167,7 +167,7 @@ const Speakers: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-5xl font-bold text-center text-blue-900 mb-16"
+          className="text-5xl font-bold text-center text-navy-900 mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -180,7 +180,7 @@ const Speakers: React.FC = () => {
           <h3 className="text-3xl font-bold text-center text-blue-800 mb-8">
             Opening Speaker
           </h3>
-          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
             {openingSpeakers.map((speaker, index) => (
               <SpeakerCard key={index} speaker={speaker} />
             ))}

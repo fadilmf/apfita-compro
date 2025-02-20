@@ -25,7 +25,7 @@ const NotFound = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        Oops! You've wandered off the map
+        Coming Soon!
       </motion.h1>
 
       <motion.p

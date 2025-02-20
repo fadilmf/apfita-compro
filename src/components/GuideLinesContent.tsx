@@ -7,7 +7,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import type React from "react"; // Import React to fix the undeclared variable error
+import type React from "react";
 
 interface GuidelineCard {
   title: string;
@@ -39,20 +39,25 @@ export default function GuidelinesContent() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-navy-900 mb-6">
+    <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-8 sm:mb-12"
+      >
+        <h1 className="text-3xl sm:text-4xl font-bold text-navy-900 mb-4 sm:mb-6">
           Guidelines for Author(s)
         </h1>
-        <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto">
           Type of Articles: Research article includes original research paper in
           quantitative, qualitative or both; Review refers to systematic review,
           literature review, and topical issues of interest related to APFITA
           2025 Topics.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {guidelines.map((guide, index) => {
           const Icon = guide.icon;
           return (
@@ -97,9 +102,14 @@ export default function GuidelinesContent() {
         })}
       </div>
 
-      <div className="mt-8 text-center text-sm text-gray-500">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="mt-8 text-center text-sm text-gray-500"
+      >
         * Please read the guidelines carefully before submitting your manuscript
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -5,13 +5,13 @@ const contactMethods = [
   {
     name: "WhatsApp",
     icon: WhatsApp,
-    href: "https://wa.me/6282214269503",
+    href: "https://wa.me/6281274513242",
     color: "bg-green-500",
   },
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:contact@apfita2025.com",
+    href: "mailto:apfita2025@apps.ipb.ac.id",
     color: "bg-blue-500",
   },
   {
