@@ -113,7 +113,7 @@ const ImportantDates: React.FC = () => {
               <h3 className="text-lg font-semibold text-primary">
                 {entry.event}
               </h3>
-              <p className="mt-2 text-gray-600">{entry.date}</p>
+              <p className="text-lg mt-2 text-gray-600">{entry.date}</p>
             </div>
           </div>
         ))}

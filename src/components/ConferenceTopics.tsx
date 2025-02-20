@@ -41,7 +41,7 @@ export default function ConferenceTopics() {
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           The 15th International Conference on APFITA 2025 "Innovative Digital
-          Technology for Global Agro-Maritime Industry"
+          Technology for Global and Sustainable Agro-Maritime Industry"
         </p>
       </div>
 

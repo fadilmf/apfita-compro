@@ -21,7 +21,7 @@ interface TransportOption {
   routes: {
     steps: string[];
     duration: string;
-    cost: string;
+    cost: [number, number];
   }[];
 }
 
@@ -31,6 +31,8 @@ interface Airport {
   distance: string;
   transportOptions: TransportOption[];
 }
+
+const exchangeRate = 16000;
 
 const airports: Airport[] = [
   {
@@ -44,14 +46,14 @@ const airports: Airport[] = [
         routes: [
           {
             steps: [
-              "Take the Airport Train (CAT) to BNI City Station (Sudirman)",
-              "Transfer to Commuter Line at Sudirman Station",
+              "Take the Airport Train (CAT) to  Manggarai Station",
+              "Transfer to Commuter Line at Manggarai Station",
               "Take the train towards Bogor",
               "Get off at Bogor Station",
               "Take a short ride (taxi/ojek) to IPB Convention Center",
             ],
             duration: "2.5 - 3 hours",
-            cost: "IDR 70,000 - 100,000",
+            cost: [70000, 100000],
           },
         ],
       },
@@ -61,11 +63,11 @@ const airports: Airport[] = [
         routes: [
           {
             steps: [
-              "Take DAMRI bus from Terminal 3 to Bogor Trade Mall",
-              "Take a short ride (taxi/ojek) to IPB Convention Center",
+              "Take DAMRI bus from Airpot to Botani Square, Bogor",
+              "Take a short steps to IPB Convention Center",
             ],
             duration: "3 - 4 hours",
-            cost: "IDR 75,000 - 100,000",
+            cost: [150000, 500000],
           },
         ],
       },
@@ -79,7 +81,7 @@ const airports: Airport[] = [
               "Direct journey to IPB Convention Center",
             ],
             duration: "2 - 3 hours",
-            cost: "IDR 400,000 - 600,000",
+            cost: [400000, 600000],
           },
         ],
       },
@@ -102,7 +104,7 @@ const airports: Airport[] = [
               "Take a short ride (taxi/ojek) to IPB Convention Center",
             ],
             duration: "2 - 2.5 hours",
-            cost: "IDR 50,000 - 80,000",
+            cost: [50000, 80000],
           },
         ],
       },
@@ -116,7 +118,7 @@ const airports: Airport[] = [
               "Direct journey to IPB Convention Center",
             ],
             duration: "1.5 - 2.5 hours",
-            cost: "IDR 300,000 - 450,000",
+            cost: [300000, 450000],
           },
         ],
       },
@@ -134,7 +136,7 @@ export default function Transport() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">
+          <h2 className="text-4xl font-bold text-navy-900 mb-4">
             How to Reach the Venue
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -153,7 +155,7 @@ export default function Transport() {
               className="bg-white rounded-xl shadow-lg overflow-hidden"
             >
               {/* Airport Header */}
-              <div className="bg-blue-600 text-white p-6">
+              <div className="bg-blue-950 text-white p-6">
                 <div className="flex items-center gap-4">
                   <Plane className="w-8 h-8" />
                   <div>
@@ -219,7 +221,15 @@ export default function Transport() {
                             </div>
                             <div className="flex items-center gap-2">
                               <DollarSign className="w-4 h-4 text-blue-600" />
-                              Estimated Cost: {route.cost}
+                              Estimated Cost: Rp{" "}
+                              {route.cost[0].toLocaleString()} - Rp{" "}
+                              {route.cost[1].toLocaleString()}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <DollarSign className="w-4 h-4 text-blue-600" />
+                              Estimated Cost: ${" "}
+                              {(route.cost[0] / exchangeRate).toFixed(2)} - $
+                              {(route.cost[1] / exchangeRate).toFixed(2)}
                             </div>
                           </div>
                         </div>
@@ -249,6 +259,12 @@ export default function Transport() {
               If asking locals, many refer to IPB Convention Center as Mall
               Botani Square (Botas).
             </li>
+            <li className="flex items-start gap-2 animate-pulse">
+              <ArrowRight className="w-4 h-4 text-blue-600 mt-1 animate-pulse" />
+              Don't forget to bring an umbrella or a raincoat—Bogor is known as
+              the "Rain City" for a reason!
+            </li>
+
             <li className="flex items-start gap-2">
               <ArrowRight className="w-4 h-4 text-blue-600 mt-1" />
               Consider traffic conditions when planning your journey.
