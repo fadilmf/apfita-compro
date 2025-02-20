@@ -10,7 +10,6 @@ interface Topic {
 }
 
 export default function ConferenceTopics() {
-  // Changed to array for multiple expanded sections
   const [expandedSections, setExpandedSections] = useState<number[]>([0]);
 
   const topics: Topic[] = [
@@ -33,37 +32,50 @@ export default function ConferenceTopics() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 lg:py-16">
       {/* Header Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-navy-900 mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-8 sm:mb-12"
+      >
+        <h1 className="text-5xl font-bold text-center text-navy-900 mb-16">
           Themes and Topics
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
           The 15th International Conference on APFITA 2025 "Innovative Digital
           Technology for Global and Sustainable Agro-Maritime Industry"
         </p>
-      </div>
+      </motion.div>
 
       {/* Topics Timeline */}
       <div className="relative">
         {/* Vertical Line */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 ml-6" />
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 ml-3 sm:ml-6" />
 
         {/* Topics */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {topics.map((topic, index) => (
-            <div key={index} className="relative pl-16">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              className="relative pl-10 sm:pl-16"
+            >
               {/* Timeline Dot */}
               <div
-                className={`absolute left-0 w-12 h-12 rounded-full flex items-center justify-center
+                className={`absolute left-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center
                 ${index === 0 ? "bg-blue-500" : "bg-blue-400"}`}
               >
-                <span className="text-white font-bold">{index + 1}</span>
+                <span className="text-white font-bold text-sm sm:text-base">
+                  {index + 1}
+                </span>
               </div>
 
               {/* Topic Content */}
-              <div className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
+              <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl border border-blue-100">
                 <button
                   onClick={() => {
                     setExpandedSections((prev) => {
@@ -76,11 +88,11 @@ export default function ConferenceTopics() {
                   }}
                   className="w-full flex items-center justify-between text-left"
                 >
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
                     {topic.title}
                   </h3>
                   <ChevronDown
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-300
+                    className={`w-5 h-5 text-blue-500 transition-transform duration-300
                       ${expandedSections.includes(index) ? "rotate-180" : ""}`}
                   />
                 </button>
@@ -101,10 +113,12 @@ export default function ConferenceTopics() {
                             initial={{ x: -20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: itemIndex * 0.1 }}
-                            className="flex items-center space-x-2"
+                            className="flex items-start space-x-2"
                           >
-                            <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                            <span className="text-gray-600">{item}</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
+                            <span className="text-gray-600 text-sm sm:text-base">
+                              {item}
+                            </span>
                           </motion.li>
                         ))}
                       </ul>
@@ -112,7 +126,7 @@ export default function ConferenceTopics() {
                   )}
                 </AnimatePresence>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

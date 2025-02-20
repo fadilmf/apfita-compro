@@ -30,8 +30,8 @@ export default function VenueSection() {
   const query = encodeURIComponent("IPB International Convention Center");
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-7xl mx-auto p-4 md:p-6 space-y-8">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-blue-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         {/* Venue Header Card */}
         <div className="relative w-full overflow-hidden bg-white rounded-xl shadow-lg">
           {/* Progress bar */}
@@ -42,29 +42,29 @@ export default function VenueSection() {
             />
           </div>
 
-          <div className="p-6">
+          <div className="p-6 sm:p-8">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl font-bold text-blue-950 mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-4">
                 IPB Convention Center
               </h1>
               <div className="flex items-center justify-center gap-2 text-blue-600">
                 <MapPin className="w-5 h-5" />
-                <p className="text-lg">Bogor, Indonesia</p>
+                <p className="text-lg sm:text-xl">Bogor, Indonesia</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Venue Content */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Images Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 sm:space-y-8">
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <div className="aspect-video relative rounded-lg overflow-hidden">
                 <img
                   src={Outdoor || "/placeholder.svg"}
                   alt="IPB Convention Center Exterior"
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </div>
@@ -73,18 +73,18 @@ export default function VenueSection() {
                 <img
                   src={Indoor || "/placeholder.svg"}
                   alt="IPB Convention Center Interior"
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </div>
           </div>
 
           {/* Info and Map Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 sm:space-y-8">
             {/* Venue Info Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
               <div className="h-2 bg-blue-600 rounded-full mb-4"></div>
-              <h2 className="text-xl font-bold text-blue-950 mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-blue-950 mb-4">
                 Venue Information
               </h2>
               <div className="space-y-4">
@@ -112,7 +112,7 @@ export default function VenueSection() {
 
             {/* Map Card */}
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="w-full lg:w-full h-[400px]">
+              <div className="w-full h-[300px] sm:h-[400px]">
                 <iframe
                   width="100%"
                   height="100%"

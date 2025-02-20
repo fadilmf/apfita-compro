@@ -10,6 +10,7 @@ import logoFW from "/src/assets/logo_FW.png";
 
 export default function Header() {
   const titleRef = useRef<HTMLDivElement>(null);
+  const logosRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const pageTitles: { [key: string]: string } = {
@@ -32,11 +33,16 @@ export default function Header() {
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1 }
       );
+      gsap.fromTo(
+        logosRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1 }
+      );
     }
   }, [pageTitle]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-center px-4 py-6 min-h-[500px] max-h-[500px] mx-auto">
+    <div className="relative flex flex-col items-center justify-center text-center px-4 py-6 min-h-[600px] max-h-[600px] mx-auto pt-[120px]">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -50,32 +56,34 @@ export default function Header() {
       {/* Blur & Gray Transparent Overlay */}
       <div className="absolute inset-0 bg-black/15"></div>
       {/* Logos Section */}
-      <div className="mb-5 mt-5 relative flex flex-col items-center sm:flex-row sm:justify-center space-y-6 sm:space-y-0 sm:space-x-12 p-6 sm:p-10 rounded-3xl bg-white shadow-lg border border-gray-200 overflow-hidden">
-        {/* Soft Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-100 opacity-50 rounded-3xl pointer-events-none"></div>
+      <div
+        ref={logosRef}
+        className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-4 mb-4"
+      >
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Main Logo */}
+          <img
+            src={logoUtama || "/placeholder.svg"}
+            alt="Utama Logo"
+            className="w-48 sm:w-56 md:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+          />
 
-        {/* Main Logo */}
-        <img
-          src={logoUtama || "/placeholder.svg"}
-          alt="Utama Logo"
-          className="w-48 sm:w-64 md:w-72 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
-        />
-
-        {/* Other Logos in Responsive Grid */}
-        <div className="grid grid-cols-2 sm:flex sm:space-x-6 gap-4">
-          {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
-            <img
-              key={index}
-              src={logo || "/placeholder.svg"}
-              alt={`Logo ${index + 1}`}
-              className="w-20 sm:w-24 md:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
-            />
-          ))}
+          {/* Other Logos */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-center">
+            {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
+              <img
+                key={index}
+                src={logo || "/placeholder.svg"}
+                alt={`Logo ${index + 1}`}
+                className="w-20 sm:w-24 md:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Title with Line */}
-      <div className="relative mt-8">
+      <div className="relative mt-8 mb-8">
         <h1
           ref={titleRef}
           className="text-6xl font-bold text-white drop-shadow-lg"
