@@ -57,7 +57,7 @@ export default function ConferenceTnV() {
             <div className="space-y-4">
               <h2 className="flex items-center gap-2 text-2xl font-bold mb-2">
                 <MapPin className="h-6 w-6 text-blue-600" />
-                Venue Options
+                Venue
               </h2>
 
               <div className="grid gap-4 sm:grid-cols-2">

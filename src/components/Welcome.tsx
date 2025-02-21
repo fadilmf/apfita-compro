@@ -65,7 +65,7 @@ const Welcome: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-600" />
-                <span>On-site & Virtual</span>
+                <span>On-site </span>
               </div>
             </motion.div>
           </div>
