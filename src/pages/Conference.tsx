@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
-import Speakers from "@/components/Speakers";
+import Speakers from "@/components/SpeakersFlyer";
 import ConferenceTopics from "@/components/ConferenceTopics";
 import ConferenceTnV from "@/components/ConferenceTnV";
 import ConferencePricing from "@/components/ConferencePricing";
