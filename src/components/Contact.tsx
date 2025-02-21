@@ -1,24 +1,45 @@
-import { motion } from "framer-motion";
-import { PhoneIcon as WhatsApp, Mail, Instagram } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  PhoneIcon as WhatsApp,
+  Mail,
+  Instagram,
+  CheckCircle,
+  ExternalLink,
+} from "lucide-react";
 
 const contactMethods = [
   {
     name: "WhatsApp",
     icon: WhatsApp,
     href: "https://wa.me/6281274513242",
-    color: "bg-green-500",
+    color: "text-green-600",
+    hoverColor: "group-hover:text-green-500",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-200",
+    description: "Quick responses, Standby CS, typically within an hour",
   },
   {
     name: "Email",
     icon: Mail,
     href: "mailto:apfita2025@apps.ipb.ac.id",
-    color: "bg-blue-500",
+    color: "text-blue-600",
+    hoverColor: "group-hover:text-blue-500",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+    description: "For detailed inquiries, we'll reply within 24 hours",
   },
   {
     name: "Instagram",
     icon: Instagram,
     href: "https://instagram.com/apfita2025",
-    color: "bg-pink-500",
+    color: "text-purple-600",
+    hoverColor: "group-hover:text-purple-500",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+    description: "Follow us for updates and behind-the-scenes content",
   },
 ];
 
@@ -38,27 +59,29 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  const [hoveredMethod, setHoveredMethod] = useState<string | null>(null);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-24">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl font-bold text-navy-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-Navy-900 mb-4 sm:mb-6"
           >
-            Get in Touch
+            We're Here to Help
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            Have questions about APFITA 2025? We're here to help! Reach out to
-            us through any of the following channels.
+            Have questions about APFITA 2025? Our friendly team is just a
+            message away. Choose your preferred method to connect with us.
           </motion.p>
         </motion.div>
 
@@ -66,29 +89,74 @@ export default function Contact() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
           {contactMethods.map((method) => (
-            <motion.div key={method.name} variants={itemVariants}>
+            <motion.div
+              key={method.name}
+              variants={itemVariants}
+              onMouseEnter={() => setHoveredMethod(method.name)}
+              onMouseLeave={() => setHoveredMethod(null)}
+            >
               <a
                 href={method.href}
-                className={`block p-8 rounded-2xl shadow-lg ${method.color} text-white transition-shadow hover:shadow-xl`}
+                className={`group block p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${method.borderColor}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <method.icon className="w-20 h-20 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold">{method.name}</h3>
+                <div
+                  className={`w-16 h-16 mx-auto mb-4 rounded-full ${method.bgColor} flex items-center justify-center`}
+                >
+                  <method.icon
+                    className={`w-8 h-8 ${method.color} ${method.hoverColor} transition-all duration-300`}
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {method.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  {method.description}
+                </p>
+                <div className="flex items-center justify-center text-sm font-medium">
+                  <span className={`${method.color}`}>Connect with us</span>
+                  <ExternalLink className={`w-4 h-4 ml-1 ${method.color}`} />
+                </div>
               </a>
             </motion.div>
           ))}
         </motion.div>
 
+        <AnimatePresence>
+          {hoveredMethod && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="mt-8 text-center"
+            >
+              <p className="text-lg text-gray-700">
+                <CheckCircle className="inline-block w-5 h-5 text-green-500 mr-2" />
+                {hoveredMethod === "WhatsApp" &&
+                  "Our WhatsApp team is available 24/7 for urgent inquiries."}
+                {hoveredMethod === "Email" &&
+                  "Emails are handled by our dedicated support team for thorough assistance."}
+                {hoveredMethod === "Instagram" &&
+                  "Our Instagram is managed by the APFITA 2025 social media team."}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.div
           variants={itemVariants}
-          className="mt-16 text-center text-gray-600"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <p>We look forward to hearing from you!</p>
-          <p className="mt-2">Our team will respond as soon as possible.</p>
+          <p className="text-lg text-gray-600">
+            We look forward to assisting you!
+          </p>
+          <p className="mt-2 text-blue-600 font-medium">
+            Your questions and feedback help us improve APFITA 2025.
+          </p>
         </motion.div>
       </div>
     </div>
