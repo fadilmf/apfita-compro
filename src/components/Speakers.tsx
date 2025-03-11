@@ -529,7 +529,9 @@ const SpeakerCard: React.FC<{
         <img
           src={speaker.image || "/placeholder.svg"}
           alt={speaker.name}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${
+            isOpening ? "object-[center_9%]" : "object-[center_9%]"
+          }`}
         />
 
         {/* Gradient Overlay */}
@@ -543,13 +545,13 @@ const SpeakerCard: React.FC<{
 
         {/* Content */}
         <div
-          className={`relative h-full flex ${
-            isOpening ? "items-center" : "items-end"
-          } p-6`}
+          className={`relative h-full flex p-6 ${
+            isOpening ? "items-end" : "items-end"
+          }`}
         >
           <div className={`${isOpening ? "max-w-lg" : "w-full"}`}>
             {/* Category Icon */}
-            <div className={`mb-4 ${isOpening ? "mb-6" : ""}`}>
+            <div className={`mb-4`}>
               <Icon
                 className={`${
                   isOpening ? "w-12 h-12" : "w-8 h-8"
@@ -614,7 +616,7 @@ const SpeakerModal: React.FC<{
           <img
             src={speaker.image || "/placeholder.svg"}
             alt={speaker.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/50 to-transparent"></div>
 
