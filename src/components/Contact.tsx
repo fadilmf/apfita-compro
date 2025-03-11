@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   PhoneIcon as WhatsApp,
@@ -8,13 +6,15 @@ import {
   Instagram,
   CheckCircle,
   ExternalLink,
+  X,
+  User,
 } from "lucide-react";
 
 const contactMethods = [
   {
     name: "WhatsApp",
     icon: WhatsApp,
-    href: "https://wa.me/6281274513242",
+    href: "#", // Changed to # to handle click in component
     color: "text-green-600",
     hoverColor: "group-hover:text-green-500",
     bgColor: "bg-green-50",
@@ -43,6 +43,29 @@ const contactMethods = [
   },
 ];
 
+const whatsappContacts = [
+  {
+    name: "General Support",
+    number: "+62-812-7451-3242",
+    department: "Customer Service",
+  },
+  {
+    name: "Technical Support",
+    number: "+62 822-1426-9503",
+    department: "IT Department",
+  },
+  {
+    name: "Admin Support1",
+    number: "+62 859-2158-3103",
+    department: "Team Admin",
+  },
+  {
+    name: "Admin Support2",
+    number: "+62 812-8257-5650",
+    department: "Team Admin",
+  },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -58,8 +81,73 @@ const itemVariants = {
   visible: { y: 0, opacity: 1 },
 };
 
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.9,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
 export default function Contact() {
   const [hoveredMethod, setHoveredMethod] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setIsModalOpen(false);
+      }
+    }
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isModalOpen]);
+
+  const handleContactMethodClick = (method: string, href: string) => {
+    if (method === "WhatsApp") {
+      setIsModalOpen(true);
+    } else {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const openWhatsApp = (number: string) => {
+    window.open(
+      `https://wa.me/${number.replace(/[^0-9]/g, "")}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24">
@@ -98,11 +186,11 @@ export default function Contact() {
               onMouseEnter={() => setHoveredMethod(method.name)}
               onMouseLeave={() => setHoveredMethod(null)}
             >
-              <a
-                href={method.href}
-                className={`group block p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${method.borderColor}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() =>
+                  handleContactMethodClick(method.name, method.href)
+                }
+                className={`group block w-full p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${method.borderColor}`}
               >
                 <div
                   className={`w-16 h-16 mx-auto mb-4 rounded-full ${method.bgColor} flex items-center justify-center`}
@@ -121,7 +209,7 @@ export default function Contact() {
                   <span className={`${method.color}`}>Connect with us</span>
                   <ExternalLink className={`w-4 h-4 ml-1 ${method.color}`} />
                 </div>
-              </a>
+              </button>
             </motion.div>
           ))}
         </motion.div>
@@ -159,6 +247,77 @@ export default function Contact() {
           </p>
         </motion.div>
       </div>
+
+      {/* WhatsApp Contact Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              variants={backdropVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            />
+
+            <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
+              <motion.div
+                ref={modalRef}
+                className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden"
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <div className="bg-green-500 text-white p-4 flex justify-between items-center">
+                  <h3 className="text-xl font-bold">
+                    WhatsApp Contact Options
+                  </h3>
+                  <button
+                    onClick={() => setIsModalOpen(false)}
+                    className="p-1 rounded-full hover:bg-green-600 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="p-4">
+                  <p className="text-gray-600 mb-4">
+                    Please select the appropriate contact for your inquiry:
+                  </p>
+
+                  <div className="space-y-3">
+                    {whatsappContacts.map((contact, index) => (
+                      <button
+                        key={index}
+                        onClick={() => openWhatsApp(contact.number)}
+                        className="w-full p-3 flex items-start border border-gray-200 rounded-lg hover:bg-green-50 transition-colors"
+                      >
+                        <div className="bg-green-100 p-2 rounded-full mr-3">
+                          <User className="w-5 h-5 text-green-600" />
+                        </div>
+                        <div className="text-left">
+                          <div className="font-medium text-gray-800">
+                            {contact.name}
+                          </div>
+                          <div className="text-green-600">{contact.number}</div>
+                          <div className="text-xs text-gray-500">
+                            {contact.department}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  <p className="mt-4 text-sm text-gray-500 text-center">
+                    Our team is available Monday-Friday, 9am-5pm (GMT+7)
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
 
 import image from "../assets/logo_brain.png";
 import logo from "../assets/logo_conf.png";
@@ -9,6 +10,16 @@ import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
 
 export default function Footer() {
+  const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const phoneNumbers = [
+    { name: "General Support", number: "+62-812-7451-3242" },
+    { name: "Technical Support", number: "+62 822-1426-9503" },
+    { name: "Admin Support1", number: "+62 859-2158-3103" },
+    { name: "Admin Support2", number: "+62 812-8257-5650" },
+  ];
+
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Conference", href: "/conference" },
@@ -37,6 +48,23 @@ export default function Footer() {
     { name: "UNPAD", logo: logoUNPAD, url: "https://www.unpad.ac.id" },
     { name: "GUNDAR", logo: logoGUNDAR, url: "https://www.gunadarma.ac.id" },
   ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsPhoneDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <footer className="bg-gradient-to-br from-white to-blue-50">
@@ -70,14 +98,34 @@ export default function Footer() {
                   apfita2025@apps.ipb.ac.id
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 flex-shrink-0" />
-                <a
-                  href="tel:+6281274513242"
-                  className="hover:text-blue-950 transition-colors"
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  className="flex items-center space-x-3 hover:text-blue-950 transition-colors w-full"
+                  onClick={() => setIsPhoneDropdownOpen(!isPhoneDropdownOpen)}
                 >
-                  +62-812-7451-3242 (Support)
-                </a>
+                  <Phone className="w-5 h-5 flex-shrink-0" />
+                  <span>Contact Numbers</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      isPhoneDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {isPhoneDropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg z-10 py-2 border border-blue-100">
+                    {phoneNumbers.map((phone, index) => (
+                      <a
+                        key={index}
+                        href={`tel:${phone.number}`}
+                        className="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50"
+                      >
+                        <div className="font-medium">{phone.name}</div>
+                        <div>{phone.number}</div>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
