@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileSidebar from "./MobileSidebar";

@@ -1,5 +1,3 @@
-"use client";
-
 import { FileDown, FileText, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, type ReactElement } from "react";

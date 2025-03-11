@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

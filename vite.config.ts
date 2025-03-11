@@ -8,4 +8,12 @@ export default defineConfig({
       "@": "/src",
     },
   },
+  build: {
+    assetsInlineLimit: 0, // Pastikan semua assets tetap sebagai file terpisah
+    rollupOptions: {
+      input: {
+        main: "index.html",
+      },
+    },
+  },
 });

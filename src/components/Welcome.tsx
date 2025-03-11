@@ -1,5 +1,3 @@
-"use client";
-
 import { Calendar, MapPin, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import type React from "react";
