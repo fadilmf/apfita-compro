@@ -1,6 +1,10 @@
+"use client";
+
+import type React from "react";
+
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
-import MobileSidebar from "./MobileSidebar";
+import MobileSidebar from "@/components/MobileSidebar";
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
@@ -10,6 +14,14 @@ const Navbar: React.FC = () => {
   const handleNavigation = (path: string): void => {
     window.location.href = path;
   };
+
+  // Define which nav items should have notification dots
+  const itemsWithNotifications = [
+    "GUIDELINES",
+    "SUBMISSIONS",
+    "DOWNLOAD",
+    "CONFERENCE",
+  ];
 
   return (
     <nav className="bg-gradient-to-br from-blue-50 via-white to-green-50 shadow-md fixed w-full top-0 z-50">
@@ -35,9 +47,14 @@ const Navbar: React.FC = () => {
               <button
                 key={path}
                 onClick={() => handleNavigation(path)}
-                className="hover:text-blue-600 transition"
+                className="hover:text-blue-600 transition relative"
               >
                 {label}
+                {itemsWithNotifications.includes(label) && (
+                  <span className="absolute -top-1 -right-2 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse">
+                    <span className="sr-only">New notification</span>
+                  </span>
+                )}
               </button>
             ))}
 
@@ -67,9 +84,14 @@ const Navbar: React.FC = () => {
                     <button
                       key={path}
                       onClick={() => handleNavigation(path)}
-                      className="block px-4 py-2 w-full text-left hover:bg-gray-100 transition"
+                      className="block px-4 py-2 w-full text-left hover:bg-gray-100 transition relative"
                     >
                       {label}
+                      {itemsWithNotifications.includes(label) && (
+                        <span className="absolute top-2 right-4 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse">
+                          <span className="sr-only">New notification</span>
+                        </span>
+                      )}
                     </button>
                   ))}
                 </div>
@@ -99,6 +121,7 @@ const Navbar: React.FC = () => {
       <MobileSidebar
         isOpen={isSidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        itemsWithNotifications={itemsWithNotifications}
       />
     </nav>
   );

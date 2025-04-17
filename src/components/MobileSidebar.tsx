@@ -1,7 +1,8 @@
+"use client";
+
 import type React from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import {
   X,
   ChevronDown,
@@ -19,9 +20,14 @@ import { useState } from "react";
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  itemsWithNotifications?: string[];
 }
 
-const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
+const MobileSidebar: React.FC<MobileSidebarProps> = ({
+  isOpen,
+  onClose,
+  itemsWithNotifications = [],
+}) => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   const sidebarVariants = {
@@ -57,6 +63,12 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
     { path: "/download", label: "DOWNLOAD", icon: Download },
   ];
 
+  // Function to handle navigation
+  const handleNavigation = (path: string): void => {
+    window.location.href = path;
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -80,13 +92,12 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b">
-              <NavLink
-                to="/"
+              <button
+                onClick={() => handleNavigation("/")}
                 className="text-2xl font-bold text-blue-600"
-                onClick={onClose}
               >
-                APFITA 2025
-              </NavLink>
+                APFITA
+              </button>
               <button
                 onClick={onClose}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -99,21 +110,19 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
             {/* Navigation Links */}
             <div className="py-4 px-2">
               {menuItems.map((item) => (
-                <NavLink
+                <button
                   key={item.path}
-                  to={item.path}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                      isActive
-                        ? "bg-blue-50 text-blue-600"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`
-                  }
+                  onClick={() => handleNavigation(item.path)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors w-full text-left text-gray-700 hover:bg-gray-50 relative"
                 >
                   <item.icon className="h-5 w-5" />
                   {item.label}
-                </NavLink>
+                  {itemsWithNotifications.includes(item.label) && (
+                    <span className="absolute top-3 right-4 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse">
+                      <span className="sr-only">New notification</span>
+                    </span>
+                  )}
+                </button>
               ))}
 
               {/* More Section */}
@@ -142,21 +151,19 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
                       className="overflow-hidden"
                     >
                       {moreItems.map((item) => (
-                        <NavLink
+                        <button
                           key={item.path}
-                          to={item.path}
-                          onClick={onClose}
-                          className={({ isActive }) =>
-                            `flex items-center gap-3 px-4 py-3 pl-12 rounded-lg transition-colors ${
-                              isActive
-                                ? "bg-blue-50 text-blue-600"
-                                : "text-gray-700 hover:bg-gray-50"
-                            }`
-                          }
+                          onClick={() => handleNavigation(item.path)}
+                          className="flex items-center gap-3 px-4 py-3 pl-12 rounded-lg transition-colors w-full text-left text-gray-700 hover:bg-gray-50 relative"
                         >
                           <item.icon className="h-5 w-5" />
                           {item.label}
-                        </NavLink>
+                          {itemsWithNotifications.includes(item.label) && (
+                            <span className="absolute top-3 right-4 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse">
+                              <span className="sr-only">New notification</span>
+                            </span>
+                          )}
+                        </button>
                       ))}
                     </motion.div>
                   )}
@@ -164,14 +171,13 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Contact Us */}
-              <NavLink
-                to="/contact"
-                onClick={onClose}
-                className="flex items-center gap-3 px-4 py-3 mt-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+              <button
+                onClick={() => handleNavigation("/contact")}
+                className="flex items-center gap-3 px-4 py-3 mt-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors w-full text-left"
               >
                 <Phone className="h-5 w-5" />
                 CONTACT US!
-              </NavLink>
+              </button>
             </div>
           </motion.div>
         </>
