@@ -1,3 +1,8 @@
+"use client";
+
+import type React from "react";
+import logo from "@/assets/Logo-IOP.jpg";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -5,10 +10,7 @@ import {
   ExternalLink,
   Mail,
   AlertCircle,
-  BookOpen,
-  Award,
-  ArrowRight,
-  Check,
+  Calendar,
 } from "lucide-react";
 
 interface TabContentProps {
@@ -32,7 +34,7 @@ export default function SubmissionsContent() {
   const [activeTab, setActiveTab] = useState("publication");
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -40,15 +42,10 @@ export default function SubmissionsContent() {
           <div className="max-w-5xl mx-auto">
             <p className="text-lg text-gray-600 leading-relaxed">
               Authors with manuscripts accepted for presentation at the 15
-              <sup>th</sup> APFITA 2025 will have several options for
-              publication. By default, the accepted manuscripts will be
-              published through{" "}
-              <span className="font-medium text-blue-600">
-                Option 1: E3S Web of Conferences
-              </span>{" "}
-              (Scopus indexed proceeding) and non-accepted manuscripts will be
-              published in an ISBN book chapter. In addition to that, selected
-              manuscripts could be published in a number of journals.
+              <sup>th</sup> APFITA 2025 will have their papers published in the
+              conference proceedings. The proceedings will be{" "}
+              <span className="font-medium text-blue-600">reserved by IOP</span>{" "}
+              and indexed in reputable databases.
             </p>
           </div>
         </div>
@@ -70,6 +67,11 @@ export default function SubmissionsContent() {
               `}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "submission" && (
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse">
+                  <span className="sr-only">New notification</span>
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -78,140 +80,77 @@ export default function SubmissionsContent() {
         <AnimatePresence mode="wait">
           {activeTab === "publication" && (
             <TabContent>
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* E3S Web of Conferences */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-blue-100 rounded-xl">
-                      <Award className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold text-gray-900">
-                        Option 1: E3S Web of Conferences
-                      </h2>
-                      <p className="text-blue-600 text-sm">
-                        Scopus indexed proceeding
-                      </p>
-                    </div>
+              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl">
+                <motion.div
+                  className="bg-white shadow-lg border border-gray-200 rounded-2xl px-8 py-6 md:px-14 md:py-8 max-w-xl text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  {/* LOGO */}
+                  <div className="flex justify-center mb-4">
+                    <img
+                      src={logo}
+                      alt="IOP Conference Series Logo"
+                      className="h-12 md:h-16 object-contain"
+                    />
                   </div>
 
-                  <div className="space-y-6">
-                    {/* Requirements */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                        <Check className="w-4 h-4 text-blue-600" />
-                        Requirements
-                      </h3>
-                      <ul className="space-y-3">
-                        {[
-                          "Manuscripts must be in English",
-                          "Maximum 25% similarity score allowed",
-                          "Must use E3S Web of Conferences template",
-                          "Willing to revise manuscript according to reviewer input",
-                          "Two-phase review process: before and after conference",
-                        ].map((req, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3 text-sm text-gray-600"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                            {req}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* TEKS */}
+                  <motion.h2
+                    className="text-lg md:text-xl text-gray-600 mb-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    This content is reserved by:
+                  </motion.h2>
+                  <motion.h1
+                    className="text-2xl md:text-4xl font-bold text-gray-900 mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <span className="text-red-600">IOP</span> Conference Series
+                  </motion.h1>
+                  <motion.h2
+                    className="text-lg md:text-2xl font-semibold text-black mb-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    Earth and Environmental Science (EES)
+                  </motion.h2>
 
-                    {/* Important Notes */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-blue-600" />
-                        Important Notes
-                      </h3>
-                      <ul className="space-y-3">
-                        {[
-                          "Committee may cancel manuscripts that don't match template or fail similarity test",
-                          "Jury's decision on article acceptance cannot be contested",
-                          "Non-passing manuscripts can be published in ISBN book chapter",
-                        ].map((note, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3 text-sm text-gray-600"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                            {note}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* <motion.p
+                    className="text-gray-600 text-sm md:text-base"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    All accepted papers from APFITA 2025 will be published in
+                    the IOP Conference Series: Earth and Environmental Science,
+                    which is indexed in Scopus and other major scientific
+                    databases.
+                  </motion.p> */}
 
+                  {/* <motion.div
+                    className="mt-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                  >
                     <a
-                      href="https://www.e3s-conferences.org/about-the-journal/58-for-authors/instructions"
+                      href="https://publishingsupport.iopscience.iop.org/author-guidelines-for-conference-proceedings/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm group"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
                     >
-                      View Author Guidelines
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                      View IOP Author Guidelines
+                      <ExternalLink className="w-4 h-4" />
                     </a>
-                  </div>
-                </div>
-
-                {/* Universal Journal */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-blue-100 rounded-xl">
-                      <BookOpen className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold text-gray-900">
-                        Option 2: Universal Journal
-                      </h2>
-                      <p className="text-blue-600 text-sm">
-                        International peer-reviewed journal
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <p className="text-gray-600">
-                      The Universal Journal of Agricultural Research publishes
-                      high-quality research manuscripts in all areas of
-                      agriculture. Additional publication costs may apply.
-                    </p>
-
-                    <div className="space-y-3">
-                      <h3 className="font-semibold text-gray-900 mb-3">
-                        Journal Features
-                      </h3>
-                      <ul className="space-y-3">
-                        {[
-                          "Peer-reviewed publication process",
-                          "International editorial board",
-                          "Rapid publication timeline",
-                          "Wide research area coverage",
-                        ].map((feature, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3 text-sm text-gray-600"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <a
-                      href="https://www.hrpub.org/journals/jour_info.php?id=04"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm group"
-                    >
-                      More Information & Template
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                    </a>
-                  </div>
-                </div>
+                  </motion.div> */}
+                </motion.div>
               </div>
             </TabContent>
           )}
@@ -219,7 +158,31 @@ export default function SubmissionsContent() {
           {activeTab === "submission" && (
             <TabContent>
               <div className="space-y-8">
-                {/* Submission Guidelines */}
+                {/* Current Phase Banner */}
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-center">
+                  <div className="inline-flex items-center gap-2 bg-amber-100 px-4 py-2 rounded-full text-amber-800 font-medium mb-4">
+                    <Calendar className="w-4 h-4" />
+                    Current Phase: Abstract Submission
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Abstract Submission Now Open!
+                  </h3>
+                  <p className="text-gray-700 max-w-3xl mx-auto mb-4">
+                    We are currently accepting abstracts for APFITA 2025. Full
+                    paper submission will open after abstract acceptance.
+                  </p>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  >
+                    Submit Abstract Now
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+
+                {/* Submission Process */}
                 <div className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-3 bg-blue-100 rounded-xl">
@@ -227,56 +190,100 @@ export default function SubmissionsContent() {
                     </div>
                     <div>
                       <h2 className="text-xl font-bold text-gray-900">
-                        Initial Submission Guidelines
+                        Submission Process
                       </h2>
                       <p className="text-blue-600 text-sm">
-                        Follow these steps to submit your manuscript
+                        Two-phase submission process
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-8">
-                    {/* Required Steps */}
+                    {/* Phase 1: Abstract Submission */}
+                    <div className="border-l-4 border-blue-500 pl-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                          <span className="font-bold text-blue-600">1</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900">
+                          Phase 1: Abstract Submission
+                        </h3>
+                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                          OPEN NOW
+                        </span>
+                      </div>
+                      <div className="ml-10 space-y-3">
+                        <p className="text-gray-600 text-sm">
+                          Submit your abstract (250-300 words) through the
+                          Google Form. Include title, authors, affiliations, and
+                          keywords.
+                        </p>
+                        <a
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm"
+                        >
+                          Abstract Submission Form
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Phase 2: Full Paper Submission */}
+                    <div className="border-l-4 border-gray-300 pl-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                          <span className="font-bold text-gray-500">2</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-500">
+                          Phase 2: Full Paper Submission
+                        </h3>
+                        <span className="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
+                          COMING SOON
+                        </span>
+                      </div>
+                      <div className="ml-10 space-y-3">
+                        <p className="text-gray-500 text-sm">
+                          After abstract acceptance, you will be invited to
+                          submit your full paper using the IOP template. Details
+                          will be provided to authors with accepted abstracts.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Important Dates */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-4">
-                        Required Steps
+                      <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <Calendar className="w-5 h-5 text-blue-600" />
+                        Important Dates
                       </h3>
-                      <ul className="space-y-4">
-                        {[
-                          {
-                            text: "Submit full manuscript through EasyChair Submission System",
-                            link: "https://easychair.org/cfp/icas2024",
-                          },
-                          {
-                            text: "Use E3S Web of Conferences Template for initial submission",
-                          },
-                          {
-                            text: "Selected journal manuscripts will require reformatting (additional cost applies)",
-                          },
-                        ].map((step, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                              <span className="text-sm font-medium text-blue-600">
-                                {i + 1}
-                              </span>
-                            </div>
-                            <div className="text-sm text-gray-600">
-                              {step.text}
-                              {step.link && (
-                                <a
-                                  href={step.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className=" text-blue-600 hover:text-blue-700 mt-1 flex items-center gap-1"
-                                >
-                                  Visit submission system
-                                  <ExternalLink className="w-3 h-3" />
-                                </a>
-                              )}
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <p className="font-medium text-blue-800">
+                            Abstract Submission Deadline
+                          </p>
+                          <p className="text-blue-600">July 31, 2025</p>
+                        </div>
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <p className="font-medium text-gray-800">
+                            Abstract Acceptance Notification
+                          </p>
+                          <p className="text-gray-600">August 15, 2025</p>
+                        </div>
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <p className="font-medium text-gray-800">
+                            Full Paper Submission Deadline
+                          </p>
+                          <p className="text-gray-600">September 30, 2025</p>
+                        </div>
+                        <div className="bg-gray-50 p-4 rounded-lg">
+                          <p className="font-medium text-gray-800">
+                            Final Acceptance Notification
+                          </p>
+                          <p className="text-gray-600">October 15, 2025</p>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Contact Information */}
@@ -290,24 +297,15 @@ export default function SubmissionsContent() {
                           <p className="text-sm text-gray-600">
                             For further inquiries, please contact:{" "}
                             <a
-                              href="mailto:i@apps.ipb.ac.id"
+                              href="/contact"
                               className="text-blue-600 hover:text-blue-700 underline"
                             >
-                              mas-arci
+                              contact-us!
                             </a>
                           </p>
                         </div>
                       </div>
                     </div>
-
-                    <a
-                      href="https://easychair.org/cfp/icas2024"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300 font-semibold text-center pointer-events-none opacity-50"
-                    >
-                      Submit Manuscript
-                    </a>
                   </div>
                 </div>
 
@@ -329,16 +327,16 @@ export default function SubmissionsContent() {
 
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Authors wishing to participate without publication should
-                    notify the committee immediately after manuscript
-                    acceptance. Send requests to{" "}
+                    notify the committee immediately after abstract acceptance.
+                    Send requests to{" "}
                     <a
-                      href="mailto:@apps.ipb.ac.id"
+                      href="mailto:apfita2025@apps.ipb.ac.id"
                       className="text-blue-600 hover:text-blue-700 underline"
                     >
-                      mas arci
+                      apfita2025@apps.ipb.ac.id
                     </a>{" "}
                     with subject "Participation without publication" followed by
-                    your Submission Number.
+                    your Abstract ID.
                   </p>
                 </div>
               </div>

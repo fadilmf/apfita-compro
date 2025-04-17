@@ -46,7 +46,7 @@ const contactMethods = [
 const whatsappContacts = [
   {
     name: "General Support",
-    number: "+62-812-7451-3242",
+    number: "+62-852-8242-5228",
     department: "Customer Service",
   },
   {
@@ -56,7 +56,7 @@ const whatsappContacts = [
   },
   {
     name: "Admin Support1",
-    number: "+62 859-2158-3103",
+    number: "+62-812-7451-3242",
     department: "Team Admin",
   },
   {

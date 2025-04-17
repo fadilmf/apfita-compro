@@ -17,10 +17,10 @@ interface GuidelineCard {
 export default function GuidelinesContent() {
   const guidelines: GuidelineCard[] = [
     {
-      title: "Manuscript Preparation",
+      title: "Abstract Template",
       icon: FileText,
-      date: "Coming Soon",
-      href: "/guidelines/manuscript",
+      date: "17/04/2025",
+      href: "https://docs.google.com/document/d/1ic43K8LuKlkhM8Uajchf9OVvVBwzfMkq/edit?tab=t.0",
     },
     {
       title: "Figures and tables",
@@ -85,16 +85,16 @@ export default function GuidelinesContent() {
                 {/* Button */}
                 <a
                   href={guide.href}
-                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-amber-400 text-amber-900 rounded-lg font-medium hover:bg-amber-500 transition-colors duration-300 group/btn pointer-events-none opacity-50"
+                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-amber-400 text-amber-900 rounded-lg font-medium hover:bg-blue-400 transition-colors duration-300 group/btn opacity-50"
                 >
-                  <span>Download PDF</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  <span className="group-hover:text-white">Download File</span>
+                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 group-hover:bg-white transition-transform duration-300" />
                 </a>
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute inset-0 border-2 border-transparent hover:border-blue-600 rounded-xl transition-colors duration-300 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300 pointer-events-none" />
+              {/* <div className="absolute inset-0 border-2 border-transparent hover:border-blue-600 rounded-xl transition-colors duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300 pointer-events-none" /> */}
             </motion.div>
           );
         })}

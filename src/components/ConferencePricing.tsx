@@ -1,3 +1,5 @@
+"use client";
+
 import { Check, GraduationCap, Users, Sparkles } from "lucide-react";
 import type React from "react";
 
@@ -14,10 +16,10 @@ export default function ConferencePricing() {
 
   const pricingTiers: PricingTier[] = [
     {
-      name: "Standard Package",
-      description: "Full conference access with all benefits",
+      name: "Indonesian Presenter",
+      description: "For presenters from Indonesia",
       icon: Sparkles,
-      badge: "",
+      badge: "Most Popular",
       features: [
         "Full Conference Access",
         "Conference Materials",
@@ -26,34 +28,38 @@ export default function ConferencePricing() {
         "Coffee Breaks",
         "Certificate of Attendance",
         "Conference Proceedings",
+        "IDR 2,500,000/paper",
+        "Discount 10% for Student",
+        "Discount 50% for Second Paper",
       ],
     },
     {
-      name: "Student Package",
-      description: "Special rate for enrolled students",
+      name: "International Presenter",
+      description: "For presenters from outside Indonesia",
       icon: GraduationCap,
       features: [
         "Full Conference Access",
         "Conference Materials",
         "Welcome Reception",
+        "Gala Dinner",
         "Coffee Breaks",
         "Certificate of Attendance",
         "Conference Proceedings",
-        "Student ID Required",
+        "USD 375/paper",
       ],
     },
     {
-      name: "Accompanying Person",
-      description: "Access to social events and activities",
+      name: "Indonesian Participant Only",
+      description: "For non-presenting participants from Indonesia",
       icon: Users,
       features: [
+        "Full Conference Access",
+        "Conference Materials",
         "Welcome Reception",
-        "Gala Dinner",
         "Coffee Breaks",
-        "City Tour",
-        "Social Activities",
-        "Name Badge",
-        "No Conference Access",
+        "Certificate of Attendance (E-certificate)",
+        "No Paper Presentation",
+        "IDR 100,000",
       ],
     },
   ];
@@ -137,7 +143,24 @@ export default function ConferencePricing() {
               </div>
 
               <div className="mb-6">
-                <p className="text-3xl font-bold">Coming Soon</p>
+                <p className="text-3xl font-bold">
+                  {index === 0
+                    ? "IDR 2,500,000"
+                    : index === 1
+                    ? "USD 375"
+                    : "IDR 100,000"}
+                </p>
+                <p
+                  className={`text-sm mt-1 ${
+                    index === 0 ? "text-blue-100" : "text-gray-500"
+                  }`}
+                >
+                  {index === 0
+                    ? "per paper"
+                    : index === 1
+                    ? "per paper"
+                    : "with E-certificate"}
+                </p>
               </div>
 
               <ul className="space-y-4 mb-8">
@@ -153,16 +176,17 @@ export default function ConferencePricing() {
                 ))}
               </ul>
 
-              <div
-                className={`w-full py-3 px-6 rounded-lg text-sm font-semibold text-center 
+              <a
+                href="/register"
+                className={` block w-full py-3 px-6 rounded-lg text-sm font-semibold text-center 
                   ${
                     index === 0
                       ? "bg-white text-blue-600"
                       : "bg-blue-600 text-white"
                   }`}
               >
-                Coming Soon
-              </div>
+                Register Now
+              </a>
             </div>
           );
         })}
