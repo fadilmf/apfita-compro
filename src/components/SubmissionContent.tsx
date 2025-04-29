@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import logo from "@/assets/Logo-IOP.jpg";
+import logoIOP from "/src/assets/Logo-IOP.jpg";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -90,9 +90,11 @@ export default function SubmissionsContent() {
                   {/* LOGO */}
                   <div className="flex justify-center mb-4">
                     <img
-                      src={logo}
-                      alt="IOP Conference Series Logo"
-                      className="h-12 md:h-16 object-contain"
+                      src={logoIOP}
+                      alt={logoIOP}
+                      width={150}
+                      height={150}
+                      className="object-contain"
                     />
                   </div>
 
@@ -103,7 +105,7 @@ export default function SubmissionsContent() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    This content is reserved by:
+                    This content is presented by:
                   </motion.h2>
                   <motion.h1
                     className="text-2xl md:text-4xl font-bold text-gray-900 mb-2"
@@ -122,7 +124,7 @@ export default function SubmissionsContent() {
                     Earth and Environmental Science (EES)
                   </motion.h2>
 
-                  {/* <motion.p
+                  <motion.p
                     className="text-gray-600 text-sm md:text-base"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -132,9 +134,9 @@ export default function SubmissionsContent() {
                     the IOP Conference Series: Earth and Environmental Science,
                     which is indexed in Scopus and other major scientific
                     databases.
-                  </motion.p> */}
+                  </motion.p>
 
-                  {/* <motion.div
+                  <motion.div
                     className="mt-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -149,7 +151,7 @@ export default function SubmissionsContent() {
                       View IOP Author Guidelines
                       <ExternalLink className="w-4 h-4" />
                     </a>
-                  </motion.div> */}
+                  </motion.div>
                 </motion.div>
               </div>
             </TabContent>
