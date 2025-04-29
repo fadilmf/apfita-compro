@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect } from "react";
 import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
 
@@ -8,6 +10,8 @@ import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
+import logoUMB from "/src/assets/LogoUMBandung.png";
+import logoIOP from "/src/assets/Logo-IOP.jpg";
 
 export default function Footer() {
   const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
@@ -33,7 +37,6 @@ export default function Footer() {
   ];
 
   const coHosts = [
-    { name: "BRAIN IPB", logo: image, url: "https://brain.ipb.ac.id" },
     {
       name: "Kementerian Pertanian",
       logo: logoKementan,
@@ -47,6 +50,16 @@ export default function Footer() {
     { name: "UNIKOM", logo: logoUNIKOM, url: "https://www.unikom.ac.id" },
     { name: "UNPAD", logo: logoUNPAD, url: "https://www.unpad.ac.id" },
     { name: "GUNDAR", logo: logoGUNDAR, url: "https://www.gunadarma.ac.id" },
+    { name: "UMB", logo: logoUMB, url: "https://umbandung.ac.id/" },
+  ];
+
+  // Added publisher section
+  const publishers = [
+    {
+      name: "IOP Publishing",
+      logo: logoIOP,
+      url: "https://iopscience.iop.org/journal/1755-1315",
+    },
   ];
 
   // Close dropdown when clicking outside
@@ -166,6 +179,30 @@ export default function Footer() {
                 />
               </a>
             </div>
+
+            {/* Added Publisher Section */}
+            <h3 className="text-blue-800 font-semibold text-lg mb-6 mt-8">
+              Official Publisher
+            </h3>
+            <div className="space-y-4">
+              {publishers.map((publisher) => (
+                <div key={publisher.name} className="flex flex-col items-start">
+                  <a
+                    href={publisher.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center"
+                  >
+                    <img
+                      src={publisher.logo || "/placeholder.svg"}
+                      alt={publisher.name}
+                      className="bg-white p-2 rounded-lg w-[150px] object-contain hover:opacity-80 transition-opacity"
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
+
             <h3 className="text-blue-800 font-semibold text-lg mb-6 mt-8">
               Co-Hosts
             </h3>

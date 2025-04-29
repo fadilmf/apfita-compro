@@ -6,9 +6,9 @@ import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
+import logoUMB from "/src/assets/LogoUMBandung.png";
 
 // Placeholder untuk gambar sponsor
-const logo_brain = { logoBrain };
 // const spons1 = { Sponsor1 };
 // const placeholderImage = "/placeholder.svg";
 
@@ -20,7 +20,7 @@ const sponsors = [
 
 const partners = [
   { id: 1, logo: logoKementan, alt: "Partner 1" },
-  { id: 2, logo: logo_brain.logoBrain, alt: "Partner 2" },
+  { id: 2, logo: logoUMB, alt: "Partner 2" },
   { id: 3, logo: logoTelU, alt: "Partner 3" },
   { id: 4, logo: logoUNIKOM, alt: "Partner 4" },
   { id: 5, logo: logoUNPAD, alt: "Partner 5" },
@@ -84,6 +84,7 @@ export default function Sponsors() {
             </motion.h3>
 
             {/* Grand Sponsors */}
+
             <div className="mb-16">
               <h4 className="text-2xl font-medium text-center mb-8 text-blue-600">
                 Grand Sponsors
