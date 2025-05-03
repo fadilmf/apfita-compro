@@ -8,6 +8,7 @@ import GuideLines from "@/pages/GuideLines";
 import Submissions from "@/pages/Submissions";
 import Committees from "@/pages/Committees";
 import Download from "@/pages/DownloadFile";
+import Congrats from "@/pages/Congrats";
 import ContactUs from "@/pages/ContactUs";
 import NotFound from "@/pages/NotFound"; // Import halaman 404
 
@@ -22,6 +23,7 @@ const AppRoutes = () => (
     <Route path="/committees" element={<Committees />} />
     <Route path="/download" element={<Download />} />
     <Route path="/contact" element={<ContactUs />} />
+    <Route path="/selamat-ya-mas-pian" element={<Congrats />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

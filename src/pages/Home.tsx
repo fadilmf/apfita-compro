@@ -8,15 +8,15 @@ import Welcome from "@/components/Welcome";
 import Imdates from "@/components/ImportantDates";
 import Countdown from "@/components/CountdownTimer";
 import Map from "@/components/Map";
-// import CountdownWidget from "@/components/CountdownWidget";
-// import Sponsors from "@/components/Sponsors";
 
 const Home = () => {
   return (
     <>
+      <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50">
+        <Navbar />
+      </nav>
+
       <Hero />
-      <Navbar />
-      {/* <CountdownWidget /> */}
       <Countdown />
       <Welcome />
       <Imdates />

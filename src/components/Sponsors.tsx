@@ -1,3 +1,7 @@
+"use client";
+
+import type React from "react";
+
 import { motion } from "framer-motion";
 import { ArrowRight, Award, Zap, Globe } from "lucide-react";
 import logoBrain from "/src/assets/logo_brain.png";
@@ -7,24 +11,25 @@ import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
 import logoUMB from "/src/assets/LogoUMBandung.png";
-
-// Placeholder untuk gambar sponsor
-// const spons1 = { Sponsor1 };
-// const placeholderImage = "/placeholder.svg";
+import { useState } from "react";
 
 // Array sponsor
 const sponsors = [
-  { id: 1, logo: logoBrain, alt: "Sponsor 1", type: "grand" },
-  { id: 2, logo: logoBrain, alt: "Sponsor 2", type: "regular" },
+  { id: 1, logo: logoBrain, alt: "BRAIN IPB University", type: "grand" },
+  { id: 2, logo: logoBrain, alt: "BRAIN IPB University", type: "regular" },
 ];
 
 const partners = [
-  { id: 1, logo: logoKementan, alt: "Partner 1" },
-  { id: 2, logo: logoUMB, alt: "Partner 2" },
-  { id: 3, logo: logoTelU, alt: "Partner 3" },
-  { id: 4, logo: logoUNIKOM, alt: "Partner 4" },
-  { id: 5, logo: logoUNPAD, alt: "Partner 5" },
-  { id: 6, logo: logoGUNDAR, alt: "Partner 6" },
+  {
+    id: 1,
+    logo: logoKementan,
+    alt: "Kementerian Pertanian Republik Indonesia",
+  },
+  { id: 2, logo: logoUMB, alt: "Universitas Muhammadiyah Bandung" },
+  { id: 3, logo: logoTelU, alt: "Telkom University" },
+  { id: 4, logo: logoUNIKOM, alt: "Universitas Komputer Indonesia" },
+  { id: 5, logo: logoUNPAD, alt: "Universitas Padjadjaran" },
+  { id: 6, logo: logoGUNDAR, alt: "Universitas Gunadarma" },
 ];
 
 // Variants animasi
@@ -42,6 +47,35 @@ const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: { y: 0, opacity: 1 },
 };
+
+// Tooltip component
+function Tooltip({
+  children,
+  text,
+}: {
+  children: React.ReactNode;
+  text: string;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div
+      className="relative group"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+      onFocus={() => setIsVisible(true)}
+      onBlur={() => setIsVisible(false)}
+    >
+      {children}
+      {isVisible && (
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm rounded-md whitespace-nowrap z-50">
+          {text}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Sponsors() {
   return (
@@ -84,7 +118,6 @@ export default function Sponsors() {
             </motion.h3>
 
             {/* Grand Sponsors */}
-
             <div className="mb-16">
               <h4 className="text-2xl font-medium text-center mb-8 text-blue-600">
                 Grand Sponsors
@@ -99,13 +132,15 @@ export default function Sponsors() {
                       whileHover={{ scale: 1.05 }}
                       variants={itemVariants}
                     >
-                      <img
-                        src={sponsor.logo}
-                        alt={sponsor.alt}
-                        width={200}
-                        height={200}
-                        className="object-contain"
-                      />
+                      <Tooltip text={sponsor.alt}>
+                        <img
+                          src={sponsor.logo || "/placeholder.svg"}
+                          alt={sponsor.alt}
+                          width={200}
+                          height={200}
+                          className="object-contain"
+                        />
+                      </Tooltip>
                     </motion.div>
                   ))}
               </div>
@@ -126,13 +161,15 @@ export default function Sponsors() {
                       whileHover={{ scale: 1.1 }}
                       variants={itemVariants}
                     >
-                      <img
-                        src={sponsor.logo}
-                        alt={sponsor.alt}
-                        width={150}
-                        height={150}
-                        className="object-contain"
-                      />
+                      <Tooltip text={sponsor.alt}>
+                        <img
+                          src={sponsor.logo || "/placeholder.svg"}
+                          alt={sponsor.alt}
+                          width={150}
+                          height={150}
+                          className="object-contain"
+                        />
+                      </Tooltip>
                     </motion.div>
                   ))}
               </div>
@@ -225,13 +262,15 @@ export default function Sponsors() {
                   className="flex justify-center items-center"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <img
-                    src={partner.logo}
-                    alt={partner.alt}
-                    width={120}
-                    height={120}
-                    className="object-contain"
-                  />
+                  <Tooltip text={partner.alt}>
+                    <img
+                      src={partner.logo || "/placeholder.svg"}
+                      alt={partner.alt}
+                      width={120}
+                      height={120}
+                      className="object-contain"
+                    />
+                  </Tooltip>
                 </motion.div>
               ))}
             </motion.div>

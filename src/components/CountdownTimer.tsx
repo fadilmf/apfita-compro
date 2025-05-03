@@ -133,10 +133,10 @@ const CountdownTimer: React.FC = () => {
 
   return (
     <div className="bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl shadow-lg w-full px-4 sm:px-6 md:px-8">
-      <div className="flex justify-between gap-6">
+      <div className="flex flex-col sm:flex-row justify-between gap-6">
         {/* Current Phase Section */}
         {currentPhase && (
-          <div className="animate-pulse flex-1 mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <div className="animate-pulse flex-1 mb-6 sm:mb-0 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertCircle className="w-5 h-5 text-yellow-600" />
               <h3 className="text-lg font-semibold text-yellow-700">
@@ -154,11 +154,11 @@ const CountdownTimer: React.FC = () => {
 
         {/* Next Event Countdown */}
         {nextEvent && (
-          <div className="flex-1 text-center mb-6 p-4 bg-white border border-blue-200 rounded-lg">
+          <div className="flex-1 text-center mb-6 sm:mb-0 p-4 bg-white border border-blue-200 rounded-lg">
             <h2 className="text-2xl font-bold text-blue-600 mb-2">
               Next Important Date
             </h2>
-            <div className="flex items-center justify-center gap-2 text-lg text-blue-800">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-blue-800">
               <Calendar className="w-5 h-5" />
               <span>{nextEvent.date}</span>
               <ArrowRight className="w-5 h-5" />
@@ -166,7 +166,7 @@ const CountdownTimer: React.FC = () => {
             </div>
 
             {/* Countdown */}
-            <div className="grid grid-cols-4 gap-3 mt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
               {[
                 { label: "Days", value: timeLeft.days },
                 { label: "Hours", value: timeLeft.hours },
