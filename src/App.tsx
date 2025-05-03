@@ -1,23 +1,34 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import AppRoutes from "@/routes/AppRoutes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/MobileSidebar";
+import { useState } from "react";
 
-function App() {
+function LayoutWrapper() {
+  const location = useLocation();
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  // Halaman yang tidak pakai layout
+  const noLayoutRoutes = ["/selamat-ya-mas-pian"];
+  const hideLayout = noLayoutRoutes.includes(location.pathname);
+
   return (
-    <BrowserRouter>
+    <>
+      {!hideLayout && <Navbar />}
       <AppRoutes />
-      <Navbar />
-      <Footer />
-      <Sidebar
-        isOpen={false}
-        onClose={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-    </BrowserRouter>
+      {!hideLayout && <Footer />}
+      {!hideLayout && (
+        <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
+      )}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <LayoutWrapper />
+    </BrowserRouter>
+  );
+}
