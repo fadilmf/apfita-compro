@@ -114,7 +114,7 @@ const galleryPhotos = [
   "/placeholder.svg?height=400&width=600",
 ];
 
-export default function Congratulations() {
+export default function Congrats() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [isVoiceNotePlaying, setIsVoiceNotePlaying] = useState(false);
@@ -139,7 +139,23 @@ export default function Congratulations() {
     setCurrentIndex((prev) => (prev === messages.length - 1 ? 0 : prev + 1));
   };
 
-  // Handle music toggle
+  // Auto play saat pertama render
+  useEffect(() => {
+    const music = musicRef.current;
+    if (music) {
+      const playMusic = async () => {
+        try {
+          await music.play();
+          setIsMusicPlaying(true);
+        } catch (err) {
+          console.log("Autoplay blocked:", err);
+        }
+      };
+      playMusic();
+    }
+  }, []);
+
+  // Toggle on button click
   const toggleMusic = () => {
     if (musicRef.current) {
       if (isMusicPlaying) {
@@ -301,6 +317,7 @@ export default function Congratulations() {
         ref={musicRef}
         src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3"
         loop
+        autoPlay
       />
       {currentPerson.voiceNote && (
         <audio ref={voiceNoteRef} src={currentPerson.voiceNote} />
