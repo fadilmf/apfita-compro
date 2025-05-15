@@ -10,6 +10,7 @@ import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
+import logoHIPI from "/src/assets/LogoHIPI.jpg";
 import logoUMB from "/src/assets/LogoUMBandung.png";
 import logoIOP from "/src/assets/Logo-IOP.jpg";
 
@@ -51,6 +52,7 @@ export default function Footer() {
     { name: "UNPAD", logo: logoUNPAD, url: "https://www.unpad.ac.id" },
     { name: "GUNDAR", logo: logoGUNDAR, url: "https://www.gunadarma.ac.id" },
     { name: "UMB", logo: logoUMB, url: "https://umbandung.ac.id/" },
+    { name: "HIPI", logo: logoHIPI, url: "https://apfita2025.com" },
   ];
 
   // Added publisher section
