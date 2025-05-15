@@ -1,5 +1,15 @@
 "use client";
 
+import f1 from "/src/assets/priv/ss.jpg";
+import f2 from "/src/assets/priv/ssss.jpg";
+import f3 from "/src/assets/priv/ssz.jpg";
+import f4 from "/src/assets/priv/sszz.jpg";
+import f5 from "/src/assets/priv/sz.jpg";
+import f6 from "/src/assets/priv/szs.jpg";
+import f7 from "/src/assets/priv/zs.jpg";
+import f8 from "/src/assets/priv/zss.jpg";
+import muzik from "/src/assets/priv/sounds.mp3";
+
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
@@ -21,6 +31,7 @@ import {
   PartyPopper,
   ChevronDown,
   ArrowRight,
+  Mail,
 } from "lucide-react";
 
 // Register GSAP plugins
@@ -45,7 +56,7 @@ interface PersonMessage {
 const messages: PersonMessage[] = [
   {
     id: "adit",
-    name: "Adit Arma",
+    name: "Aditya Arman",
     message:
       "Selamat menempuh hidup baru Vian. Semoga dapat menjalani bahtera pernikahan dengan baik dan selalu menjaga keutuhan keluarga. Gue tau lu bisa Vian. Aamiinn",
     theme: {
@@ -53,7 +64,7 @@ const messages: PersonMessage[] = [
       color: "text-blue-900",
       accentColor: "bg-blue-600",
     },
-    voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    // voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
   },
   {
     id: "alam",
@@ -65,11 +76,11 @@ const messages: PersonMessage[] = [
       color: "text-emerald-900",
       accentColor: "bg-emerald-600",
     },
-    voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    // voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
   },
   {
     id: "ipano",
-    name: "Ipano",
+    name: "Ivan tastic!",
     message:
       "Selamat membuka chapter baru, selamat menjalani lembaran putih tak bernoda. Semoga setiap halaman yang nantinya tertulis seiring waktu akan indah dengan tinta sakinah, dihiasi ornamen mawaddah, dan dijilid erat oleh rahmah-nya. Barakallahu lakuma wa baraka 'alaykuma wa jama'a baynakuma fi khayr.",
     theme: {
@@ -77,11 +88,11 @@ const messages: PersonMessage[] = [
       color: "text-indigo-900",
       accentColor: "bg-indigo-600",
     },
-    voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    // voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
   },
   {
     id: "yusuf",
-    name: "Yusuf",
+    name: "Yusuf Pije",
     message:
       "Arvian yang selalu jadi panutan, Kini resmi jadi imam seutuhnya. Semoga rumah tangga Antum penuh ketenangan, Dan jadi ladang pahala dunia akhirat bersama.",
     theme: {
@@ -89,30 +100,23 @@ const messages: PersonMessage[] = [
       color: "text-amber-900",
       accentColor: "bg-amber-600",
     },
-    voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    // voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
   },
   {
     id: "surya",
-    name: "Surya F. Helmianto",
+    name: "Surya",
     message: '"SELAMAT MAS PIAN"',
     theme: {
       background: "from-red-400 to-rose-300",
       color: "text-rose-900",
       accentColor: "bg-rose-600",
     },
-    voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    // voiceNote: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
   },
 ];
 
 // Shared gallery photos
-const galleryPhotos = [
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-];
+const galleryPhotos = [f1, f2, f3, f4, f5, f6, f7, f8];
 
 export default function Congrats() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -121,12 +125,14 @@ export default function Congrats() {
   const [showGallery, setShowGallery] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [activeSection, setActiveSection] = useState("landing");
+  const [showLetterModal, setShowLetterModal] = useState(false);
 
   const musicRef = useRef<HTMLAudioElement>(null);
   const voiceNoteRef = useRef<HTMLAudioElement>(null);
   const landingRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const letterRef = useRef<HTMLDivElement>(null);
 
   const currentPerson = messages[currentIndex];
 
@@ -139,20 +145,35 @@ export default function Congrats() {
     setCurrentIndex((prev) => (prev === messages.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto play saat pertama render
+  // Auto play music when component mounts
   useEffect(() => {
     const music = musicRef.current;
     if (music) {
-      const playMusic = async () => {
-        try {
-          await music.play();
-          setIsMusicPlaying(true);
-        } catch (err) {
-          console.log("Autoplay blocked:", err);
-        }
-      };
-      playMusic();
+      // Set autoplay attribute
+      music.autoplay = true;
+
+      const playPromise = music.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Autoplay started successfully
+            setIsMusicPlaying(true);
+          })
+          .catch((error) => {
+            // Autoplay was prevented
+            console.log("Autoplay prevented:", error);
+            // We'll show a UI to let the user manually start the music
+          });
+      }
     }
+
+    // Show letter modal after a short delay
+    const timer = setTimeout(() => {
+      setShowLetterModal(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Toggle on button click
@@ -301,6 +322,11 @@ export default function Congrats() {
           goToNext();
         }
       }
+
+      // Close letter modal on Escape
+      if (e.key === "Escape" && showLetterModal) {
+        setShowLetterModal(false);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -308,17 +334,30 @@ export default function Congrats() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [showGallery, activeSection]);
+  }, [showGallery, activeSection, showLetterModal]);
+
+  // Letter modal animation
+  useEffect(() => {
+    if (showLetterModal && letterRef.current) {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        letterRef.current,
+        { scale: 0.5, opacity: 0, rotationX: 45 },
+        {
+          scale: 1,
+          opacity: 1,
+          rotationX: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+        }
+      );
+    }
+  }, [showLetterModal]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* Audio elements */}
-      <audio
-        ref={musicRef}
-        src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3"
-        loop
-        autoPlay
-      />
+      <audio ref={musicRef} src={muzik} loop autoPlay />
       {currentPerson.voiceNote && (
         <audio ref={voiceNoteRef} src={currentPerson.voiceNote} />
       )}
@@ -361,6 +400,15 @@ export default function Congrats() {
         ) : (
           <MusicOff className="w-6 h-6 text-gray-600" />
         )}
+      </button>
+
+      {/* Letter button */}
+      <button
+        onClick={() => setShowLetterModal(true)}
+        className="fixed top-6 left-6 z-40 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300"
+        aria-label="Open letter"
+      >
+        <Mail className="w-6 h-6 text-pink-600" />
       </button>
 
       {/* Landing Section */}
@@ -427,7 +475,7 @@ export default function Congrats() {
             Selamat Menempuh Hidup Baru
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 mb-8 fade-in">
-            Ucapan selamat dan doa untuk pernikahan Vian
+            Ucapan selamat dan doa untuk mas pian
           </p>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 fade-in">
             Semoga pernikahan ini menjadi awal dari kehidupan yang bahagia dan
@@ -450,7 +498,7 @@ export default function Congrats() {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-purple-800">
-            Ucapan Personal
+            Ucapan-Ucapan
           </h2>
 
           <div className="relative">
@@ -648,6 +696,77 @@ export default function Congrats() {
           </div>
         </div>
       )}
+
+      {/* Letter Modal */}
+      <AnimatePresence>
+        {showLetterModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowLetterModal(false)}
+          >
+            <div
+              ref={letterRef}
+              className="perspective-1000"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.div
+                className="bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl shadow-2xl p-8 max-w-2xl w-full mx-auto border-4 border-pink-200 transform-style-3d"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div className="flex justify-between items-center mb-6">
+                  <div className="flex items-center">
+                    <Ring className="w-6 h-6 text-pink-500 mr-2" />
+                    <h3 className="text-2xl font-bold text-pink-700">
+                      Selamat ya!
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setShowLetterModal(false)}
+                    className="bg-white/80 p-2 rounded-full hover:bg-white transition-colors"
+                    aria-label="Close letter"
+                  >
+                    <X className="w-5 h-5 text-pink-700" />
+                  </button>
+                </div>
+
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 mb-4">
+                    Selamat Menempuh Hidup Baru
+                  </h2>
+                  <p className="text-lg text-gray-700 mb-4">
+                    Untuk Mas Pian & Mba Hajar
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-6 mb-6 shadow-inner">
+                  <p className="text-gray-700 leading-relaxed">
+                    Semoga pernikahan ini menjadi awal dari kehidupan yang penuh
+                    kebahagiaan, cinta, dan keberkahan. Semoga Allah SWT
+                    senantiasa melimpahkan rahmat dan hidayah-Nya kepada kalian
+                    berdua dalam mengarungi bahtera rumah tangga.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mt-4">
+                    Barakallahu lakuma wa baraka 'alaykuma wa jama'a baynakuma
+                    fi khayr.
+                  </p>
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => setShowLetterModal(false)}
+                    className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full transition-colors duration-300 flex items-center"
+                  >
+                    Terima Kasih <Heart className="ml-2 w-5 h-5" />
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
