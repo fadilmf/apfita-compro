@@ -11,6 +11,7 @@ import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
 import logoUNPAD from "/src/assets/Logo UNPAD.png";
 import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
 import logoUMB from "/src/assets/LogoUMBandung.png";
+import logoHIPI from "/src/assets/LogoHIPI.jpg";
 import { useState } from "react";
 
 // Array sponsor
@@ -30,6 +31,7 @@ const partners = [
   { id: 4, logo: logoUNIKOM, alt: "Universitas Komputer Indonesia" },
   { id: 5, logo: logoUNPAD, alt: "Universitas Padjadjaran" },
   { id: 6, logo: logoGUNDAR, alt: "Universitas Gunadarma" },
+  { id: 7, logo: logoHIPI, alt: "Himpunan Informatika Pertanian Indonesia" },
 ];
 
 // Variants animasi
