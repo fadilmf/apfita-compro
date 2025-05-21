@@ -79,7 +79,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black z-40 md:hidden"
+            className="fixed inset-0 bg-black z-[998] md:hidden"
           />
 
           {/* Sidebar */}
@@ -88,7 +88,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate="open"
             exit="closed"
             variants={sidebarVariants}
-            className="fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-50 md:hidden"
+            className="fixed top-0 left-0 h-full w-80 bg-white bg-opacity-100 backdrop-blur-none shadow-2xl z-[999] md:hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b">
