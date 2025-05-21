@@ -70,23 +70,22 @@ export default function Hero() {
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
           backgroundImage:
             "url('https://www.djkn.kemenkeu.go.id/files/images/2024/03/tugu_kujang_bogor.jpeg')",
         }}
       ></div>
 
-      {/* Announcement Banner - Now using the separate component */}
       <Announcement announcements={announcements} />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
 
       {/* Logos Section */}
       <div
         ref={logosRef}
-        className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10"
+        className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10 z-10"
       >
         <div className="flex flex-col items-center justify-center gap-8">
           {/* Main Logo */}
