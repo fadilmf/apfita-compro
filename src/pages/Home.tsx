@@ -7,6 +7,7 @@ import Sponsors from "@/components/Sponsors";
 import Welcome from "@/components/Welcome";
 import Imdates from "@/components/ImportantDates";
 import Countdown from "@/components/CountdownTimer";
+import ConferencePricing from "@/components/ConferencePricing";
 import Map from "@/components/Map";
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
       <Countdown />
       <Welcome />
       <Imdates />
+      <ConferencePricing />
       <Sponsors />
       <div className="container mx-auto px-4 py-12">
         <Map

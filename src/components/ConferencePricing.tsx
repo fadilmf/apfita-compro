@@ -1,15 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Check,
-  Users,
-  Sparkles,
-  ArrowRight,
-  Globe,
-  Calendar,
-} from "lucide-react";
+// import { useNavigate } from "react-router-dom";
+import { Check, Users, Sparkles, Globe, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import type React from "react";
 
@@ -27,7 +20,7 @@ interface PricingTier {
 }
 
 export default function ConferencePricing() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
   const [isHovering, setIsHovering] = useState<number | null>(null);
 
@@ -115,10 +108,10 @@ export default function ConferencePricing() {
   };
 
   // Handle registration button click
-  const handleRegister = (registrationType: string) => {
-    // Navigate to registration page with the selected tier as a query parameter
-    navigate(`/register?type=${registrationType}`);
-  };
+  // const handleRegister = (registrationType: string) => {
+  //   // Navigate to registration page with the selected tier as a query parameter
+  //   navigate(`/register?type=${registrationType}`);
+  // };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-gradient-to-b from-white to-blue-50">
@@ -219,7 +212,7 @@ export default function ConferencePricing() {
                   ))}
                 </ul>
 
-                <motion.button
+                {/* <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={(e) => {
@@ -236,7 +229,7 @@ export default function ConferencePricing() {
                 >
                   Register Now
                   <ArrowRight className="w-4 h-4" />
-                </motion.button>
+                </motion.button> */}
               </div>
             </motion.div>
           );

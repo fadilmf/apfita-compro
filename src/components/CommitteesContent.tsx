@@ -144,6 +144,9 @@ const committees: CommitteeSection[] = [
         icon: User,
       },
       { name: "Asaduddin Abdullah B.Sc. M.Sc.", title: "Member", icon: User },
+      { name: "Ir. Rini Mulyawati", title: "Member", icon: User },
+      { name: "Salsabila Husna, S.Pd.", title: "Member", icon: User },
+      { name: "Haura Zavira Darmawan, S.Si.", title: "Member", icon: User },
     ],
   },
   {

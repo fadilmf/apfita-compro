@@ -3,16 +3,16 @@
 import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
-import GuideLinesContent from "@/components/GuideLinesContent";
 // import Sponsors from "@/components/Sponsors";
+import ConferencePricing from "@/components/ConferencePricing";
 
-const GuideLines = () => {
+const ConferencePrice = () => {
   return (
     <>
       <Header />
       <Navbar />
       <div className="min-h-screen bg-gray-50">
-        <GuideLinesContent />
+        <ConferencePricing />
       </div>
       {/* <Endorsement /> */}
 
@@ -32,4 +32,4 @@ const GuideLines = () => {
   );
 };
 
-export default GuideLines;
+export default ConferencePrice;
