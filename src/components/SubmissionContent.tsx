@@ -13,6 +13,9 @@ import {
   Calendar,
 } from "lucide-react";
 
+import ConferencePricing from "@/components/ConferencePricing";
+import GuidelinesContent from "@/components/GuideLinesContent";
+
 interface TabContentProps {
   children: React.ReactNode;
 }
@@ -52,32 +55,40 @@ export default function SubmissionsContent() {
 
         {/* Tab Navigation */}
         <div className="flex justify-center gap-4 mb-12">
-          {["publication", "submission"].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`
+          {["publication", "submission", "guideline", "registration fee"].map(
+            (tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`
                 px-8 py-3 rounded-full text-sm font-medium
                 transition-all duration-300 transform
                 ${
                   activeTab === tab
-                    ? "bg-blue-600 text-white shadow-lg scale-105"
-                    : "bg-white text-blue-600 hover:bg-blue-50 hover:scale-105"
+                    ? "bg-blue-800 text-white shadow-lg scale-105"
+                    : "bg-white text-blue-800 hover:bg-blue-50 hover:scale-105"
                 }
               `}
-            >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              {tab === "submission" && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse">
-                  <span className="sr-only">New notification</span>
-                </span>
-              )}
-            </button>
-          ))}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {tab === "submission" && (
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse">
+                    <span className="sr-only">New notification</span>
+                  </span>
+                )}
+              </button>
+            )
+          )}
         </div>
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
+          {activeTab === "registration fee" && (
+            <TabContent>
+              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl"></div>
+              <ConferencePricing />
+            </TabContent>
+          )}
           {activeTab === "publication" && (
             <TabContent>
               <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl">
@@ -154,6 +165,13 @@ export default function SubmissionsContent() {
                   </motion.div>
                 </motion.div>
               </div>
+            </TabContent>
+          )}
+
+          {activeTab === "guideline" && (
+            <TabContent>
+              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl"></div>
+              <GuidelinesContent />
             </TabContent>
           )}
 

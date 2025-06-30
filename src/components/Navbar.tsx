@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
   // Define which nav items should have notification dots
   const itemsWithNotifications = [
-    "GUIDELINES",
+    "REGIISTRATION FEE",
     "SUBMISSIONS",
     "DOWNLOAD",
     "CONFERENCE",
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
               { label: "HOME", path: "/" },
               { label: "CONFERENCE", path: "/conference" },
               { label: "TIME SCHEDULE", path: "/time-schedule" },
-              { label: "GUIDELINES", path: "/guidelines" },
+              { label: "REGISTRATION FEE", path: "/regfee" },
               { label: "SUBMISSIONS", path: "/submissions" },
             ].map(({ label, path }) => (
               <button

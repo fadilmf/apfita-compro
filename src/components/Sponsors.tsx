@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Award, Zap, Globe } from "lucide-react";
+import { Award, Zap, Globe } from "lucide-react";
 import logoBrain from "/src/assets/logo_brain.png";
 import logoTelU from "/src/assets/Logo Tel U.png";
 import logoKementan from "/src/assets/Logo Kementan.png";
@@ -230,7 +230,7 @@ export default function Sponsors() {
               </motion.div>
             ))}
           </div>
-          <motion.div variants={itemVariants} className="text-center">
+          {/* <motion.div variants={itemVariants} className="text-center">
             <a
               href="/sponsor-info"
               className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
@@ -238,7 +238,7 @@ export default function Sponsors() {
               Proposal Sponsors
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Partnerships */}
