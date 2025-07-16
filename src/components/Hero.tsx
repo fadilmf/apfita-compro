@@ -26,7 +26,6 @@ export default function Hero() {
     "Discover the latest in agricultural technology and innovation.",
     "Welcome to APFITA 2025 — November 17-19 in Bogor, Indonesia!",
     "Experience Indonesia's vibrant agro-maritime industry firsthand.",
-    "The Developer of this website must be very handsome <3",
     "Connect, collaborate, and innovate with global experts!",
     "Celebrate 15 editions of groundbreaking agricultural IT conferences!",
   ];
@@ -85,14 +84,14 @@ export default function Hero() {
       {/* Logos Section */}
       <div
         ref={logosRef}
-        className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10 z-10"
+        className="w-full max-w-2xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10 z-10"
       >
         <div className="flex flex-col items-center justify-center gap-8">
           {/* Main Logo */}
           <img
             src={logoUtama || "/placeholder.svg"}
             alt="Utama Logo"
-            className="w-48 sm:w-56 md:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+            className="w-48 sm:w-48 md:w-56 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-80"
           />
 
           {/* Other Logos */}
@@ -102,7 +101,7 @@ export default function Hero() {
                 key={index}
                 src={logo || "/placeholder.svg"}
                 alt={`Logo ${index + 1}`}
-                className="w-20 sm:w-24 md:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
+                className="w-20 sm:w-20 md:w-24 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
               />
             ))}
           </div>

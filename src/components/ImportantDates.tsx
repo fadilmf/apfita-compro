@@ -13,6 +13,7 @@ import {
   CreditCard,
   Users,
 } from "lucide-react";
+import Countdown from "@/components/CountdownTimer";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -95,7 +96,8 @@ const ImportantDates: React.FC = () => {
       <h2 className="text-4xl font-bold text-center mb-16 text-blue-600">
         IMPORTANT DATES
       </h2>
-      <div className="w-full max-w-6xl mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <Countdown />
+      <div className="w-full max-w-6xl mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3">
         {dates.map((entry, index) => (
           <div
             key={index}

@@ -5,13 +5,7 @@ import logoIOP from "/src/assets/Logo-IOP.jpg";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FileText,
-  ExternalLink,
-  Mail,
-  AlertCircle,
-  Calendar,
-} from "lucide-react";
+import { FileText, ExternalLink, AlertCircle, Calendar } from "lucide-react";
 
 import ConferencePricing from "@/components/ConferencePricing";
 import GuidelinesContent from "@/components/GuideLinesContent";
@@ -192,7 +186,7 @@ export default function SubmissionsContent() {
                     paper submission will open after abstract acceptance.
                   </p>
                   <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
+                    href="https://www.morressier.com/call-for-abstracts/APFITA-2025"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
@@ -234,19 +228,10 @@ export default function SubmissionsContent() {
                       </div>
                       <div className="ml-10 space-y-3">
                         <p className="text-gray-600 text-sm">
-                          Submit your abstract (250-300 words) through the
-                          Google Form. Include title, authors, affiliations, and
-                          keywords.
+                          Submit your abstract (250-300 words) according to the
+                          categories listed above. Include title, authors,
+                          affiliations, and keywords.
                         </p>
-                        <a
-                          href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm"
-                        >
-                          Abstract Submission Form
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
                       </div>
                     </div>
 
@@ -265,65 +250,35 @@ export default function SubmissionsContent() {
                       </div>
                       <div className="ml-10 space-y-3">
                         <p className="text-gray-500 text-sm">
-                          After abstract acceptance, you will be invited to
-                          submit your full paper using the IOP template. Details
-                          will be provided to authors with accepted abstracts.
+                          After abstract acceptance,
+                          <p className="text-blue-800">
+                            especially for authors who wish to present and
+                            publish,
+                          </p>
+                          you will be invited to submit your full paper using
+                          the IOP template. Details will be provided to authors
+                          with accepted abstracts.
                         </p>
                       </div>
                     </div>
-
-                    {/* Important Dates */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-blue-600" />
-                        Important Dates
-                      </h3>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                          <p className="font-medium text-blue-800">
-                            Abstract Submission Deadline
-                          </p>
-                          <p className="text-blue-600">July 31, 2025</p>
+                    {/* Phase 3 */}
+                    <div className="border-l-4 border-gray-300 pl-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                          <span className="font-bold text-gray-500">3</span>
                         </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Abstract Acceptance Notification
-                          </p>
-                          <p className="text-gray-600">August 15, 2025</p>
-                        </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Full Paper Submission Deadline
-                          </p>
-                          <p className="text-gray-600">September 30, 2025</p>
-                        </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Final Acceptance Notification
-                          </p>
-                          <p className="text-gray-600">October 15, 2025</p>
-                        </div>
+                        <h3 className="text-lg font-semibold text-gray-500">
+                          Phase 3: Payment Required
+                        </h3>
+                        <span className="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
+                          COMING SOON
+                        </span>
                       </div>
-                    </div>
-
-                    {/* Contact Information */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-4">
-                        Contact Information
-                      </h3>
-                      <div className="flex items-start gap-3">
-                        <Mail className="w-5 h-5 text-blue-600" />
-                        <div>
-                          <p className="text-sm text-gray-600">
-                            For further inquiries, please contact:{" "}
-                            <a
-                              href="/contact"
-                              className="text-blue-600 hover:text-blue-700 underline"
-                            >
-                              contact-us!
-                            </a>
-                          </p>
-                        </div>
+                      <div className="ml-10 space-y-3">
+                        <p className="text-gray-500 text-sm">
+                          Please follow the instructions on the 'Registration
+                          Fee' page to complete your payment
+                        </p>
                       </div>
                     </div>
                   </div>

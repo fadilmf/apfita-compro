@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import Sponsors from "@/components/Sponsors";
 import Welcome from "@/components/Welcome";
 import Imdates from "@/components/ImportantDates";
-import Countdown from "@/components/CountdownTimer";
 import ConferencePricing from "@/components/ConferencePricing";
 import Map from "@/components/Map";
 
@@ -18,7 +17,6 @@ const Home = () => {
       </nav>
 
       <Hero />
-      <Countdown />
       <Welcome />
       <Imdates />
       <ConferencePricing />
