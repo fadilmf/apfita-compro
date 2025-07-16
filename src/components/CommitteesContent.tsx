@@ -144,9 +144,6 @@ const committees: CommitteeSection[] = [
         icon: User,
       },
       { name: "Asaduddin Abdullah B.Sc. M.Sc.", title: "Member", icon: User },
-      { name: "Ir. Rini Mulyawati", title: "Member", icon: User },
-      { name: "Salsabila Husna, S.Pd.", title: "Member", icon: User },
-      { name: "Haura Zavira Darmawan, S.Si.", title: "Member", icon: User },
     ],
   },
   {
@@ -163,6 +160,7 @@ const committees: CommitteeSection[] = [
       { name: "Ir. Rini Prasetyani, M.T.", title: "Member", icon: User },
       { name: "Ichsan Ramdhani, S.Tp., M.T.I.", title: "Member", icon: User },
       { name: "Dewi Ayu Nur Wulandari, M.Kom", title: "Member", icon: User },
+      { name: "Yanti Sulistyana, S.Pd.", title: "Member", icon: User },
     ],
   },
   {
@@ -185,6 +183,8 @@ const committees: CommitteeSection[] = [
       },
       { name: "Muhammad Fajar Sidiq, S.T., M.T.", title: "Member", icon: User },
       { name: "Siti Nur Asiyah Wardah, S. Hut", title: "Member", icon: User },
+      { name: "Aura Asyda Larre, S.E.", title: "Member", icon: User },
+      { name: "Sari Rama Dianti, S.Pi.", title: "Member", icon: User },
     ],
   },
   {
@@ -233,6 +233,7 @@ const committees: CommitteeSection[] = [
       { name: "Falahah, S.Si., M.T.", title: "Member", icon: User },
       { name: "Febry Aryawan, S.P.", title: "Member", icon: User },
       { name: "Surya Fatihah Helmianto", title: "Member", icon: User },
+      { name: "Fatkurrohim, S.P., M.P.", title: "Member", icon: User },
     ],
   },
   {
@@ -251,6 +252,8 @@ const committees: CommitteeSection[] = [
         title: "Member",
         icon: User,
       },
+      { name: "Salsabila Husna, S.Pd.", title: "Member", icon: User },
+      { name: "Haura Zavira Darmawan, S.Si.", title: "Member", icon: User },
     ],
   },
 ];

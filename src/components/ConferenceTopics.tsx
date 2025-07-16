@@ -1,6 +1,9 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+// import { useState } from "react";
+// import { ChevronDown } from "lucide-react";
+import { 
+  motion, 
+  // AnimatePresence 
+} from "framer-motion";
 
 interface Topic {
   title: string;
@@ -8,23 +11,32 @@ interface Topic {
 }
 
 export default function ConferenceTopics() {
-  const [expandedSections, setExpandedSections] = useState<number[]>([0]);
+  // const [expandedSections, setExpandedSections] = useState<number[]>([0]);
 
   const topics: Topic[] = [
     {
-      title: "Digital Transformation in Agro-Maritime Industry",
-      items: [
-        "Enhancement of agricultural and fisheries production",
-        "Improvement of efficiency and competitiveness in the agro-maritime industry",
-        "Utilization of advanced digital technology in the agro-maritime industry",
+      title: "Increase in agricultural and fishery production",
+      items: [""
       ],
     },
     {
-      title:
-        "Governance, Sustainability, and Socioeconomic Aspects of the Agro-Maritime Industry",
-      items: [
-        "Enhancement of transparency and traceability systems in the agro-maritime industry",
-        "Study of social, economic, and sustainability aspects of the agro-maritime industry",
+      title: "Improving the efficiency and competitiveness of the agro-maritime industry",
+      items: [""
+      ],
+    },
+    {
+      title: "Increasing transparency and traceability of the agro-maritime industry system",
+      items: [""
+      ],
+    },
+    {
+      title: "The use of advanced digital technology in the agro-maritime industry",
+      items: [""
+      ],
+    },
+    {
+      title: "A study on the agro-maritime industry's social, economic, and sustainability aspects",
+      items: [""
       ],
     },
   ];
@@ -42,15 +54,16 @@ export default function ConferenceTopics() {
           Themes and Topics
         </h1>
         <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-          The 15th International Conference on APFITA 2025 "Innovative Digital
-          Technology for Global and Sustainable Agro-Maritime Industry"
+          The 15th International Conference on APFITA 2025
+          <br></br>
+          <strong>"Innovative Digital Technology for Global and Sustainable Agro-Maritime Industry"</strong> 
         </p>
       </motion.div>
 
       {/* Topics Timeline */}
       <div className="relative">
         {/* Vertical Line */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 ml-3 sm:ml-6" />
+        <div className="absolute left-3 md:left-0 top-[5%] bottom-[12%] sm:bottom-[10%] w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 ml-3 sm:ml-6" />
 
         {/* Topics */}
         <div className="space-y-6 sm:space-y-8">
@@ -60,11 +73,11 @@ export default function ConferenceTopics() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="relative pl-10 sm:pl-16"
+              className="relative pl-16"
             >
               {/* Timeline Dot */}
               <div
-                className={`absolute left-0 w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center
+                className={`absolute left-0 top-[20%] w-12 h-12 rounded-full flex items-center justify-center
                 ${index === 0 ? "bg-blue-500" : "bg-blue-400"}`}
               >
                 <span className="text-white font-bold text-sm sm:text-base">
@@ -74,7 +87,10 @@ export default function ConferenceTopics() {
 
               {/* Topic Content */}
               <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl border border-blue-100">
-                <button
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+                    {topic.title}
+                </h3>
+                {/* <button
                   onClick={() => {
                     setExpandedSections((prev) => {
                       if (prev.includes(index)) {
@@ -122,7 +138,7 @@ export default function ConferenceTopics() {
                       </ul>
                     </motion.div>
                   )}
-                </AnimatePresence>
+                </AnimatePresence> */}
               </div>
             </motion.div>
           ))}

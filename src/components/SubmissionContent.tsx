@@ -1,20 +1,18 @@
-"use client";
+// "use client";
 
 import type React from "react";
-import logoIOP from "/src/assets/Logo-IOP.jpg";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText,
-  ExternalLink,
-  Mail,
-  AlertCircle,
-  Calendar,
+  // ExternalLink,
+  // Mail,
+  // AlertCircle,
+  // Calendar,
 } from "lucide-react";
-
-import ConferencePricing from "@/components/ConferencePricing";
 import GuidelinesContent from "@/components/GuideLinesContent";
+import SubmissionTemplateContent from "./SubmissionTemplateContent";
+import SubmissionPhaseContent from "./SubmissionPhaseContent";
 
 interface TabContentProps {
   children: React.ReactNode;
@@ -34,10 +32,24 @@ function TabContent({ children }: TabContentProps) {
 }
 
 export default function SubmissionsContent() {
-  const [activeTab, setActiveTab] = useState("publication");
+  const [activeTab, setActiveTab] = useState("guideline");
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    const validTabs = ["guideline", "submission", "template"];
+    if (validTabs.includes(hash)) {
+      setActiveTab(hash);
+
+      // Tunggu sedikit lalu scroll ke elemen setelah render
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300); // cukup delay 300ms untuk nunggu render tab
+    }
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -55,18 +67,20 @@ export default function SubmissionsContent() {
 
         {/* Tab Navigation */}
         <div className="flex justify-center gap-4 mb-12">
-          {["publication", "submission", "guideline", "registration fee"].map(
+          {["guideline", "submission", "template"].map(
             (tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                }}
                 className={`
                 px-8 py-3 rounded-full text-sm font-medium
                 transition-all duration-300 transform
                 ${
                   activeTab === tab
                     ? "bg-blue-800 text-white shadow-lg scale-105"
-                    : "bg-white text-blue-800 hover:bg-blue-50 hover:scale-105"
+                    : "bg-white text-blue-800 ring-1 ring-blue-800 hover:ring-0 hover:bg-blue-50 hover:scale-105"
                 }
               `}
               >
@@ -83,123 +97,27 @@ export default function SubmissionsContent() {
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
-          {activeTab === "registration fee" && (
+          {activeTab === "guideline" && (
             <TabContent>
-              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl"></div>
-              <ConferencePricing />
-            </TabContent>
-          )}
-          {activeTab === "publication" && (
-            <TabContent>
-              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl">
-                <motion.div
-                  className="bg-white shadow-lg border border-gray-200 rounded-2xl px-8 py-6 md:px-14 md:py-8 max-w-xl text-center"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                >
-                  {/* LOGO */}
-                  <div className="flex justify-center mb-4">
-                    <img
-                      src={logoIOP}
-                      alt={logoIOP}
-                      width={150}
-                      height={150}
-                      className="object-contain"
-                    />
-                  </div>
-
-                  {/* TEKS */}
-                  <motion.h2
-                    className="text-lg md:text-xl text-gray-600 mb-3"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    This content is presented by:
-                  </motion.h2>
-                  <motion.h1
-                    className="text-2xl md:text-4xl font-bold text-gray-900 mb-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <span className="text-red-600">IOP</span> Conference Series
-                  </motion.h1>
-                  <motion.h2
-                    className="text-lg md:text-2xl font-semibold text-black mb-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    Earth and Environmental Science (EES)
-                  </motion.h2>
-
-                  <motion.p
-                    className="text-gray-600 text-sm md:text-base"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    All accepted papers from APFITA 2025 will be published in
-                    the IOP Conference Series: Earth and Environmental Science,
-                    which is indexed in Scopus and other major scientific
-                    databases.
-                  </motion.p>
-
-                  <motion.div
-                    className="mt-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                  >
-                    <a
-                      href="https://publishingsupport.iopscience.iop.org/author-guidelines-for-conference-proceedings/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                    >
-                      View IOP Author Guidelines
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </motion.div>
-                </motion.div>
+              <div id="guideline" className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl">
+                <GuidelinesContent />
               </div>
             </TabContent>
           )}
-
-          {activeTab === "guideline" && (
+          {activeTab === "template" && (
             <TabContent>
-              <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-white p-6 rounded-2xl"></div>
-              <GuidelinesContent />
+              <div id="template" className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl">
+                <SubmissionTemplateContent />
+              </div>
             </TabContent>
           )}
 
           {activeTab === "submission" && (
             <TabContent>
-              <div className="space-y-8">
+              <div id="submission" className="scroll-mt-5 space-y-8">
                 {/* Current Phase Banner */}
-                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-center">
-                  <div className="inline-flex items-center gap-2 bg-amber-100 px-4 py-2 rounded-full text-amber-800 font-medium mb-4">
-                    <Calendar className="w-4 h-4" />
-                    Current Phase: Abstract Submission
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Abstract Submission Now Open!
-                  </h3>
-                  <p className="text-gray-700 max-w-3xl mx-auto mb-4">
-                    We are currently accepting abstracts for APFITA 2025. Full
-                    paper submission will open after abstract acceptance.
-                  </p>
-                  <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                  >
-                    Submit Abstract Now
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+                  <SubmissionPhaseContent />
                 </div>
 
                 {/* Submission Process */}
@@ -213,7 +131,7 @@ export default function SubmissionsContent() {
                         Submission Process
                       </h2>
                       <p className="text-blue-600 text-sm">
-                        Two-phase submission process
+                        Three-phase submission process
                       </p>
                     </div>
                   </div>
@@ -234,19 +152,10 @@ export default function SubmissionsContent() {
                       </div>
                       <div className="ml-10 space-y-3">
                         <p className="text-gray-600 text-sm">
-                          Submit your abstract (250-300 words) through the
-                          Google Form. Include title, authors, affiliations, and
-                          keywords.
+                          <b>Deadline July 30,2025</b>
+                          <br></br>
+                          Submit your abstract (250-300 words) according to the categories listed above. Include title, authors, affiliations, and keywords.
                         </p>
-                        <a
-                          href="https://docs.google.com/forms/d/e/1FAIpQLSdZQs2D5FP6ngoz8g4EXFnTdRw7B0dxMxJNGBUmeOSQEVomOA/viewform?usp=sharing"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm"
-                        >
-                          Abstract Submission Form
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
                       </div>
                     </div>
 
@@ -265,99 +174,33 @@ export default function SubmissionsContent() {
                       </div>
                       <div className="ml-10 space-y-3">
                         <p className="text-gray-500 text-sm">
-                          After abstract acceptance, you will be invited to
-                          submit your full paper using the IOP template. Details
-                          will be provided to authors with accepted abstracts.
+                          <b>Deadline September 30, 2025</b>
+                          <br></br>
+                          After abstract acceptance, especially for authors who wish to present and publish, you will be invited to submit your full paper using the IOP template. Details will be provided to authors with accepted abstracts.
                         </p>
                       </div>
                     </div>
-
-                    {/* Important Dates */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-blue-600" />
-                        Important Dates
-                      </h3>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                          <p className="font-medium text-blue-800">
-                            Abstract Submission Deadline
-                          </p>
-                          <p className="text-blue-600">July 31, 2025</p>
+                    
+                    {/* Phase 3: Payment Required */}
+                    <div className="border-l-4 border-gray-300 pl-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                          <span className="font-bold text-gray-500">2</span>
                         </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Abstract Acceptance Notification
-                          </p>
-                          <p className="text-gray-600">August 15, 2025</p>
-                        </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Full Paper Submission Deadline
-                          </p>
-                          <p className="text-gray-600">September 30, 2025</p>
-                        </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="font-medium text-gray-800">
-                            Final Acceptance Notification
-                          </p>
-                          <p className="text-gray-600">October 15, 2025</p>
-                        </div>
+                        <h3 className="text-lg font-semibold text-gray-500">
+                          Phase 3: Payment Required
+                        </h3>
+                        {/* <span className="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
+                          COMING SOON
+                        </span> */}
                       </div>
-                    </div>
-
-                    {/* Contact Information */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-4">
-                        Contact Information
-                      </h3>
-                      <div className="flex items-start gap-3">
-                        <Mail className="w-5 h-5 text-blue-600" />
-                        <div>
-                          <p className="text-sm text-gray-600">
-                            For further inquiries, please contact:{" "}
-                            <a
-                              href="/contact"
-                              className="text-blue-600 hover:text-blue-700 underline"
-                            >
-                              contact-us!
-                            </a>
-                          </p>
-                        </div>
+                      <div className="ml-10 space-y-3">
+                        <p className="text-gray-500 text-sm">
+                          Please follow the instructions on the 'Registration Fee' page to complete your payment.
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Participation Without Publication */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-blue-100 rounded-xl">
-                      <AlertCircle className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold text-gray-900">
-                        Participation Without Publication
-                      </h2>
-                      <p className="text-blue-600 text-sm">
-                        Important information for non-publishing participants
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    Authors wishing to participate without publication should
-                    notify the committee immediately after abstract acceptance.
-                    Send requests to{" "}
-                    <a
-                      href="mailto:apfita2025@apps.ipb.ac.id"
-                      className="text-blue-600 hover:text-blue-700 underline"
-                    >
-                      apfita2025@apps.ipb.ac.id
-                    </a>{" "}
-                    with subject "Participation without publication" followed by
-                    your Abstract ID.
-                  </p>
                 </div>
               </div>
             </TabContent>

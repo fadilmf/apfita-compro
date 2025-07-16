@@ -1,5 +1,11 @@
 import { useEffect, useRef } from "react";
-import { MapPin, Navigation2 } from "lucide-react";
+import { 
+  MapPin, 
+  Navigation2,
+  Car, 
+  BedDouble, 
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 import Outdoor from "/src/assets/OutdoorVenue.jpg";
 import Indoor from "/src/assets/IndoorVenue.jpg";
@@ -54,7 +60,7 @@ export default function VenueSection() {
         </div>
 
         {/* Venue Content */}
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Images Section */}
           <div className="space-y-6 sm:space-y-8">
             <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -96,15 +102,45 @@ export default function VenueSection() {
                     Jawa Barat 16127
                   </p>
                 </div>
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-colors"
+                {/* Animated Buttons */}
+                <motion.div
+                  className="flex flex-wrap items-center gap-3 mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
                 >
-                  <Navigation2 className="w-4 h-4" />
-                  Get Directions
-                </a>
+                  {/* Directions */}
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
+                  >
+                    <Navigation2 className="w-4 h-4" />
+                    Get Directions
+                  </motion.a>
+
+                  {/* How to Reach */}
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="#how-to-reach"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
+                  >
+                    <Car className="w-4 h-4" />
+                    How to Reach
+                  </motion.a>
+
+                  {/* Nearby Hotels */}
+                  <motion.a
+                    whileTap={{ scale: 0.95 }}
+                    href="#nearby-hotels"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
+                  >
+                    <BedDouble className="w-4 h-4" />
+                    Nearby Hotels
+                  </motion.a>
+                </motion.div>
               </div>
             </div>
 

@@ -1,13 +1,13 @@
 // import Endorsement from "@/components/Endorsement";
 // ... rest of your code
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
 import Speakers from "@/components/Speakers";
 import SpeakersFlyer from "@/components/SpeakersFlyer";
 import ConferenceTopics from "@/components/ConferenceTopics";
 import ConferenceTnV from "@/components/ConferenceTnV";
-import ConferencePricing from "@/components/ConferencePricing";
+// import ConferencePricing from "@/components/ConferencePricing";
 
 // import Sponsors from "@/components/Sponsors";
 
@@ -15,20 +15,19 @@ const Conference = () => {
   return (
     <>
       <Header />
-      <Navbar />
-      <div className="min-h-screen bg-gray-50">
+      <section id="topics" className=" bg-gray-50">
         <ConferenceTopics />
-      </div>
-      <div className="min-h-screen bg-white">
+      </section>
+      <section id="speakers" className=" bg-white">
         <Speakers />
-      </div>
+      </section>
+      <div className="bg-gradient-to-bl from-white to-blue-50 pb-10">
       <SpeakersFlyer />
-      <div className="min-h-screen bg-gray-50">
-        <ConferenceTnV />
+      <ConferenceTnV />
       </div>
-      <div className="min-h-screen bg-white">
+      {/* <div className="min-h-screen bg-white">
         <ConferencePricing />
-      </div>
+      </div> */}
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

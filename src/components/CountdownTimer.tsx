@@ -1,8 +1,8 @@
-"use client";
+// "use client";
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import { Calendar, ArrowRight, AlertCircle } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 
 interface DateEntry {
   date: string;
@@ -132,99 +132,101 @@ const CountdownTimer: React.FC = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl shadow-lg w-full px-4 sm:px-6 md:px-8">
-      <div className="flex flex-col sm:flex-row justify-between gap-6">
-        {/* Current Phase Section */}
-        {currentPhase && (
-          <div className="animate-pulse flex-1 mb-6 sm:mb-0 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <AlertCircle className="w-5 h-5 text-yellow-600" />
-              <h3 className="text-lg font-semibold text-yellow-700">
-                {currentPhase.name}
-              </h3>
-            </div>
-            <p className="text-yellow-600 text-sm">
-              {currentPhase.description}
-            </p>
+    <div className="w-full max-w-6xl mx-auto px-6 relative"> 
+     <div className="bg-white border border-blue-200 p-6 mb-6 rounded-xl w-full px-4 sm:px-6 md:px-8 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="flex flex-col sm:flex-row justify-between gap-6">
+          {/* Current Phase Section */}
+          {/* {currentPhase && ( */}
+            {/* <div className="animate-pulse flex-1 mb-6 sm:mb-0 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <AlertCircle className="w-5 h-5 text-yellow-600" />
+                <h3 className="text-lg font-semibold text-yellow-700">
+                  {currentPhase.name}
+                </h3>
+              </div>
+              <p className="text-yellow-600 text-sm">
+                {currentPhase.description}
+              </p> */}
 
-            {/* Action button */}
-            {getActionButtonForPhase(currentPhase.name)}
-          </div>
-        )}
+              {/* Action button */}
+              {/* {getActionButtonForPhase(currentPhase.name)}
+            </div> */}
+          {/* )} */}
 
-        {/* Next Event Countdown */}
-        {nextEvent && (
-          <div className="flex-1 text-center mb-6 sm:mb-0 p-4 bg-white border border-blue-200 rounded-lg">
-            <h2 className="text-2xl font-bold text-blue-600 mb-2">
-              Next Important Date
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-blue-800">
-              <Calendar className="w-5 h-5" />
-              <span>{nextEvent.date}</span>
-              <ArrowRight className="w-5 h-5" />
-              <span className="font-semibold">{nextEvent.event}</span>
-            </div>
+          {/* Next Event Countdown */}
+          {nextEvent && (
+            <div className="flex-1 text-center mb-6 sm:mb-0 p-4 rounded-lg">
+              <h2 className="text-2xl font-bold text-blue-600 mb-2">
+                Next Important Date
+              </h2>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-blue-800">
+                <Calendar className="w-5 h-5" />
+                <span>{nextEvent.date}</span>
+                <ArrowRight className="w-5 h-5" />
+                <span className="font-semibold">{nextEvent.event}</span>
+              </div>
 
-            {/* Countdown */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-              {[
-                { label: "Days", value: timeLeft.days },
-                { label: "Hours", value: timeLeft.hours },
-                { label: "Minutes", value: timeLeft.minutes },
-                { label: "Seconds", value: timeLeft.seconds },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-md p-3 text-center border border-blue-100"
-                >
-                  <div className="text-xl font-semibold text-blue-600">
-                    {item.value < 10 ? `0${item.value}` : item.value}
+              {/* Countdown */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+                {[
+                  { label: "Days", value: timeLeft.days },
+                  { label: "Hours", value: timeLeft.hours },
+                  { label: "Minutes", value: timeLeft.minutes },
+                  { label: "Seconds", value: timeLeft.seconds },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-md p-3 text-center border border-blue-100"
+                  >
+                    <div className="text-xl font-semibold text-blue-600">
+                      {item.value < 10 ? `0${item.value}` : item.value}
+                    </div>
+                    <div className="text-xs uppercase text-gray-500">
+                      {item.label}
+                    </div>
                   </div>
-                  <div className="text-xs uppercase text-gray-500">
-                    {item.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-function getActionButtonForPhase(phaseName: string): React.ReactNode {
-  switch (phaseName) {
-    case "Abstract Submission Phase":
-      return (
-        <a
-          href="/submissions"
-          className="mt-3 bg-yellow-600 hover:bg-yellow-700 text-black text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center justify-center gap-1 mx-auto"
-        >
-          <span>Submit Abstract</span>
-        </a>
-      );
-    case "Full Paper Submission Phase":
-      return (
-        <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-          <span>Submit Full Paper</span>
-        </button>
-      );
-    case "Registration Phase":
-      return (
-        <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-          <span>Register Now</span>
-        </button>
-      );
-    case "Conference Phase":
-      return (
-        <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-          <span>View Schedule</span>
-        </button>
-      );
-    default:
-      return null;
-  }
-}
+// function getActionButtonForPhase(phaseName: string): React.ReactNode {
+//   switch (phaseName) {
+//     case "Abstract Submission Phase":
+//       return (
+//         <a
+//           href="/submissions"
+//           className="mt-3 bg-yellow-600 hover:bg-yellow-700 text-black text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center justify-center gap-1 mx-auto"
+//         >
+//           <span>Submit Abstract</span>
+//         </a>
+//       );
+//     case "Full Paper Submission Phase":
+//       return (
+//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
+//           <span>Submit Full Paper</span>
+//         </button>
+//       );
+//     case "Registration Phase":
+//       return (
+//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
+//           <span>Register Now</span>
+//         </button>
+//       );
+//     case "Conference Phase":
+//       return (
+//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
+//           <span>View Schedule</span>
+//         </button>
+//       );
+//     default:
+//       return null;
+//   }
+// }
 
 export default CountdownTimer;

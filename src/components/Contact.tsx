@@ -9,6 +9,8 @@ import {
   X,
   User,
 } from "lucide-react";
+import SmartEmailButton from "@/components/SmartEmailButton";
+
 
 const contactMethods = [
   {
@@ -150,7 +152,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24">
+    <div className="bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -186,6 +188,9 @@ export default function Contact() {
               onMouseEnter={() => setHoveredMethod(method.name)}
               onMouseLeave={() => setHoveredMethod(null)}
             >
+              {method.name === "Email" ? (
+                <SmartEmailButton />
+              ) : (
               <button
                 onClick={() =>
                   handleContactMethodClick(method.name, method.href)
@@ -210,6 +215,7 @@ export default function Contact() {
                   <ExternalLink className={`w-4 h-4 ml-1 ${method.color}`} />
                 </div>
               </button>
+              )}
             </motion.div>
           ))}
         </motion.div>

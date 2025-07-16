@@ -1,8 +1,9 @@
 import {
+  ShieldCheck,
   FileText,
-  Image,
-  ActivityIcon as Function,
-  ArrowRight,
+  BookOpen,
+  FileLock,
+  ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
 import type React from "react";
@@ -17,22 +18,28 @@ interface GuidelineCard {
 export default function GuidelinesContent() {
   const guidelines: GuidelineCard[] = [
     {
-      title: "Abstract Template",
-      icon: FileText,
+      title: "Proceedings Peer Review Policy",
+      icon: ShieldCheck,
       date: "17/04/2025",
-      href: "https://docs.google.com/document/d/1ic43K8LuKlkhM8Uajchf9OVvVBwzfMkq/edit?tab=t.0",
+      href: "https://publishingsupport.iopscience.iop.org/questions/proceedings-peer-review-policy/",
     },
     {
-      title: "Figures and tables",
-      icon: Image,
+      title: "IOP Conference Publication Procedure",
+      icon: FileText,
       date: "Coming Soon",
-      href: "/guidelines/figures",
+      href: "https://publishingsupport.iopscience.iop.org/questions/iop-conference-series-publication-procedure/",
     },
     {
-      title: "Equations and mathematics",
-      icon: Function,
+      title: "Author Guideline for Conference",
+      icon: BookOpen,
       date: "Coming Soon",
-      href: "/guidelines/equations",
+      href: "https://publishingsupport.iopscience.iop.org/author-guidelines-for-conference-proceedings/",
+    },
+    {
+      title: "Terms of Use",
+      icon: FileLock,
+      date: "Coming Soon",
+      href: "https://www.morressier.com/terms",
     },
   ];
 
@@ -45,7 +52,7 @@ export default function GuidelinesContent() {
         className="text-center mb-8 sm:mb-12"
       >
         <h1 className="text-3xl sm:text-4xl font-bold text-navy-900 mb-4 sm:mb-6">
-          Guidelines for Author(s)
+          Guideline(s)
         </h1>
         <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto">
           Type of Articles: Research article includes original research paper in
@@ -55,7 +62,7 @@ export default function GuidelinesContent() {
         </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {guidelines.map((guide, index) => {
           const Icon = guide.icon;
           return (
@@ -64,41 +71,36 @@ export default function GuidelinesContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col"
             >
-              {/* Date Badge */}
-              <div className="animate-pulse absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
-                POSTED : {guide.date}
-              </div>
+              {/* Kontainer isi dengan flex-col agar tombol bisa turun ke bawah */}
+              <div className="flex flex-col justify-between h-full px-6 py-10">
+                <div>
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
+                    <Icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
 
-              <div className="p-6 pt-16">
-                {/* Icon */}
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
-                  <Icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6 group-hover:text-blue-600 transition-colors duration-300">
+                    {guide.title}
+                  </h3>
                 </div>
 
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                  {guide.title}
-                </h3>
-
-                {/* Button */}
+                {/* Tombol di bawah */}
                 <a
                   href={guide.href}
-                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-amber-400 text-amber-900 rounded-lg font-medium hover:bg-blue-400 transition-colors duration-300 group/btn opacity-50"
+                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors duration-300 group/btn mt-auto"
                 >
-                  <span className="group-hover:text-white">Download File</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 group-hover:bg-white transition-transform duration-300" />
+                  <span className="group-hover:text-white">View File</span>
+                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
                 </a>
               </div>
-
-              {/* Decorative Elements */}
-              {/* <div className="absolute inset-0 border-2 border-transparent hover:border-blue-600 rounded-xl transition-colors duration-300 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300 pointer-events-none" /> */}
             </motion.div>
           );
         })}
       </div>
+
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

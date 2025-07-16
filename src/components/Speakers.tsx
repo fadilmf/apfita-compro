@@ -29,12 +29,13 @@ interface Speaker {
   researchAreas?: string[];
 }
 
-const images = import.meta.glob("/src/assets/*.jpg", { eager: true }) as Record<
-  string,
-  { default: string }
->;
+const images = import.meta.glob("/src/assets/**/*.{jpg,jpeg,png}", {
+  eager: true,
+}) as Record<string, { default: string }>;
+
 
 const speakers: Speaker[] = [
+  // Opening Speaker
   {
     name: "Prof. Dr. Arif Satria, S.P., M.Si.",
     title: "Rector",
@@ -56,13 +57,14 @@ const speakers: Speaker[] = [
       "Rural Development",
     ],
   },
+  // Honorary Speaker
   {
     name: "Prof. Dr. Ir. Rachmat Pambudy, M.S.",
     title: "Minister of National Development Planning",
     organization: "Republic of Indonesia",
     image: images["/src/assets/honorspik1.jpg"].default,
     category: "honorary",
-    confirmed: false,
+    confirmed: true,
     bio: "Prof. Dr. Ir. Rachmat Pambudy is a prominent figure in Indonesia's development planning. His expertise spans economic policy, agricultural development, and sustainable resource management.",
     scholarUrl:
       "https://scholar.google.co.id/citations?user=8xDl2ikAAAAJ&hl=en",
@@ -84,7 +86,7 @@ const speakers: Speaker[] = [
     organization: "Republic of Indonesia",
     image: images["/src/assets/honorspik2.jpg"].default,
     category: "honorary",
-    confirmed: false,
+    confirmed: true,
     bio: "Dr. Ir. H. Andi Amran Sulaiman has been instrumental in transforming Indonesia's agricultural sector. His leadership has focused on increasing productivity, improving farmer welfare, and enhancing food security.",
     scholarUrl: "https://scholar.google.com/citations?user=XSirOL8AAAAJ&hl=en",
     achievements: [
@@ -105,7 +107,7 @@ const speakers: Speaker[] = [
     organization: "Republic of Indonesia",
     image: images["/src/assets/honorspik3.jpg"].default,
     category: "honorary",
-    confirmed: false,
+    confirmed: true,
     bio: "Ir. Sakti Wahyu Trenggono has been at the forefront of developing Indonesia's maritime and fisheries sector. His work focuses on sustainable fishing practices, marine conservation, and coastal community development.",
     scholarUrl: "https://id.wikipedia.org/wiki/Sakti_Wahyu_Trenggono",
     achievements: [
@@ -121,33 +123,12 @@ const speakers: Speaker[] = [
     ],
   },
   {
-    name: "Dr. Hanif Faisol Nurofiq, S.Hut., M.P.",
-    title: "Minister of the Environment",
-    organization: "Republic of Indonesia",
-    image: images["/src/assets/honorspik4.jpg"].default,
-    category: "honorary",
-    confirmed: false,
-    bio: "Dr. Hanif Faisol Nurofiq is dedicated to environmental conservation and sustainable development in Indonesia. His work addresses climate change, forest preservation, and environmental policy.",
-    scholarUrl: "https://en.wikipedia.org/wiki/Hanif_Faisol_Nurofiq",
-    achievements: [
-      "Architect of Indonesia's climate change adaptation strategy",
-      "Led major reforestation initiatives across the archipelago",
-      "Represented Indonesia in multiple international climate forums",
-    ],
-    researchAreas: [
-      "Environmental Policy",
-      "Climate Change",
-      "Forest Conservation",
-      "Sustainable Development",
-    ],
-  },
-  {
     name: "Arief Prasetyo Adi, S.T., M.T., Ph.D. (h.c)",
     title: "Head",
     organization: "Indonesian National Food Agency",
     image: images["/src/assets/honorspik5.jpg"].default,
     category: "honorary",
-    confirmed: false,
+    confirmed: true,
     bio: "Arief Prasetyo Adi leads Indonesia's National Food Agency, focusing on food security, nutrition, and agricultural innovation. His work has been crucial in addressing food challenges across the nation.",
     scholarUrl: "https://ariefprasetyoadi.com/about-me/",
     achievements: [
@@ -166,9 +147,9 @@ const speakers: Speaker[] = [
     name: "Prof. Dr. Ir. Dadan Hindayana",
     title: "Head",
     organization: "National Nutrition Agency",
-    image: images["/src/assets/honorspik6.jpg"].default,
+    image: images["/src/assets/speakers/profdadan.jpg"].default,
     category: "honorary",
-    confirmed: false,
+    confirmed: true,
     bio: "Prof. Dr. Ir. Dadan Hindayana is an expert in nutrition and public health. His work at the National Nutrition Agency focuses on improving nutritional outcomes across Indonesia, particularly for vulnerable populations.",
     scholarUrl: "https://scholar.google.com/citations?user=DE142rUAAAAJ&hl=en",
     achievements: [
@@ -183,6 +164,39 @@ const speakers: Speaker[] = [
       "Nutrition Policy",
     ],
   },
+  {
+    name: "Prof. Brian Yuliarto, S.T., M.Eng., Ph.D.",
+    title: "Director General of Higher Education, Research and Technology",
+    organization: "Ministry of Education, Culture, Research and Technology, Republic of Indonesia",
+    image: images["/src/assets/speakers/ProfBrian.jpg"].default,
+    category: "honorary",
+    confirmed: true,
+    bio: "",
+    scholarUrl: "",
+    achievements: [
+      ""
+    ],
+    researchAreas: [
+      ""
+    ],
+  },
+  {
+    name: "Diaz Hendrapriyono, B.Sc., M.A.,M.B.A., M.P.A.",
+    title: "Head",
+    organization: "BAKTI, Ministry of Communication and Information Technology, Republic of Indonesia",
+    image: images["/src/assets/speakers/Diaz_Hendropiyono.png"].default,
+    category: "honorary",
+    confirmed: true,
+    bio: "",
+    scholarUrl: "",
+    achievements: [
+      ""
+    ],
+    researchAreas: [
+      ""
+    ],
+  },
+  // Prominent Speaker
   {
     name: "Prof. Dan A lancu",
     title: "Professor of Operations, Information and Technology",
@@ -369,6 +383,22 @@ const speakers: Speaker[] = [
       "Agricultural Robotics",
       "Artificial Intelligence",
       "Digital Agriculture",
+    ],
+  },
+  {
+    name: "Prof. Dr. Ir. Herry Suhardiyanto, M.Sc.",
+    title: "Chairman",
+    organization: "Badan Supervisi Bank Indonesia (BSBI)",
+    image: images["/src/assets/speakers/ProfHerry.jpg"].default,
+    category: "prominent",
+    confirmed: true,
+    bio: "",
+    scholarUrl: "",
+    achievements: [
+      ""
+    ],
+    researchAreas: [
+      ""
     ],
   },
 ];
@@ -593,11 +623,11 @@ const SpeakerCard: React.FC<{
               >
                 {speaker.organization}
               </p>
-              {speaker.category === "honorary" && !speaker.confirmed && (
+              {/* {speaker.category === "honorary" && !speaker.confirmed && (
                 <p className="text-amber-300 text-sm mt-2 font-medium">
                   To be confirmed
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         </div>

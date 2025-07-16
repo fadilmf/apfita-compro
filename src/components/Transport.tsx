@@ -126,7 +126,7 @@ const airports: Airport[] = [
 
 export default function Transport() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-20">
+    <section id="how-to-reach" className="bg-gradient-to-br from-blue-50 to-green-50 py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -284,6 +284,6 @@ export default function Transport() {
           </ul>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

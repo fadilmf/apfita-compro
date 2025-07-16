@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import f1 from "/src/assets/priv/ss.jpg";
 import f2 from "/src/assets/priv/ssss.jpg";

@@ -1,19 +1,45 @@
-"use client";
-
+// "use client";
 import type React from "react";
+import { useNavigate } from "react-router-dom";
+import { 
+  useState, 
+  useRef, 
+  useEffect
 
-import { useState } from "react";
+} from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileSidebar from "@/components/MobileSidebar";
 
 const Navbar: React.FC = () => {
-  const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+  // const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  // Tutup dropdown saat klik di luar area
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Function untuk force reload ke halaman tujuan
-  const handleNavigation = (path: string): void => {
-    window.location.href = path;
+  const handleNavigation = (path: string) => {
+    setDropdownOpen(false); // tutup dropdown dulu
+    navigate(path); // atau window.location.href = path
   };
+
 
   // Define which nav items should have notification dots
   const itemsWithNotifications = [
@@ -36,7 +62,7 @@ const Navbar: React.FC = () => {
           </button>
 
           {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
+          <div className="hidden lg:flex space-x-6 text-gray-700 font-medium">
             {[
               { label: "HOME", path: "/" },
               { label: "CONFERENCE", path: "/conference" },
@@ -59,7 +85,7 @@ const Navbar: React.FC = () => {
             ))}
 
             {/* Dropdown MORE */}
-            <div className="relative">
+            <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!isDropdownOpen)}
                 className="flex items-center space-x-1 hover:text-blue-600 transition"
@@ -78,8 +104,8 @@ const Navbar: React.FC = () => {
                 <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-1">
                   {[
                     { label: "VENUE", path: "/venue" },
+                    { label: "BOARD MEMBERS", path: "/board-members" },
                     { label: "COMMITTEES", path: "/committees" },
-                    { label: "DOWNLOAD", path: "/download" },
                   ].map(({ label, path }) => (
                     <button
                       key={path}
@@ -109,7 +135,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6 text-gray-600" />

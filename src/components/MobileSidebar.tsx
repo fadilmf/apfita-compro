@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import type React from "react";
 
@@ -12,8 +12,9 @@ import {
   Send,
   Building2,
   Users,
-  Download,
+  // Download,
   Phone,
+  UsersRound,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -59,8 +60,8 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
 
   const moreItems = [
     { path: "/venue", label: "VENUE", icon: Building2 },
+    { path: "/board-members", label: "BOARD MEMBERS", icon: UsersRound },
     { path: "/committees", label: "COMMITTEES", icon: Users },
-    { path: "/download", label: "DOWNLOAD", icon: Download },
   ];
 
   // Function to handle navigation
@@ -79,7 +80,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black z-[998] md:hidden"
+            className="fixed inset-0 bg-black z-[998] lg:hidden"
           />
 
           {/* Sidebar */}
@@ -88,7 +89,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate="open"
             exit="closed"
             variants={sidebarVariants}
-            className="fixed top-0 left-0 h-full w-80 bg-white bg-opacity-100 backdrop-blur-none shadow-2xl z-[999] md:hidden"
+            className="fixed top-0 left-0 h-full w-80 bg-white bg-opacity-100 backdrop-blur-none shadow-2xl z-[999] lg:hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b">

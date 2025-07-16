@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { User, Users, Globe, Building2 } from "lucide-react";
+import { User, Users, 
+  // Globe, 
+  // Building2 
+} from "lucide-react";
 
 interface Reviewer {
   name: string;
@@ -87,19 +90,19 @@ const reviewers: Reviewer[] = [
   },
 ];
 
-const getFlagUrl = (countryCode: string) =>
-  `https://flagcdn.com/${countryCode.toLowerCase()}.svg`;
+// const getFlagUrl = (countryCode: string) =>
+//   `https://flagcdn.com/${countryCode.toLowerCase()}.svg`;
 
 export default function Reviewers() {
   // Group reviewers by country
-  const reviewersByCountry = reviewers.reduce((acc, reviewer) => {
-    const country = reviewer.country;
-    if (!acc[country]) {
-      acc[country] = [];
-    }
-    acc[country].push(reviewer);
-    return acc;
-  }, {} as Record<string, Reviewer[]>);
+  // const reviewersByCountry = reviewers.reduce((acc, reviewer) => {
+  //   const country = reviewer.country;
+  //   if (!acc[country]) {
+  //     acc[country] = [];
+  //   }
+  //   acc[country].push(reviewer);
+  //   return acc;
+  // }, {} as Record<string, Reviewer[]>);
 
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
@@ -124,9 +127,9 @@ export default function Reviewers() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 gap-6 mb-12"
           >
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-white rounded-xl p-6 space-y-4 shadow-lg">
               <div className="flex items-center gap-4">
                 <Users className="w-8 h-8 text-blue-950" />
                 <div>
@@ -136,8 +139,43 @@ export default function Reviewers() {
                   <div className="text-sm text-gray-600">Total Reviewers</div>
                 </div>
               </div>
+              <hr className="h-1 w-full bg-blue-800"></hr>
+              {/* Reviewer Grid */}
+          <div className="p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {reviewers.map((reviewer, index) => (
+                <motion.div
+                  key={`${reviewer.name}-${index}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.03 }}
+                  className="flex items-start gap-3"
+                >
+                  <User className="w-5 h-5 text-blue-600 mt-1" />
+                  <div>
+                    <div className="font-medium text-gray-900">{reviewer.name}</div>
+
+                    {reviewer.institution && (
+                      <div className="text-sm text-gray-500">
+                        {reviewer.institution}
+                      </div>
+                    )}
+
+                    <div className="mt-1 flex items-center gap-2 text-xs text-gray-500">
+                      {/* <img
+                        src={getFlagUrl(reviewer.countryCode)}
+                        alt={`${reviewer.country} flag`}
+                        className="w-5 h-3 object-cover rounded shadow-sm"
+                      /> */}
+                      <span>{reviewer.country}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+          </div>
+            </div>
+            {/* <div className="bg-white rounded-xl p-6 shadow-lg">
               <div className="flex items-center gap-4">
                 <Globe className="w-8 h-8 text-blue-950" />
                 <div>
@@ -158,11 +196,10 @@ export default function Reviewers() {
                   <div className="text-sm text-gray-600">Institutions</div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </div> */}
 
           {/* Country Flags Overview */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -190,10 +227,21 @@ export default function Reviewers() {
                 </div>
               ))}
             </div>
+          </motion.div> */}
+          {/* Header */}
+          {/* <div className="bg-blue-950 text-white px-6 py-4">
+            <h3 className="text-lg font-semibold">Reviewers</h3>
+            <p className="text-sm text-blue-200">
+              Total: {reviewers.length} reviewers
+            </p>
+          </div> */}
+
+          
           </motion.div>
 
+
           {/* Reviewers List */}
-          <div className="space-y-8">
+          {/* <div className="space-y-8">
             {Object.entries(reviewersByCountry).map(
               ([country, countryReviewers], countryIndex) => (
                 <motion.div
@@ -247,7 +295,7 @@ export default function Reviewers() {
                 </motion.div>
               )
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

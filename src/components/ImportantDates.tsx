@@ -1,10 +1,9 @@
-"use client";
-
 import type React from "react";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import Countdown from "@/components/CountdownTimer";
 import {
   Calendar,
   FileText,
@@ -91,10 +90,11 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="py-20 bg-white relative overflow-hidden">
-      <h2 className="text-4xl font-bold text-center mb-16 text-blue-600">
-        IMPORTANT DATES
-      </h2>
+    <div ref={containerRef} className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+      <h1 className="text-4xl font-bold text-center mb-16 text-navy-900">
+        Important Dates
+      </h1>
+      <Countdown />
       <div className="w-full max-w-6xl mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {dates.map((entry, index) => (
           <div

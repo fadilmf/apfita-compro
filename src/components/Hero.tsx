@@ -1,14 +1,12 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Announcement from "@/components/Announcement";
 
-import logoConf from "/src/assets/logo_conf.png";
-import logoBrain from "/src/assets/logo_brain.png";
-import logoUtama from "/src/assets/logo_utama.png";
-import logoIPB from "/src/assets/logo_ipb.png";
-import logoFW from "/src/assets/logo_FW.png";
+import logoConf from "/src/assets/logo/logo_conf.png";
+import logoBrain from "/src/assets/logo/logo_brain.png";
+import logoUtama from "/src/assets/logo/logo_utama.png";
+import logoIPB from "/src/assets/logo/logo_ipb.png";
+import logoForumPasca from "/src/assets/logo/forum_pasca-ipb.png";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -66,7 +64,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-12 overflow-hidden pt-16 sm:pt-20"
+      className="relative lg:max-h-screen flex flex-col items-center justify-center px-4 py-12 overflow-hidden pt-16 sm:pt-20"
     >
       {/* Background Image */}
       <div
@@ -85,24 +83,24 @@ export default function Hero() {
       {/* Logos Section */}
       <div
         ref={logosRef}
-        className="w-full max-w-4xl bg-white/90 rounded-3xl shadow-lg p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10 z-10"
+        className="w-max lg:w-full max-w-xl bg-white/90 rounded-3xl shadow-lg py-6 px-10 sm:p-8 md:p-10 flex flex-col items-center justify-center mt-10 mb-10 z-10"
       >
         <div className="flex flex-col items-center justify-center gap-8">
           {/* Main Logo */}
           <img
             src={logoUtama || "/placeholder.svg"}
             alt="Utama Logo"
-            className="w-48 sm:w-56 md:w-80 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
+            className="w-32 sm:w-40 md:w-48 h-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-105"
           />
 
           {/* Other Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-center">
-            {[logoIPB, logoBrain, logoFW, logoConf].map((logo, index) => (
+            {[logoIPB, logoBrain, logoForumPasca, logoConf].map((logo, index) => (
               <img
                 key={index}
                 src={logo || "/placeholder.svg"}
                 alt={`Logo ${index + 1}`}
-                className="w-20 sm:w-24 md:w-28 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
+                className="w-12 sm:w-16 md:w-20 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
               />
             ))}
           </div>
@@ -123,7 +121,7 @@ export default function Hero() {
         {/* Subtitle */}
         <div
           ref={subtitleRef}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-6 leading-relaxed text-center max-w-4xl"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-6 leading-relaxed text-center max-w-4xl text-balance"
         >
           The 15th International Conference of Asia-Pacific Federation for
           Information Technology in Agriculture
@@ -132,7 +130,7 @@ export default function Hero() {
         {/* Theme */}
         <div
           ref={themeRef}
-          className="w-full text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold mb-12 px-4 text-center max-w-5xl"
+          className="w-full text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold mb-12 px-4 text-center max-w-5xl text-balance"
         >
           "Innovative Digital Technology for Global and Sustainable
           Agro-Maritime Industry"

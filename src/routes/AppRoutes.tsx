@@ -6,11 +6,12 @@ import TimeSchedule from "@/pages/TimeSchedule";
 import Venue from "@/pages/Venue";
 import Submissions from "@/pages/Submissions";
 import Committees from "@/pages/Committees";
-import Download from "@/pages/DownloadFile";
+// import Download from "@/pages/DownloadFile";
 import Congrats from "@/pages/Congrats";
 import ContactUs from "@/pages/ContactUs";
 import NotFound from "@/pages/NotFound"; // Import halaman 404
-import ConferencePrice from "@/pages/GuideLines";
+import ConferencePrice from "@/pages/Pricing";
+import BoardMembers from "@/pages/BoardMembers";
 
 const AppRoutes = () => (
   <Routes>
@@ -21,7 +22,7 @@ const AppRoutes = () => (
     <Route path="/regfee" element={<ConferencePrice />} />
     <Route path="/venue" element={<Venue />} />
     <Route path="/committees" element={<Committees />} />
-    <Route path="/download" element={<Download />} />
+    <Route path="/board-members" element={<BoardMembers />} />
     <Route path="/contact" element={<ContactUs />} />
     <Route path="/selamat-ya-mas-pian" element={<Congrats />} />
     <Route path="*" element={<NotFound />} />

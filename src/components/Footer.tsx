@@ -1,10 +1,8 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
 
-import image from "../assets/logo_brain.png";
-import logo from "../assets/logo_conf.png";
+import image from "../assets/logo/logo_brain.png";
+import logo from "../assets/logo/logo_conf.png";
 import logoTelU from "/src/assets/Logo Tel U.png";
 import logoKementan from "/src/assets/Logo Kementan.png";
 import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
@@ -29,11 +27,11 @@ export default function Footer() {
     { name: "Home", href: "/" },
     { name: "Conference", href: "/conference" },
     { name: "Time Schedule", href: "/time-schedule" },
-    { name: "Guidelines", href: "/guidelines" },
+    { name: "Registration Fee", href: "/regfee" },
     { name: "Submissions", href: "/submissions" },
     { name: "Venue", href: "/venue" },
+    { name: "Board Members", href: "/board-members" },
     { name: "Committees", href: "/committees" },
-    { name: "Download", href: "/download" },
     { name: "Contact Us", href: "/contact" },
   ];
 

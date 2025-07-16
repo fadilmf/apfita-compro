@@ -1,24 +1,11 @@
-// import Endorsement from "@/components/Endorsement";
-// ... rest of your code
-import Navbar from "@/components/Navbar";
 // import Comingsoon from "@/components/ComingSoon";
 import Header from "@/components/Header";
 // import Download from "@/components/Download";
-import GuideLinesContent from "@/components/GuideLinesContent";
-
-// import Sponsors from "@/components/Sponsors";
 
 const DownloadFile = () => {
   return (
     <>
       <Header />
-      <Navbar />
-      {/* <div className="min-h-screen bg-gray-50">
-        <Download />
-      </div> */}
-      <div className="min-h-screen bg-white">
-        <GuideLinesContent />
-      </div>
       {/* <Endorsement /> */}
 
       {/* Important Dates */}

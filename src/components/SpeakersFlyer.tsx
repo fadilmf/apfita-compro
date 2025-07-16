@@ -9,11 +9,12 @@ import {
   Send,
 } from "lucide-react";
 import { useState } from "react";
+import SpeakersPoster from "@/assets/SpeakersofAPFITA2025.png"
 
 const handleDownload = () => {
   const link = document.createElement("a");
-  link.href = "/src/assets/SpeakersofAPFITA2025.jpeg";
-  link.download = "speakers_list.jpeg";
+  link.href = SpeakersPoster;
+  link.download = "SpeakersofAPFITA2025.png";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -65,7 +66,7 @@ const SpeakersFlyer: React.FC = () => {
             List of Speakers
           </h2>
           <p className="text-sm text-gray-600">
-            Download or share the complete list of speakers for APFITA 2025
+            Download or share the final poster of APFITA 2025 speakers
           </p>
         </motion.div>
 
@@ -76,7 +77,7 @@ const SpeakersFlyer: React.FC = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Download className="w-4 h-4" /> Download List
+            <Download className="w-4 h-4" /> Download Poster
           </motion.button>
 
           <motion.div className="relative">

@@ -1,98 +1,129 @@
 import { useState } from "react";
-import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import {
+  Users,
+  Calendar,
+  // Clock,
+  Coffee,
+  Star,
+  Mic,
+  MapPin,
+  CornerDownRight,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { schedule } from "@/data/schedule";
 
-interface AgendaItem {
-  title: string;
-  type?: "break" | "session" | "special";
-  speaker?: string;
-}
+const typeStyles: Record<string, string> = {
+  session: "bg-white border-gray-200",
+  break: "bg-orange-50 border-orange-200",
+  special: "bg-blue-50 border-blue-200",
+  tour: "bg-green-50 border-green-200",
+};
 
-interface DaySchedule {
-  title: string;
-  date: string;
-  agenda: AgendaItem[];
-}
+const iconMap: Record<string, JSX.Element> = {
+  session: <Mic className="w-5 h-5 text-blue-600" />,
+  break: <Coffee className="w-5 h-5 text-orange-500" />,
+  special: <Star className="w-5 h-5 text-yellow-500" />,
+  tour: <MapPin className="w-5 h-5 text-green-600" />,
+};
+
+const typeLabels: Record<string, { label: string; icon: JSX.Element }> = {
+  session: { label: "Presentation/Session", icon: iconMap.session },
+  break: { label: "Break / Coffee", icon: iconMap.break },
+  special: { label: "Special Program", icon: iconMap.special },
+  tour: { label: "Tour Activity", icon: iconMap.tour },
+};
+
+// interface AgendaItem {
+//   title: string;
+//   type?: "break" | "session" | "special";
+//   speaker?: string;
+// }
+
+// interface DaySchedule {
+//   title: string;
+//   date: string;
+//   agenda: AgendaItem[];
+// }
 
 export default function TimeScheduleContent() {
   const [activeDay, setActiveDay] = useState(0);
 
-  const schedule: DaySchedule[] = [
-    {
-      title: "Day One",
-      date: "Monday, November 17, 2025",
-      agenda: [
-        { title: "Registration" },
-        { title: "Indonesia National Anthem", type: "special" },
-        {
-          title: "Greeting Address: Chairman Steering Committee",
-          type: "special",
-        },
-        {
-          title: "Opening Speech: Rector of IPB University Indonesia",
-          type: "special",
-        },
-        { title: "Photo session, Coffee Break", type: "break" },
-        { title: "Keynote Speaker", type: "session" },
-        { title: "Invited Speaker", type: "session" },
-        { title: "Minister of Agriculture", speaker: "TBC", type: "session" },
-        {
-          title: "Head of National Nutrition Agency",
-          speaker: "TBC",
-          type: "session",
-        },
-        {
-          title: "Head of National Food Agency",
-          speaker: "TBC",
-          type: "session",
-        },
-        { title: "from APFITA", type: "session" },
-        { title: "Lunch Break", type: "break" },
-        { title: "Parallel Session", type: "session" },
-        { title: "Break", type: "break" },
-        { title: "Gala Dinner", type: "special" },
-      ],
-    },
-    {
-      title: "Day Two",
-      date: "Tuesday, November 18, 2025",
-      agenda: [
-        { title: "Registration" },
-        { title: "Opening", type: "special" },
-        { title: "Keynote Speech", type: "session" },
-        {
-          title: "Invited Speaker (schedule subject to change)",
-          type: "session",
-        },
-        {
-          title: "Minister of National Development Planning/BPN Head",
-          type: "session",
-        },
-        { title: "Minister of Environment", type: "session" },
-        { title: "Minister of Marine Affairs and Fisheries", type: "session" },
-        {
-          title: "from APFITA and Universities from Home and Abroad",
-          type: "session",
-        },
-        { title: "Break", type: "break" },
-        { title: "Board Meeting", type: "session" },
-        { title: "Lunch Break", type: "break" },
-        { title: "Parallel Sessions", type: "session" },
-        { title: "Break", type: "break" },
-        { title: "Best Paper Award APFITA 2025", type: "special" },
-        { title: "Closing Addressed by BRAIN IPB University", type: "special" },
-        { title: "Closing Remarks", type: "special" },
-      ],
-    },
-    {
-      title: "Day Three",
-      date: "Wednesday, November 19, 2025",
-      agenda: [
-        { title: "Registration" },
-        { title: "Technical Tour", type: "special" },
-      ],
-    },
-  ];
+  // const schedule: DaySchedule[] = [
+  //   {
+  //     title: "Day One",
+  //     date: "Monday, November 17, 2025",
+  //     agenda: [
+  //       { title: "Registration" },
+  //       { title: "Indonesia National Anthem", type: "special" },
+  //       {
+  //         title: "Greeting Address: Chairman Steering Committee",
+  //         type: "special",
+  //       },
+  //       {
+  //         title: "Opening Speech: Rector of IPB University Indonesia",
+  //         type: "special",
+  //       },
+  //       { title: "Photo session, Coffee Break", type: "break" },
+  //       { title: "Keynote Speaker", type: "session" },
+  //       { title: "Invited Speaker", type: "session" },
+  //       { title: "Minister of Agriculture", speaker: "TBC", type: "session" },
+  //       {
+  //         title: "Head of National Nutrition Agency",
+  //         speaker: "TBC",
+  //         type: "session",
+  //       },
+  //       {
+  //         title: "Head of National Food Agency",
+  //         speaker: "TBC",
+  //         type: "session",
+  //       },
+  //       { title: "from APFITA", type: "session" },
+  //       { title: "Lunch Break", type: "break" },
+  //       { title: "Parallel Session", type: "session" },
+  //       { title: "Break", type: "break" },
+  //       { title: "Gala Dinner", type: "special" },
+  //     ],
+  //   },
+  //   {
+  //     title: "Day Two",
+  //     date: "Tuesday, November 18, 2025",
+  //     agenda: [
+  //       { title: "Registration" },
+  //       { title: "Opening", type: "special" },
+  //       { title: "Keynote Speech", type: "session" },
+  //       {
+  //         title: "Invited Speaker (schedule subject to change)",
+  //         type: "session",
+  //       },
+  //       {
+  //         title: "Minister of National Development Planning/BPN Head",
+  //         type: "session",
+  //       },
+  //       { title: "Minister of Environment", type: "session" },
+  //       { title: "Minister of Marine Affairs and Fisheries", type: "session" },
+  //       {
+  //         title: "from APFITA and Universities from Home and Abroad",
+  //         type: "session",
+  //       },
+  //       { title: "Break", type: "break" },
+  //       { title: "Board Meeting", type: "session" },
+  //       { title: "Lunch Break", type: "break" },
+  //       { title: "Parallel Sessions", type: "session" },
+  //       { title: "Break", type: "break" },
+  //       { title: "Best Paper Award APFITA 2025", type: "special" },
+  //       { title: "Closing Addressed by BRAIN IPB University", type: "special" },
+  //       { title: "Closing Remarks", type: "special" },
+  //     ],
+  //   },
+  //   {
+  //     title: "Day Three",
+  //     date: "Wednesday, November 19, 2025",
+  //     agenda: [
+  //       { title: "Registration" },
+  //       { title: "Technical Tour", type: "special" },
+  //     ],
+  //   },
+  // ];
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
@@ -112,11 +143,11 @@ export default function TimeScheduleContent() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-blue-600" />
-              <span>On-site</span>
+              <span>IPB Convention Center, Bogor, Indonesia</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-blue-600" />
-              <span>Mode of Conduct: On-site</span>
+              <span>On-site</span>
             </div>
           </div>
         </div>
@@ -142,6 +173,16 @@ export default function TimeScheduleContent() {
 
       {/* Schedule Content */}
       <div className="bg-white rounded-xl shadow-lg border p-6">
+        {/* Legend */}
+        <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
+          {Object.entries(typeLabels).map(([key, { icon, label }]) => (
+            <div key={key} className="flex items-center gap-2">
+              <span>{icon}</span>
+              <span className="text-sm text-gray-600">{label}</span>
+            </div>
+          ))}
+        </div>
+
         <AnimatePresence mode="wait">
           <motion.div
             key={activeDay}
@@ -158,36 +199,75 @@ export default function TimeScheduleContent() {
             </div>
 
             <div className="space-y-4">
-              {schedule[activeDay].agenda.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex gap-4 p-4 rounded-lg border ${
-                    item.type === "break"
-                      ? "bg-orange-50 border-orange-200"
-                      : item.type === "special"
-                      ? "bg-blue-50 border-blue-200"
-                      : "bg-white border-gray-200"
-                  }`}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-sm border">
-                    <Clock className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">{item.title}</h3>
-                    {item.speaker && (
-                      <p className="text-sm text-gray-500 mt-1">
-                        {item.speaker}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+              {schedule[activeDay].agenda.map((item, index) => {
+                const style = typeStyles[item.type ?? "session"];
+                const icon = iconMap[item.type ?? "session"] ?? (
+                  <Calendar className="w-5 h-5 text-blue-600" />
+                );
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`px-4 py-3 rounded-xl border ${style}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      {/* Icon */}
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-sm border">
+                        {icon}
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 self-center space-y-1">
+                        <div className="flex justify-between items-start flex-wrap gap-2">
+                          <h3 className="font-semibold text-gray-900">
+                            {item.title}
+                          </h3>
+                          {item.time && (
+                            <span className="text-sm text-gray-500">
+                              {item.time}
+                            </span>
+                          )}
+                        </div>
+
+                        {item.location && (
+                          <p className="text-sm text-gray-500">
+                            Location: {item.location}
+                          </p>
+                        )}
+                        {item.speaker && (
+                          <p className="text-sm text-gray-500">
+                            Speaker: {item.speaker}
+                          </p>
+                        )}
+
+                        {/* Sub-items */}
+                        {item.subItems && item.subItems.length > 0 && (
+                          <div className="mt-2 space-y-2">
+                            {item.subItems.map((sub, i) => (
+                              <div
+                                key={i}
+                                className="flex items-start gap-2 bg-gray-50 border border-gray-200 rounded-md px-3 py-2"
+                              >
+                                <CornerDownRight className="w-4 h-4 text-blue-500 mt-1" />
+                                <span className="text-sm text-gray-700">
+                                  {sub.title}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </AnimatePresence>
+
       </div>
 
       <div className="mt-6 text-center text-sm text-gray-500">
@@ -197,3 +277,6 @@ export default function TimeScheduleContent() {
     </div>
   );
 }
+
+
+
