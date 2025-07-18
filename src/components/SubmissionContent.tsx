@@ -53,7 +53,9 @@ export default function SubmissionsContent() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Submissions</h1>
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
+            Submissions
+          </h1>
           <div className="max-w-5xl mx-auto">
             <p className="text-lg text-gray-600 leading-relaxed">
               Authors with manuscripts accepted for presentation at the 15
@@ -67,14 +69,13 @@ export default function SubmissionsContent() {
 
         {/* Tab Navigation */}
         <div className="flex justify-center gap-4 mb-12">
-          {["guideline", "submission", "template"].map(
-            (tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                }}
-                className={`
+          {["guideline", "submission", "template"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActiveTab(tab);
+              }}
+              className={`
                 px-8 py-3 rounded-full text-sm font-medium
                 transition-all duration-300 transform
                 ${
@@ -83,30 +84,35 @@ export default function SubmissionsContent() {
                     : "bg-white text-blue-800 ring-1 ring-blue-800 hover:ring-0 hover:bg-blue-50 hover:scale-105"
                 }
               `}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                {tab === "submission" && (
-                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse">
-                    <span className="sr-only">New notification</span>
-                  </span>
-                )}
-              </button>
-            )
-          )}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "submission" && (
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse">
+                  <span className="sr-only">New notification</span>
+                </span>
+              )}
+            </button>
+          ))}
         </div>
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
           {activeTab === "guideline" && (
             <TabContent>
-              <div id="guideline" className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl">
+              <div
+                id="guideline"
+                className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl"
+              >
                 <GuidelinesContent />
               </div>
             </TabContent>
           )}
           {activeTab === "template" && (
             <TabContent>
-              <div id="template" className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl">
+              <div
+                id="template"
+                className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl"
+              >
                 <SubmissionTemplateContent />
               </div>
             </TabContent>
@@ -154,7 +160,9 @@ export default function SubmissionsContent() {
                         <p className="text-gray-600 text-sm">
                           <b>Deadline July 30,2025</b>
                           <br></br>
-                          Submit your abstract (250-300 words) according to the categories listed above. Include title, authors, affiliations, and keywords.
+                          Submit your abstract (250-300 words) according to the
+                          categories listed above. Include title, authors,
+                          affiliations, and keywords.
                         </p>
                       </div>
                     </div>
@@ -176,11 +184,14 @@ export default function SubmissionsContent() {
                         <p className="text-gray-500 text-sm">
                           <b>Deadline September 30, 2025</b>
                           <br></br>
-                          After abstract acceptance, especially for authors who wish to present and publish, you will be invited to submit your full paper using the IOP template. Details will be provided to authors with accepted abstracts.
+                          After abstract acceptance, especially for authors who
+                          wish to present and publish, you will be invited to
+                          submit your full paper using the IOP template. Details
+                          will be provided to authors with accepted abstracts.
                         </p>
                       </div>
                     </div>
-                    
+
                     {/* Phase 3: Payment Required */}
                     <div className="border-l-4 border-gray-300 pl-4">
                       <div className="flex items-center gap-2 mb-3">
@@ -196,7 +207,8 @@ export default function SubmissionsContent() {
                       </div>
                       <div className="ml-10 space-y-3">
                         <p className="text-gray-500 text-sm">
-                          Please follow the instructions on the 'Registration Fee' page to complete your payment.
+                          Please follow the instructions on the 'Registration
+                          Fee' page to complete your payment.
                         </p>
                       </div>
                     </div>

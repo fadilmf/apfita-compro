@@ -1,8 +1,8 @@
 // import { useState } from "react";
 // import { ChevronDown } from "lucide-react";
-import { 
-  motion, 
-  // AnimatePresence 
+import {
+  motion,
+  // AnimatePresence
 } from "framer-motion";
 
 interface Topic {
@@ -16,28 +16,27 @@ export default function ConferenceTopics() {
   const topics: Topic[] = [
     {
       title: "Increase in agricultural and fishery production",
-      items: [""
-      ],
+      items: [""],
     },
     {
-      title: "Improving the efficiency and competitiveness of the agro-maritime industry",
-      items: [""
-      ],
+      title:
+        "Improving the efficiency and competitiveness of the agro-maritime industry",
+      items: [""],
     },
     {
-      title: "Increasing transparency and traceability of the agro-maritime industry system",
-      items: [""
-      ],
+      title:
+        "Increasing transparency and traceability of the agro-maritime industry system",
+      items: [""],
     },
     {
-      title: "The use of advanced digital technology in the agro-maritime industry",
-      items: [""
-      ],
+      title:
+        "The use of advanced digital technology in the agro-maritime industry",
+      items: [""],
     },
     {
-      title: "A study on the agro-maritime industry's social, economic, and sustainability aspects",
-      items: [""
-      ],
+      title:
+        "A study on the agro-maritime industry's social, economic, and sustainability aspects",
+      items: [""],
     },
   ];
 
@@ -50,13 +49,16 @@ export default function ConferenceTopics() {
         transition={{ duration: 0.5 }}
         className="text-center mb-8 sm:mb-12"
       >
-        <h1 className="text-5xl font-bold text-center text-navy-900 mb-16">
+        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
           Themes and Topics
         </h1>
         <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
           The 15th International Conference on APFITA 2025
           <br></br>
-          <strong>"Innovative Digital Technology for Global and Sustainable Agro-Maritime Industry"</strong> 
+          <strong>
+            "Innovative Digital Technology for Global and Sustainable
+            Agro-Maritime Industry"
+          </strong>
         </p>
       </motion.div>
 
@@ -88,7 +90,7 @@ export default function ConferenceTopics() {
               {/* Topic Content */}
               <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl border border-blue-100">
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
-                    {topic.title}
+                  {topic.title}
                 </h3>
                 {/* <button
                   onClick={() => {

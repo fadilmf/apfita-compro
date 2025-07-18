@@ -17,8 +17,7 @@ const paymentGuidelines = [
   },
   {
     title: "Participants only",
-    description:
-      "Payment is due UPON REGISTRATION via the online form.",
+    description: "Payment is due UPON REGISTRATION via the online form.",
     icon: Banknote,
   },
 ];
@@ -31,7 +30,7 @@ export default function PaymentGuidelines() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-10"
+          className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6"
         >
           Payment Guidelines
         </motion.h2>

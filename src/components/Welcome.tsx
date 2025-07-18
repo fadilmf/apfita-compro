@@ -30,9 +30,11 @@ const Welcome: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl leading-tight md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6"
             >
-              Welcome to The 15<sup>th</sup> International Conference of APFITA
+              Welcome to The 15
+              <sup className="align-super text-slate-900 text-2xl">th</sup>{" "}
+              International Conference of APFITA
             </motion.h1>
 
             <motion.p
@@ -76,7 +78,7 @@ const Welcome: React.FC = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="space-y-6 sm:space-y-8"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy-900">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6">
             Why Attend APFITA 2025?
           </h2>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed">

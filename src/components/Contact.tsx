@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import SmartEmailButton from "@/components/SmartEmailButton";
 
-
 const contactMethods = [
   {
     name: "WhatsApp",
@@ -162,7 +161,7 @@ export default function Contact() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-Navy-900 mb-4 sm:mb-6"
+            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6"
           >
             We're Here to Help
           </motion.h2>
@@ -191,30 +190,30 @@ export default function Contact() {
               {method.name === "Email" ? (
                 <SmartEmailButton />
               ) : (
-              <button
-                onClick={() =>
-                  handleContactMethodClick(method.name, method.href)
-                }
-                className={`group block w-full p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${method.borderColor}`}
-              >
-                <div
-                  className={`w-16 h-16 mx-auto mb-4 rounded-full ${method.bgColor} flex items-center justify-center`}
+                <button
+                  onClick={() =>
+                    handleContactMethodClick(method.name, method.href)
+                  }
+                  className={`group block w-full p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${method.borderColor}`}
                 >
-                  <method.icon
-                    className={`w-8 h-8 ${method.color} ${method.hoverColor} transition-all duration-300`}
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {method.name}
-                </h3>
-                <p className="text-sm text-gray-600 mb-4">
-                  {method.description}
-                </p>
-                <div className="flex items-center justify-center text-sm font-medium">
-                  <span className={`${method.color}`}>Connect with us</span>
-                  <ExternalLink className={`w-4 h-4 ml-1 ${method.color}`} />
-                </div>
-              </button>
+                  <div
+                    className={`w-16 h-16 mx-auto mb-4 rounded-full ${method.bgColor} flex items-center justify-center`}
+                  >
+                    <method.icon
+                      className={`w-8 h-8 ${method.color} ${method.hoverColor} transition-all duration-300`}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    {method.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {method.description}
+                  </p>
+                  <div className="flex items-center justify-center text-sm font-medium">
+                    <span className={`${method.color}`}>Connect with us</span>
+                    <ExternalLink className={`w-4 h-4 ml-1 ${method.color}`} />
+                  </div>
+                </button>
               )}
             </motion.div>
           ))}

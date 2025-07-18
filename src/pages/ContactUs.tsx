@@ -35,7 +35,7 @@ const Venue = () => {
           >
             <motion.h3
               variants={itemVariants}
-              className="text-3xl font-bold text-center mb-8 text-navy-900"
+              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-center text-transparent mb-6"
             >
               Become a Sponsor
             </motion.h3>
@@ -43,8 +43,8 @@ const Venue = () => {
               variants={itemVariants}
               className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto"
             >
-              Elevate your brand's visibility and contribute to the advancement of
-              agricultural technology.
+              Elevate your brand's visibility and contribute to the advancement
+              of agricultural technology.
             </motion.p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {[
@@ -72,7 +72,9 @@ const Venue = () => {
                   className="text-center"
                 >
                   <benefit.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold mb-2">{benefit.title}</h4>
+                  <h4 className="text-xl font-semibold mb-2">
+                    {benefit.title}
+                  </h4>
                   <p className="text-gray-600">{benefit.description}</p>
                 </motion.div>
               ))}

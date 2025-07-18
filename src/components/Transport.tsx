@@ -126,7 +126,10 @@ const airports: Airport[] = [
 
 export default function Transport() {
   return (
-    <section id="how-to-reach" className="bg-gradient-to-br from-blue-50 to-green-50 py-20">
+    <section
+      id="how-to-reach"
+      className="bg-gradient-to-br from-blue-50 to-green-50 py-20"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -134,7 +137,7 @@ export default function Transport() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-navy-900 mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6">
             How to Reach the Venue
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">

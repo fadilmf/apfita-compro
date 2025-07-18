@@ -33,7 +33,6 @@ const images = import.meta.glob("/src/assets/**/*.{jpg,jpeg,png}", {
   eager: true,
 }) as Record<string, { default: string }>;
 
-
 const speakers: Speaker[] = [
   // Opening Speaker
   {
@@ -167,34 +166,28 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Brian Yuliarto, S.T., M.Eng., Ph.D.",
     title: "Director General of Higher Education, Research and Technology",
-    organization: "Ministry of Education, Culture, Research and Technology, Republic of Indonesia",
+    organization:
+      "Ministry of Education, Culture, Research and Technology, Republic of Indonesia",
     image: images["/src/assets/speakers/ProfBrian.jpg"].default,
     category: "honorary",
     confirmed: true,
     bio: "",
     scholarUrl: "",
-    achievements: [
-      ""
-    ],
-    researchAreas: [
-      ""
-    ],
+    achievements: [""],
+    researchAreas: [""],
   },
   {
     name: "Diaz Hendrapriyono, B.Sc., M.A.,M.B.A., M.P.A.",
     title: "Head",
-    organization: "BAKTI, Ministry of Communication and Information Technology, Republic of Indonesia",
+    organization:
+      "BAKTI, Ministry of Communication and Information Technology, Republic of Indonesia",
     image: images["/src/assets/speakers/Diaz_Hendropiyono.png"].default,
     category: "honorary",
     confirmed: true,
     bio: "",
     scholarUrl: "",
-    achievements: [
-      ""
-    ],
-    researchAreas: [
-      ""
-    ],
+    achievements: [""],
+    researchAreas: [""],
   },
   // Prominent Speaker
   {
@@ -394,12 +387,8 @@ const speakers: Speaker[] = [
     confirmed: true,
     bio: "",
     scholarUrl: "",
-    achievements: [
-      ""
-    ],
-    researchAreas: [
-      ""
-    ],
+    achievements: [""],
+    researchAreas: [""],
   },
 ];
 
@@ -439,7 +428,7 @@ const Speakers: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-5xl font-bold text-center text-blue-900 mb-16"
+          className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent text-center mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

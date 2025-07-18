@@ -129,7 +129,9 @@ export default function TimeScheduleContent() {
     <div className="max-w-5xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">Time Schedule</h1>
+        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
+          Time Schedule
+        </h1>
         <div className="max-w-3xl mx-auto space-y-4">
           <p className="text-lg text-gray-600">
             The 15th International Conference of the Asia-Pacific Federation for
@@ -267,7 +269,6 @@ export default function TimeScheduleContent() {
             </div>
           </motion.div>
         </AnimatePresence>
-
       </div>
 
       <div className="mt-6 text-center text-sm text-gray-500">
@@ -277,6 +278,3 @@ export default function TimeScheduleContent() {
     </div>
   );
 }
-
-
-

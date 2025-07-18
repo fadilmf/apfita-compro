@@ -1,10 +1,5 @@
 import { useEffect, useRef } from "react";
-import { 
-  MapPin, 
-  Navigation2,
-  Car, 
-  BedDouble, 
-} from "lucide-react";
+import { MapPin, Navigation2, Car, BedDouble } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Outdoor from "/src/assets/OutdoorVenue.jpg";
@@ -48,7 +43,7 @@ export default function VenueSection() {
 
           <div className="p-6 sm:p-8">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-950 mb-4">
+              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6">
                 IPB Convention Center
               </h1>
               <div className="flex items-center justify-center gap-2 text-blue-600">

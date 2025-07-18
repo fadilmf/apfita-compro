@@ -1,17 +1,13 @@
 import type React from "react";
 
 // import { useState } from "react";
-import { motion,
+import {
+  motion,
   // AnimatePresence
 } from "framer-motion";
-import {
-  Users,
-  User,
-} from "lucide-react";
+import { Users, User } from "lucide-react";
 
-const boardPresident = [
-  "Prof. Takaharu Kameoka",
-];
+const boardPresident = ["Prof. Takaharu Kameoka"];
 const boardMembers = [
   "Yi-Chich Chiu",
   "J. Adinarayana",
@@ -65,7 +61,6 @@ const boardMembers = [
   "Setyo Pertiwi",
 ];
 
-
 const BoardMembersContent: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
@@ -76,7 +71,7 @@ const BoardMembersContent: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-navy-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
             Board Members
           </h2>
           {/* <p className="text-xl text-gray-600 max-w-4xl mx-auto">

@@ -49,7 +49,7 @@ const dates: DateEntry[] = [
   },
   {
     date: "November 5, 2025",
-    event: "Participant Registration Payment",
+    event: "Registration Payment Deadline",
     icon: <CreditCard className="w-6 h-6" />,
   },
   {
@@ -90,8 +90,11 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
-      <h1 className="text-4xl font-bold text-center mb-16 text-navy-900">
+    <div
+      ref={containerRef}
+      className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden"
+    >
+      <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6 text-center">
         Important Dates
       </h1>
       <Countdown />

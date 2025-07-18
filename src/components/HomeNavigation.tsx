@@ -43,7 +43,7 @@ export default function HomeNavigation() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-4xl font-bold text-navy-900 mb-4"
+            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6"
           >
             Join the Premier Agricultural Technology Conference
           </motion.h1>
@@ -51,7 +51,8 @@ export default function HomeNavigation() {
             variants={itemVariants}
             className="text-lg text-gray-600 max-w-2xl mx-auto mb-10"
           >
-            Select your registration package and be part of the innovation shaping the future of agriculture.
+            Select your registration package and be part of the innovation
+            shaping the future of agriculture.
           </motion.p>
         </motion.div>
 
@@ -71,7 +72,6 @@ export default function HomeNavigation() {
               <item.icon className="w-6 h-6" />
               <span className="text-sm">{item.label}</span>
             </motion.div>
-
           ))}
         </motion.div>
       </div>

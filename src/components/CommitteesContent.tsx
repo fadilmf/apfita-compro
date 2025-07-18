@@ -346,7 +346,7 @@ const CommitteesContent: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-navy-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
             Conference Committees
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">

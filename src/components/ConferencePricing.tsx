@@ -1,12 +1,6 @@
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import {
-  Check, 
-  Users, 
-  Sparkles, 
-  Globe, 
-  Calendar 
-} from "lucide-react";
+import { Check, Users, Sparkles, Globe, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -15,10 +9,10 @@ interface PricingTier {
   name: string;
   description: string;
   icon: React.ElementType;
-  features: { 
-    text: string; 
-    tooltip?: string; 
-    isBlink?: boolean 
+  features: {
+    text: string;
+    tooltip?: string;
+    isBlink?: boolean;
   }[];
   badge?: string;
   price: string;
@@ -46,8 +40,18 @@ export default function ConferencePricing() {
       color: "from-blue-600 to-blue-800",
       registrationType: "indonesian-presenter",
       features: [
-        { text: "10% Discount for Students", tooltip: "Valid only for undergraduate & master students with student ID", isBlink:true },
-        { text: "50% Discount for Second Paper", tooltip: "Applicable only if both papers are submitted by the same author", isBlink:true },
+        {
+          text: "10% Discount for Students",
+          tooltip:
+            "Valid only for undergraduate & master students with student ID",
+          isBlink: true,
+        },
+        {
+          text: "50% Discount for Second Paper",
+          tooltip:
+            "Applicable only if both papers are submitted by the same author",
+          isBlink: true,
+        },
         { text: "Official Certificate of Presentation" },
         { text: "Publication in Conference Proceedings" },
         { text: "Exclusive Conference Souvenir" },
@@ -59,69 +63,69 @@ export default function ConferencePricing() {
       isAvailable: true,
     },
     {
-    name: "International Presenter",
-    description: "For presenters from outside Indonesia",
-    icon: Globe,
-    price: "USD 375",
-    priceDetail: "per paper",
-    color: "from-blue-500 to-blue-700",
-    registrationType: "international-presenter",
-    features: [
-      { text: "Official Certificate of Presentation" },
-      { text: "Publication in Conference Proceedings" },
-      { text: "Exclusive Conference Souvenir" },
-      { text: "Complimentary Lunch for All Conference Days" },
-      { text: "Coffee & Refreshment Breaks" },
-      { text: "Invitation to Gala Dinner Event" },
-      { text: "Access to All Conference Sessions" },
-      { text: "Networking with Global Researchers" },
-      { text: "Digital Access to All Presentations" },
-    ],
-    isAvailable: true,
-  },
-  {
-    name: "Indonesian Presenter Only",
-    description: "Without publication",
-    icon: Sparkles,
-    price: "TBA",
-    priceDetail: "to be announced",
-    color: "from-gray-400 to-gray-500",
-    registrationType: "indonesian-only",
-    features: [],
-    isAvailable: false,
-  },
-  {
-    name: "International Presenter Only",
-    description: "Without publication",
-    icon: Globe,
-    price: "TBA",
-    priceDetail: "to be announced",
-    color: "from-gray-400 to-gray-500",
-    registrationType: "international-only",
-    features: [],
-    isAvailable: false,
-  },
-  {
-    name: "Participant Only",
-    description: "For non-presenting attendees from Indonesia",
-    icon: Users,
-    price: "IDR 100,000",
-    priceDetail: "with E-certificate",
-    color: "from-blue-400 to-blue-600",
-    registrationType: "participant-only",
-    features: [
-      { text: "Digital E-Certificate of Attendance" },
-      { text: "Access to All Conference Sessions" },
-      { text: "Complimentary Lunch for All Conference Days" },
-      { text: "Coffee & Refreshment Breaks" },
-      { text: "Networking Opportunities" },
-      { text: "Access to Digital Materials" },
-      { text: "Participation in Q&A Sessions" },
-    ],
+      name: "International Presenter",
+      description: "For presenters from outside Indonesia",
+      icon: Globe,
+      price: "USD 375",
+      priceDetail: "per paper",
+      color: "from-blue-500 to-blue-700",
+      registrationType: "international-presenter",
+      features: [
+        { text: "Official Certificate of Presentation" },
+        { text: "Publication in Conference Proceedings" },
+        { text: "Exclusive Conference Souvenir" },
+        { text: "Complimentary Lunch for All Conference Days" },
+        { text: "Coffee & Refreshment Breaks" },
+        { text: "Invitation to Gala Dinner Event" },
+        { text: "Access to All Conference Sessions" },
+        { text: "Networking with Global Researchers" },
+        { text: "Digital Access to All Presentations" },
+      ],
+      isAvailable: true,
+    },
+    {
+      name: "Indonesian Presenter Only",
+      description: "Without publication",
+      icon: Sparkles,
+      price: "TBA",
+      priceDetail: "to be announced",
+      color: "from-gray-400 to-gray-500",
+      registrationType: "indonesian-only",
+      features: [],
+      isAvailable: false,
+    },
+    {
+      name: "International Presenter Only",
+      description: "Without publication",
+      icon: Globe,
+      price: "TBA",
+      priceDetail: "to be announced",
+      color: "from-gray-400 to-gray-500",
+      registrationType: "international-only",
+      features: [],
+      isAvailable: false,
+    },
+    {
+      name: "Participant Only",
+      description: "For non-presenting attendees from Indonesia",
+      icon: Users,
+      price: "IDR 100,000",
+      priceDetail: "with E-certificate",
+      color: "from-blue-400 to-blue-600",
+      registrationType: "participant-only",
+      features: [
+        { text: "Digital E-Certificate of Attendance" },
+        { text: "Access to All Conference Sessions" },
+        { text: "Complimentary Lunch for All Conference Days" },
+        { text: "Coffee & Refreshment Breaks" },
+        { text: "Networking Opportunities" },
+        { text: "Access to Digital Materials" },
+        { text: "Participation in Q&A Sessions" },
+      ],
 
-    isAvailable: true,
-  },
-];
+      isAvailable: true,
+    },
+  ];
 
   // Animation variants
   const containerVariants = {
@@ -149,7 +153,6 @@ export default function ConferencePricing() {
   //   navigate(`/register?type=${registrationType}`);
   // };
 
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-gradient-to-b from-white to-blue-50">
       <motion.div
@@ -165,7 +168,7 @@ export default function ConferencePricing() {
           </span>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
           Join the Premier Agricultural Technology Conference
         </h2>
 
@@ -174,7 +177,7 @@ export default function ConferencePricing() {
           the future of agriculture
         </p>
       </motion.div>
-      
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -197,7 +200,11 @@ export default function ConferencePricing() {
                 (isHovered || selectedTier === index) && tier.isAvailable
                   ? "transform scale-105 shadow-2xl z-10"
                   : "shadow-lg"
-              } ${!tier.isAvailable ? "opacity-70 grayscale pointer-events-none" : ""}`}
+              } ${
+                !tier.isAvailable
+                  ? "opacity-70 grayscale pointer-events-none"
+                  : ""
+              }`}
             >
               {/* Ribbon */}
               {!tier.isAvailable && (
@@ -207,7 +214,9 @@ export default function ConferencePricing() {
               )}
 
               {/* Background Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${tier.color} opacity-90`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${tier.color} opacity-90`}
+              />
 
               {/* Content */}
               <div className="relative p-8 text-white h-full flex flex-col">
@@ -234,18 +243,24 @@ export default function ConferencePricing() {
                   ) : (
                     <p className="text-2xl font-semibold text-white/80">TBA</p>
                   )}
-                  <p className="text-sm mt-1 text-white/80">{tier.priceDetail}</p>
+                  <p className="text-sm mt-1 text-white/80">
+                    {tier.priceDetail}
+                  </p>
                 </div>
 
                 <ul className="space-y-4 mb-8 flex-grow">
                   {tier.features.map((feature, idx) => (
-                    <li key={idx} className={cn("flex items-start gap-3 relative group",
-                        feature.isBlink && "animate-pulse")}>
+                    <li
+                      key={idx}
+                      className={cn(
+                        "flex items-start gap-3 relative group",
+                        feature.isBlink && "animate-pulse"
+                      )}
+                    >
                       <div className="bg-white/20 rounded-full p-0.5 mt-0.5">
                         <Check className="w-4 h-4 text-white" />
                       </div>
-                      <span 
-                        className="text-sm text-white">
+                      <span className="text-sm text-white">
                         {feature.text}
                         {feature.tooltip && (
                           <span className="ml-2 text-white/80 cursor-help relative">
@@ -260,7 +275,6 @@ export default function ConferencePricing() {
                   ))}
                 </ul>
               </div>
-
             </motion.div>
 
             // <motion.div
@@ -325,7 +339,7 @@ export default function ConferencePricing() {
             //       ))}
             //     </ul>
 
-                /* <motion.button
+            /* <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={(e) => {
