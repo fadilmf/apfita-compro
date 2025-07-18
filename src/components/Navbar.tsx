@@ -1,12 +1,7 @@
 // "use client";
 import type React from "react";
 import { useNavigate } from "react-router-dom";
-import { 
-  useState, 
-  useRef, 
-  useEffect
-
-} from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import MobileSidebar from "@/components/MobileSidebar";
 
@@ -40,7 +35,6 @@ const Navbar: React.FC = () => {
     navigate(path); // atau window.location.href = path
   };
 
-
   // Define which nav items should have notification dots
   const itemsWithNotifications = [
     "REGIISTRATION FEE",
@@ -56,7 +50,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <button
             onClick={() => handleNavigation("/")}
-            className="text-2xl font-bold text-blue-600"
+            className="text-2xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 via-blue-700 to-blue-500 bg-clip-text text-transparent "
           >
             APFITA 2025
           </button>

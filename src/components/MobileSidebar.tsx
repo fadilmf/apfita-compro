@@ -95,9 +95,9 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             <div className="flex items-center justify-between p-4 border-b">
               <button
                 onClick={() => handleNavigation("/")}
-                className="text-2xl font-bold text-blue-600"
+                className="text-2xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 via-blue-700 to-blue-500 bg-clip-text text-transparent "
               >
-                APFITA
+                APFITA 2025
               </button>
               <button
                 onClick={onClose}
