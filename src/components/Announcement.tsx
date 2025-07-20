@@ -52,7 +52,7 @@ export default function Announcement({
   return (
     <div
       ref={containerRef}
-      className={`${backgroundColor} ${textColor} py-2 overflow-hidden z-40 ${className}`}
+      className={`${backgroundColor} ${textColor} py-5 sm:py-6 overflow-hidden z-40 ${className}`}
     >
       <div
         ref={scrollerRef}

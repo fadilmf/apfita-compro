@@ -24,7 +24,6 @@ export default function Hero() {
     "Discover the latest in agricultural technology and innovation.",
     "Welcome to APFITA 2025 — November 17-19 in Bogor, Indonesia!",
     "Experience Indonesia's vibrant agro-maritime industry firsthand.",
-    "The Developer of this website must be very handsome <3",
     "Connect, collaborate, and innovate with global experts!",
     "Celebrate 15 editions of groundbreaking agricultural IT conferences!",
   ];
@@ -95,14 +94,16 @@ export default function Hero() {
 
           {/* Other Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-center">
-            {[logoIPB, logoBrain, logoForumPasca, logoConf].map((logo, index) => (
-              <img
-                key={index}
-                src={logo || "/placeholder.svg"}
-                alt={`Logo ${index + 1}`}
-                className="w-12 sm:w-16 md:w-20 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
-              />
-            ))}
+            {[logoIPB, logoBrain, logoForumPasca, logoConf].map(
+              (logo, index) => (
+                <img
+                  key={index}
+                  src={logo || "/placeholder.svg"}
+                  alt={`Logo ${index + 1}`}
+                  className="w-12 sm:w-16 md:w-20 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
+                />
+              )
+            )}
           </div>
         </div>
       </div>
