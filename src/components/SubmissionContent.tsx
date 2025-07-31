@@ -5,14 +5,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText,
-  // ExternalLink,
-  // Mail,
-  // AlertCircle,
-  // Calendar,
 } from "lucide-react";
 import GuidelinesContent from "@/components/GuideLinesContent";
 import SubmissionTemplateContent from "./SubmissionTemplateContent";
 import SubmissionPhaseContent from "./SubmissionPhaseContent";
+import SubmissionPhaseTimeline from "./SubmissionPhaseTimeline";
 
 interface TabContentProps {
   children: React.ReactNode;
@@ -142,77 +139,8 @@ export default function SubmissionsContent() {
                     </div>
                   </div>
 
-                  <div className="space-y-8">
-                    {/* Phase 1: Abstract Submission */}
-                    <div className="border-l-4 border-blue-500 pl-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                          <span className="font-bold text-blue-600">1</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          Phase 1: Abstract Submission
-                        </h3>
-                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
-                          OPEN NOW
-                        </span>
-                      </div>
-                      <div className="ml-10 space-y-3">
-                        <p className="text-gray-600 text-sm">
-                          <b>Deadline July 30,2025</b>
-                          <br></br>
-                          Submit your abstract (250-300 words) according to the
-                          categories listed above. Include title, authors,
-                          affiliations, and keywords.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Phase 2: Full Paper Submission */}
-                    <div className="border-l-4 border-gray-300 pl-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <span className="font-bold text-gray-500">2</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-500">
-                          Phase 2: Full Paper Submission
-                        </h3>
-                        <span className="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
-                          COMING SOON
-                        </span>
-                      </div>
-                      <div className="ml-10 space-y-3">
-                        <p className="text-gray-500 text-sm">
-                          <b>Deadline September 30, 2025</b>
-                          <br></br>
-                          After abstract acceptance, especially for authors who
-                          wish to present and publish, you will be invited to
-                          submit your full paper using the IOP template. Details
-                          will be provided to authors with accepted abstracts.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Phase 3: Payment Required */}
-                    <div className="border-l-4 border-gray-300 pl-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <span className="font-bold text-gray-500">2</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-500">
-                          Phase 3: Payment Required
-                        </h3>
-                        {/* <span className="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
-                          COMING SOON
-                        </span> */}
-                      </div>
-                      <div className="ml-10 space-y-3">
-                        <p className="text-gray-500 text-sm">
-                          Please follow the instructions on the 'Registration
-                          Fee' page to complete your payment.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <SubmissionPhaseTimeline />
+                  
                 </div>
               </div>
             </TabContent>
