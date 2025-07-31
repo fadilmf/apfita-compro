@@ -4,36 +4,68 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { Calendar, ArrowRight } from "lucide-react";
 
-interface DateEntry {
-  date: string;
-  event: string;
-  icon: React.ReactNode;
-}
+import { dates, DateEntry, phases } from "@/data/imdatesData";
 
-// Same dates data, unchanged.
-const dates: DateEntry[] = [
-  {
-    date: "April 14, 2025",
-    event: "Abstract Reception",
-    icon: <Calendar className="w-6 h-6" />,
-  },
-  {
-    date: "July 30, 2025",
-    event: "Abstract Submission Deadline",
-    icon: <Calendar className="w-6 h-6" />,
-  },
-  // Add the rest...
-];
+// interface DateEntry {
+//   date: string;
+//   event: string;
+//   icon: React.ReactNode;
+// }
 
-const phases = [
-  {
-    name: "Abstract Submission Phase",
-    description: "Submit your abstract",
-    startDate: "April 14, 2025",
-    endDate: "July 30, 2025",
-  },
-  // Add the rest...
-];
+// // Same dates data, unchanged.
+// const dates: DateEntry[] = [
+//   {
+//     date: "April 14, 2025",
+//     event: "Abstract Reception",
+//     icon: <Calendar className="w-6 h-6" />,
+//   },
+//   {
+//     date: "July 30, 2025",
+//     event: "Abstract Submission Deadline",
+//     icon: <Calendar className="w-6 h-6" />,
+//   },
+  
+//   {
+//       date: "August 15, 2025",
+//       event: "Abstract Submission Deadline",
+//       icon: <Calendar className="w-6 h-6" />,
+//     },
+//     {
+//       date: "August 15, 2025",
+//       event: "Accepted Abstracts Announcement",
+//       icon: <Bell className="w-6 h-6" />,
+//     },
+//     {
+//       date: "September 30, 2025",
+//       event: "Full Paper Submission Deadline",
+//       icon: <FileCheck className="w-6 h-6" />,
+//     },
+//     {
+//       date: "October 31, 2025",
+//       event: "Accepted Full Paper Announcement",
+//       icon: <Bell className="w-6 h-6" />,
+//     },
+//     {
+//       date: "November 5, 2025",
+//       event: "Registration Payment Deadline",
+//       icon: <CreditCard className="w-6 h-6" />,
+//     },
+//     {
+//       date: "November 17-19, 2025",
+//       event: "15th APFITA Conference",
+//       icon: <Users className="w-6 h-6" />,
+//     },
+// ];
+
+// const phases = [
+//   {
+//     name: "Abstract Submission Phase",
+//     description: "Submit your abstract",
+//     startDate: "April 14, 2025",
+//     endDate: "July 30, 2025",
+//   },
+//   // Add the rest...
+// ];
 
 interface TimeLeft {
   days: number;
@@ -133,7 +165,7 @@ const CountdownTimer: React.FC = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 relative"> 
-     <div className="bg-white border border-blue-200 p-6 mb-6 rounded-xl w-full px-4 sm:px-6 md:px-8 shadow-md hover:shadow-lg transition-shadow duration-300">
+     <div className="bg-white border border-amber-200 p-6 mb-6 rounded-xl w-full px-4 sm:px-6 md:px-8 shadow-md hover:shadow-lg transition-shadow duration-300">
         <div className="flex flex-col sm:flex-row justify-between gap-6">
           {/* Current Phase Section */}
           {/* {currentPhase && ( */}
@@ -156,10 +188,10 @@ const CountdownTimer: React.FC = () => {
           {/* Next Event Countdown */}
           {nextEvent && (
             <div className="flex-1 text-center mb-6 sm:mb-0 p-4 rounded-lg">
-              <h2 className="text-2xl font-bold text-blue-600 mb-2">
+              <h2 className="text-2xl font-bold text-amber-700 mb-2">
                 Next Important Date
               </h2>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-blue-800">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-amber-900">
                 <Calendar className="w-5 h-5" />
                 <span>{nextEvent.date}</span>
                 <ArrowRight className="w-5 h-5" />
@@ -176,12 +208,12 @@ const CountdownTimer: React.FC = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-lg shadow-md p-3 text-center border border-blue-100"
+                    className="bg-amber-50 rounded-lg shadow-md p-3 text-center border border-amber-300"
                   >
-                    <div className="text-xl font-semibold text-blue-600">
+                    <div className="text-xl font-semibold text-amber-900">
                       {item.value < 10 ? `0${item.value}` : item.value}
                     </div>
-                    <div className="text-xs uppercase text-gray-500">
+                    <div className="text-xs uppercase text-gray-700">
                       {item.label}
                     </div>
                   </div>

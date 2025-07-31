@@ -4,60 +4,61 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Countdown from "@/components/CountdownTimer";
-import {
-  Calendar,
-  FileText,
-  Bell,
-  FileCheck,
-  CreditCard,
-  Users,
-} from "lucide-react";
+import { dates } from "@/data/imdatesData";
+// import {
+//   Calendar,
+//   FileText,
+//   Bell,
+//   FileCheck,
+//   CreditCard,
+//   Users,
+// } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-interface DateEntry {
-  date: string;
-  event: string;
-  icon: React.ReactNode;
-}
+// interface DateEntry {
+//   date: string;
+//   event: string;
+//   icon: React.ReactNode;
+// }
 
-const dates: DateEntry[] = [
-  {
-    date: "April 14, 2025",
-    event: "Abstract Reception",
-    icon: <FileText className="w-6 h-6" />,
-  },
-  {
-    date: "July 30, 2025",
-    event: "Abstract Submission Deadline",
-    icon: <Calendar className="w-6 h-6" />,
-  },
-  {
-    date: "August 15, 2025",
-    event: "Accepted Abstracts Announcement",
-    icon: <Bell className="w-6 h-6" />,
-  },
-  {
-    date: "September 30, 2025",
-    event: "Full Paper Submission Deadline",
-    icon: <FileCheck className="w-6 h-6" />,
-  },
-  {
-    date: "October 31, 2025",
-    event: "Accepted Full Paper Announcement",
-    icon: <Bell className="w-6 h-6" />,
-  },
-  {
-    date: "November 5, 2025",
-    event: "Registration Payment Deadline",
-    icon: <CreditCard className="w-6 h-6" />,
-  },
-  {
-    date: "November 17-19, 2025",
-    event: "15th APFITA Conference",
-    icon: <Users className="w-6 h-6" />,
-  },
-];
+// const dates: DateEntry[] = [
+//   {
+//     date: "April 14, 2025",
+//     event: "Abstract Reception",
+//     icon: <FileText className="w-6 h-6" />,
+//   },
+//   {
+//     date: "August 15, 2025",
+//     event: "Abstract Submission Deadline",
+//     icon: <Calendar className="w-6 h-6" />,
+//   },
+//   {
+//     date: "August 15, 2025",
+//     event: "Accepted Abstracts Announcement",
+//     icon: <Bell className="w-6 h-6" />,
+//   },
+//   {
+//     date: "September 30, 2025",
+//     event: "Full Paper Submission Deadline",
+//     icon: <FileCheck className="w-6 h-6" />,
+//   },
+//   {
+//     date: "October 31, 2025",
+//     event: "Accepted Full Paper Announcement",
+//     icon: <Bell className="w-6 h-6" />,
+//   },
+//   {
+//     date: "November 5, 2025",
+//     event: "Registration Payment Deadline",
+//     icon: <CreditCard className="w-6 h-6" />,
+//   },
+//   {
+//     date: "November 17-19, 2025",
+//     event: "15th APFITA Conference",
+//     icon: <Users className="w-6 h-6" />,
+//   },
+// ];
 
 const ImportantDates: React.FC = () => {
   const containerRef = useRef(null);
