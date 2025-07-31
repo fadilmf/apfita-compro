@@ -9,12 +9,12 @@ import {
   Send,
 } from "lucide-react";
 import { useState } from "react";
-import SpeakersPoster from "@/assets/SpeakersofAPFITA2025.png"
+import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update29Juli.png";
 
 const handleDownload = () => {
   const link = document.createElement("a");
-  link.href = SpeakersPoster;
-  link.download = "SpeakersofAPFITA2025.png";
+  link.href = flyerAPFITA;
+  link.download = "flyerAPFITA.png";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
