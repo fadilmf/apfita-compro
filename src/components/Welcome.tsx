@@ -56,15 +56,15 @@ const Welcome: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 text-gray-700"
             >
               <div className="flex items-center gap-2 text-balance">
-                <Calendar className="w-5 h-5 text-blue-600" />
+                <Calendar className="w-5 h-5 text-blue-600 shrink-0" />
                 <span>November 17-19, 2025</span>
               </div>
               <div className="flex items-center gap-2 lg:max-w-[200px] text-balance">
-                <MapPin className="w-5 h-5 text-blue-600" />
+                <MapPin className="w-5 h-5 text-blue-600 shrink-0" />
                 <span>IPB Convention Center, Bogor, Indonesia</span>
               </div>
               <div className="flex items-center gap-2 text-balance">
-                <Users className="w-5 h-5 text-blue-600" />
+                <Users className="w-5 h-5 text-blue-600 shrink-0" />
                 <span>On-site </span>
               </div>
             </motion.div>

@@ -25,7 +25,7 @@ export const dates: DateEntry[] = [
     icon: <Calendar className="w-6 h-6" />,
   },
   {
-    date: "August 15, 2025",
+    date: "August 30, 2025",
     event: "Accepted Abstracts Announcement",
     icon: <Bell className="w-6 h-6" />,
   },
@@ -62,12 +62,12 @@ export const phases = [
     name: "Accepted Abstracts Announcement",
     description: "",
     startDate: "August 15, 2025",
-    endDate: "August 16, 2025",
+    endDate: "August 30, 2025",
   },
   {
     name: "Full Paper Submission Deadline",
     description: "",
-    startDate: "August 16, 2025",
+    startDate: "August 30, 2025",
     endDate: "September 30, 2025",
   },
   {
