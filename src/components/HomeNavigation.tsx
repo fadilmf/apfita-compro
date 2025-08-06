@@ -14,6 +14,7 @@ import {
   Car,
   UserCheck,
   ScrollText,
+  Users2,
 } from "lucide-react";
 
 const navItems = [
@@ -82,6 +83,12 @@ const navItems = [
     href: "/committee",
     icon: UserCheck,
     accent: "from-violet-500 to-purple-500",
+  },
+  {
+    label: "Board Member",
+    href: "/board-members",
+    icon: Users2,
+    accent: "from-teal-500 to-cyan-500",
   },
 ];
 
@@ -223,7 +230,7 @@ export default function HomeNavigation() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-8xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
           {navItems.map((item, idx) => (
             <motion.div
