@@ -8,15 +8,14 @@ interface LogoGridSectionProps {
   items: Organization[];
   className?: string;
   imageSize?: string; // contoh: "w-[150px] h-[80px]"
-  gridCols?: string; // <-- ini dia
-
+  gridCols?: string;
 }
 
 export default function LogoGridSection({
   title,
   items,
   className,
-  imageSize = "w-[120px] h-[80px]",
+  imageSize = "w-[150px] h-[100px]",
   gridCols,
 }: LogoGridSectionProps) {
   if (items.length === 0) return null;
@@ -24,7 +23,7 @@ export default function LogoGridSection({
   return (
     <div className={cn("space-y-4", className)}>
       <h3 className="text-blue-800 font-semibold text-lg">{title}</h3>
-        <div className={cn("grid gap-4", gridCols ?? "")}>
+      <div className={cn("grid gap-4", gridCols ?? "")}>
         {items.map((item) => (
           <a
             key={item.name}

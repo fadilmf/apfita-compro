@@ -3,9 +3,7 @@
 import type React from "react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FileText,
-} from "lucide-react";
+import { FileText } from "lucide-react";
 import GuidelinesContent from "@/components/GuideLinesContent";
 import SubmissionTemplateContent from "./SubmissionTemplateContent";
 import SubmissionPhaseContent from "./SubmissionPhaseContent";
@@ -57,8 +55,10 @@ export default function SubmissionsContent() {
             <p className="text-lg text-gray-600 leading-relaxed">
               Authors with manuscripts accepted for presentation at the 15
               <sup>th</sup> APFITA 2025 will have their papers published in the
-              conference proceedings. The proceedings will be{" "}
-              <span className="font-medium text-blue-600">reserved by IOP</span>{" "}
+              conference proceedings. The proceedings will be reserved by{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold">
+                IOP Conference Series Earth and Enviromental Science (EES)
+              </span>{" "}
               and indexed in reputable databases.
             </p>
           </div>
@@ -140,7 +140,6 @@ export default function SubmissionsContent() {
                   </div>
 
                   <SubmissionPhaseTimeline />
-                  
                 </div>
               </div>
             </TabContent>

@@ -58,6 +58,12 @@ function Tooltip({
   );
 }
 
+const getImageSize = (type?: string) => {
+  if (type === "grand") return 400;
+  if (type === "publisher") return 500;
+  return 150;
+};
+
 export default function SponsorSection({
   title,
   items,
@@ -84,27 +90,29 @@ export default function SponsorSection({
         {title}
       </motion.h3>
       <div className="flex flex-wrap justify-center gap-8">
-        {filtered.map((sponsor) => (
+        {filtered.map((sponsor) => {
+          const size = getImageSize(sponsor.type);
+
+          return (
             <motion.div
-            key={sponsor.id}
-            className="basis-1/2 sm:basis-1/3 md:basis-1/5 flex justify-center items-center"
-            whileHover={{ scale: 1.05 }}
-            variants={itemVariants}
+              key={sponsor.id}
+              className="basis-1/2 sm:basis-1/3 md:basis-1/5 flex justify-center items-center"
+              whileHover={{ scale: sponsor.type === "publisher" ? 1.1 : 1.05 }}
+              variants={itemVariants}
             >
-            <Tooltip text={sponsor.alt}>
+              <Tooltip text={sponsor.alt}>
                 <img
-                    src={sponsor.logo || "/placeholder.svg"}
-                    alt={sponsor.alt}
-                    width={sponsor.type === "grand" ? 240 : 150}
-                    height={sponsor.type === "grand" ? 240 : 150}
-                    className="object-contain"
+                  src={sponsor.logo || "/placeholder.svg"}
+                  alt={sponsor.alt}
+                  width={size}
+                  height={size}
+                  className="object-contain max-w-[500px] max-h-[500px]"
                 />
-
-            </Tooltip>
+              </Tooltip>
             </motion.div>
-        ))}
-        </div>
-
+          );
+        })}
+      </div>
     </motion.div>
   );
 }

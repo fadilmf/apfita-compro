@@ -17,7 +17,7 @@ const sponsors = [
   { id: 1, logo: logoBrain, alt: "BRAIN IPB University", type: "grand" },
   { id: 2, logo: logoBrain, alt: "BRAIN IPB University", type: "regular" },
   { id: 3, logo: logoBRI, alt: "Bank BRI", type: "regular" },
-  { id: 4, logo: logoIOP, alt: "IOP Conference Series", type: "publisher" },
+  { id: 4, logo: logoIOP, alt: "IOP Conference Series:Earth and Environmental Science (EES)", type: "publisher" },
   { id: 5, logo: logoFW, alt: "Forum Wacana IPB", type: "supported" },
   {
     id: 6,

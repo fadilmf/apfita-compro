@@ -1,7 +1,4 @@
-import {
-  FileText,
-  ArrowRight,
-} from "lucide-react";
+import { FileText, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type React from "react";
 
@@ -23,7 +20,7 @@ export default function SubmissionTemplateContent() {
     {
       title: "IOP Full Paper Template",
       icon: FileText,
-      date: "Coming Soon",
+      date: "06/08/2025",
       href: "https://publishingsupport.iopscience.iop.org/questions/templates-and-guidelines-for-proceedings-papers/",
     },
   ];
@@ -36,12 +33,10 @@ export default function SubmissionTemplateContent() {
         transition={{ duration: 0.5 }}
         className="text-center mb-8 sm:mb-12"
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-navy-900 mb-4 sm:mb-6">
+        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6">
           Template(s)
         </h1>
-        <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto">
-          
-        </p>
+        <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto"></p>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
@@ -53,45 +48,66 @@ export default function SubmissionTemplateContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+              className="group relative h-full"
             >
-              {/* Kontainer isi dengan flex-col agar tombol bisa turun ke bawah */}
-              <div className="flex flex-col justify-between h-full px-6 py-10">
-                <div>
-                  {/* Icon */}
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6 group-hover:text-blue-600 transition-colors duration-300">
-                    {template.title}
-                  </h3>
+              {/* Premium Card with Luxury Design */}
+              <div className="relative bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-blue-200 overflow-hidden">
+                {/* Luxury Border Accent */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="h-full w-full rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white"></div>
                 </div>
 
-                {/* Tombol di bawah */}
-                <a
-                  href={template.href}
-                  className="inline-flex items-center justify-between w-full px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors duration-300 group/btn mt-auto"
-                >
-                  <span className="group-hover:text-white">View Template</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </a>
+                {/* Premium Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+
+                {/* Card Content */}
+                <div className="relative flex flex-col justify-between h-full px-8 py-10 z-10">
+                  <div>
+                    {/* Premium Date Badge */}
+                    <div className="absolute top-6 right-6">
+                      <span className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full shadow-md">
+                        {template.date}
+                      </span>
+                    </div>
+
+                    {/* Luxury Icon Container */}
+                    <div className="relative w-16 h-16 mb-6">
+                      {/* Icon Background with Gradient */}
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:via-indigo-600 group-hover:to-purple-600 transition-all duration-500 shadow-md group-hover:shadow-lg border border-blue-100 group-hover:border-transparent">
+                        <Icon className="w-8 h-8 text-blue-600 group-hover:text-white transition-all duration-500 group-hover:scale-110" />
+                      </div>
+
+                      {/* Premium Shine Effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+
+                    {/* Premium Title */}
+                    <h3 className="text-xl font-bold text-gray-900 mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all duration-500 leading-tight">
+                      {template.title}
+                    </h3>
+                  </div>
+
+                  {/* Luxury Action Button */}
+                  <a
+                    href={template.href}
+                    className="relative inline-flex items-center justify-between w-full px-6 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all duration-500 group/btn mt-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1 overflow-hidden"
+                  >
+                    {/* Button Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+
+                    <span className="relative z-10">View Template</span>
+                    <ArrowRight className="relative z-10 w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </a>
+                </div>
+
+                {/* Premium Decorative Elements */}
+                <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full -translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-purple-600/10 to-transparent rounded-full translate-x-8 translate-y-8 group-hover:scale-150 transition-transform duration-700"></div>
               </div>
             </motion.div>
           );
         })}
       </div>
-
-
-      {/* <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="mt-8 text-center text-sm text-gray-500"
-      >
-        * Please read the templatelines carefully before submitting your manuscript
-      </motion.div> */}
     </div>
   );
 }
