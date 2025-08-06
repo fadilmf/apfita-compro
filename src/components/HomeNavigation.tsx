@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -11,6 +10,10 @@ import {
   FileDown,
   ArrowRight,
   Sparkles,
+  Building,
+  Car,
+  UserCheck,
+  ScrollText,
 } from "lucide-react";
 
 const navItems = [
@@ -55,6 +58,30 @@ const navItems = [
     href: "/submissions#template",
     icon: FileDown,
     accent: "from-blue-500 to-indigo-500",
+  },
+  {
+    label: "Guideline",
+    href: "/submissions#guideline",
+    icon: ScrollText,
+    accent: "from-emerald-500 to-teal-500",
+  },
+  {
+    label: "Nearby Hotel",
+    href: "/venue#nearby-hotel",
+    icon: Building,
+    accent: "from-rose-500 to-pink-500",
+  },
+  {
+    label: "Transportation",
+    href: "/venue#how-to-reach",
+    icon: Car,
+    accent: "from-orange-500 to-amber-500",
+  },
+  {
+    label: "Committee",
+    href: "/committee",
+    icon: UserCheck,
+    accent: "from-violet-500 to-purple-500",
   },
 ];
 
@@ -143,7 +170,7 @@ export default function HomeNavigation() {
       {/* Luxury background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.3),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.3),transparent_50%)]" />
-      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg%20width=%2760%27%20height=%2760%27%20viewBox=%270%200%2060%2060%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg%20fill=%22none%22%20fillRule=%22evenodd%22%3E%3Cg%20fill=%22%23ffffff%22%20fillOpacity=%220.02%22%3E%3Ccircle%20cx=%2230%27%20cy=%2730%27%20r=%271%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-40' />
+      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg%20width=%2760%27%20height=%2760%27%20viewBox=%270%200%2060%2060%27%20xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg%20fill=%22none%22%20fillRule=%22evenodd%22%3E%3Cg%20fill=%22%23ffffff%22%20fillOpacity=%220.02%22%3E%3Ccircle%20cx=%2730%27%20cy=%2730%27%20r=%271%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] opacity-40' />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
@@ -164,7 +191,6 @@ export default function HomeNavigation() {
                 Technology Conference
               </span>
             </motion.h1>
-
             {/* Decorative sparkles */}
             <motion.div
               variants={sparkleVariants}
@@ -184,7 +210,6 @@ export default function HomeNavigation() {
               <Sparkles className="w-4 h-4 text-cyan-300" />
             </motion.div>
           </motion.div>
-
           <motion.p
             variants={itemVariants}
             className="text-xl md:text-2xl text-blue-800 max-w-4xl mx-auto mb-20 leading-relaxed font-light tracking-wide"
@@ -217,12 +242,10 @@ export default function HomeNavigation() {
               >
                 {/* Luxury glass morphism background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-700" />
-
                 {/* Premium animated gradient border */}
                 <div
                   className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${item.accent} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm`}
                 />
-
                 {/* Sophisticated inner glow */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/10 via-transparent to-indigo-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
@@ -233,7 +256,6 @@ export default function HomeNavigation() {
                     <div className="w-20 h-20 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:from-white/30 group-hover:to-white/20 transition-all duration-500 shadow-2xl">
                       <item.icon className="w-9 h-9 text-white group-hover:text-blue-100 transition-all duration-300" />
                     </div>
-
                     {/* Luxury glow ring */}
                     <div
                       className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${item.accent} opacity-0 group-hover:opacity-60 transition-opacity duration-500 blur-md`}
@@ -245,7 +267,6 @@ export default function HomeNavigation() {
                     <h3 className="font-semibold text-white text-lg group-hover:text-blue-100 transition-colors duration-300 tracking-wide">
                       {item.label}
                     </h3>
-
                     {/* Ultra-premium hover indicator */}
                     <motion.div
                       className="flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0"
@@ -273,7 +294,6 @@ export default function HomeNavigation() {
 
                 {/* Luxury shimmer effect */}
                 <div className="absolute inset-0 -top-2 -left-2 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 transition-all duration-1000 group-hover:translate-x-full" />
-
                 {/* Premium depth shadow */}
                 <div className="absolute inset-0 rounded-3xl shadow-inner opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
               </motion.button>
@@ -307,7 +327,7 @@ export default function HomeNavigation() {
             ease: "easeInOut",
             delay: 2,
           }}
-          className="absolute  right-16 w-56 h-56 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl"
+          className="absolute right-16 w-56 h-56 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl"
         />
       </div>
     </section>

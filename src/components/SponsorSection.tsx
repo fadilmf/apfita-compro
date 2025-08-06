@@ -12,8 +12,6 @@ type SponsorSectionProps = {
   title: string;
   items: Sponsor[];
   type?: string;
-  width?: number;
-  height?: number;
   centerTitle?: boolean;
 };
 
@@ -58,12 +56,6 @@ function Tooltip({
   );
 }
 
-const getImageSize = (type?: string) => {
-  if (type === "grand") return 400;
-  if (type === "publisher") return 500;
-  return 150;
-};
-
 export default function SponsorSection({
   title,
   items,
@@ -89,24 +81,36 @@ export default function SponsorSection({
       >
         {title}
       </motion.h3>
-      <div className="flex flex-wrap justify-center gap-8">
+
+      <div className="flex flex-wrap justify-center gap-6">
         {filtered.map((sponsor) => {
-          const size = getImageSize(sponsor.type);
+          const isPublisher = sponsor.type === "publisher";
+          const isGrand = sponsor.type === "grand";
+
+          // Responsive size classes
+          const imgClass = isPublisher
+            ? "w-[160px] sm:w-[220px] md:w-[300px] lg:w-[500px]"
+            : isGrand
+            ? "w-[140px] sm:w-[180px] md:w-[240px] lg:w-[320px]"
+            : "w-[80px] sm:w-[100px] md:w-[130px]";
+
+          // Responsive layout
+          const containerClass = isPublisher
+            ? "basis-full"
+            : "basis-1/2 sm:basis-1/3 md:basis-1/5";
 
           return (
             <motion.div
               key={sponsor.id}
-              className="basis-1/2 sm:basis-1/3 md:basis-1/5 flex justify-center items-center"
-              whileHover={{ scale: sponsor.type === "publisher" ? 1.1 : 1.05 }}
+              className={`${containerClass} flex justify-center items-center`}
+              whileHover={{ scale: isPublisher ? 1.1 : 1.05 }}
               variants={itemVariants}
             >
               <Tooltip text={sponsor.alt}>
                 <img
                   src={sponsor.logo || "/placeholder.svg"}
                   alt={sponsor.alt}
-                  width={size}
-                  height={size}
-                  className="object-contain max-w-[500px] max-h-[500px]"
+                  className={`object-contain ${imgClass}`}
                 />
               </Tooltip>
             </motion.div>
