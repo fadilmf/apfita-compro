@@ -1,41 +1,6 @@
 import SponsorSection from "@/components/SponsorSection";
 import { motion } from "framer-motion";
-import logoBrain from "/src/assets/logo/logo_brain.png";
-import logoTelU from "/src/assets/Logo Tel U.png";
-import logoKementan from "/src/assets/Logo Kementan.png";
-import logoUNIKOM from "/src/assets/Logo UNIKOM.png";
-import logoUNPAD from "/src/assets/Logo UNPAD.png";
-import logoGUNDAR from "/src/assets/Logo Gunadarma.png";
-import logoUMB from "/src/assets/LogoUMBandung.png";
-import logoHIPI from "/src/assets/LogoHIPI.jpg";
-import logoBRI from "/src/assets/sponsors_partners/BRI BIRU_PNG.png";
-import logoFW from "/src/assets/sponsors_partners/fwResilien_Horizontal.png";
-import logoBAI from "/src/assets/sponsors_partners/BAI.png";
-import logoIOP from "/src/assets/Logo-IOP.jpg";
-
-const sponsors = [
-  { id: 1, logo: logoBrain, alt: "BRAIN IPB University", type: "grand" },
-  { id: 2, logo: logoBrain, alt: "BRAIN IPB University", type: "regular" },
-  { id: 3, logo: logoBRI, alt: "Bank BRI", type: "regular" },
-  { id: 4, logo: logoIOP, alt: "IOP Conference Series:Earth and Environmental Science (EES)", type: "publisher" },
-  { id: 5, logo: logoFW, alt: "Forum Wacana IPB", type: "supported" },
-  {
-    id: 6,
-    logo: logoBAI,
-    alt: "Bisnis dan Aplikasi Industri",
-    type: "supported",
-  },
-];
-
-const partners = [
-  { id: 1, logo: logoKementan, alt: "Kementerian Pertanian RI" },
-  { id: 2, logo: logoUMB, alt: "Universitas Muhammadiyah Bandung" },
-  { id: 3, logo: logoTelU, alt: "Telkom University" },
-  { id: 4, logo: logoUNIKOM, alt: "Universitas Komputer Indonesia" },
-  { id: 5, logo: logoUNPAD, alt: "Universitas Padjadjaran" },
-  { id: 6, logo: logoGUNDAR, alt: "Universitas Gunadarma" },
-  { id: 7, logo: logoHIPI, alt: "Himpunan Informatika Pertanian Indonesia" },
-];
+import { sponsors } from "@/data/sponsor";
 
 export default function Sponsors() {
   return (
@@ -73,11 +38,27 @@ export default function Sponsors() {
             technology.
           </motion.p>
         </motion.div>
-
-        <SponsorSection title="Grand Sponsors" type="grand" items={sponsors} />
-        <SponsorSection title="Sponsors" type="regular" items={sponsors} />
-        <SponsorSection title="Publisher" type="publisher" items={sponsors} />
-        <SponsorSection title="Partners & Co-Host" items={partners} />
+        
+        <SponsorSection 
+          title="Grand Sponsors" 
+          type="grand" 
+          items={sponsors} 
+        />
+        <SponsorSection 
+          title="Sponsors" 
+          type="regular" 
+          items={sponsors} 
+        />
+        <SponsorSection 
+          title="Publisher" 
+          type="publisher" 
+          items={sponsors} 
+        />
+        <SponsorSection 
+          title="Co-Host" 
+          type="cohost" 
+          items={sponsors} 
+        />
         <SponsorSection
           title="Supported by"
           type="supported"

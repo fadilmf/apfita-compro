@@ -3,7 +3,7 @@ import {
   FileText,
   Bell,
   FileCheck,
-  CreditCard,
+  // CreditCard,
   Users,
 } from "lucide-react";
 
@@ -39,11 +39,11 @@ export const dates: DateEntry[] = [
     event: "Accepted Full Paper Announcement",
     icon: <Bell className="w-6 h-6" />,
   },
-  {
-    date: "November 5, 2025",
-    event: "Registration Payment Deadline",
-    icon: <CreditCard className="w-6 h-6" />,
-  },
+  // {
+  //   date: "November 5, 2025",
+  //   event: "Registration Payment Deadline",
+  //   icon: <CreditCard className="w-6 h-6" />,
+  // },
   {
     date: "November 17-19, 2025",
     event: "15th APFITA Conference",

@@ -7,7 +7,7 @@ interface LogoGridSectionProps {
   title: string;
   items: Organization[];
   className?: string;
-  imageSize?: string; // contoh: "w-[150px] h-[80px]"
+  imageSize?: string;
   gridCols?: string;
 }
 
@@ -21,7 +21,7 @@ export default function LogoGridSection({
   if (items.length === 0) return null;
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn("gap-4", className)}>
       <h3 className="text-blue-800 font-semibold text-lg">{title}</h3>
       <div className={cn("grid gap-4", gridCols ?? "")}>
         {items.map((item) => (
