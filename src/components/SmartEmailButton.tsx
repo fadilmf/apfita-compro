@@ -1,5 +1,3 @@
-"use client";
-
 import { Mail, X, ExternalLink, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
