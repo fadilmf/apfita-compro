@@ -11,7 +11,7 @@ export const submissionPhases: SubmissionPhase[] = [
   {
     id: 1,
     title: "Phase 1: Abstract Submission",
-    deadline: "Deadline August 15, 2025",
+    deadline: "Deadline August 30, 2025",
     description:
       "Submit your abstract (250-300 words) according to the categories listed above. Include title, authors, affiliations, and keywords.",
     badge: "OPEN NOW",

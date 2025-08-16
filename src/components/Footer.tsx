@@ -9,6 +9,7 @@ import {
   Copy,
   Check,
 } from "lucide-react";
+import { Instagram } from "lucide-react"; // tambahkan import
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "/src/assets/logo/logo_conf.png";
 import { sponsors } from "@/data/sponsor";
@@ -189,6 +190,19 @@ export default function Footer() {
                   >
                     {email}
                   </button>
+                </div>
+
+                {/* Instagram */}
+                <div className="flex items-center space-x-3 hover:text-blue-950">
+                  <Instagram className="w-5 h-5" />
+                  <a
+                    href="https://www.instagram.com/apfita2025"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Instagram APFITA 2025
+                  </a>
                 </div>
 
                 <div className="relative" ref={dropdownRef}>

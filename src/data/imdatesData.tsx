@@ -1,5 +1,4 @@
 import {
-  Calendar,
   FileText,
   Bell,
   FileCheck,
@@ -20,14 +19,19 @@ export const dates: DateEntry[] = [
     icon: <FileText className="w-6 h-6" />,
   },
   {
-    date: "August 15, 2025",
+    date: "August 31, 2025",
     event: "Abstract Submission Deadline",
-    icon: <Calendar className="w-6 h-6" />,
+    icon: <FileCheck className="w-6 h-6" />,
   },
   {
-    date: "August 30, 2025",
+    date: "September 15, 2025",
     event: "Accepted Abstracts Announcement",
     icon: <Bell className="w-6 h-6" />,
+  },
+  {
+    date: "September 16, 2025",
+    event: "Full Paper Reception",
+    icon: <FileText className="w-6 h-6" />,
   },
   {
     date: "September 30, 2025",

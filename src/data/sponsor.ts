@@ -1,4 +1,3 @@
-
 import logoBrain from "/src/assets/logo/logo_brain.png";
 import logoTelU from "/src/assets/sponsors_partners/Logo Tel U.png";
 import logoKementan from "/src/assets/sponsors_partners/Logo Kementan.png";
@@ -12,7 +11,7 @@ import logoFW from "/src/assets/sponsors_partners/FW.png";
 import logoBAI from "/src/assets/sponsors_partners/BAI.png";
 import logoIOP from "/src/assets/sponsors_partners/Logo-IOP.jpg";
 
-export type SponsorPartnerType = 
+export type SponsorPartnerType =
   | "grand"
   | "regular"
   | "publisher"
@@ -34,31 +33,31 @@ export const sponsors: Organization[] = [
     url: "https://brain.ipb.ac.id",
   },
   {
-    name: "BRI",
+    name: "Bank Rakyat Indonesia",
     logo: logoBRI,
     type: "regular",
     url: "https://bri.co.id",
   },
   {
-    name: "IOP Conference Series",
+    name: "IOP Conference Series: Earth and Enviromental Sciences",
     logo: logoIOP,
     type: "publisher",
     url: "https://iopscience.iop.org/journal/1755-1315",
   },
   {
-    name: "FW IPB",
+    name: "Forum Wacana IPB",
     logo: logoFW,
     type: "supported",
     url: "https://forumwacanaipb.org/",
   },
   {
-    name: "BAI",
+    name: "Bisnis dan Aplikasi Industri IPB",
     logo: logoBAI,
     type: "supported",
     url: "https://apfita2025.com",
   },
   {
-    name: "Kementerian Pertanian RI",
+    name: "Kementerian Pertanian Republik Indonesia",
     logo: logoKementan,
     type: "supported",
     url: "https://www.pertanian.go.id",

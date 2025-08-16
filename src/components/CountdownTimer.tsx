@@ -1,71 +1,10 @@
-// "use client";
+"use client";
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import { Calendar, ArrowRight } from "lucide-react";
-
-import { dates, DateEntry, phases } from "@/data/imdatesData";
-
-// interface DateEntry {
-//   date: string;
-//   event: string;
-//   icon: React.ReactNode;
-// }
-
-// // Same dates data, unchanged.
-// const dates: DateEntry[] = [
-//   {
-//     date: "April 14, 2025",
-//     event: "Abstract Reception",
-//     icon: <Calendar className="w-6 h-6" />,
-//   },
-//   {
-//     date: "July 30, 2025",
-//     event: "Abstract Submission Deadline",
-//     icon: <Calendar className="w-6 h-6" />,
-//   },
-  
-//   {
-//       date: "August 15, 2025",
-//       event: "Abstract Submission Deadline",
-//       icon: <Calendar className="w-6 h-6" />,
-//     },
-//     {
-//       date: "August 15, 2025",
-//       event: "Accepted Abstracts Announcement",
-//       icon: <Bell className="w-6 h-6" />,
-//     },
-//     {
-//       date: "September 30, 2025",
-//       event: "Full Paper Submission Deadline",
-//       icon: <FileCheck className="w-6 h-6" />,
-//     },
-//     {
-//       date: "October 31, 2025",
-//       event: "Accepted Full Paper Announcement",
-//       icon: <Bell className="w-6 h-6" />,
-//     },
-//     {
-//       date: "November 5, 2025",
-//       event: "Registration Payment Deadline",
-//       icon: <CreditCard className="w-6 h-6" />,
-//     },
-//     {
-//       date: "November 17-19, 2025",
-//       event: "15th APFITA Conference",
-//       icon: <Users className="w-6 h-6" />,
-//     },
-// ];
-
-// const phases = [
-//   {
-//     name: "Abstract Submission Phase",
-//     description: "Submit your abstract",
-//     startDate: "April 14, 2025",
-//     endDate: "July 30, 2025",
-//   },
-//   // Add the rest...
-// ];
+import { Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { dates, type DateEntry, phases } from "@/data/imdatesData";
 
 interface TimeLeft {
   days: number;
@@ -145,77 +84,119 @@ const CountdownTimer: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-40">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="relative">
+          <div className="w-16 h-16 border-4 border-primary/20 rounded-full animate-spin border-t-primary"></div>
+          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent rounded-full animate-ping border-t-primary/40"></div>
+        </div>
       </div>
     );
   }
 
   if (!nextEvent && !currentPhase) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md text-center">
-        <h3 className="text-xl font-bold text-blue-600 mb-3">
-          All events have passed
-        </h3>
-        <p className="text-gray-600">
-          Thank you for your interest in APFITA 2025!
-        </p>
+      <div className="relative overflow-hidden bg-gradient-to-br from-card via-card to-muted/50 backdrop-blur-xl border border-border/50 p-8 rounded-2xl shadow-2xl text-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
+        <div className="relative z-10">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+            <Sparkles className="w-8 h-8 text-primary" />
+          </div>
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-3">
+            All Events Complete
+          </h3>
+          <p className="text-muted-foreground text-lg">
+            Thank you for your interest in APFITA 2025!
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 relative"> 
-     <div className="bg-white border border-amber-200 p-6 mb-6 rounded-xl w-full px-4 sm:px-6 md:px-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-        <div className="flex flex-col sm:flex-row justify-between gap-6">
-          {/* Current Phase Section */}
-          {/* {currentPhase && ( */}
-            {/* <div className="animate-pulse flex-1 mb-6 sm:mb-0 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <AlertCircle className="w-5 h-5 text-yellow-600" />
-                <h3 className="text-lg font-semibold text-yellow-700">
-                  {currentPhase.name}
-                </h3>
-              </div>
-              <p className="text-yellow-600 text-sm">
-                {currentPhase.description}
-              </p> */}
+    <div className="w-full max-w-6xl mx-auto px-6 relative mb-12">
+      <div className="relative overflow-hidden bg-gradient-to-br from-card via-card to-muted/30 backdrop-blur-xl border border-border/50 p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 group">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 opacity-50"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-              {/* Action button */}
-              {/* {getActionButtonForPhase(currentPhase.name)}
-            </div> */}
-          {/* )} */}
-
-          {/* Next Event Countdown */}
+        <div className="relative z-10">
           {nextEvent && (
-            <div className="flex-1 text-center mb-6 sm:mb-0 p-4 rounded-lg">
-              <h2 className="text-2xl font-bold text-amber-700 mb-2">
-                Next Important Date
-              </h2>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-lg text-amber-900">
-                <Calendar className="w-5 h-5" />
-                <span>{nextEvent.date}</span>
-                <ArrowRight className="w-5 h-5" />
-                <span className="font-semibold">{nextEvent.event}</span>
+            <div className="text-center space-y-8">
+              {/* Header */}
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-foreground to-muted-foreground bg-clip-text text-transparent">
+                  Next Schedule
+                </h2>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-xl text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-primary" />
+                    <span className="font-medium">{nextEvent.date}</span>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary hidden sm:block" />
+                  <span className="font-semibold text-foreground">
+                    {nextEvent.event}
+                  </span>
+                </div>
               </div>
 
-              {/* Countdown */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+              {/* Countdown Grid */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 {[
-                  { label: "Days", value: timeLeft.days },
-                  { label: "Hours", value: timeLeft.hours },
-                  { label: "Minutes", value: timeLeft.minutes },
-                  { label: "Seconds", value: timeLeft.seconds },
+                  {
+                    label: "Days",
+                    value: timeLeft.days,
+                    color: "from-blue-600 to-blue-700",
+                  },
+                  {
+                    label: "Hours",
+                    value: timeLeft.hours,
+                    color: "from-blue-500 to-blue-600",
+                  },
+                  {
+                    label: "Minutes",
+                    value: timeLeft.minutes,
+                    color: "from-blue-400 to-blue-500",
+                  },
+                  {
+                    label: "Seconds",
+                    value: timeLeft.seconds,
+                    color: "from-blue-300 to-blue-400",
+                  },
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="bg-amber-50 rounded-lg shadow-md p-3 text-center border border-amber-300"
+                    className={cn(
+                      "relative overflow-hidden bg-gradient-to-br from-card to-muted/50 backdrop-blur-sm",
+                      "rounded-2xl shadow-xl border border-border/50 p-6 text-center",
+                      "hover:scale-105 transition-all duration-300 group/card"
+                    )}
                   >
-                    <div className="text-xl font-semibold text-amber-900">
-                      {item.value < 10 ? `0${item.value}` : item.value}
+                    <div
+                      className={cn(
+                        "absolute inset-0 bg-gradient-to-br opacity-5 group-hover/card:opacity-10 transition-opacity",
+                        item.color
+                      )}
+                    ></div>
+
+                    <div className="relative z-10 space-y-2">
+                      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
+                        {item.value < 10 ? `0${item.value}` : item.value}
+                      </div>
+                      <div className="text-sm uppercase tracking-wider font-medium text-muted-foreground">
+                        {item.label}
+                      </div>
                     </div>
-                    <div className="text-xs uppercase text-gray-700">
-                      {item.label}
-                    </div>
+
+                    {/* Subtle glow effect */}
+                    <div
+                      className={cn(
+                        "absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-20 transition-opacity duration-300",
+                        "bg-gradient-to-br",
+                        item.color,
+                        "blur-xl"
+                      )}
+                    ></div>
                   </div>
                 ))}
               </div>
@@ -226,39 +207,5 @@ const CountdownTimer: React.FC = () => {
     </div>
   );
 };
-
-// function getActionButtonForPhase(phaseName: string): React.ReactNode {
-//   switch (phaseName) {
-//     case "Abstract Submission Phase":
-//       return (
-//         <a
-//           href="/submissions"
-//           className="mt-3 bg-yellow-600 hover:bg-yellow-700 text-black text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center justify-center gap-1 mx-auto"
-//         >
-//           <span>Submit Abstract</span>
-//         </a>
-//       );
-//     case "Full Paper Submission Phase":
-//       return (
-//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-//           <span>Submit Full Paper</span>
-//         </button>
-//       );
-//     case "Registration Phase":
-//       return (
-//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-//           <span>Register Now</span>
-//         </button>
-//       );
-//     case "Conference Phase":
-//       return (
-//         <button className="mt-3 bg-blue-600 hover:bg-blue-700 text-white text-sm py-1.5 px-4 rounded-full transition-colors duration-300 flex items-center gap-1 mx-auto">
-//           <span>View Schedule</span>
-//         </button>
-//       );
-//     default:
-//       return null;
-//   }
-// }
 
 export default CountdownTimer;
