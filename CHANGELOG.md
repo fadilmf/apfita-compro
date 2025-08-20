@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
+# What's New – APFITA Website
+## July 2025
+
+### 🗓️ Important Dates Updated
+We've refreshed the timeline! Abstract submissions are now open until **August 15, 2025**. Make sure to check other key dates like full paper deadlines and the main conference schedule.
+
+### ✍️ Submission Process Now Clearer
+No more confusion – we’ve added a 3-step guide to walk you through:
+1. Abstract Submission
+2. Full Paper Submission
+3. Payment
+
+Each phase comes with visual indicators and status badges (like "Open Now" or "Coming Soon").
+
+### 👥 Meet the APFITA Board
+You can now learn more about the people behind APFITA on our **About** page. We’ve added a list of board members from the official APFITA site.
+
+### 💡 Other Improvements
+- Consistent design across all pages
+- Cleaner icons and layout for important info
+- Mobile-friendly tweaks for smoother browsing
+
 ## [2025.07.06] - Website Update for APFITA 2025
 
 ---

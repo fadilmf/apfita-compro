@@ -1,5 +1,5 @@
 // src/components/Flyer.tsx
-import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update29Juli.png";
+import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update0820.png";
 
 const Flyer = () => {
   return (

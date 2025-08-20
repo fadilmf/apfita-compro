@@ -9,7 +9,7 @@ import {
   Send,
 } from "lucide-react";
 import { useState } from "react";
-import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update29Juli.png";
+import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update0820.png";
 
 const handleDownload = () => {
   const link = document.createElement("a");
