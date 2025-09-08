@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button"; // Pastikan Shadcn UI sudah terinstal
 import { submissionPhases } from "@/data/submissionPhase";
+import { ExternalLink } from "lucide-react";
 
 export default function SubmissionPhaseTimeline() {
   return (
@@ -46,6 +48,40 @@ export default function SubmissionPhaseTimeline() {
                 {phase.deadline && <b>{phase.deadline}<br /></b>}
                 {phase.description}
               </p>
+              {/* Kondisional Link */}
+              {phase.href && phase.href_active ? (
+                <Button 
+                    asChild 
+                    className="mt-4 rounded-xl p-0 m-0"
+                    variant="link"  // Tombol tidak aktif menggunakan variant 'secondary'
+                  >
+                    <a
+                      href={phase.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                    {phase.href_desc || "Go to Phase"} {/* Menampilkan deskripsi link jika ada */}
+                    <ExternalLink className="relative z-10 w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </a>
+                  </Button>
+                
+              ) : (
+                phase.href && (
+                  <Button 
+                    asChild 
+                    className="mt-4 rounded-xl p-0 m-0 text-slate-500 cursor-not-allowed pointer-events-none hover:underline"
+                    variant="link"  // Tombol tidak aktif menggunakan variant 'secondary'
+                  >
+                    <a
+                      href={phase.href}
+                      rel="noopener noreferrer"
+                    >
+                      {phase.href_desc || "Coming Soon"}
+                      <ExternalLink className="relative z-10 w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </a>
+                  </Button>
+                )
+              )}
             </div>
           </div>
         );

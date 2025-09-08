@@ -109,7 +109,6 @@ export default function PaymentGuidelines() {
             designed for your convenience
           </p>
         </motion.div>
-        <PaymentDestinationCard />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -199,6 +198,7 @@ export default function PaymentGuidelines() {
             );
           })}
         </motion.div>
+        <PaymentDestinationCard />
       </div>
     </div>
   );

@@ -43,8 +43,8 @@ const CopyField = ({
     label.includes("Phone");
 
   return (
-    <div className="flex items-start justify-between py-3 border-b border-gray-100 last:border-b-0 group hover:bg-gray-50/50 transition-colors duration-200">
-      <div className="flex-1 min-w-0 pr-4">
+    <div className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0 group hover:bg-gray-50/50 transition-colors duration-200">
+      <div className="flex-1 min-w-0 pr-4 text-left">
         <dt className="text-sm font-medium text-gray-600 mb-1">{label}</dt>
         <dd
           className={`text-base font-semibold text-gray-900 ${
@@ -116,26 +116,28 @@ export function PaymentDestinationCard() {
             </div>
           </div>
 
-          <div className="p-6 flex-1 flex flex-col">
-            <dl className="space-y-0 flex-1">
-              <CopyField
-                label="Bank Name"
-                value="Bank Negara Indonesia (BNI)"
-                variant="blue"
-              />
-              <CopyField
-                label="Account Number"
-                value="3893705"
-                variant="blue"
-              />
-              <CopyField
-                label="Account Holder"
-                value="Rektor IPB C/Q Kerjasama IPB"
-                variant="blue"
-              />
+          <div className="p-8 flex-1 flex flex-col">
+            <dl className="my-auto flex flex-row">
+              <dl className="space-y-0 flex flex-col flex-1">
+                <CopyField
+                  label="Bank Name"
+                  value="Bank Negara Indonesia (BNI)"
+                  variant="blue"
+                />
+                <CopyField
+                  label="Account Number"
+                  value="3893705"
+                  variant="blue"
+                />
+                <CopyField
+                  label="Account Holder"
+                  value="Rektor IPB C/Q Kerjasama IPB"
+                  variant="blue"
+                />
+              </dl>
             </dl>
 
-            <div className="mt-auto pt-6">
+            <div className="pt-6">
               <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl">
                 <div className="flex gap-3">
                   <div className="flex-shrink-0">
@@ -176,7 +178,7 @@ export function PaymentDestinationCard() {
             </div>
           </div>
 
-          <div className="p-6 flex-1 flex flex-col">
+          <div className="p-8 flex-1 flex flex-col">
             <dl className="space-y-0 flex-1">
               <CopyField
                 label="Bank Name"

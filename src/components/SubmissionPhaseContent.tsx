@@ -1,6 +1,6 @@
 import {
   FileText,
-  Calendar,
+  // Calendar,
   ExternalLink,
   Award,
   BookOpen,
@@ -42,12 +42,12 @@ export default function SubmissionPhaseContent() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Current Phase Badge */}
-      <div className="text-center">
+      {/* <div className="text-center">
         <div className="inline-flex text-center items-center gap-2 bg-amber-100 px-4 py-2 rounded-full text-amber-800 font-medium mb-4">
           <Calendar className="w-4 h-4" />
           Current Phase: Abstract Submission
         </div>
-      </div>
+      </div> */}
 
       {/* Header */}
       <motion.div
@@ -56,11 +56,11 @@ export default function SubmissionPhaseContent() {
         transition={{ duration: 0.5 }}
         className="text-center mb-8 sm:mb-12"
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-navy-900 mb-4 sm:mb-6">
-          Abstract Submission Now Open!
+        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-900 via-amber-600 to-amber-800 bg-clip-text text-transparent mb-6 text-balance py-2 md:py-6">
+          The abstract submission period is now closed.
         </h1>
       </motion.div>
-
+      
       {/* IOP Conference Series Highlight Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -154,7 +154,7 @@ export default function SubmissionPhaseContent() {
           </div>
         </div>
       </motion.div>
-
+      
       {/* Phase Cards */}
       <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
         {phases.map((phase, index) => {
@@ -224,6 +224,7 @@ export default function SubmissionPhaseContent() {
           );
         })}{" "}
       </div>
+
     </div>
   );
 }

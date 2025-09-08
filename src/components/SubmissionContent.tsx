@@ -1,9 +1,7 @@
-// "use client";
-
 import type React from "react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText } from "lucide-react";
+// import { FileText } from "lucide-react";
 import GuidelinesContent from "@/components/GuideLinesContent";
 import SubmissionTemplateContent from "./SubmissionTemplateContent";
 import SubmissionPhaseContent from "./SubmissionPhaseContent";
@@ -98,7 +96,7 @@ export default function SubmissionsContent() {
             <TabContent>
               <div
                 id="guideline"
-                className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl"
+                className="scroll-mt-5 flex justify-center items-center bg-blue-50/50 border border-blue-200 p-6 rounded-2xl"
               >
                 <GuidelinesContent />
               </div>
@@ -108,7 +106,7 @@ export default function SubmissionsContent() {
             <TabContent>
               <div
                 id="template"
-                className="scroll-mt-5 flex justify-center items-center bg-blue-50/30 p-6 rounded-2xl"
+                className="scroll-mt-5 flex justify-center items-center bg-blue-50/50 border border-blue-200 p-6 rounded-2xl"
               >
                 <SubmissionTemplateContent />
               </div>
@@ -117,29 +115,37 @@ export default function SubmissionsContent() {
 
           {activeTab === "submission" && (
             <TabContent>
-              <div id="submission" className="scroll-mt-5 space-y-8">
-                {/* Current Phase Banner */}
-                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
-                  <SubmissionPhaseContent />
+              <div id="submission" className="scroll-mt-5 rounded-2xl bg-blue-50/50 border border-blue-200 space-y-8">
+
+                <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12 lg:py-20">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-4 sm:mb-8"
+                  >
+                    <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+                      Submission Process
+                    </h1>
+                    <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto">
+                      Four-phase submission process
+                    </p>
+                  </motion.div>
+            
+                  {/* Submission Process */}
+                  <div className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100">
+                    <SubmissionPhaseTimeline />
+                  </div>
+                  
                 </div>
 
-                {/* Submission Process */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 bg-blue-100 rounded-xl">
-                      <FileText className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold text-gray-900">
-                        Submission Process
-                      </h2>
-                      <p className="text-blue-600 text-sm">
-                        Three-phase submission process
-                      </p>
-                    </div>
-                  </div>
 
-                  <SubmissionPhaseTimeline />
+                {/* Current Phase Banner */}
+                {/* <div className="bg-amber-50 border border-amber-200 rounded-xl p-6"> */}
+                <div className="max-w-6xl mx-auto px-4 pb-8 md:pb-12 lg:pb-20">
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+                    <SubmissionPhaseContent />
+                  </div>
                 </div>
               </div>
             </TabContent>

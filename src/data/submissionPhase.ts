@@ -4,33 +4,49 @@ export interface SubmissionPhase {
   description: string;
   deadline?: string;
   badge?: string;
+  href?: string;
+  href_desc?: string;
+  href_active?: boolean;
   active: boolean;
 }
-
-export const submissionPhases: SubmissionPhase[] = [
+export const submissionPhases = [
   {
-    id: 1,
+    id: "1",
     title: "Phase 1: Abstract Submission",
-    deadline: "Deadline August 31, 2025",
     description:
-      "Submit your abstract (250-300 words) according to the categories listed above. Include title, authors, affiliations, and keywords.",
-    badge: "OPEN NOW",
+      "Abstract submission period is now closed. Please check for further updates.",
+    deadline: "August 31, 2025",
+    active: false,  // Menandakan fase ini sudah selesai
+    badge: "Closed",  // Menambahkan badge untuk menandai fase ini sudah selesai
+  },
+  {
+    id: "2",
+    title: "Phase 2: Abstract Announcement & Payment Required",
+    description:
+      "Upon abstract acceptance, please complete the payment as instructed on the Registration Fee page.",
+    active: true,
+    badge: "Payment Required",
+    href: "/registration",  // Link untuk pembayaran
+    href_active: true,  
+    href_desc: "Go to Registration Fee Page", 
+  },
+  {
+    id: "3",
+    title: "Phase 3: Letter of Acceptance for Oral Presentation",
+    description:
+      "Once the payment has been confirmed, the Letter of Acceptance will be officially issued and sent by email.",
     active: true,
   },
   {
-    id: 2,
-    title: "Phase 2: Payment Required",
+    id: "4",
+    title: "Phase 4: Full Paper Submission",
     description:
-      "Please follow the instructions on the 'Registration Fee' page to complete your payment.",
+      "Full paper submissions will be accepted starting September 16, 2025. The link will be available soon.",
+    deadline: "The opening is set for September 16, 2025",
     active: false,
-  },
-  {
-    id: 3,
-    title: "Phase 3: Full Paper Submission",
-    deadline: "Deadline September 30, 2025",
-    description:
-      "After abstract acceptance, especially for authors who wish to present and publish, you will be invited to submit your full paper using the IOP template. Details will be provided to authors with accepted abstracts.",
-    badge: "COMING SOON",
-    active: false,
+    badge: "Coming Soon",
+    href: "#",  // Link untuk full paper submission akan diposting nanti
+    href_active: false,  // Link untuk full paper submission akan diposting nanti
+    href_desc: "The link will be available soon",
   },
 ];
