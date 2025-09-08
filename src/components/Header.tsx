@@ -22,6 +22,8 @@ export default function Header() {
     "/committees": "COMMITTEES",
     "/download": "DOWNLOAD",
     "/contact": "CONTACT US!",
+    "/regfee": "REGISTRATION FEE",
+    "/board-members": "BOARD MEMBERS",
   };
 
   const pageTitle = pageTitles[location.pathname] || "APFITA 2025";

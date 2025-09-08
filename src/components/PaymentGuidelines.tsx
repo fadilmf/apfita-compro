@@ -24,8 +24,8 @@ const paymentGuidelines = [
 
 export default function PaymentGuidelines() {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-5xl mx-auto px-4 text-center">
+    <div className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto text-center space-y-10">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,6 +75,6 @@ export default function PaymentGuidelines() {
 
         <PaymentDestinationCard />
       </div>
-    </section>
+    </div>
   );
 }

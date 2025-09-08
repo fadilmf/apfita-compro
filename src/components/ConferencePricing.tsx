@@ -147,12 +147,6 @@ export default function ConferencePricing() {
     },
   };
 
-  // Handle registration button click
-  // const handleRegister = (registrationType: string) => {
-  //   // Navigate to registration page with the selected tier as a query parameter
-  //   navigate(`/register?type=${registrationType}`);
-  // };
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-gradient-to-b from-white to-blue-50">
       <motion.div

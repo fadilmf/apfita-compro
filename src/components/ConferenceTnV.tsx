@@ -106,46 +106,6 @@ export default function ConferenceTnV() {
             </a>
           </div>
 
-          {/* Online Venue */}
-          {/* <div className="p-4 rounded-lg border-2 border-gray-200">
-                  <div className="flex items-start gap-3">
-                    <Video className="h-5 w-5 text-blue-600 shrink-0 mt-1" />
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <p className="font-medium">Online Session</p>
-                        <span className="px-2 py-1 text-xs font-semibold text-blue-600 bg-gray-100 rounded-full">
-                          Coming Soon
-                        </span>
-                      </div>
-                      <p className="font-medium text-blue-600 mt-2">
-                        Zoom Meeting
-                      </p>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Join us virtually through Zoom platform
-                      </p>
-                      <p className="text-xs text-gray-500 mt-2">
-                        Meeting ID & Password Coming Soon
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
-          {/* Action Buttons */}
-
-          {/* <div className="grid gap-3 sm:grid-cols-2 mt-4"> */}
-          {/* <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2 px-4 bg-gray-200 text-gray-800 rounded-md hover:bg-blue-600 hover:text-white transition duration-300 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
-                onClick={(e) => e.preventDefault()} // Mencegah klik
-              >
-                <Video className="h-4 w-4" />
-                Join Virtual Meeting
-              </a> */}
-          {/* </div> */}
         </div>
       </div>
     </div>
