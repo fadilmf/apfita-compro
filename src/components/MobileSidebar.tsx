@@ -54,7 +54,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
     { path: "/", label: "HOME", icon: Home },
     { path: "/conference", label: "CONFERENCE", icon: Calendar },
     { path: "/time-schedule", label: "TIME SCHEDULE", icon: Calendar },
-    { path: "/regfee", label: "REGISTRATION FEE", icon: FileText },
+    { path: "/registration", label: "REGISTRATION", icon: FileText },
     { path: "/submissions", label: "SUBMISSIONS", icon: Send },
   ];
 

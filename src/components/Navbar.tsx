@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
               { label: "HOME", path: "/" },
               { label: "CONFERENCE", path: "/conference" },
               { label: "TIME SCHEDULE", path: "/time-schedule" },
-              { label: "REGISTRATION FEE", path: "/regfee" },
+              { label: "REGISTRATION", path: "/registration" },
               { label: "SUBMISSIONS", path: "/submissions" },
             ].map(({ label, path }) => (
               <button

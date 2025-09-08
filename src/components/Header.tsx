@@ -22,7 +22,7 @@ export default function Header() {
     "/committees": "COMMITTEES",
     "/download": "DOWNLOAD",
     "/contact": "CONTACT US!",
-    "/regfee": "REGISTRATION FEE",
+    "/registration": "REGISTRATION",
     "/board-members": "BOARD MEMBERS",
   };
 
@@ -72,14 +72,16 @@ export default function Header() {
 
           {/* Other Logos */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-center">
-            {[logoIPB, logoBrain, logoForumPasca, logoConf].map((logo, index) => (
-              <img
-                key={index}
-                src={logo || "/placeholder.svg"}
-                alt={`Logo ${index + 1}`}
-                className="w-12 sm:w-16 md:w-20 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
-              />
-            ))}
+            {[logoIPB, logoBrain, logoForumPasca, logoConf].map(
+              (logo, index) => (
+                <img
+                  key={index}
+                  src={logo || "/placeholder.svg"}
+                  alt={`Logo ${index + 1}`}
+                  className="w-12 sm:w-16 md:w-20 h-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 mx-auto"
+                />
+              )
+            )}
           </div>
         </div>
       </div>

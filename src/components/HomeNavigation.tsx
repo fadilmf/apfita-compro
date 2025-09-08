@@ -42,8 +42,8 @@ const navItems = [
     accent: "from-cyan-500 to-blue-500",
   },
   {
-    label: "Registration Fee",
-    href: "/regfee",
+    label: "Registration",
+    href: "/registration",
     icon: DollarSign,
     accent: "from-indigo-600 to-blue-600",
   },

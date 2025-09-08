@@ -27,7 +27,7 @@ export default function Footer() {
     { name: "Home", href: "/" },
     { name: "Conference", href: "/conference" },
     { name: "Time Schedule", href: "/time-schedule" },
-    { name: "Registration Fee", href: "/regfee" },
+    { name: "Registration", href: "/registration" },
     { name: "Submissions", href: "/submissions" },
     { name: "Venue", href: "/venue" },
     { name: "Board Members", href: "/board-members" },

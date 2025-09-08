@@ -24,7 +24,7 @@ export const dates: DateEntry[] = [
     icon: <FileCheck className="w-6 h-6" />,
   },
   {
-    date: "September 15, 2025",
+    date: "September 7, 2025",
     event: "Accepted Abstracts Announcement",
     icon: <Bell className="w-6 h-6" />,
   },
