@@ -1,196 +1,14 @@
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import { Check, Users, Sparkles, Globe, Calendar } from "lucide-react";
+import { Check, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import type React from "react";
-
-interface PricingTier {
-  name: string;
-  description: string;
-  icon: React.ElementType;
-  features: { text: string; tooltip?: string }[];
-  badge?: string;
-  price: string;
-  priceDetail: string;
-  color: string;
-  registrationType: string;
-  popular?: boolean;
-  isAvailable: boolean; // ✅ new
-}
+// import type React from "react";
+import { pricingTiers } from "@/data/conference";
 
 export default function ConferencePricing() {
   // const navigate = useNavigate();
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
   const [isHovering, setIsHovering] = useState<number | null>(null);
-
-  const pricingTiers: PricingTier[] = [
-    {
-      name: "Indonesian Presenter",
-      description: "For academic presenters from Indonesia",
-      icon: Sparkles,
-      badge: "Most Popular",
-      popular: true,
-      price: "IDR 2,500,000",
-      priceDetail: "per paper",
-      color: "from-blue-600 to-blue-800",
-      registrationType: "indonesian-presenter",
-      features: [
-        {
-          text: "10% Discount for Students",
-          tooltip:
-            "Valid only for undergraduate & master students with student ID",
-        },
-        {
-          text: "50% Discount for Second Paper",
-          tooltip:
-            "Applicable only if both papers are submitted by the same author",
-        },
-        { text: "Official Certificate of Presentation" },
-        { text: "Publication in Conference Proceedings" },
-        { text: "Exclusive Conference Souvenir" },
-        { text: "Complimentary Lunch for All Conference Days" },
-        { text: "Coffee & Refreshment Breaks" },
-        { text: "Invitation to Gala Dinner Event" },
-        { text: "Networking Opportunities with Experts" },
-      ],
-      isAvailable: true,
-    },
-    // {
-    //   name: "Indonesian Presenter",
-    //   description: "For academic presenters from Indonesia",
-    //   icon: Sparkles,
-    //   badge: "Most Popular",
-    //   popular: true,
-    //   price: "IDR 2,500,000",
-    //   priceDetail: "per paper",
-    //   color: "from-blue-600 to-blue-800",
-    //   registrationType: "indonesian-presenter",
-    //   features: [
-
-    //   ],
-    // },
-    // {
-    //   name: "International Presenter",
-    //   description: "For presenters from outside Indonesia",
-    //   icon: Globe,
-    //   price: "USD 375",
-    //   priceDetail: "per paper",
-    //   color: "from-blue-500 to-blue-700",
-    //   registrationType: "international-presenter",
-    //   features: [
-    //     "Official Certificate of Presentation",
-    //     "Publication in Conference Proceedings",
-    //     "Exclusive Conference Souvenir",
-    //     "Complimentary Lunch for All Conference Days",
-    //     "Coffee & Refreshment Breaks",
-    //     "Invitation to Gala Dinner Event",
-    //     "Access to All Conference Sessions",
-    //     "Networking with Global Researchers",
-    //     "Digital Access to All Presentations",
-    //   ],
-    // },
-    // {
-    //   name: "Participant Only",
-    //   description: "For non-presenting attendees from Indonesia",
-    //   icon: Users,
-    //   price: "IDR 100,000",
-    //   priceDetail: "with E-certificate",
-    //   color: "from-blue-400 to-blue-600",
-    //   registrationType: "participant-only",
-    //   features: [
-    //     "Digital E-Certificate of Attendance",
-    //     "Access to All Conference Sessions",
-    //     "Complimentary Lunch for All Conference Days",
-    //     "Coffee & Refreshment Breaks",
-    //     "Networking Opportunities",
-    //     "Access to Digital Materials",
-    //     "Participation in Q&A Sessions",
-    //   ],
-    // },
-    {
-      name: "International Presenter",
-      description: "For presenters from outside Indonesia",
-      icon: Globe,
-      price: "USD 375",
-      priceDetail: "per paper",
-      color: "from-blue-500 to-blue-700",
-      registrationType: "international-presenter",
-      features: [
-        { text: "Official Certificate of Presentation" },
-        { text: "Publication in Conference Proceedings" },
-        { text: "Exclusive Conference Souvenir" },
-        { text: "Complimentary Lunch for All Conference Days" },
-        { text: "Coffee & Refreshment Breaks" },
-        { text: "Invitation to Gala Dinner Event" },
-        { text: "Access to All Conference Sessions" },
-        { text: "Networking with Global Researchers" },
-        { text: "Digital Access to All Presentations" },
-      ],
-      isAvailable: true,
-    },
-    {
-      name: "Indonesian Presenter Only",
-      description: "Without IOP publication",
-      icon: Sparkles,
-      price: "IDR 750,000",
-      priceDetail: "per paper",
-      color: "from-blue-500 to-blue-700",
-      registrationType: "indonesian-only",
-      features: [
-        { text: "Official Certificate of Presentation" },
-        { text: "Publication in Conference Proceedings" },
-        { text: "Exclusive Conference Souvenir" },
-        { text: "Complimentary Lunch for All Conference Days" },
-        { text: "Coffee & Refreshment Breaks" },
-        { text: "Invitation to Gala Dinner Event" },
-        { text: "Access to All Conference Sessions" },
-        { text: "Networking with Global Researchers" },
-        { text: "Digital Access to All Presentations" },
-      ],
-      isAvailable: true,
-    },
-    {
-      name: "International Presenter Only",
-      description: "Without IOP publication",
-      icon: Globe,
-      price: "USD 267",
-      priceDetail: "per paper",
-      color: "from-blue-500 to-blue-700",
-      registrationType: "international-only",
-      features: [
-        { text: "Official Certificate of Presentation" },
-        { text: "Publication in Conference Proceedings" },
-        { text: "Exclusive Conference Souvenir" },
-        { text: "Complimentary Lunch for All Conference Days" },
-        { text: "Coffee & Refreshment Breaks" },
-        { text: "Invitation to Gala Dinner Event" },
-        { text: "Access to All Conference Sessions" },
-        { text: "Networking with Global Researchers" },
-        { text: "Digital Access to All Presentations" },
-      ],
-      isAvailable: true,
-    },
-    {
-      name: "Participant Only",
-      description: "For non-presenting attendees from Indonesia",
-      icon: Users,
-      price: "IDR 100,000",
-      priceDetail: "with E-certificate",
-      color: "from-blue-400 to-blue-600",
-      registrationType: "participant-only",
-      features: [
-        { text: "Digital E-Certificate of Attendance" },
-        { text: "Access to All Conference Sessions" },
-        { text: "Complimentary Lunch for All Conference Days" },
-        { text: "Coffee & Refreshment Breaks" },
-        { text: "Networking Opportunities" },
-        { text: "Access to Digital Materials" },
-        { text: "Participation in Q&A Sessions" },
-      ],
-
-      isAvailable: true,
-    },
-  ];
 
   // Animation variants
   const containerVariants = {
@@ -315,19 +133,17 @@ export default function ConferencePricing() {
 
                 <ul className="space-y-4 mb-8 flex-grow">
                   {tier.features.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-3 relative group"
-                    >
+                    <li key={idx} className="flex items-start gap-3 relative group">
                       <div className="bg-white/20 rounded-full p-0.5 mt-0.5">
                         <Check className="w-4 h-4 text-white" />
                       </div>
                       <span className="text-sm text-white">
                         {feature.text}
                         {feature.tooltip && (
-                          <span className="ml-2 text-white/80 cursor-help relative">
+                          <span className="ml-2 text-white/80 cursor-help relative group">
                             ⓘ
-                            <div className="absolute left-0 top-full mt-1 w-64 text-xs bg-black text-white rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
+                            {/* Tooltip container */}
+                            <div className="absolute -left-16 top-full mt-1 text-xs w-32 bg-black text-white rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50">
                               {feature.tooltip}
                             </div>
                           </span>
@@ -335,6 +151,7 @@ export default function ConferencePricing() {
                       </span>
                     </li>
                   ))}
+
                 </ul>
               </div>
             </motion.div>

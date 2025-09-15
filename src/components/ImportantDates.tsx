@@ -18,6 +18,8 @@ const ImportantDates: React.FC = () => {
 
     for (let i = 0; i < dates.length; i++) {
       const entryDate = new Date(dates[i].date);
+      console.log("Comparing with date:", entryDate);
+      console.log("Today's date:", today);
 
       // kalau hari ini sama persis
       if (
@@ -34,8 +36,8 @@ const ImportantDates: React.FC = () => {
       // kalau hari ini sebelum tanggal ini
       if (today < entryDate) {
         return {
-          currentIndex: Math.max(0, i - 1), // mundur 1
-          nextIndex: i, // event berikutnya
+          currentIndex: i, // mundur 1
+          nextIndex: i+1, // event berikutnya
         };
       }
     }
