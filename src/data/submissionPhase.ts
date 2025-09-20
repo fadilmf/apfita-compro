@@ -41,12 +41,12 @@ export const submissionPhases = [
     id: "4",
     title: "Phase 4: Full Paper Submission",
     description:
-      "Full paper submissions will be accepted starting September 16, 2025. The link will be available soon.",
+      "Full paper submissions will be accepted starting September 16, 2025. Access to this link is restricted to the first author who submitted the abstract. The link has also been sent to the email address used during submission.",
     deadline: "The opening is set for September 16, 2025",
-    active: false,
-    badge: "Coming Soon",
-    href: "#",  // Link untuk full paper submission akan diposting nanti
-    href_active: false,  // Link untuk full paper submission akan diposting nanti
-    href_desc: "The link will be available soon",
+    active: true,
+    href: "https://www.morressier.com/call-for-papers/682f33f147f9de643df82577",  // Link untuk full paper submission akan diposting nanti
+    badge: "Open Now",
+    href_active: true,  // Link untuk full paper submission akan diposting nanti
+    href_desc: "Submmission Link"
   },
 ];
