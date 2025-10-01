@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import VenueContent from "@/components/VenueContent";
 import Transport from "@/components/Transport";
 import { VenueHotels } from "@/components/VenueHotels";
-// import Sponsors from "@/components/Sponsors";
 
 const Venue = () => {
   return (
