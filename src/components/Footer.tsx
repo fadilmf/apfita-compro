@@ -82,8 +82,7 @@ const emailClients = [
 const phoneNumbers = [
   { name: "General Support", number: "+62-852-8242-5228" },
   { name: "Technical Support", number: "+62 822-1426-9503" },
-  { name: "Admin Support1", number: "+62-812-7451-3242" },
-  { name: "Admin Support2", number: "+62 812-8257-5650" },
+  { name: "Admin Support", number: "+62 812-8257-5650" },
 ];
 
 const navigation = [
