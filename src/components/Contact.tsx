@@ -56,12 +56,7 @@ const whatsappContacts = [
     department: "IT Department",
   },
   {
-    name: "Admin Support1",
-    number: "+62-812-7451-3242",
-    department: "Team Admin",
-  },
-  {
-    name: "Admin Support2",
+    name: "Admin Support",
     number: "+62 812-8257-5650",
     department: "Team Admin",
   },
