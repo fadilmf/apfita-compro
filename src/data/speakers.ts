@@ -104,6 +104,32 @@ export const speakers: Speaker[] = [
     ],
   },
   {
+    name: "Dr. Ir. H. Andi Amran Sulaiman, M.P",
+    title: "Head",
+    organization: "Indonesian National Food Agency",
+    image: images["/src/assets/speakers/andi_amran.png"].default,
+    category: "honorary",
+    confirmed: true,
+    bio: "Dr. Ir. H. Andi Amran Sulaiman, M.P. is a prominent Indonesian agricultural scientist and former Minister of Agriculture. He has focused on improving food security, agricultural productivity, and empowering farmers through modern practices and policy reforms.",
+    scholarUrl: "https://scholar.google.com/citations?hl=en&user=XSirOL8AAAAJ",
+    achievements: [
+        "Received the Honorary Doctorate in Global Management from Kyungsung University, South Korea in August 2024",
+        "Awarded the Innovative Leader Concerned with Nutrition 2023 by Pergizi Pangan Indonesia and GAPPMI",
+        "Named the Best BUMN CEO of the Year 2021 by Human Capital & Performance Awards – Business News Indonesia",
+        "Recognized as the Inspirational Figure of the Nation 2023 by BUMN Track",
+        "Honored with the Top Leader on CSR Award 2020 by KNKG",
+        "Conferred the Best CEO BUMD 2019 by Top Business – Indonesia Business News",
+        "Received the Best CEO 2020 and 2019 by Top Business – Indonesia Business News"
+    ],
+    researchAreas: [
+        "National Food Security",
+        "Diversification of Food Consumption",
+        "Food Safety",
+        "BUMN Management",
+        "Reformation of Food BUMN"
+    ]
+  },
+  {
     name: "Prof. Dr. Ir. Dadan Hindayana",
     title: "Head",
     organization: "National Nutrition Agency",
