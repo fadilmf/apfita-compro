@@ -6,6 +6,7 @@ import Flyer from "@/components/Flyer";
 import Imdates from "@/components/ImportantDates";
 import HomeNavigation from "@/components/HomeNavigation";
 import { X } from "lucide-react";
+import SeriesContent from "@/components/SeriesContent";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -71,6 +72,7 @@ const Home = () => {
       <Hero />
       <Welcome />
       <Flyer />
+      <SeriesContent />
       <Imdates />
       <HomeNavigation />
       <Sponsors />
