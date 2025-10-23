@@ -48,6 +48,7 @@ export default function SeriesContent() {
       caption: "Plant Phenomics: Current Status and Future Perspectives",
       status: "completed",
       documentation: "https://www.instagram.com/p/DPvgX32ERKT/?img_index=1",
+      youtubeUrl: "https://www.youtube.com/watch?v=ReS8wfHCCG8",
     },
     {
       id: 4,
