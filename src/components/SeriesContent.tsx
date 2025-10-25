@@ -5,6 +5,7 @@ import SeriesCard from "./SeriesCard";
 import series1 from "/src/assets/series/praapfita1.jpeg";
 import series2 from "/src/assets/series/praapfita2.jpeg";
 import series3 from "/src/assets/series/praapfita3.jpeg";
+import series4 from "/src/assets/series/praapfita4.jpeg";
 
 interface Series {
   id: number;
@@ -15,6 +16,7 @@ interface Series {
   status: "completed" | "upcoming";
   documentation?: string;
   youtubeUrl?: string;
+  registrationUrl?: string;
 }
 
 export default function SeriesContent() {
@@ -52,10 +54,14 @@ export default function SeriesContent() {
     },
     {
       id: 4,
-      title: "Series 4 Coming Soon",
+      title: "Pre-APFITA 2025 (Series #4)",
       number: 4,
-      caption: "Coming Soon",
+      poster: series4,
+      caption:
+        "Digital Twins in Agriculture: Emerging Trends in Precision Ag, Technical, Physical, and Cultural",
       status: "upcoming",
+      registrationUrl: "https://ipb.link/webinar-pra-apfita2025-4",
+      documentation: "https://www.instagram.com/p/DQLdpxSkeTt/?img_index=1",
     },
     {
       id: 5,
