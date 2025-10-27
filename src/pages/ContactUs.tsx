@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Contact from "@/components/Contact";
+import FaqSection from "@/components/FaqSection";
 import { motion } from "framer-motion";
 import { Award, Zap, Globe } from "lucide-react";
 
@@ -107,6 +108,9 @@ const Venue = () => {
           <li>Conference Dates: November 6-8, 2025</li>
         </ul>
       </section> */}
+
+      {/* FAQ Section */}
+      <FaqSection />
     </>
   );
 };
