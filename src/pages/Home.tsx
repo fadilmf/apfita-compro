@@ -6,6 +6,7 @@ import Flyer from "@/components/Flyer";
 import Imdates from "@/components/ImportantDates";
 import series4 from "/src/assets/series/praapfita4.jpeg";
 import HomeNavigation from "@/components/HomeNavigation";
+import { ThumbsUp, Frown } from "lucide-react";
 
 import { X } from "lucide-react";
 import SeriesContent from "@/components/SeriesContent";
@@ -14,9 +15,6 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const dontShow = localStorage.getItem("modalDontShow");
-    if (dontShow) return;
-
     const lastShown = localStorage.getItem("modalLastShown");
     const now = Date.now();
     const oneHour = 60 * 60 * 1000;
@@ -29,19 +27,21 @@ const Home = () => {
 
   const handleClose = () => setShowModal(false);
 
-  const handleDontShowAgain = () => {
-    localStorage.setItem("modalDontShow", "true");
-    setShowModal(false);
-  };
-
   return (
     <>
-      {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 px-4 animate-fadeIn">
-          <div className="relative bg-white/15 border border-white/30 backdrop-blur-xl shadow-[0_0_30px_rgba(255,255,255,0.25)] rounded-3xl overflow-hidden w-full max-w-3xl flex flex-col md:flex-row animate-slideUp">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="relative flex flex-col md:flex-row bg-gradient-to-br from-slate-900/90 to-slate-800/80 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.4)] overflow-hidden max-w-4xl w-[95%] md:w-full animate-slideUp">
+            {/* Tombol X */}
+            <button
+              onClick={handleClose}
+              className="absolute top-3 right-3 text-white/80 hover:text-white transition"
+            >
+              <X className="w-6 h-6 hover:text-red-600" />
+            </button>
+
             {/* Poster kiri */}
-            <div className="w-full md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <img
                 src={series4}
                 alt="Pre-APFITA 2025 Series #4 Poster"
@@ -50,64 +50,79 @@ const Home = () => {
             </div>
 
             {/* Konten kanan */}
-            <div className="p-6 md:p-8 text-center md:text-left text-white flex flex-col justify-between bg-gradient-to-br from-slate-900/70 to-slate-800/60 md:rounded-r-3xl">
+            <div className="md:w-1/2 w-full p-6 md:p-8 flex flex-col justify-between text-white">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">
                   Pre-APFITA 2025 Series #4
                 </h2>
 
-                <p className="text-sm md:text-base mb-6 text-white/90 leading-relaxed">
+                <p className="text-sm md:text-base text-white/90 leading-relaxed mb-4">
                   <b>International Webinar:</b>
                   <br />
                   <i>
                     “Digital Twins in Agriculture: Emerging Trends in Precision
                     Ag, Technical, Physical, and Cultural”
                   </i>
-                  <br />
-                  📅 <b>Monday, 27 October 2025</b> | 🕐 <b>1–3 PM (WIB)</b>
-                  <br />
-                  💻 <b>Zoom Meeting</b>
-                  <br />
-                  Don’t miss this opportunity to connect with experts from{" "}
+                </p>
+
+                <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6">
+                  📅 <b>Monday, 27 October 2025</b> <br />
+                  🕐 <b>1–3 PM (WIB)</b> <br />
+                  💻 <b>Zoom Meeting</b> <br />
+                  Don’t miss this chance to connect with experts from{" "}
                   <b>Edith Cowan University</b> and <b>IPB University</b>
-                  {""}
-                  discover how digital technology is transforming the future of
+                  <br />
+                  Discover how digital technology is transforming the future of
                   agriculture!
                 </p>
               </div>
 
               {/* Tombol aksi */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center md:justify-start">
-                <a
-                  href="https://ipb.link/webinar-pra-apfita2025-4"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-2.5 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-white rounded-full shadow-md shadow-amber-300/40 text-sm md:text-base font-medium transition"
-                >
-                  Register Now
-                </a>
-                <button
-                  onClick={handleClose}
-                  className="px-6 py-2.5 bg-white/25 hover:bg-white/35 text-white rounded-full text-sm md:text-base font-medium transition"
-                >
-                  Close
-                </button>
-                <button
-                  onClick={handleDontShowAgain}
-                  className="px-6 py-2.5 border border-white/30 hover:bg-white/20 text-white/90 rounded-full text-sm md:text-base font-medium transition"
-                >
-                  Don’t Show Again
-                </button>
+              <div className="flex flex-wrap justify-center md:justify-start gap-3 relative">
+                {/* REGISTER NOW */}
+                <div className="relative group flex items-center justify-center">
+                  <a
+                    href="https://ipb.link/webinar-pra-apfita2025-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 rounded-full text-sm md:text-base font-medium 
+                 bg-gradient-to-r from-yellow-400 to-amber-500 text-white shadow-md shadow-amber-300/40
+                 hover:from-yellow-500 hover:to-amber-600 transition-all duration-300
+                 flex items-center justify-center"
+                  >
+                    Register Now
+                  </a>
+
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 -top-5 opacity-0 
+                 group-hover:-translate-y-10 group-hover:opacity-100 
+                 transition-all duration-700 ease-out"
+                  >
+                    <ThumbsUp className="w-7 h-7 text-yellow-300 drop-shadow-[0_0_8px_rgba(255,255,150,0.8)] animate-pulse" />
+                  </div>
+                </div>
+
+                {/* CLOSE */}
+                <div className="relative group flex items-center justify-center">
+                  <button
+                    onClick={handleClose}
+                    className="px-6 py-2.5 rounded-full text-sm md:text-base font-medium 
+                 bg-white/15 text-white hover:bg-white/25 transition-all duration-300
+                 flex items-center justify-center"
+                  >
+                    Close
+                  </button>
+
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 -top-5 opacity-0 
+                 group-hover:-translate-y-10 group-hover:opacity-100 
+                 transition-all duration-700 ease-out"
+                  >
+                    <Frown className="w-7 h-7 text-blue-200 drop-shadow-[0_0_8px_rgba(100,150,255,0.8)] animate-pulse" />
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Tombol X di pojok */}
-            <button
-              onClick={handleClose}
-              className="absolute top-4 right-4 text-white/80 hover:text-white transition"
-            >
-              <X className="w-6 h-6 hover:text-red-600" />
-            </button>
           </div>
         </div>
       )}
