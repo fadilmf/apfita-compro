@@ -59,9 +59,9 @@ export default function SeriesContent() {
       poster: series4,
       caption:
         "Digital Twins in Agriculture: Emerging Trends in Precision Ag, Technical, Physical, and Cultural",
-      status: "upcoming",
-      registrationUrl: "https://ipb.link/webinar-pra-apfita2025-4",
+      status: "completed",
       documentation: "https://www.instagram.com/p/DQLdpxSkeTt/?img_index=1",
+      youtubeUrl: "",
     },
     {
       id: 5,

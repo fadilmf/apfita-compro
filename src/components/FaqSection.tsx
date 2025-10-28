@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HelpCircle, Search, ChevronDown } from "lucide-react";
 import { faqData } from "@/data/faq";
@@ -7,15 +7,14 @@ import { faqData } from "@/data/faq";
 export default function FAQSection() {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
 
   // detect screen size
-  useEffect(() => {
-    const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+  // useEffect(() => {
+  //   const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
+  //   checkScreen();
+  //   window.addEventListener("resize", checkScreen);
+  //   return () => window.removeEventListener("resize", checkScreen);
+  // }, []);
 
   const filteredFaqs = useMemo(() => {
     if (!query) return faqData;
@@ -34,96 +33,119 @@ export default function FAQSection() {
           Frequently Asked Questions
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto text-balance">
-          Find answers to common questions about APFITA 2025. Use the search bar below to quickly locate a topic.
+          Find answers to common questions about APFITA 2025. Use the search bar
+          below to quickly locate a topic.
         </p>
       </div>
 
       {/* Search Box */}
-      <div className="relative max-w-md mx-auto mb-12">
-        <Search className="absolute left-4 top-3.5 text-gray-400 w-5 h-5" />
+      <div className="relative w-full max-w-5xl mx-auto mb-14">
+        {/* Gradient border wrapper */}
+        <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-blue-900 via-blue-700 to-cyan-500">
+          {/* Inner white background */}
+          <div className="w-full h-full rounded-[1rem] bg-white" />
+        </div>
+
+        {/* Search icon */}
+        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-800 w-5 h-5 pointer-events-none z-10" />
+
+        {/* Input field */}
         <input
           type="text"
           placeholder="Search questions..."
-          className="w-full pl-12 pr-4 py-3 rounded-xl border border-blue-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-blue-800"
+          className="relative w-full pl-14 pr-6 py-4 text-base text-gray-800 placeholder-gray-400 bg-transparent rounded-2xl focus:outline-none focus:ring-0 z-10"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
 
       {/* FAQ List */}
-      <div
-        className={`grid gap-4 ${
-          isDesktop ? "md:grid-cols-2" : "grid-cols-1"
-        }`}
-      >
-        {filteredFaqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.03 }}
-            className={`border border-gray-200 bg-white rounded-2xl shadow-sm overflow-hidden transition-all duration-300 ${
-              isDesktop ? "p-6 hover:shadow-md" : ""
-            }`}
-          >
-            {/* Header */}
-            <button
-              disabled={isDesktop}
-              onClick={() =>
-                setActiveIndex(activeIndex === index ? null : index)
-              }
-              className={`w-full flex justify-between items-center text-left ${
-                isDesktop ? "cursor-default" : "px-5 py-4"
+      <motion.div layout className="grid gap-5 grid-cols-1">
+        {filteredFaqs.map((faq, index) => {
+          const isOpen = activeIndex === index;
+
+          return (
+            <motion.div
+              key={index}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: index * 0.05,
+                duration: 0.4,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+              className={`rounded-2xl overflow-hidden backdrop-blur-lg border transition-all duration-500 ${
+                isOpen
+                  ? "bg-gradient-to-br from-blue-50/80 to-white/60 border-blue-300 shadow-[0_10px_25px_rgba(0,0,0,0.08)]"
+                  : "bg-white/90 border-slate-200 hover:border-blue-200 hover:shadow-[0_6px_18px_rgba(0,0,0,0.05)]"
               }`}
             >
-              <div className="flex items-start gap-3">
-                <HelpCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                <span
-                  className={`font-medium text-gray-900 ${
-                    !isDesktop && "group-hover:text-blue-700 transition-colors"
-                  }`}
-                >
-                  {faq.question}
-                </span>
-              </div>
-              {!isDesktop && (
-                <ChevronDown
-                  className={`w-5 h-5 text-gray-500 transition-transform duration-300 shrink-0 ${
-                    activeIndex === index ? "rotate-180 text-blue-600" : ""
-                  }`}
-                />
-              )}
-            </button>
-
-            {/* Answer (Expanded / Static) */}
-            {isDesktop ? (
-              <div className="mt-3 text-gray-700 text-sm leading-relaxed bg-blue-50 rounded-xl p-4">
-                {faq.answer}
-              </div>
-            ) : (
-              <AnimatePresence initial={false}>
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="border-t border-blue-100 bg-blue-50"
+              {/* Header */}
+              <motion.button
+                layout
+                onClick={() => setActiveIndex(isOpen ? null : index)}
+                className="w-full flex justify-between items-center text-left px-6 py-5 group transition-all duration-300"
+              >
+                <div className="flex items-start gap-3">
+                  <HelpCircle
+                    className={`w-5 h-5 mt-1 transition-colors duration-300 ${
+                      isOpen
+                        ? "text-blue-700"
+                        : "text-slate-400 group-hover:text-blue-600"
+                    }`}
+                  />
+                  <span
+                    className={`font-semibold leading-snug tracking-tight transition-colors duration-300 ${
+                      isOpen
+                        ? "text-blue-800"
+                        : "text-slate-900 group-hover:text-blue-700"
+                    }`}
                   >
-                    <div className="px-5 py-4 text-gray-700 text-sm leading-relaxed">
+                    {faq.question}
+                  </span>
+                </div>
+
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <ChevronDown
+                    className={`w-5 h-5 transition-colors duration-300 ${
+                      isOpen
+                        ? "text-blue-700"
+                        : "text-slate-500 group-hover:text-blue-600"
+                    }`}
+                  />
+                </motion.div>
+              </motion.button>
+
+              {/* Answer (Accordion) */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    layout
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+                    className="border-t border-blue-100 bg-gradient-to-br from-blue-50/80 to-white/60"
+                  >
+                    <div className="px-6 py-5 text-[15px] text-slate-700 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            )}
-          </motion.div>
-        ))}
-      </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
 
       {/* Footer Note */}
       <p className="text-center mt-12 text-sm text-gray-500">
-        * If your question isn’t listed here, please contact us via email.
+        * If your question is not on the list, feel free to contact us.
       </p>
     </section>
   );

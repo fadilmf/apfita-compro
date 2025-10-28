@@ -37,10 +37,11 @@ const Navbar: React.FC = () => {
 
   // Define which nav items should have notification dots
   const itemsWithNotifications = [
-    "REGIISTRATION FEE",
+    "REGISTRATION",
     "SUBMISSIONS",
     "DOWNLOAD",
     "CONFERENCE",
+    "CONTACT US!",
   ];
 
   return (
@@ -120,9 +121,13 @@ const Navbar: React.FC = () => {
 
             <button
               onClick={() => handleNavigation("/contact")}
-              className="hover:text-blue-600 transition animate-pulse"
+              className="relative hover:text-blue-600 transition font-semibold tracking-wide"
             >
               CONTACT US!
+              {/* Notification dot */}
+              <span className="absolute -top-1.5 -right-3 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse ring-2 ring-white">
+                <span className="sr-only">New notification</span>
+              </span>
             </button>
           </div>
 
