@@ -13,7 +13,9 @@ import { Instagram } from "lucide-react"; // tambahkan import
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "/src/assets/logo/logo_conf.png";
 import { sponsors } from "@/data/sponsor";
-import LogoGridSection from "@/components/LogoGridSection";
+import LogoGridSection from "@/components/FooterLogoGridSection";
+import { getSponsorsByType } from "@/lib/sponsorUtils";
+import SponsorSection from "@/components/FooterSponsorSection";
 
 // Email client logos (same as before)
 const GmailLogo = () => (
@@ -253,31 +255,54 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Sponsors & Co-Hosts - span 2 columns */}
+            {/* Sponsors */}
             <div className="md:col-span-2 space-y-8">
-              <div className="grid gap-4 space-y-4 md:space-y-0 sm:grid-cols-2 xl:grid-cols-4">
-                <LogoGridSection
-                  title="Grand Sponsors"
-                  items={sponsors.filter((s) => s.type === "grand")}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Grand Sponsor */}
+                <SponsorSection
+                  title="Grand Sponsor"
+                  items={getSponsorsByType(sponsors, "grand")}
+                  size="lg"
                 />
-                <LogoGridSection
-                  title="Sponsors"
-                  items={sponsors.filter((s) => s.type === "regular")}
-                />
-                <LogoGridSection
+
+                {/* Sponsors & Donation */}
+                <div className="flex flex-col space-y-4">
+                  {/* Sponsors */}
+                  <SponsorSection
+                    title="Sponsors"
+                    items={getSponsorsByType(sponsors, "regular")}
+                    size="md"
+                  />
+                  {/* Donation */}
+                  <SponsorSection
+                    items={getSponsorsByType(sponsors, "donation")}
+                    size="sm"
+                    gridCols="grid grid-cols-3 justify-center gap-4"
+                  />
+                </div>
+
+                {/* Publisher */}
+                <SponsorSection
                   title="Official Publisher"
-                  items={sponsors.filter((s) => s.type === "publisher")}
+                  items={getSponsorsByType(sponsors, "publisher")}
+                  size="md"
                 />
-                <LogoGridSection
+
+                {/* Co-Host */}
+                <SponsorSection
                   title="Co-Host"
-                  items={sponsors.filter((s) => s.type === "cohost")}
+                  items={getSponsorsByType(sponsors, "cohost")}
+                  size="md"
                 />
               </div>
+
+              {/* Supported */}
               <LogoGridSection
                 title="Supported"
-                items={sponsors.filter((s) => s.type === "supported")}
+                items={getSponsorsByType(sponsors, "supported")}
                 gridCols="grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
               />
+
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-blue-800">

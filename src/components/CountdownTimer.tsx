@@ -4,7 +4,13 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { dates, type DateEntry, phases } from "@/data/imdatesData";
+import type { DateEntry, Phase } from "@/data/imdatesData";
+
+interface CountdownTimerProps {
+  currentPhase: Phase | null;
+  nextEvent: DateEntry | null;
+  phases: Phase[];
+}
 
 interface TimeLeft {
   days: number;
@@ -13,84 +19,55 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CountdownTimer: React.FC = () => {
-  const [nextEvent, setNextEvent] = useState<DateEntry | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<(typeof phases)[0] | null>(
-    null
-  );
+const CountdownTimer: React.FC<CountdownTimerProps> = ({
+  currentPhase,
+  nextEvent,
+  phases
+}) => {
+
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
-    const now = new Date();
-    const upcomingDates = dates
-      .map((date) => ({ ...date, dateObj: new Date(date.date) }))
-      .filter((date) => date.dateObj > now)
-      .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+    const getTargetDate = () => {
+      if (currentPhase) {
+        // countdown ke akhir fase
+        return new Date(currentPhase.endDate);
+      } else if (nextEvent) {
+        // countdown ke start fase berikutnya
+        const nextPhase = phases.find(p => p.id === nextEvent.phaseId);
+        if (nextPhase) return new Date(nextPhase.startDate);
+      }
+      return null;
+    };
 
-    if (upcomingDates.length > 0) {
-      setNextEvent(upcomingDates[0]);
-    }
-
-    const currentPhaseIndex = phases.findIndex((phase) => {
-      const startDate = new Date(phase.startDate);
-      const endDate = new Date(phase.endDate);
-      return now >= startDate && now <= endDate;
-    });
-
-    if (currentPhaseIndex !== -1) {
-      setCurrentPhase(phases[currentPhaseIndex]);
-    }
-
-    setLoading(false);
+    const targetDate = getTargetDate();
+    if (!targetDate) return;
 
     const timer = setInterval(() => {
       const now = new Date();
-      const targetDate = upcomingDates[0]?.dateObj;
-      if (targetDate) {
-        const difference = targetDate.getTime() - now.getTime();
-        if (difference <= 0) {
-          upcomingDates.shift();
-          if (upcomingDates.length > 0) {
-            setNextEvent(upcomingDates[0]);
-          } else {
-            clearInterval(timer);
-            setNextEvent(null);
-          }
-          return;
-        }
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
+      const difference = targetDate.getTime() - now.getTime();
+      
+      if (difference <= 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
       }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-40">
-        <div className="relative">
-          <div className="w-16 h-16 border-4 border-primary/20 rounded-full animate-spin border-t-primary"></div>
-          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent rounded-full animate-ping border-t-primary/40"></div>
-        </div>
-      </div>
-    );
-  }
+  }, [nextEvent, currentPhase]);
 
   if (!nextEvent && !currentPhase) {
     return (
@@ -131,7 +108,7 @@ const CountdownTimer: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-xl text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-primary" />
-                    <span className="font-medium">{nextEvent.date}</span>
+                    <span className="font-medium">{nextEvent.deadline}</span>
                   </div>
                   <ArrowRight className="w-5 h-5 text-primary hidden sm:block" />
                   <span className="font-semibold text-foreground">
@@ -143,26 +120,10 @@ const CountdownTimer: React.FC = () => {
               {/* Countdown Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
                 {[
-                  {
-                    label: "Days",
-                    value: timeLeft.days,
-                    color: "from-blue-600 to-blue-700",
-                  },
-                  {
-                    label: "Hours",
-                    value: timeLeft.hours,
-                    color: "from-blue-500 to-blue-600",
-                  },
-                  {
-                    label: "Minutes",
-                    value: timeLeft.minutes,
-                    color: "from-blue-400 to-blue-500",
-                  },
-                  {
-                    label: "Seconds",
-                    value: timeLeft.seconds,
-                    color: "from-blue-300 to-blue-400",
-                  },
+                  { label: "Days", value: timeLeft.days, color: "from-blue-600 to-blue-700" },
+                  { label: "Hours", value: timeLeft.hours, color: "from-blue-500 to-blue-600" },
+                  { label: "Minutes", value: timeLeft.minutes, color: "from-blue-400 to-blue-500" },
+                  { label: "Seconds", value: timeLeft.seconds, color: "from-blue-300 to-blue-400" },
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -188,7 +149,6 @@ const CountdownTimer: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Subtle glow effect */}
                     <div
                       className={cn(
                         "absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-20 transition-opacity duration-300",

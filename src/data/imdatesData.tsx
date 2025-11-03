@@ -1,94 +1,118 @@
+// src/data/imdatesData.tsx
 import {
   FileText,
   Bell,
   FileCheck,
-  // CreditCard,
   Users,
 } from "lucide-react";
 
 export interface DateEntry {
-  date: string;
+  id: number;
+  deadline: string; // hanya untuk frontend
   event: string;
   icon: React.ReactNode;
+  phaseId: number; // hubungkan ke phases
 }
 
 export const dates: DateEntry[] = [
   {
-    date: "April 14, 2025",
+    id: 1,
+    deadline: "April 14, 2025",
     event: "Abstract Reception",
     icon: <FileText className="w-6 h-6" />,
+    phaseId: 1,
   },
   {
-    date: "August 31, 2025",
+    id: 2,
+    deadline: "August 31, 2025",
     event: "Abstract Submission Deadline",
     icon: <FileCheck className="w-6 h-6" />,
+    phaseId: 2,
   },
   {
-    date: "September 15, 2025",
+    id: 3,
+    deadline: "September 15, 2025",
     event: "Accepted Abstracts Announcement",
     icon: <Bell className="w-6 h-6" />,
+    phaseId: 3,
   },
   {
-    date: "September 16, 2025",
+    id: 4,
+    deadline: "September 16, 2025",
     event: "Full Paper Reception",
-    icon: <FileText className="w-6 h-6" />,
+    icon: <FileCheck className="w-6 h-6" />,
+    phaseId: 4,
   },
   {
-    date: "September 30, 2025",
+    id: 5,
+    deadline: "September 30, 2025",
     event: "Full Paper Submission Deadline",
     icon: <FileCheck className="w-6 h-6" />,
+    phaseId: 5,
   },
   {
-    date: "October 31, 2025",
+    id: 6,
+    deadline: "October 31, 2025",
     event: "Accepted Full Paper Announcement",
     icon: <Bell className="w-6 h-6" />,
+    phaseId: 6,
   },
-  // {
-  //   date: "November 5, 2025",
-  //   event: "Registration Payment Deadline",
-  //   icon: <CreditCard className="w-6 h-6" />,
-  // },
   {
-    date: "November 17-19, 2025",
+    id: 7,
+    deadline: "November 17-19, 2025",
     event: "15th APFITA Conference",
     icon: <Users className="w-6 h-6" />,
+    phaseId: 7,
   },
 ];
 
-export const phases = [
+export interface Phase {
+  id: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+}
+
+export const phases: Phase[] = [
   {
-    name: "Abstract Submission Phase",
-    description: "Submit your abstract",
+    id: 1,
+    name: "Abstract Reception Phase",
     startDate: "April 14, 2025",
-    endDate: "August 15, 2025",
-  },
-  {
-    name: "Accepted Abstracts Announcement",
-    description: "",
-    startDate: "August 15, 2025",
     endDate: "August 30, 2025",
   },
   {
-    name: "Full Paper Submission Deadline",
-    description: "",
-    startDate: "August 30, 2025",
+    id: 2,
+    name: "Abstract Submission Deadline",
+    startDate: "August 31, 2025",
+    endDate: "August 31, 2025", // phase ini cuma 1 hari
+  },
+  {
+    id: 3,
+    name: "Accepted Abstracts Announcement",
+    startDate: "September 1, 2025",
+    endDate: "September 15, 2025",
+  },
+  {
+    id: 4,
+    name: "Full Paper Reception Phase",
+    startDate: "September 16, 2025",
     endDate: "September 30, 2025",
   },
   {
-    name: "Accepted Full Paper Announcement",
-    description: "",
+    id: 5,
+    name: "Full Paper Submission Deadline",
     startDate: "September 30, 2025",
+    endDate: "September 30, 2025", // satu hari
+  },
+  {
+    id: 6,
+    name: "Accepted Full Paper Announcement",
+    startDate: "October 31, 2025",
     endDate: "October 31, 2025",
   },
   {
-    name: "Registration Payment Deadline",
-    description: "",
-    startDate: "October 31, 2025",
-    endDate: "November 5, 2025",
-  },
-  {
+    id: 7,
     name: "15th APFITA Conference",
-    description: "",
     startDate: "November 17, 2025",
     endDate: "November 19, 2025",
   },
