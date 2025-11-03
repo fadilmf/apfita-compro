@@ -6,6 +6,7 @@ import series1 from "/src/assets/series/praapfita1.jpeg";
 import series2 from "/src/assets/series/praapfita2.jpeg";
 import series3 from "/src/assets/series/praapfita3.jpeg";
 import series4 from "/src/assets/series/praapfita4.jpeg";
+import series5 from "/src/assets/series/praapfita5.jpeg";
 
 interface Series {
   id: number;
@@ -65,9 +66,12 @@ export default function SeriesContent() {
     },
     {
       id: 5,
-      title: "Series 5 Coming Soon",
+      title: "Pre-APFITA 2025 Series #5",
       number: 5,
-      caption: "Coming Soon",
+      caption: "Generative AI for Health and Herbal Medicine.",
+      poster: series5,
+      documentation: "https://www.instagram.com/p/DQlPvzWEUH6/?img_index=1",
+      registrationUrl: "https://ipb.link/webinar-pra-apfita2025-5",
       status: "upcoming",
     },
   ]);

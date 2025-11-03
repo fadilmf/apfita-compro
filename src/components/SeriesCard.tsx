@@ -126,7 +126,6 @@ export default function SeriesCard({ series }: SeriesCardProps) {
               </div>
             ) : isRegistrationOpen ? (
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 border border-yellow-500 shadow-md shadow-yellow-300/50 text-white">
-                <Link2 className="w-4 h-4" />
                 <span className="text-xs font-semibold tracking-wide">
                   Registration Open
                 </span>
@@ -149,7 +148,7 @@ export default function SeriesCard({ series }: SeriesCardProps) {
               <div className="flex flex-col items-center text-center leading-tight">
                 <span>Registration closes on</span>
                 <span className="font-semibold text-yellow-800">
-                  Oct 26, 23:59 WIB (GMT+7)
+                  Nov 5, 23:59 WIB (GMT+7)
                 </span>
               </div>
             </div>

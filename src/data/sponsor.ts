@@ -10,10 +10,14 @@ import logoBRI from "/src/assets/sponsors_partners/BRI BIRU_PNG.png";
 import logoFW from "/src/assets/sponsors_partners/FW.png";
 import logoBAI from "/src/assets/sponsors_partners/BAI.png";
 import logoIOP from "/src/assets/sponsors_partners/Logo-IOP.jpg";
+import logoIndofood from "/src/assets/sponsors_partners/Logo Indofood Hires-Biru.png";
+import logoAktuator from "/src/assets/sponsors_partners/logoAktuator.png";
+import logoPeruri from "/src/assets/sponsors_partners/LogoPDS.png";
 
 export type SponsorPartnerType =
   | "grand"
   | "regular"
+  | "donation"
   | "publisher"
   | "supported"
   | "cohost";
@@ -23,6 +27,7 @@ export interface Organization {
   logo: string;
   url?: string;
   type: SponsorPartnerType;
+  size?: "large" | "medium" | "small";
 }
 
 export const sponsors: Organization[] = [
@@ -36,7 +41,29 @@ export const sponsors: Organization[] = [
     name: "Bank Rakyat Indonesia",
     logo: logoBRI,
     type: "regular",
+    size: "large",
     url: "https://bri.co.id",
+  },
+  {
+    name: "Indofood",
+    logo: logoIndofood,
+    type: "donation",
+    size: "small",
+    url: "https://www.indofood.com",
+  },
+  {
+    name: "Aktuator",
+    logo: logoAktuator,
+    type: "donation",
+    size: "small",
+    url: "https://aktuator.id",
+  },
+  {
+    name: "Peruri Digital Security",
+    logo: logoPeruri,
+    type: "donation",
+    size: "small",
+    url: "https://pds.id",
   },
   {
     name: "IOP Conference Series: Earth and Enviromental Sciences",

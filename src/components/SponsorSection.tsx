@@ -13,9 +13,17 @@ type SponsorSectionProps = {
 const sizeMap: Record<string, string> = {
   publisher: "w-[160px] sm:w-[220px] md:w-[300px] lg:w-[500px]",
   grand: "w-[140px] sm:w-[180px] md:w-[240px] lg:w-[320px]",
+  donation: "w-[100px] sm:w-[130px] md:w-[160px] lg:w-[180px]",
   regular: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
   cohost: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-  supported: "h-[80px] max-w-[120px] md:h-[100px] md:max-w-[140px] lg:h-[120px] lg:max-w-[160px] w-auto",
+  supported:
+    "h-[80px] max-w-[120px] md:h-[100px] md:max-w-[140px] lg:h-[120px] lg:max-w-[160px] w-auto",
+};
+
+const manualSizeMap: Record<string, string> = {
+  small: "w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px]",
+  medium: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
+  large: "w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px]",
 };
 
 const sizeAdjustments: Record<string, string> = {
@@ -99,14 +107,23 @@ export default function SponsorSection({
 
       <div className="flex flex-wrap justify-center gap-10 lg:gap-6">
         {filtered.map((sponsor, index) => {
-          const isPublisher = sponsor.type === "publisher";          
+          const isPublisher = sponsor.type === "publisher";
           // Responsive size classes
-          const baseClass = sizeMap[sponsor.type];
-          
+          const baseClass = sponsor.size
+            ? manualSizeMap[sponsor.size]
+            : sizeMap[sponsor.type];
+
           // Responsive layout
-          const containerClass = containerMap[sponsor.type] || containerMap.default;
+          const containerClass =
+            containerMap[sponsor.type] || containerMap.default;
 
           const [isLandscape, setIsLandscape] = useState(false);
+
+          // Spesial BRI
+          const isBRI = sponsor.name.includes("Bank Rakyat Indonesia");
+          const specialLayout = isBRI
+            ? "basis-full flex justify-center mt-6"
+            : "";
 
           useEffect(() => {
             if (!sponsor.logo) return;
@@ -122,16 +139,15 @@ export default function SponsorSection({
           const imgClass =
             sponsor.type === "supported" && isLandscape
               ? baseClass
-                .split(" ")
-                .map((cls) => sizeAdjustments[cls] || cls)
-                .join(" ")
+                  .split(" ")
+                  .map((cls) => sizeAdjustments[cls] || cls)
+                  .join(" ")
               : baseClass;
-
 
           return (
             <motion.div
               key={index}
-              className={`${containerClass} flex justify-center items-center`}
+              className={`${containerClass} ${specialLayout} flex justify-center items-center`}
               whileHover={{ scale: isPublisher ? 1.1 : 1.05 }}
               variants={itemVariants}
             >

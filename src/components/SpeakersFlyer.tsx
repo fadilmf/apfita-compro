@@ -9,7 +9,7 @@ import {
   Send,
 } from "lucide-react";
 import { useState } from "react";
-import flyerAPFITA from "@/assets/flyer/APFITA-Poster-update0820.png";
+import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update2810.png";
 
 const handleDownload = () => {
   const link = document.createElement("a");
@@ -25,9 +25,11 @@ const SpeakersFlyer: React.FC = () => {
 
   const toggleShareMenu = () => setIsShareMenuOpen(!isShareMenuOpen);
 
-  const shareUrl = encodeURIComponent("https://apfita2025.org/speakers");
+  const shareUrl = encodeURIComponent("https://apfita2025.com/speakers");
   const shareText = encodeURIComponent(
-    "Check out the amazing speakers at APFITA 2025!"
+    "🌾 Join us at The 15th APFITA Conference!\n" +
+      "Innovative Digital Technology for Global and Sustainable Agro-Maritime Industry\n\n" +
+      "📍 IPB Convention Center, Bogor, Indonesia\n🗓️ November 17–19, 2025\n"
   );
 
   const shareLinks = [

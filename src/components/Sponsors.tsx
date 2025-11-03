@@ -38,27 +38,12 @@ export default function Sponsors() {
             technology.
           </motion.p>
         </motion.div>
-        
-        <SponsorSection 
-          title="Grand Sponsors" 
-          type="grand" 
-          items={sponsors} 
-        />
-        <SponsorSection 
-          title="Sponsors" 
-          type="regular" 
-          items={sponsors} 
-        />
-        <SponsorSection 
-          title="Publisher" 
-          type="publisher" 
-          items={sponsors} 
-        />
-        <SponsorSection 
-          title="Co-Host" 
-          type="cohost" 
-          items={sponsors} 
-        />
+
+        <SponsorSection title="Grand Sponsors" type="grand" items={sponsors} />
+        <SponsorSection title="Sponsors" type="regular" items={sponsors} />
+        <SponsorSection title=" " type="donation" items={sponsors} />
+        <SponsorSection title="Publisher" type="publisher" items={sponsors} />
+        <SponsorSection title="Co-Host" type="cohost" items={sponsors} />
         <SponsorSection
           title="Supported by"
           type="supported"

@@ -5,9 +5,9 @@ import Welcome from "@/components/Welcome";
 import Flyer from "@/components/Flyer";
 import Imdates from "@/components/ImportantDates";
 import HomeNavigation from "@/components/HomeNavigation";
-import { X, Frown, Instagram, Sparkles } from "lucide-react";
+import { Frown, Sparkles, Link2 } from "lucide-react";
 
-import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update1410.png";
+import series5 from "/src/assets/series/praapfita5.jpeg";
 
 import SeriesContent from "@/components/SeriesContent";
 
@@ -36,19 +36,11 @@ const Home = () => {
       rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.4)] 
       overflow-hidden w-full max-w-3xl max-h-[90vh] md:max-h-none animate-slideUp"
           >
-            {/* Tombol X */}
-            <button
-              onClick={handleClose}
-              className="absolute top-3 right-3 text-white/80 hover:text-red-500 transition z-50"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
             {/* Gambar kiri */}
             <div className="md:w-1/2 w-full bg-gradient-to-t from-blue-900/80 to-slate-800/60 flex items-center justify-center">
               <img
-                src={flyerAPFITA}
-                alt="APFITA 2025 Event Poster"
+                src={series5}
+                alt="Pre-APFITA #5 2025 Event Poster"
                 className="w-full h-64 md:h-full object-cover md:rounded-l-3xl opacity-90"
               />
             </div>
@@ -57,17 +49,25 @@ const Home = () => {
             <div className="md:w-1/2 w-full p-6 md:p-8 flex flex-col justify-between text-white overflow-y-auto">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-200 text-center md:text-left">
-                  Stay Connected 🌐
+                  Pre-APFITA 2025
                 </h2>
 
                 <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 text-center md:text-left">
-                  ✨ Don’t miss a thing! Stay connected with{" "}
-                  <b>APFITA&nbsp;2025</b> on <b>Instagram</b> for real-time
-                  updates, speaker spotlights, behind-the-scenes moments, and
-                  exclusive event sneak peeks.
+                  Don’t miss our{" "}
+                  <b>International Webinar Pre-APFITA 2025 Series #5</b>! Join
+                  inspiring discussions on{" "}
+                  <b>“Generative AI for Health and Herbal Medicine.”</b>
                   <br />
-                  Be part of the conversation discover stories that inspire
-                  innovation in agriculture and technology. 💡
+                  💬 Featuring distinguished speakers from IPB University, ITB,
+                  and University of Pittsburgh, USA.
+                  <br />
+                  📅 <b>Thursday, November 6, 2025</b>
+                  <br />
+                  🕘 09.00 – 11.30 WIB | 🌐 <b>Zoom Meeting</b>
+                  <br />
+                  <br />
+                  Let’s explore how AI can advance health and herbal innovation
+                  together! 🌱
                 </p>
               </div>
 
@@ -76,16 +76,16 @@ const Home = () => {
                 {/* IG LINK */}
                 <div className="relative group flex items-center justify-center">
                   <a
-                    href="https://www.instagram.com/apfita2025"
+                    href="https://ipb.link/webinar-pra-apfita2025-5"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-2.5 rounded-full text-sm md:text-base font-medium 
-                bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white 
-                shadow-md shadow-blue-400/40 hover:from-blue-600 hover:via-indigo-600 hover:to-blue-800 
+                bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-700 text-white 
+                shadow-md shadow-yellow-400/40 hover:from-yellow-600 hover:via-amber-600 hover:to-yellow-800 
                 transition-all duration-300 flex items-center justify-center gap-2 w-[200px] md:w-auto"
                   >
-                    <Instagram className="w-5 h-5" />
-                    Follow Us
+                    <Link2 className="w-5 h-5" />
+                    Register Now!
                   </a>
 
                   <div
@@ -93,7 +93,7 @@ const Home = () => {
                 group-hover:-translate-y-10 group-hover:opacity-100 
                 transition-all duration-700 ease-out"
                   >
-                    <Sparkles className="w-7 h-7 text-blue-300 drop-shadow-[0_0_8px_rgba(150,200,255,0.8)] animate-pulse" />
+                    <Sparkles className="w-7 h-7 text-amber-300 drop-shadow-[0_0_8px_rgba(150,200,255,0.8)] animate-pulse" />
                   </div>
                 </div>
 
