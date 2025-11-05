@@ -50,13 +50,13 @@ export const dates: DateEntry[] = [
     icon: <FileCheck className="w-6 h-6" />,
     phaseId: 5,
   },
-  {
-    id: 6,
-    deadline: "October 31, 2025",
-    event: "Accepted Full Paper Announcement",
-    icon: <Bell className="w-6 h-6" />,
-    phaseId: 6,
-  },
+  // {
+  //   id: 6,
+  //   deadline: "October 31, 2025",
+  //   event: "Accepted Full Paper Announcement",
+  //   icon: <Bell className="w-6 h-6" />,
+  //   phaseId: 6,
+  // },
   {
     id: 7,
     deadline: "November 17-19, 2025",
@@ -104,12 +104,12 @@ export const phases: Phase[] = [
     startDate: "September 30, 2025",
     endDate: "September 30, 2025", // satu hari
   },
-  {
-    id: 6,
-    name: "Accepted Full Paper Announcement",
-    startDate: "October 31, 2025",
-    endDate: "October 31, 2025",
-  },
+  // {
+  //   id: 6,
+  //   name: "Accepted Full Paper Announcement",
+  //   startDate: "October 31, 2025",
+  //   endDate: "October 31, 2025",
+  // },
   {
     id: 7,
     name: "15th APFITA Conference",
