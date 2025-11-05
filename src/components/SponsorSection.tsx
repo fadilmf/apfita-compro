@@ -1,41 +1,56 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Organization } from "@/data/sponsor";
+import { getSponsorsByType } from "@/lib/sponsorUtils";
 
 type SponsorSectionProps = {
   title: string;
   items: Organization[];
   type?: string;
   centerTitle?: boolean;
+  size?: "small" | "medium" | "large";
 };
 
 // Mapping ukuran gambar per type sponsor
-const sizeMap: Record<string, string> = {
-  publisher: "w-[160px] sm:w-[220px] md:w-[300px] lg:w-[500px]",
-  grand: "w-[140px] sm:w-[180px] md:w-[240px] lg:w-[320px]",
-  donation: "w-[100px] sm:w-[130px] md:w-[160px] lg:w-[180px]",
-  regular: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-  cohost: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-  supported:
-    "h-[80px] max-w-[120px] md:h-[100px] md:max-w-[140px] lg:h-[120px] lg:max-w-[160px] w-auto",
+// const sizeMap: Record<string, string> = {
+//   publisher: "w-[160px] sm:w-[220px] md:w-[300px] lg:w-[500px]",
+//   hosted: "w-[140px] sm:w-[180px] md:w-[240px] lg:w-[320px]",
+//   sponsor: "w-[100px] sm:w-[130px] md:w-[160px] lg:w-[180px]",
+//   mainSponsor: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
+//   cohost: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
+//   supported:
+//     "h-[80px] max-w-[120px] md:h-[100px] md:max-w-[140px] lg:h-[120px] lg:max-w-[160px] w-auto",
+// };
+
+// const manualSizeMap: Record<string, string> = {
+//   small: "w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px]",
+//   medium: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
+//   large: "w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px]",
+// };
+
+// const sizeAdjustments: Record<string, string> = {
+//   "max-w-[120px]": "max-w-[140px]",
+//   "md:max-w-[140px]": "md:max-w-[160px]",
+//   "lg:max-w-[160px]": "lg:max-w-[200px]",
+// };
+
+const sizeMap: Record<"small" | "medium" | "large", string> = {
+  large: 
+    "w-[280px] max-h-[160px] md:w-[320px] md:max-h-[220px] lg:w-[420px] lg:max-h-[220px]",
+  medium: 
+    "w-[140px] max-h-[100px] md:w-[180px] md:max-h-[160px] lg:w-[220px] md:max-h-[160px]",
+  small:
+    "w-[75px] max-h-[80px] md:w-[100px] md:max-h-[140px] lg:h-[80px] lg:max-w-[120px] w-auto",
 };
 
-const manualSizeMap: Record<string, string> = {
-  small: "w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px]",
-  medium: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-  large: "w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px]",
-};
-
-const sizeAdjustments: Record<string, string> = {
-  "max-w-[120px]": "max-w-[140px]",
-  "md:max-w-[140px]": "md:max-w-[160px]",
-  "lg:max-w-[160px]": "lg:max-w-[200px]",
-};
-
-// Mapping layout container per type sponsor
-const containerMap: Record<string, string> = {
-  publisher: "basis-full",
-  default: "basis-1/2 md:basis-1/3 lg:basis-1/5 ",
+// Ukuran default otomatis per type
+const defaultSizeByType: Record<string, "small" | "medium" | "large"> = {
+  hosted: "large",
+  mainSponsor: "medium",
+  cohost: "medium",
+  sponsor: "small",
+  supported: "small",
+  publisher: "medium",
 };
 
 const containerVariants = {
@@ -84,10 +99,16 @@ export default function SponsorSection({
   items,
   type,
   centerTitle = true,
+  size
 }: SponsorSectionProps) {
-  const filtered = type ? items.filter((item) => item.type === type) : items;
+  const filtered = type ? getSponsorsByType(items, type) : items;
 
   if (filtered.length === 0) return null;
+
+  // Tentukan ukuran default berdasarkan type
+  const sectionSize =
+    size || (type ? defaultSizeByType[type] : "medium") || "medium";
+  const imgClass = sizeMap[sectionSize];
 
   return (
     <motion.div
@@ -105,57 +126,31 @@ export default function SponsorSection({
         {title}
       </motion.h3>
 
-      <div className="flex flex-wrap justify-center gap-10 lg:gap-6">
+      <div className="flex flex-wrap my-auto content-start md:content-center  h-full justify-center gap-10 lg:gap-6">
+        
         {filtered.map((sponsor, index) => {
-          const isPublisher = sponsor.type === "publisher";
-          // Responsive size classes
-          const baseClass = sponsor.size
-            ? manualSizeMap[sponsor.size]
-            : sizeMap[sponsor.type];
 
-          // Responsive layout
-          const containerClass =
-            containerMap[sponsor.type] || containerMap.default;
+          // ambil ukuran default dulu
+          let currentImgClass = imgClass;
 
-          const [isLandscape, setIsLandscape] = useState(false);
-
-          // Spesial BRI
-          const isBRI = sponsor.name.includes("Bank Rakyat Indonesia");
-          const specialLayout = isBRI
-            ? "basis-full flex justify-center mt-6"
-            : "";
-
-          useEffect(() => {
-            if (!sponsor.logo) return;
-            const img = new Image();
-            img.src = sponsor.logo;
-            img.onload = () => {
-              const ratio = img.naturalWidth / img.naturalHeight;
-              setIsLandscape(ratio > 1.6);
-            };
-          }, [sponsor.logo]);
-
-          // class akhir: kalau supported & landscape → max-w lebih kecil
-          const imgClass =
-            sponsor.type === "supported" && isLandscape
-              ? baseClass
-                  .split(" ")
-                  .map((cls) => sizeAdjustments[cls] || cls)
-                  .join(" ")
-              : baseClass;
+          // override kalau typenya publisher
+          if (sponsor.type === "publisher") {
+            currentImgClass =
+              "w-[180px] md:w-[230px] lg:w-[280px] lg:max-h-[160px]";
+          }
 
           return (
             <motion.div
               key={index}
-              className={`${containerClass} ${specialLayout} flex justify-center items-center`}
-              whileHover={{ scale: isPublisher ? 1.1 : 1.05 }}
+              className={`flex justify-center items-center`}
+              whileHover={{ scale: 1.05 }}
               variants={itemVariants}
             >
               <Tooltip text={sponsor.name}>
                 <img
                   src={sponsor.logo || "/placeholder.svg"}
                   alt={sponsor.name}
-                  className={`object-contain ${imgClass} `}
+                  className={`object-contain ${currentImgClass} `}
                 />
               </Tooltip>
             </motion.div>

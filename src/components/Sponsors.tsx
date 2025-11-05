@@ -39,16 +39,17 @@ export default function Sponsors() {
           </motion.p>
         </motion.div>
 
-        <SponsorSection title="Grand Sponsors" type="grand" items={sponsors} />
-        <SponsorSection title="Sponsors" type="regular" items={sponsors} />
-        <SponsorSection title=" " type="donation" items={sponsors} />
+        <SponsorSection title="Hosted by" type="hosted" items={sponsors} />
+        <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12">
+          <SponsorSection title="Main Sponsor" type="mainSponsor" items={sponsors} />
+          <SponsorSection title="Co-Host" type="cohost" items={sponsors} />
+        </div>
+        <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12">
+          <SponsorSection title="Sponsors" type="sponsor" items={sponsors} />
+          <SponsorSection title="Supported by" type="supported" items={sponsors}
+          />
+        </div>
         <SponsorSection title="Publisher" type="publisher" items={sponsors} />
-        <SponsorSection title="Co-Host" type="cohost" items={sponsors} />
-        <SponsorSection
-          title="Supported by"
-          type="supported"
-          items={sponsors}
-        />
       </div>
     </div>
   );
