@@ -9,7 +9,7 @@ const ConferencePrice = () => {
       <div className="bg-gray-50">
         <ConferencePricing />
       </div>
-      <div className="bg-gray-50">
+      <div id="Register" className="bg-gray-50">
         <PaymentGuidelines />
       </div>
     </>

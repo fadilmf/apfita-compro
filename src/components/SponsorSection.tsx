@@ -35,9 +35,9 @@ type SponsorSectionProps = {
 // };
 
 const sizeMap: Record<"small" | "medium" | "large", string> = {
-  large: 
+  large:
     "w-[280px] max-h-[160px] md:w-[320px] md:max-h-[220px] lg:w-[420px] lg:max-h-[220px]",
-  medium: 
+  medium:
     "w-[140px] max-h-[100px] md:w-[180px] md:max-h-[160px] lg:w-[220px] md:max-h-[160px]",
   small:
     "w-[75px] max-h-[80px] md:w-[100px] md:max-h-[140px] lg:h-[80px] lg:max-w-[120px] w-auto",
@@ -99,7 +99,7 @@ export default function SponsorSection({
   items,
   type,
   centerTitle = true,
-  size
+  size,
 }: SponsorSectionProps) {
   const filtered = type ? getSponsorsByType(items, type) : items;
 
@@ -126,10 +126,14 @@ export default function SponsorSection({
         {title}
       </motion.h3>
 
-      <div className="flex flex-wrap my-auto content-start md:content-center  h-full justify-center gap-10 lg:gap-6">
-        
+      <div
+        className={
+          type === "sponsor"
+            ? "grid grid-cols-2 gap-8 md:gap-10 justify-items-center"
+            : "flex flex-wrap my-auto content-start md:content-center h-full justify-center gap-10 lg:gap-6"
+        }
+      >
         {filtered.map((sponsor, index) => {
-
           // ambil ukuran default dulu
           let currentImgClass = imgClass;
 

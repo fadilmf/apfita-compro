@@ -8,7 +8,7 @@ import series3 from "/src/assets/series/praapfita3.jpeg";
 import series4 from "/src/assets/series/praapfita4.jpeg";
 import series5 from "/src/assets/series/praapfita5.jpeg";
 
-interface Series {
+export interface Series {
   id: number;
   title: string;
   number: number;
@@ -62,7 +62,7 @@ export default function SeriesContent() {
         "Digital Twins in Agriculture: Emerging Trends in Precision Ag, Technical, Physical, and Cultural",
       status: "completed",
       documentation: "https://www.instagram.com/p/DQLdpxSkeTt/?img_index=1",
-      youtubeUrl: "",
+      youtubeUrl: "https://www.youtube.com/watch?v=TJSYLYxlc0E",
     },
     {
       id: 5,
@@ -71,8 +71,8 @@ export default function SeriesContent() {
       caption: "Generative AI for Health and Herbal Medicine.",
       poster: series5,
       documentation: "https://www.instagram.com/p/DQlPvzWEUH6/?img_index=1",
-      registrationUrl: "https://ipb.link/webinar-pra-apfita2025-5",
-      status: "upcoming",
+      youtubeUrl: "https://youtu.be/AbemiK_MWfA",
+      status: "completed",
     },
   ]);
 
@@ -84,11 +84,9 @@ export default function SeriesContent() {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent text-center mb-6">
-              Webinar Series
-            </h1>
-          </div>
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent text-center mb-6">
+            Webinar Series
+          </h1>
           <div className="mt-6 flex items-center justify-center gap-8">
             <div className="text-center">
               <div className="text-3xl font-light text-blue-900">

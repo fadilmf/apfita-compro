@@ -35,16 +35,16 @@ export interface Organization {
 
 export const sponsors: Organization[] = [
   {
-    name: "BRAIN IPB University",
-    logo: logoBrain,
-    type: "hosted",
-    url: "https://brain.ipb.ac.id",
-  },
-  {
     name: "IPB University",
     logo: logoIPB,
     type: "hosted",
     url: "https://ipb.ac.id",
+  },
+  {
+    name: "BRAIN IPB University",
+    logo: logoBrain,
+    type: "hosted",
+    url: "https://brain.ipb.ac.id",
   },
   {
     name: "Bank Rakyat Indonesia",
@@ -68,19 +68,20 @@ export const sponsors: Organization[] = [
     url: "https://aktuator.id",
   },
   {
-    name: "Blocktogo",
-    logo: logoBlocktogo,
-    type: "sponsor",
-    // size: "small",
-    url: "https://blocktogo.id",
-  },
-  {
     name: "Peruri Digital Security",
     logo: logoPeruri,
     type: "sponsor",
     // size: "small",
     url: "https://pds.id",
   },
+  {
+    name: "Blocktogo",
+    logo: logoBlocktogo,
+    type: "sponsor",
+    // size: "small",
+    url: "https://blocktogo.id",
+  },
+
   {
     name: "IOP Conference Series: Earth and Enviromental Sciences",
     logo: logoIOP,
@@ -136,15 +137,15 @@ export const sponsors: Organization[] = [
     url: "https://www.gunadarma.ac.id",
   },
   {
+    name: "HIPI",
+    logo: logoHIPI,
+    type: "cohost",
+    url: "https://apfita2025.com",
+  },
+  {
     name: "Universitas Muhammadiyah Bandung",
     logo: logoUMB,
     type: "supported",
     url: "https://umbandung.ac.id/",
-  },
-  {
-    name: "HIPI",
-    logo: logoHIPI,
-    type: "supported",
-    url: "https://apfita2025.com",
   },
 ];

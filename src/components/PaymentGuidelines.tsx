@@ -34,7 +34,7 @@ const paymentGuidelines = [
   {
     title: "Participants only",
     description:
-      "Payment is due upon registration through the online form accessible via the following link. The deadline for both registration and payment is November 5, 2025.",
+      "Payment is due upon registration through the online form accessible via the following link. The deadline for both registration and payment is November 10, 2025.",
     icon: Banknote,
     link: "https://forms.gle/PnSKa2DdMgbs6MXL6",
     buttonText: "Register & Pay",

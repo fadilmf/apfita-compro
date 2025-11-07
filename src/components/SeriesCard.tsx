@@ -2,21 +2,10 @@
 
 import { useState } from "react";
 import { CheckCircle2, Play, ExternalLink, Link2, Clock } from "lucide-react";
-
-interface Series {
-  id: number;
-  title: string;
-  number: number;
-  poster?: string;
-  caption: string;
-  status: "completed" | "upcoming";
-  documentation?: string;
-  youtubeUrl?: string;
-  registrationUrl?: string;
-}
+import type { Series } from "./SeriesContent"; // ⬅️ pastikan import tipe Series dari file aslinya
 
 interface SeriesCardProps {
-  series: Series;
+  series: Series; // ⬅️ hanya satu objek, bukan array
 }
 
 export default function SeriesCard({ series }: SeriesCardProps) {
@@ -62,7 +51,6 @@ export default function SeriesCard({ series }: SeriesCardProps) {
                 alt={series.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              {/* Overlay */}
               <div
                 className={`absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent transition-opacity duration-300 ${
                   isHovered ? "opacity-100" : "opacity-0"
@@ -140,19 +128,6 @@ export default function SeriesCard({ series }: SeriesCardProps) {
               </div>
             )}
           </div>
-
-          {/* Registration closing note */}
-          {isRegistrationOpen && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[85%] sm:w-[70%] lg:w-[60%] flex items-center justify-center gap-3 bg-white/50 backdrop-blur-lg border border-yellow-300 shadow-[0_0_25px_-5px_rgba(250,204,21,0.4)] px-6 py-3 rounded-full text-xs text-yellow-700 font-medium animate-pulse">
-              <Clock className="w-4 h-4 text-yellow-600 flex-shrink-0" />
-              <div className="flex flex-col items-center text-center leading-tight">
-                <span>Registration closes on</span>
-                <span className="font-semibold text-yellow-800">
-                  Nov 5, 23:59 WIB (GMT+7)
-                </span>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Content Section */}

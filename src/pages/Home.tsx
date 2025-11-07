@@ -6,8 +6,9 @@ import Flyer from "@/components/Flyer";
 import Imdates from "@/components/ImportantDates";
 import HomeNavigation from "@/components/HomeNavigation";
 import { Frown, Sparkles, Link2 } from "lucide-react";
+import MiniCountdown from "@/components/MiniCountdown";
 
-import series5 from "/src/assets/series/praapfita5.jpeg";
+import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update0711.png";
 
 import SeriesContent from "@/components/SeriesContent";
 
@@ -39,7 +40,7 @@ const Home = () => {
             {/* Gambar kiri */}
             <div className="md:w-1/2 w-full bg-gradient-to-t from-blue-900/80 to-slate-800/60 flex items-center justify-center">
               <img
-                src={series5}
+                src={flyerAPFITA}
                 alt="Pre-APFITA #5 2025 Event Poster"
                 className="w-full h-64 md:h-full object-cover md:rounded-l-3xl opacity-90"
               />
@@ -49,25 +50,20 @@ const Home = () => {
             <div className="md:w-1/2 w-full p-6 md:p-8 flex flex-col justify-between text-white overflow-y-auto">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-200 text-center md:text-left">
-                  Pre-APFITA 2025
+                  APFITA 2025 is near!
                 </h2>
 
-                <p className="text-sm md:text-base text-white/80 leading-relaxed mb-6 text-center md:text-left">
-                  Don’t miss our{" "}
-                  <b>International Webinar Pre-APFITA 2025 Series #5</b>! Join
-                  inspiring discussions on{" "}
-                  <b>“Generative AI for Health and Herbal Medicine.”</b>
-                  <br />
-                  💬 Featuring distinguished speakers from IPB University, ITB,
-                  and University of Pittsburgh, USA.
-                  <br />
-                  📅 <b>Thursday, November 6, 2025</b>
-                  <br />
-                  🕘 09.00 – 11.30 WIB | 🌐 <b>Zoom Meeting</b>
+                <MiniCountdown />
+
+                <p className="text-sm md:text-base text-white/80 leading-relaxed mt-4 mb-6 text-center md:text-left">
+                  <b>APFITA 2025</b> isn’t just a conference it’s where ideas
+                  spark, and innovators meet to shape the future of agri-tech.
                   <br />
                   <br />
-                  Let’s explore how AI can advance health and herbal innovation
-                  together! 🌱
+                  <b>Bogor, Indonesia • Nov 17–19, 2025</b>
+                  <br />
+                  <br />✨ Be part of a global movement turning technology into
+                  hope for a sustainable world.
                 </p>
               </div>
 
@@ -76,12 +72,12 @@ const Home = () => {
                 {/* IG LINK */}
                 <div className="relative group flex items-center justify-center">
                   <a
-                    href="https://ipb.link/webinar-pra-apfita2025-5"
+                    href="https://apfita2025.com/registration"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-2.5 rounded-full text-sm md:text-base font-medium 
-                bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-700 text-white 
-                shadow-md shadow-yellow-400/40 hover:from-yellow-600 hover:via-amber-600 hover:to-yellow-800 
+                bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white 
+                shadow-md shadow-blue-400/40 hover:from-blue-600 hover:via-indigo-600 hover:to-blue-800 
                 transition-all duration-300 flex items-center justify-center gap-2 w-[200px] md:w-auto"
                   >
                     <Link2 className="w-5 h-5" />
@@ -93,7 +89,12 @@ const Home = () => {
                 group-hover:-translate-y-10 group-hover:opacity-100 
                 transition-all duration-700 ease-out"
                   >
-                    <Sparkles className="w-7 h-7 text-amber-300 drop-shadow-[0_0_8px_rgba(150,200,255,0.8)] animate-pulse" />
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-7 h-7 text-amber-300 drop-shadow-[0_0_8px_rgba(150,200,255,0.8)] animate-pulse" />
+                      <span className="text-amber-200 font-semibold text-lg drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
+                        Yeay!
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -113,7 +114,12 @@ const Home = () => {
                 group-hover:-translate-y-10 group-hover:opacity-100 
                 transition-all duration-700 ease-out"
                   >
-                    <Frown className="w-7 h-7 text-blue-200 drop-shadow-[0_0_8px_rgba(100,150,255,0.8)] animate-pulse" />
+                    <div className="flex items-center gap-2">
+                      <Frown className="w-7 h-7 text-blue-200 drop-shadow-[0_0_8px_rgba(100,150,255,0.8)] animate-pulse" />
+                      <span className="text-blue-100 font-semibold text-lg drop-shadow-[0_0_6px_rgba(150,200,255,0.7)]">
+                        Huu~
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
