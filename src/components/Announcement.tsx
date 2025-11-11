@@ -11,7 +11,7 @@ interface AnnouncementProps {
 
 export default function Announcement({
   announcements,
-  backgroundColor = "bg-blue-600",
+  backgroundColor = "bg-gradient-to-r from-sky-800 via-sky-500 to-sky-300",
   textColor = "text-white",
   className = "",
   speed = 80,

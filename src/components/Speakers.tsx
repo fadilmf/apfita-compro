@@ -13,7 +13,7 @@ import {
   GraduationCap,
   AwardIcon,
   Globe,
-  Building,
+  UserRound,
 } from "lucide-react";
 import { speakers, Speaker } from "../data/speakers";
 
@@ -259,127 +259,119 @@ const SpeakerModal: React.FC<{
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pb-4 bg-black/70 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 py-8 overflow-y-auto"
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
+        exit={{ opacity: 0, scale: 0.95 }}
         transition={{ type: "spring", damping: 20 }}
-        className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full max-h-[80vh] overflow-y-auto my-4"
+        className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-5xl w-full my-4"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header with Image */}
-        <div className="relative h-64 md:h-80">
-          <img
-            src={speaker.image || "/placeholder.svg"}
-            alt={speaker.name}
-            className="w-full h-full object-contain object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-800/50 to-transparent"></div>
-
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/40 rounded-full transition-colors"
-          >
-            <X className="w-6 h-6 text-white" />
-          </button>
-
-          {/* Speaker Name and Title */}
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <h3 className="text-3xl font-bold text-white mb-2">
-              {speaker.name}
-            </h3>
-            <p className="text-xl text-blue-100">{speaker.title}</p>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 md:p-8">
-          {/* Organization */}
-          <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-200">
-            <div className="p-3 bg-blue-100 rounded-full">
-              <Building className="w-6 h-6 text-blue-600" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Organization</p>
-              <p className="text-lg font-medium text-gray-900">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* LEFT SIDE */}
+          <div className="relative bg-gradient-to-b from-blue-800 to-indigo-900 flex flex-col justify-end text-white">
+            <img
+              src={speaker.image || "/placeholder.svg"}
+              alt={speaker.name}
+              className="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-blue-900/40 to-transparent" />
+            <div className="relative p-6 z-10">
+              <h3 className="text-3xl font-bold mb-2">{speaker.name}</h3>
+              <p className="text-lg text-blue-100">{speaker.title}</p>
+              <p className="mt-3 text-blue-200 text-sm">
                 {speaker.organization}
               </p>
             </div>
           </div>
 
-          {/* Biography */}
-          <div className="mb-8">
-            <h4 className="text-xl font-bold text-gray-900 mb-4">Biography</h4>
-            <p className="text-gray-700 leading-relaxed">{speaker.bio}</p>
-          </div>
+          {/* RIGHT SIDE */}
+          <div className="p-6 md:p-8 overflow-y-auto max-h-[80vh]">
+            {/* Biography */}
+            {speaker.bio && (
+              <div className="mb-6">
+                <button
+                  onClick={onClose}
+                  className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-red-400 rounded-full transition-colors z-10"
+                >
+                  <X className="w-6 h-6 text-white hover:text-red-800" />
+                </button>
+                <h4 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <UserRound className="w-5 h-5 text-blue-600" />
+                  <span>Biography</span>
+                </h4>
 
-          {/* Research Areas */}
-          {speaker.researchAreas && speaker.researchAreas.length > 0 && (
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-blue-600" />
-                Research Areas
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {speaker.researchAreas.map((area, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
-                  >
-                    {area}
-                  </span>
-                ))}
+                <p className="text-gray-700 leading-relaxed">{speaker.bio}</p>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Achievements */}
-          {speaker.achievements && speaker.achievements.length > 0 && (
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <AwardIcon className="w-5 h-5 text-blue-600" />
-                Key Achievements
-              </h4>
-              <ul className="space-y-2">
-                {speaker.achievements.map((achievement, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-700">{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+            {/* Research Areas */}
+            {speaker.researchAreas?.length > 0 && (
+              <div className="mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-blue-600" />
+                  Research Areas
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {speaker.researchAreas.map((area, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
-          {/* Google Scholar Link */}
-          {speaker.scholarUrl && (
-            <div className="mt-8">
-              <a
-                href={speaker.scholarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <GraduationCap className="w-5 h-5" />
-                View More Profile
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          )}
+            {/* Achievements */}
+            {speaker.achievements?.length > 0 && (
+              <div className="mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <AwardIcon className="w-5 h-5 text-blue-600" />
+                  Key Achievements
+                </h4>
+                <ul className="space-y-2">
+                  {speaker.achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-700">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-          {/* Confirmation Status for Honorary Speakers */}
-          {speaker.category === "honorary" && !speaker.confirmed && (
-            <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <p className="text-amber-700 flex items-center gap-2">
-                <Globe className="w-5 h-5" />
-                <span>Participation to be confirmed</span>
-              </p>
-            </div>
-          )}
+            {/* Scholar Link */}
+            {speaker.scholarUrl && (
+              <div className="mt-6">
+                <a
+                  href={speaker.scholarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <GraduationCap className="w-5 h-5" />
+                  View More Profile
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            )}
+
+            {/* Confirmation */}
+            {speaker.category === "honorary" && !speaker.confirmed && (
+              <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                <p className="text-amber-700 flex items-center gap-2">
+                  <Globe className="w-5 h-5" />
+                  <span>Participation to be confirmed</span>
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </motion.div>
     </motion.div>

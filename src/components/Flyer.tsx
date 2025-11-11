@@ -1,4 +1,4 @@
-import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update0711.png";
+import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update1011.png";
 
 const Flyer = () => {
   return (

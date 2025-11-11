@@ -62,7 +62,7 @@ export default function Hero() {
         }}
       ></div>
 
-      <Announcement announcements={announcements} />
+      <Announcement announcements={announcements} className="mt-16" />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-10"></div>
@@ -101,7 +101,9 @@ export default function Hero() {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold mb-6 text-blue-600 tracking-wider drop-shadow-lg text-center"
+          className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold mb-4
+             bg-gradient-to-r from-blue-800 via-sky-600 to-sky-800 
+             bg-clip-text text-transparent tracking-wider drop-shadow-lg text-center"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           APFITA 2025
@@ -110,7 +112,7 @@ export default function Hero() {
         {/* Subtitle */}
         <div
           ref={subtitleRef}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-6 leading-relaxed text-center max-w-4xl text-balance"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-1 leading-relaxed text-center max-w-4xl text-balance"
         >
           The 15th International Conference of Asia-Pacific Federation for
           Information Technology in Agriculture
@@ -119,7 +121,7 @@ export default function Hero() {
         {/* Theme */}
         <div
           ref={themeRef}
-          className="w-full text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold mb-12 px-4 text-center max-w-5xl text-balance"
+          className="w-full text-base sm:text-lg md:text-xl lg:text-2xl text-white font-semibold mb-10 px-4 text-center max-w-5xl text-balance"
         >
           "Innovative Digital Technology for Global and Sustainable
           Agro-Maritime Industry"

@@ -8,7 +8,7 @@ import HomeNavigation from "@/components/HomeNavigation";
 import { Frown, Sparkles, Link2 } from "lucide-react";
 import MiniCountdown from "@/components/MiniCountdown";
 
-import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update0711.png";
+import flyerAPFITA from "@/assets/flyer/APFITA2025-Poster-update1011.png";
 
 import SeriesContent from "@/components/SeriesContent";
 
