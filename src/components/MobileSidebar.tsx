@@ -89,10 +89,10 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate="open"
             exit="closed"
             variants={sidebarVariants}
-            className="fixed top-0 left-0 h-full w-80 bg-white bg-opacity-100 backdrop-blur-none shadow-2xl z-[999] lg:hidden"
+            className="fixed top-0 left-0 h-screen w-80 bg-white bg-opacity-100 backdrop-blur-none shadow-2xl z-[999] lg:hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b">
+            <div className="flex items-center overflow-y-auto justify-between p-4 border-b">
               <button
                 onClick={() => handleNavigation("/")}
                 className="text-2xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 via-blue-700 to-blue-500 bg-clip-text text-transparent "
@@ -109,7 +109,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             </div>
 
             {/* Navigation Links */}
-            <div className="py-4 px-2">
+            <div className="flex-1 overflow-y-auto py-4 px-2">
               {menuItems.map((item) => (
                 <button
                   key={item.path}
