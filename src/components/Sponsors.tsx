@@ -48,12 +48,13 @@ export default function Sponsors() {
             items={sponsors}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
+        <div className="grid sm:grid-cols-3 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
           <SponsorSection title="Sponsors" type="sponsor" items={sponsors} />
           <SponsorSection
             title="Supported by"
             type="supported"
             items={sponsors}
+            className="sm:col-span-2 md:col-span-1"
           />
         </div>
         <SponsorSection title="Publisher" type="publisher" items={sponsors} />

@@ -80,7 +80,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black z-[998] lg:hidden"
+            className="fixed inset-0 bg-black z-[998] h-screen lg:hidden"
           />
 
           {/* Sidebar */}

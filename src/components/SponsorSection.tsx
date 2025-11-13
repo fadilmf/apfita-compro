@@ -9,38 +9,16 @@ type SponsorSectionProps = {
   type?: string;
   centerTitle?: boolean;
   size?: "small" | "medium" | "large";
+  className?: string;
 };
-
-// Mapping ukuran gambar per type sponsor
-// const sizeMap: Record<string, string> = {
-//   publisher: "w-[160px] sm:w-[220px] md:w-[300px] lg:w-[500px]",
-//   hosted: "w-[140px] sm:w-[180px] md:w-[240px] lg:w-[320px]",
-//   sponsor: "w-[100px] sm:w-[130px] md:w-[160px] lg:w-[180px]",
-//   mainSponsor: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-//   cohost: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-//   supported:
-//     "h-[80px] max-w-[120px] md:h-[100px] md:max-w-[140px] lg:h-[120px] lg:max-w-[160px] w-auto",
-// };
-
-// const manualSizeMap: Record<string, string> = {
-//   small: "w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px]",
-//   medium: "w-[100px] sm:w-[120px] md:w-[160px] lg:w-[200px]",
-//   large: "w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px]",
-// };
-
-// const sizeAdjustments: Record<string, string> = {
-//   "max-w-[120px]": "max-w-[140px]",
-//   "md:max-w-[140px]": "md:max-w-[160px]",
-//   "lg:max-w-[160px]": "lg:max-w-[200px]",
-// };
 
 const sizeMap: Record<"small" | "medium" | "large", string> = {
   large:
-    "w-[280px] max-h-[160px] md:w-[320px] md:max-h-[220px] lg:w-[420px] lg:max-h-[220px]",
+    "w-[280px] max-h-[160px] md:w-[320px] md:max-h-[220px] lg:w-[420px]",
   medium:
-    "w-[140px] max-h-[100px] md:w-[180px] md:max-h-[160px] lg:w-[220px] md:max-h-[160px]",
+    "w-[140px] max-h-[100px] md:w-[180px] md:max-h-[140px] lg:w-[200px]",
   small:
-    "w-[75px] max-h-[80px] md:w-[100px] md:max-h-[140px] lg:h-[80px] lg:max-w-[120px] w-auto",
+    "w-[90px] max-h-[60px] md:w-[110px] lg:h-[80px] w-auto",
 };
 
 // Ukuran default otomatis per type
@@ -100,6 +78,7 @@ export default function SponsorSection({
   type,
   centerTitle = true,
   size,
+  className,
 }: SponsorSectionProps) {
   const filtered = type ? getSponsorsByType(items, type) : items;
 
@@ -115,7 +94,7 @@ export default function SponsorSection({
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="mb-20"
+      className={`${className} mb-20`}
     >
       <motion.h3
         variants={itemVariants}
@@ -127,12 +106,17 @@ export default function SponsorSection({
       </motion.h3>
 
       <div
+        className={`flex flex-wrap my-auto content-start md:content-center h-full justify-center gap-10 lg:gap-6 ${
+          type === "sponsor" ? "lg:gap-x-0" : ""
+        }`}
+      >
+      {/* <div
         className={
           type === "sponsor"
             ? "grid grid-cols-2 gap-8 md:gap-10 justify-items-center"
             : "flex flex-wrap my-auto content-start md:content-center h-full justify-center gap-10 lg:gap-6"
         }
-      >
+      > */}
         {filtered.map((sponsor, index) => {
           // ambil ukuran default dulu
           let currentImgClass = imgClass;
@@ -146,7 +130,9 @@ export default function SponsorSection({
           return (
             <motion.div
               key={index}
-              className={`flex justify-center items-center`}
+              className={`flex justify-center items-center ${
+                sponsor.type === "sponsor" ? "lg:basis-1/2" : ""
+              }`}
               whileHover={{ scale: 1.05 }}
               variants={itemVariants}
             >
