@@ -9,8 +9,10 @@ import {
   MapPin,
   CornerDownRight,
 } from "lucide-react";
+import { Bus, TreePine } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { schedule } from "@/data/schedule";
+import Trip from "/src/assets/series/ApfitaDay3Trip.png";
 
 const typeStyles: Record<string, string> = {
   session: "bg-white border-gray-200",
@@ -28,9 +30,9 @@ const iconMap: Record<string, JSX.Element> = {
 
 const typeLabels: Record<string, { label: string; icon: JSX.Element }> = {
   session: { label: "Presentation/Session", icon: iconMap.session },
-  break: { label: "Break / Coffee", icon: iconMap.break },
-  special: { label: "Special Program", icon: iconMap.special },
-  tour: { label: "Tour Activity", icon: iconMap.tour },
+  break: { label: "Refreshment Break", icon: iconMap.break },
+  special: { label: "Ceremonial Program", icon: iconMap.special },
+  tour: { label: "Field Excursion", icon: iconMap.tour },
 };
 
 export default function TimeScheduleContent() {
@@ -67,21 +69,48 @@ export default function TimeScheduleContent() {
       </div>
 
       {/* Day Tabs */}
-      <div className="flex flex-wrap gap-2 mb-8 justify-center">
-        {schedule.map((day, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveDay(index)}
-            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all
-              ${
-                activeDay === index
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-          >
-            {day.title}
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-4 mb-8 justify-center">
+        {schedule.map((day, index) => {
+          const isActive = activeDay === index;
+          const isDay3 = index === 2;
+
+          const baseStyle =
+            "relative flex items-center gap-2 px-8 py-3 rounded-lg text-sm font-semibold transition-all";
+
+          const normalStyle = isActive
+            ? "bg-blue-600 text-white shadow-lg"
+            : "bg-gray-100 text-gray-600 hover:bg-gray-200";
+
+          const day3Style = isActive
+            ? "bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.6)]"
+            : "bg-emerald-100 text-emerald-700 hover:bg-emerald-200";
+
+          return (
+            <div key={index} className="relative">
+              {/* DOT MERAH KELAP KELIP (di luar button) */}
+              {isDay3 && (
+                <>
+                  <span className=" z-20 absolute -top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                  <span className=" z-20 absolute -top-1 right-1 w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
+                </>
+              )}
+
+              <button
+                onClick={() => setActiveDay(index)}
+                className={`${baseStyle} ${isDay3 ? day3Style : normalStyle}`}
+              >
+                {/* BUS (di kiri dalam button) */}
+                {isDay3 && <Bus className="w-4 h-4" />}
+
+                {/* TEXT */}
+                {day.title}
+
+                {/* POHON (di kanan dalam button) */}
+                {isDay3 && <TreePine className="w-4 h-4" />}
+              </button>
+            </div>
+          );
+        })}
       </div>
 
       {/* Schedule Content */}
@@ -110,6 +139,39 @@ export default function TimeScheduleContent() {
                 {schedule[activeDay].date}
               </h2>
             </div>
+
+            {/* === SPECIAL CONTENT FOR DAY 3 ONLY === */}
+            {activeDay === 2 && (
+              <div className="mb-8">
+                {/* Poster Image */}
+                <div className="w-full overflow-hidden rounded-xl shadow-lg border mb-6">
+                  <img
+                    src={Trip}
+                    alt="Excursion Poster"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+
+                {/* CTA Registration Box */}
+                <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 shadow-sm text-center">
+                  <h3 className="text-lg font-semibold text-emerald-800 mb-2">
+                    Field Excursion Confirmation Required!
+                  </h3>
+                  <p className="text-sm text-emerald-700 mb-4">
+                    Please confirm your participation in the Day 3 excursion
+                    (Bogor Botanical Garden & Soil and Agriculture Museum).
+                  </p>
+
+                  <a
+                    href="https://ipb.link/fieldtrip-reg-apfita2025"
+                    target="_blank"
+                    className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
+                  >
+                    Confirm Your Participation
+                  </a>
+                </div>
+              </div>
+            )}
 
             <div className="space-y-4">
               {schedule[activeDay].agenda.map((item, index) => {
@@ -165,9 +227,19 @@ export default function TimeScheduleContent() {
                                 className="flex items-start gap-2 bg-gray-50 border border-gray-200 rounded-md px-3 py-2"
                               >
                                 <CornerDownRight className="w-4 h-4 text-blue-500 mt-1" />
-                                <span className="text-sm text-gray-700">
-                                  {sub.title}
-                                </span>
+
+                                {/* TITLE + TIME wrapper */}
+                                <div className="flex justify-between w-full">
+                                  <span className="text-sm text-gray-700">
+                                    {sub.title}
+                                  </span>
+
+                                  {sub.time && (
+                                    <span className="text-xs text-gray-500 text-right">
+                                      {sub.time}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
                             ))}
                           </div>

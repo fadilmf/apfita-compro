@@ -162,10 +162,13 @@ export default function Contact() {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
             Have questions about APFITA 2025? Our friendly team is just a
-            message away. Choose your preferred method to connect with us.
+            message away.{" "}
+            <span className="font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+              Choose your preferred method to connect with us.
+            </span>
           </motion.p>
         </motion.div>
 

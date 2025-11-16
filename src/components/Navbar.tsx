@@ -38,6 +38,7 @@ const Navbar: React.FC = () => {
     "DOWNLOAD",
     "CONFERENCE",
     "CONTACT US!",
+    "TIME SCHEDULE",
   ];
 
   const navItems = [

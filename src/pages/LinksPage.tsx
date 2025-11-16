@@ -1,0 +1,198 @@
+import { motion } from "framer-motion";
+import { Book, Map, LocateFixed, Phone, FileText } from "lucide-react";
+import logoConf from "/src/assets/logo/logo_conf.png";
+import {
+  Cpu,
+  Sprout,
+  Satellite,
+  BrainCircuit,
+  RadioTower,
+  Globe,
+} from "lucide-react";
+
+export default function APFITALinksPage() {
+  const links = [
+    {
+      label: "Guidebook APFITA 2025",
+      href: "https://apfita2025.com/conference-guidebook",
+      icon: FileText,
+    },
+    {
+      label: "Abstract Book APFITA 2025",
+      href: "https://apfita2025.com/conference-abstract",
+      icon: Book,
+    },
+    {
+      label: "Map Event APFITA 2025",
+      href: "https://apfita2025.com/conference-map",
+      icon: Map,
+    },
+    {
+      label: "Location of APFITA 2025",
+      href: "https://apfita2025.com/venue",
+      icon: LocateFixed,
+    },
+    {
+      label: "Call Centre",
+      href: "https://apfita2025.com/contact",
+      icon: Phone,
+    },
+  ];
+
+  return (
+    <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-start py-14 px-4 bg-[#0b0f19] text-white">
+      {/* LUXURY DUAL-TONE FLOATING BACKGROUND */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.35 }}
+        transition={{ duration: 1.2 }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        {/* Gradient Luxury Glow */}
+        <div className="absolute inset-0 bg-gradient-radial from-[#0b0f19] via-[#0d1528] to-black opacity-90" />
+
+        {/* Gold Particles */}
+        {[...Array(40)].map((_, i) => (
+          <motion.div
+            key={`gold-${i}`}
+            className="absolute"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              opacity: Math.random() * 0.5 + 0.1,
+              scale: Math.random() * 0.4 + 0.2,
+            }}
+            animate={{
+              y: "+=120vh",
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 15 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <div className="w-1 h-1 rounded-full bg-amber-300 shadow-[0_0_8px_2px_rgba(255,200,0,0.7)]" />
+          </motion.div>
+        ))}
+
+        {/* Main Floating Icons: Cyan + Gold Mix */}
+        {/* Main Floating Icons: Agriculture + AI + Future */}
+        {[Sprout, Cpu, Satellite, BrainCircuit, RadioTower, Globe]
+          .flatMap((Icon) => Array(2).fill(Icon))
+          .map((Icon, i) => {
+            const isGold = i % 2 === 0;
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute"
+                initial={{
+                  x: Math.random() * window.innerWidth, // full horizontal width
+                  y: Math.random() * window.innerHeight, // full vertical height
+                  scale: Math.random() * 0.7 + 0.4,
+                  opacity: Math.random() * 0.4 + 0.5,
+                }}
+                animate={{
+                  y: "140vh",
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 20 + Math.random() * 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <Icon
+                  size={isGold ? 65 : 55}
+                  strokeWidth={1}
+                  className={
+                    isGold
+                      ? "text-amber-300 drop-shadow-[0_0_14px_rgba(255,200,90,0.8)]"
+                      : "text-cyan-300 drop-shadow-[0_0_14px_rgba(90,255,255,0.8)]"
+                  }
+                />
+              </motion.div>
+            );
+          })}
+      </motion.div>
+
+      {/* LOGO WITH FLOAT + GLOW */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="flex flex-col items-center mb-12 z-10"
+      >
+        <motion.img
+          src={logoConf}
+          alt="APFITA 2025"
+          className="w-28 h-28 rounded-full object-cover shadow-2xl bg-white p-2 border border-white/50"
+          animate={{
+            y: [0, -8, 0],
+            boxShadow: ["0 0 10px #0ff", "0 0 20px #0ff", "0 0 10px #0ff"],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <motion.h1
+          className="text-2xl font-semibold mt-4 tracking-wide"
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          @apfita2025
+        </motion.h1>
+      </motion.div>
+
+      {/* CARDS WITH LUXURY HOVER EFFECT */}
+      <div className="w-full max-w-md space-y-6 z-10">
+        {links.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.18 }}
+          >
+            <motion.div
+              whileHover={{
+                scale: 1.04,
+                translateY: -3,
+                boxShadow: "0 0 20px rgba(0,255,255,0.35)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="rounded-3xl backdrop-blur-xl bg-white/10 border border-cyan-300/20 shadow-xl hover:bg-white/20 transition-all cursor-pointer"
+            >
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center w-full py-6 px-6 gap-5 text-lg font-medium text-white"
+              >
+                <item.icon
+                  size={28}
+                  className="text-cyan-300/80 group-hover:text-cyan-100 transition-all"
+                />
+                <span>{item.label}</span>
+              </a>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* FOOTER SHIMMER */}
+      <motion.p
+        className="text-white/40 text-sm mt-14 z-10"
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        APFITA 2025 Resources Page
+      </motion.p>
+    </div>
+  );
+}

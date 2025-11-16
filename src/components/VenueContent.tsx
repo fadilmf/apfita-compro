@@ -5,19 +5,19 @@ import { motion } from "framer-motion";
 import Outdoor from "/src/assets/OutdoorVenue.jpg";
 import Indoor from "/src/assets/IndoorVenue.jpg";
 
-export default function VenueSection() {
-  const progressRef = useRef<HTMLDivElement>(null);
+export default function VenueSectionRedesign() {
+  const progressRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateProgress = () => {
-      const el = progressRef.current;
-      if (!el) return;
+      const bar = progressRef.current;
+      if (!bar) return;
 
-      const windowHeight = window.innerHeight;
-      const elementTop = el.getBoundingClientRect().top;
-      const progress = Math.max(0, Math.min(1, 1 - elementTop / windowHeight));
+      const top = bar.getBoundingClientRect().top;
+      const wh = window.innerHeight;
+      const progress = Math.max(0, Math.min(1, 1 - top / wh));
 
-      el.style.width = `${progress * 100}%`;
+      bar.style.width = `${progress * 100}%`;
     };
 
     window.addEventListener("scroll", updateProgress);
@@ -29,131 +29,139 @@ export default function VenueSection() {
   const query = encodeURIComponent("IPB International Convention Center");
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        {/* Venue Header Card */}
-        <div className="relative w-full overflow-hidden bg-white rounded-xl shadow-lg">
-          {/* Progress bar */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-blue-100">
+    <section className="py-16 bg-gradient-to-b from-blue-50 to-indigo-100 relative overflow-hidden">
+      {/* LIQUID BACKGROUND BLOBS */}
+      <div className="absolute -top-32 -left-20 w-80 h-80 bg-blue-300/30 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-40 -right-20 w-72 h-72 bg-indigo-300/30 rounded-full blur-3xl animate-pulse"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* HEADER GLASS CARD */}
+        <div className="relative w-full rounded-3xl shadow-2xl overflow-hidden bg-white/30 backdrop-blur-2xl border border-white/50">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-white/40">
             <div
               ref={progressRef}
-              className="h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-200"
+              className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300"
             />
           </div>
 
-          <div className="p-6 sm:p-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6">
-                IPB Convention Center
-              </h1>
-              <div className="flex items-center justify-center gap-2 text-blue-600">
-                <MapPin className="w-5 h-5" />
-                <p className="text-lg sm:text-xl">Bogor, Indonesia</p>
-              </div>
+          <div className="p-10 sm:p-14 text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 bg-clip-text text-transparent drop-shadow-2xl">
+              IPB International Convention Center
+            </h1>
+            <div className="flex items-center justify-center gap-2 mt-4 text-indigo-900 font-semibold">
+              <MapPin className="w-5 h-5" />
+              <p className="text-lg sm:text-xl">Bogor, Indonesia</p>
             </div>
           </div>
         </div>
 
-        {/* Venue Content */}
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Images Section */}
-          <div className="space-y-6 sm:space-y-8">
-            <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <div className="aspect-video relative rounded-lg overflow-hidden">
-                <img
-                  src={Outdoor || "/placeholder.svg"}
-                  alt="IPB Convention Center Exterior"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              </div>
+        {/* GRID CONTENT */}
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* MAP - HIGHLIGHTED SECTION */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden bg-white/30 backdrop-blur-2xl border border-white/40 shadow-xl"
+          >
+            <div className="p-6 border-b border-white/40 bg-white/20 backdrop-blur-xl">
+              <h2 className="text-2xl font-bold text-indigo-900">
+                Location Map
+              </h2>
             </div>
-            <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <div className="aspect-video relative rounded-lg overflow-hidden">
-                <img
-                  src={Indoor || "/placeholder.svg"}
-                  alt="IPB Convention Center Interior"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
 
-          {/* Info and Map Section */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Venue Info Card */}
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="h-2 bg-blue-600 rounded-full mb-4"></div>
-              <h2 className="text-xl sm:text-2xl font-bold text-blue-950 mb-4">
+            <div className="w-full h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] overflow-hidden rounded-b-3xl">
+              <iframe
+                width="100%"
+                height="100%"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ border: 0 }}
+                src={`https://www.google.com/maps/embed/v1/place?key=${
+                  import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+                }&q=${query}`}
+              ></iframe>
+            </div>
+
+            <div className="p-6 flex flex-wrap gap-3">
+              <motion.a
+                whileTap={{ scale: 0.92 }}
+                href="https://maps.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:opacity-90 text-sm sm:text-base"
+              >
+                <Navigation2 className="w-4 h-4" />
+                Open in Maps
+              </motion.a>
+
+              <motion.a
+                whileTap={{ scale: 0.92 }}
+                href="#how-to-reach"
+                className="px-4 py-2 flex items-center gap-2 rounded-full backdrop-blur-xl bg-white/40 text-indigo-900 hover:bg-blue-600 hover:text-white border border-white/40 shadow text-sm sm:text-base"
+              >
+                <Car className="w-4 h-4" />
+                How to Reach
+              </motion.a>
+
+              <motion.a
+                whileTap={{ scale: 0.92 }}
+                href="#nearby-hotels"
+                className="px-4 py-2 flex items-center gap-2 rounded-full backdrop-blur-xl bg-white/40 text-indigo-900 hover:bg-blue-600 hover:text-white border border-white/40 shadow text-sm sm:text-base"
+              >
+                <BedDouble className="w-4 h-4" />
+                Nearby Hotels
+              </motion.a>
+            </div>
+          </motion.div>
+
+          {/* INFO + IMAGES */}
+          <div className="space-y-10">
+            {/* INFORMATION CARD */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="rounded-3xl p-6 sm:p-8 bg-white/30 backdrop-blur-2xl border border-white/40 shadow-xl"
+            >
+              <h2 className="text-2xl font-bold text-indigo-900 mb-4">
                 Venue Information
               </h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-blue-950 mb-2">Address</h3>
-                  <p className="text-gray-600">
-                    IPB Convention Center
-                    <br />
-                    Botani Square Building, Jl. Raya Pajajaran Raya Lt. 2,
-                    RT.04/RW.05, Tegallega, Kecamatan Bogor Tengah, Kota Bogor,
-                    Jawa Barat 16127
-                  </p>
-                </div>
-                {/* Animated Buttons */}
+              <p className="text-gray-800 leading-relaxed font-medium text-sm sm:text-base">
+                IPB International Convention Center
+                <br />
+                Botani Square Building
+                <br />
+                Jl. Raya Pajajaran Raya Lt. 2<br />
+                Kecamatan Bogor Tengah
+                <br />
+                Jawa Barat 16127
+              </p>
+            </motion.div>
+
+            {/* IMAGES SECTION */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[Outdoor, Indoor].map((img, i) => (
                 <motion.div
-                  className="flex flex-wrap items-center gap-3 mt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="rounded-3xl p-3 bg-white/30 backdrop-blur-2xl border border-white/40 shadow-xl"
                 >
-                  {/* Directions */}
-                  <motion.a
-                    whileTap={{ scale: 0.95 }}
-                    href="https://maps.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
-                  >
-                    <Navigation2 className="w-4 h-4" />
-                    Get Directions
-                  </motion.a>
-
-                  {/* How to Reach */}
-                  <motion.a
-                    whileTap={{ scale: 0.95 }}
-                    href="#how-to-reach"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
-                  >
-                    <Car className="w-4 h-4" />
-                    How to Reach
-                  </motion.a>
-
-                  {/* Nearby Hotels */}
-                  <motion.a
-                    whileTap={{ scale: 0.95 }}
-                    href="#nearby-hotels"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white ring-1 ring-blue-600 hover:ring-0 transition-colors text-sm font-medium shadow-sm"
-                  >
-                    <BedDouble className="w-4 h-4" />
-                    Nearby Hotels
-                  </motion.a>
+                  <div className="aspect-video overflow-hidden rounded-2xl">
+                    <img
+                      src={img}
+                      alt="Venue"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </motion.div>
-              </div>
-            </div>
-
-            {/* Map Card */}
-            <div className="bg-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="w-full h-[300px] sm:h-[400px]">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=${
-                    import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-                  }&q=${query}`}
-                ></iframe>
-              </div>
+              ))}
             </div>
           </div>
         </div>
