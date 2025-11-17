@@ -2,7 +2,7 @@ import { useMemo, useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import Countdown from "@/components/CountdownTimer";
+// import Countdown from "@/components/CountdownTimer";
 import { dates, phases } from "@/data/imdatesData";
 import { getCurrentNext } from "@/lib/imdatesUtils";
 
@@ -29,7 +29,11 @@ const ImportantDates = () => {
               y: 0,
               duration: 0.8,
               ease: "power2.out",
-              scrollTrigger: { trigger: el, start: "top 80%", toggleActions: "play none none reverse" }
+              scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
             }
           );
         }
@@ -40,15 +44,18 @@ const ImportantDates = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+    <div
+      ref={containerRef}
+      className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden"
+    >
       <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6 text-center">
         Important Dates
       </h1>
-      <Countdown 
+      {/* <Countdown 
         nextEvent={nextIndex !== null ? dates[nextIndex] : null} 
         currentPhase={currentIndex !== null ? phases[currentIndex] : null}
         phases={phases}
-      />
+      /> */}
 
       <div className="w-full max-w-6xl mx-auto px-6 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {dates.map((entry, index) => {
@@ -56,17 +63,35 @@ const ImportantDates = () => {
           const isNext = index === nextIndex;
 
           return (
-            <div key={index} ref={(el) => (elementsRef.current[index] = el)} className="date-entry flex items-center opacity-0">
-              <div className={`relative bg-white rounded-lg shadow-md p-6 w-full h-full flex flex-col items-center text-center border transition-all duration-300
-                ${isCurrent ? "border-blue-500 ring-2 ring-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.6)]" 
-                  : isNext ? "border-yellow-500 ring-2 ring-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.6)]"
-                  : "border-blue-100 hover:shadow-lg"}`}>
-                <div className={`icon-container mb-4 p-3 rounded-full text-white mx-auto w-fit ${isNext ? "bg-blue-500" : "bg-blue-500"}`}>
+            <div
+              key={index}
+              ref={(el) => (elementsRef.current[index] = el)}
+              className="date-entry flex items-center opacity-0"
+            >
+              <div
+                className={`relative bg-white rounded-lg shadow-md p-6 w-full h-full flex flex-col items-center text-center border transition-all duration-300
+                ${
+                  isCurrent
+                    ? "border-blue-500 ring-2 ring-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+                    : isNext
+                    ? "border-yellow-500 ring-2 ring-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.6)]"
+                    : "border-blue-100 hover:shadow-lg"
+                }`}
+              >
+                <div
+                  className={`icon-container mb-4 p-3 rounded-full text-white mx-auto w-fit ${
+                    isNext ? "bg-blue-500" : "bg-blue-500"
+                  }`}
+                >
                   {entry.icon}
                 </div>
-                <p className="text-lg font-bold text-blue-600 mb-2">{entry.deadline}</p>
+                <p className="text-lg font-bold text-blue-600 mb-2">
+                  {entry.deadline}
+                </p>
                 <div className="w-12 h-0.5 bg-blue-200 mb-2"></div>
-                <h3 className="text-lg font-semibold text-gray-700">{entry.event}</h3>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  {entry.event}
+                </h3>
 
                 {isCurrent && (
                   <span className="absolute -bottom-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg animate-bounce">

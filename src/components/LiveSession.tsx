@@ -97,7 +97,6 @@ export default function LiveSession() {
   >([]);
 
   const [storeOpen, setStoreOpen] = useState(false);
-  const [videoId] = useState("dQw4w9WgXcQ"); // Rickroll sample (replaceable)
 
   // Persist to sessionStorage
   useEffect(() => {
@@ -158,7 +157,7 @@ export default function LiveSession() {
           id: `conf-${Date.now()}`,
           left: 50,
           size: 30,
-          text: "🎉", // <--- boleh diganti apa aja
+          text: "🎉New Frame Unlocked!", // <--- boleh diganti apa aja
         },
       ]);
 
@@ -177,9 +176,9 @@ export default function LiveSession() {
       <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text pb-3 text-transparent mb-6 text-center">
         NOW LIVE! APFITA 2025
       </h1>
-      <div className="flex gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* LEFT: FRAME SWITCHER */}
-        <aside className="w-72 flex-shrink-0">
+        <aside className="w-full lg:w-72 flex-shrink-0">
           <div className="rounded-2xl p-3 bg-slate-900/60 border border-white/6 shadow-lg">
             <h3 className="text-sm font-semibold text-white/90 mb-3">Frames</h3>
 
@@ -344,7 +343,7 @@ export default function LiveSession() {
         </aside>
 
         {/* RIGHT: Live Frame + Video + Controls */}
-        <main className="flex-1 min-w-[900px]">
+        <main className="flex-1 w-full">
           <div
             className={`relative rounded-3xl overflow-hidden border border-white/6 shadow-xl ${activeFrameDef.preview}`}
           >
@@ -358,7 +357,9 @@ export default function LiveSession() {
                 <span className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
 
-              <div className="ml-2 text-xs text-white/50">LIVE</div>
+              <div className="ml-2 text-xs text-white/50 animate-pulse">
+                LIVE
+              </div>
 
               <div className="ml-auto text-xs text-white/40">
                 {activeFrameDef.name}
@@ -371,7 +372,7 @@ export default function LiveSession() {
               <iframe
                 title="live-sample"
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0`}
+                src={`https://www.youtube.com/embed/ub5Ysz4yKUM?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
 

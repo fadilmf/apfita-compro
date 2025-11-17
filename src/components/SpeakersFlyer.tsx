@@ -29,7 +29,7 @@ const SpeakersFlyer: React.FC = () => {
   const shareText = encodeURIComponent(
     "🌾 Join us at The 15th APFITA Conference!\n" +
       "Innovative Digital Technology for Global and Sustainable Agro-Maritime Industry\n\n" +
-      "📍 IPB Convention Center, Bogor, Indonesia\n🗓️ November 17–19, 2025\n"
+      "📍 IPB International Convention Center, Bogor, Indonesia\n🗓️ November 17–19, 2025\n"
   );
 
   const shareLinks = [

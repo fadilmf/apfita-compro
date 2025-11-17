@@ -61,7 +61,9 @@ const Welcome: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 lg:max-w-[200px] text-balance">
                 <MapPin className="w-5 h-5 text-blue-600 shrink-0" />
-                <span>IPB Convention Center, Bogor, Indonesia</span>
+                <span>
+                  IPB International Convention Center, Bogor, Indonesia
+                </span>
               </div>
               <div className="flex items-center gap-2 text-balance">
                 <Users className="w-5 h-5 text-blue-600 shrink-0" />

@@ -67,7 +67,7 @@ export default function TimeScheduleContent() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-blue-600" />
-              <span>IPB Convention Center, Bogor, Indonesia</span>
+              <span>IPB International Convention Center, Bogor, Indonesia</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-blue-600" />

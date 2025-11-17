@@ -1,5 +1,8 @@
 // Announcement messages - you can add or change these as needed
 export const announcements = [
+  "✨ Check our Instagram, use the story template, and tag us to capture the moment!",
+  "✨ インスタグラムをチェックして、ストーリーテンプレートを使ってタグ付けして、その瞬間を捉えよう！",
+  "✨ 查看我们的Instagram，使用故事模板并标记我们以捕捉这一刻！",
   "📍 See you in Bogor, Indonesia — November 17–19, 2025",
   "📍 インドネシアのボゴールでお会いしましょう — 2025年11月17〜19日",
   "📍 2025年11月17日至19日，印尼茂物见！",

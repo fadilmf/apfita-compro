@@ -23,7 +23,7 @@ interface Hotel {
 
 const hotels: Hotel[] = [
   {
-    name: "IPB Convention Hotel",
+    name: "vention Hotel",
     distance: "50 m",
     priceRange: "IDR 250k – USD 40",
     amenities: [
@@ -128,8 +128,7 @@ export function VenueHotels() {
 
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Experience world-class hospitality at these carefully curated
-            accommodations, all within walking distance of the IPB Convention
-            Center.
+            accommodations, all within walking distance of the vention Center.
           </p>
 
           <div className="mt-8 inline-flex items-center gap-2 text-sm text-amber-700 bg-amber-50 px-4 py-2 rounded-full border border-amber-200">

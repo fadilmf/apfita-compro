@@ -34,46 +34,52 @@ export const schedule: DaySchedule[] = [
         type: "special",
       },
       {
-        time: "08.35 – 08.40",
-        title: "Safety Video Introduction",
+        time: "08.35 – 08.45",
+        title: "Video Profile and Safety Video Introduction",
         type: "special",
       },
       {
-        time: "08.40 – 08.50",
+        time: "08.45 – 08.55",
         title: "Singing National Anthem, Indonesia Raya & Hymne IPB",
         type: "special",
       },
       {
-        time: "08.50 – 08.55",
+        time: "08.55 – 09.00",
         title: "Opening Prayer",
+        subItems: [
+          {
+            time: "",
+            title: "By Dr. Bonang Waspadadi Ligar, S.Si, MMSI",
+          },
+        ],
         type: "special",
       },
       {
-        time: "08.55 – 09.05",
+        time: "09.00 – 09.10",
         title: "Performance – Traditional Dance",
         type: "special",
       },
       {
-        time: "09.05 – 09.15",
+        time: "09.10 – 09.15",
         title: "Opening Address – Chairman of APFITA 2025",
         speaker: "Prof. Dr. Ir. Yandra Arkeman, M.Eng",
         type: "session",
       },
       {
         time: "09.15 – 09.25",
-        title: "Welcome Address – Head of BRIN",
-        speaker: "Prof. Dr. Arif Satria, S.Pi., M.Si.",
+        title: "Welcome Address – General Secretary of APFITA",
+        speaker: "Prof. Okayasu Takashi",
         type: "session",
       },
       {
         time: "09.25 – 09.35",
-        title: "Welcome Address – President of APFITA",
-        speaker: "Prof. Takaharu Kameoka",
+        title: "Welcome Address – Vice Rector IPB University",
+        speaker: "Prof. Deni Noviana",
         type: "session",
       },
       {
         time: "09.35 – 09.40",
-        title: "Preparation for Honorary Speaker Session",
+        title: "Transition for Honorary Speaker Session",
         type: "session",
       },
 
@@ -88,53 +94,61 @@ export const schedule: DaySchedule[] = [
           },
           {
             time: "10.00 – 10.20",
-            title: "Prof. Brian Yuliarto, S.T., MEng., PhD.",
+            title: "Prof. Dr. Ir. Dadan Hidayatna",
           },
-          { time: "10.20 – 10.40", title: "Prof. Dr. Ir. Dadan Hidayatna" },
           {
-            time: "10.40 – 11.00",
+            time: "10.20 – 10.30",
             title: "Diaz Hendropiyono, B.Sc., MA., M.P.A.",
           },
-          { time: "11.00 – 11.20", title: "Sudaryono, BLNG., MM., M.BA." },
           {
-            time: "11.20 – 11.40",
-            title: "Laksamana (Purn) Dr. Didit Herdiarwan, M.P.A., M.B.A.",
+            time: "10.30 – 10.50",
+            title: "Sudaryono, BLNG., MM., M.BA.",
           },
+          { time: "10.50 – 11.10", title: "Dr. Tb. Haeru Rahayu, A.Pi. M.Sc" },
         ],
-      },
-
-      {
-        time: "11.40 – 13.00",
-        title: "Break",
-        type: "break",
       },
 
       // Prom spik
 
       {
         type: "session",
-        title: "Prominent Speaker (Chairperson: Irman Hermadi, Ph.D.)",
-        time: "",
+        title: "Prominent Speaker 1 (Chairperson: Irman Hermadi, Ph.D.)",
+        time: "11.10 - 11.20",
         subItems: [
+          {
+            time: "11.20 – 11.45",
+            title: "Prof. Drs. Ec. Ir. Riyantoro Sarno, M.Sc., Ph.D.",
+          },
+          {
+            time: "11.45 – 12.10",
+            title: "Prof. Dr. Ir. Kudang B. Seminar, M.Sc.",
+          },
+          {
+            time: "12.10 – 13.00",
+            title: "Break",
+          },
           {
             time: "13.00 – 13.25",
             title: "Prof. Seishi Ninomiya, Ph.D.",
           },
+
           {
             time: "13.25 – 13.50",
             title: "Prof. Robert De Souza",
           },
+
           {
             time: "13.50 – 14.15",
-            title: "Prof. Dr. Ir. Kudang B. Seminar, M.Sc.",
+            title: "Dr. Sari Intan Kailaku, S.TP., M.Si.",
           },
+
           {
             time: "14.15 – 14.40",
-            title: "Prof. Dr. Ir. Bambang Riyanto Trilaksono",
+            title: "Dr. Mira Maulida, S.TP., M.M.",
           },
           {
             time: "14.40 – 15.00",
-            title: "Prof. Drs. Ec. Ir. Riyantoro Sarno, M.Sc., Ph.D.",
+            title: "Dr. Karlisa Priandana, S.T., M.Eng.",
           },
           {
             time: "15.00 – 15.30",
@@ -142,23 +156,11 @@ export const schedule: DaySchedule[] = [
           },
           {
             time: "15.30 – 15.55",
-            title: "Dr. Leisa Armstrong, FAIM",
+            title: "Dr. Astie Darmayanatie, S.T., M.MSi., MSc.",
           },
           {
             time: "15.55 – 16.20",
-            title: "Dr. Mira Maulida, S.TP., M.M.",
-          },
-          {
-            time: "16.20 – 16.45",
-            title: "Dr. Karlisa Priandana, S.T., M.Eng.",
-          },
-          {
-            time: "16.45 – 17.10",
-            title: "Dr. Sari Intan Kailaku, S.TP., M.Si.",
-          },
-          {
-            time: "17.10 – 17.35",
-            title: "Dr. Astie Darmayanatie, S.T., M.MSi., MSc.",
+            title: "Dr. Leisa Armstrong, FAIM",
           },
         ],
       },

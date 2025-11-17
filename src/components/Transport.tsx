@@ -48,7 +48,7 @@ const airports: Airport[] = [
               "Transfer to Commuter Line at Manggarai Station",
               "Take the train towards Bogor",
               "Get off at Bogor Station",
-              "Take a short ride (taxi/ojek) to IPB Convention Center",
+              "Take a short ride (taxi/ojek) to IPB International Convention Center",
             ],
             duration: "2.5 - 3 hours",
             cost: [70000, 100000],
@@ -62,7 +62,7 @@ const airports: Airport[] = [
           {
             steps: [
               "Take DAMRI bus from Airpot to Botani Square, Bogor",
-              "Take a short steps to IPB Convention Center",
+              "Take a short steps to IPB International Convention Center",
             ],
             duration: "1.5 - 2 hours",
             cost: [130000, 150000],
@@ -76,7 +76,7 @@ const airports: Airport[] = [
           {
             steps: [
               "Book a taxi or ride-hailing service (Grab, Gojek)",
-              "Direct journey to IPB Convention Center",
+              "Direct journey to IPB International Convention Center",
             ],
             duration: "1.5 - 2 hours",
             cost: [400000, 600000],
@@ -99,7 +99,7 @@ const airports: Airport[] = [
               "Take a taxi/ride-hailing to Jatinegara Station",
               "Take the Commuter Line towards Bogor",
               "Get off at Bogor Station",
-              "Take a short ride (taxi/ojek) to IPB Convention Center",
+              "Take a short ride (taxi/ojek) to IPB International Convention Center",
             ],
             duration: "2 - 2.5 hours",
             cost: [50000, 80000],
@@ -113,7 +113,7 @@ const airports: Airport[] = [
           {
             steps: [
               "Book a taxi or ride-hailing service (Grab, Gojek)",
-              "Direct journey to IPB Convention Center",
+              "Direct journey to IPB International Convention Center",
             ],
             duration: "1.5 - 2.5 hours",
             cost: [300000, 450000],
@@ -141,8 +141,8 @@ export default function Transport() {
             How to Reach the Venue
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Find the best route to IPB Convention Center from Jakarta's major
-            airports
+            Find the best route to IPB International Convention Center from
+            Jakarta's major airports
           </p>
         </motion.div>
 
@@ -257,8 +257,8 @@ export default function Transport() {
           <ul className="space-y-2 text-gray-600">
             <li className="flex items-start gap-2 animate-pulse">
               <ArrowRight className="w-4 h-4 text-blue-600 mt-1 animate-pulse" />
-              If asking locals, many refer to IPB Convention Center as Mall
-              Botani Square (Botas).
+              If asking locals, many refer to IPB International Convention
+              Center as Mall Botani Square (Botas).
             </li>
             <li className="flex items-start gap-2 animate-pulse">
               <ArrowRight className="w-4 h-4 text-blue-600 mt-1 animate-pulse" />
