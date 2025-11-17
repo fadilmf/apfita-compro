@@ -9,7 +9,7 @@ import {
   RadioTower,
   Globe,
 } from "lucide-react";
-import { Bus, TreePine } from "lucide-react";
+import { Bus } from "lucide-react";
 
 export default function APFITALinksPage() {
   const links = [
