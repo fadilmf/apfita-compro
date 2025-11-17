@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Book, Map, LocateFixed, Phone, FileText } from "lucide-react";
+import { Book, Map, LocateFixed, Phone, FileText, Share, MonitorPlay, Images } from "lucide-react";
 import logoConf from "/src/assets/logo/logo_conf.png";
 import {
   Cpu,
@@ -37,6 +37,25 @@ export default function APFITALinksPage() {
       label: "Call Centre",
       href: "https://apfita2025.com/contact",
       icon: Phone,
+    },
+
+    {
+      label: "Day 1 Documentation",
+      href: "https://ipb.link/apfita2025-documentation",
+      icon: Images,
+      variant: "highlight",
+    },
+    {
+      label: "Share your experience! Tag Us!",
+      href: "https://www.instagram.com/stories/apfita2025/3767263622704890304?utm_source=ig_story_item_share&igsh=MTh5eDg2NW80MzJrMQ==",
+      icon: Share,
+      variant: "highlight",
+    },
+    {
+      label: "Online Live Streaming",
+      href: "https://apfita2025.com/conference",
+      icon: MonitorPlay,
+      variant: "highlight",
     },
   ];
 
@@ -169,7 +188,7 @@ export default function APFITALinksPage() {
             className="relative rounded-3xl overflow-hidden backdrop-blur-xl bg-emerald-300/15 border border-emerald-400/40 shadow-xl cursor-pointer"
           >
             {/* MOVING BUS + TREE BACKGROUND */}
-            <motion.div
+            {/* <motion.div
               className="absolute inset-0 flex gap-6 items-center opacity-35"
               animate={{ x: ["0%", "-130%"] }}
               transition={{
@@ -192,7 +211,7 @@ export default function APFITALinksPage() {
                     />
                   </div>
                 ))}
-            </motion.div>
+            </motion.div> */}
 
             <a
               href="https://apfita2025.com/time-schedule"
@@ -209,37 +228,61 @@ export default function APFITALinksPage() {
           </motion.div>
         </motion.div>
 
-        {links.map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.18 }}
-          >
-            <motion.div
-              whileHover={{
-                scale: 1.04,
-                translateY: -3,
-                boxShadow: "0 0 20px rgba(0,255,255,0.35)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="rounded-3xl backdrop-blur-xl bg-white/10 border border-cyan-300/20 shadow-xl hover:bg-white/20 transition-all cursor-pointer"
-            >
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center w-full py-6 px-6 gap-5 text-lg font-medium text-white"
-              >
-                <item.icon
-                  size={28}
-                  className="text-cyan-300/80 group-hover:text-cyan-100 transition-all"
-                />
-                <span>{item.label}</span>
-              </a>
-            </motion.div>
-          </motion.div>
-        ))}
+        {links.map((item, i) => {
+  const isHighlight = item.variant === "highlight";
+
+  return (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: i * 0.18 }}
+    >
+      <motion.div
+        whileHover={{
+          scale: isHighlight ? 1.07 : 1.04,
+          translateY: isHighlight ? -4 : -3,
+          boxShadow: isHighlight
+            ? "0 0 26px rgba(0,255,120,0.55)"
+            : "0 0 20px rgba(0,255,255,0.35)",
+        }}
+        whileTap={{ scale: 0.97 }}
+        className={`
+          relative rounded-3xl overflow-hidden backdrop-blur-xl shadow-xl cursor-pointer
+          ${isHighlight
+            ? "bg-emerald-300/15 border-emerald-400/40"
+            : "bg-white/10 border-cyan-300/20 hover:bg-white/20"
+          }
+        `}
+      >
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`
+            relative flex items-center w-full py-6 px-6 gap-4 text-lg font-medium
+            ${isHighlight ? "text-lime-300 font-semibold" : "text-white"}
+          `}
+        >
+          <item.icon
+            size={28}
+            className={`
+              transition-all
+              ${isHighlight
+                ? "drop-shadow-[0_0_10px_rgba(0,255,140,1)] text-lime-300"
+                : "text-cyan-300/80 group-hover:text-cyan-100"
+              }
+            `}
+          />
+
+          {item.label}
+        </a>
+      </motion.div>
+    </motion.div>
+  );
+        })}
+
+        
       </div>
 
       {/* FOOTER SHIMMER */}
