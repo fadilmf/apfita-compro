@@ -236,7 +236,7 @@ export default function LiveSession() {
               })}
             </div>
 
-            <div className="mt-4 flex items-center justify-between text-xs text-white/50">
+            <div className="mt-4 flex items-center justify-between text-md text-white/50">
               <div>Love</div>
               <div className="font-semibold text-white/90">{loveCount}</div>
             </div>
