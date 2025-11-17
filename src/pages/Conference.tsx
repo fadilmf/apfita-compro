@@ -7,6 +7,7 @@ import Speakers from "@/components/Speakers";
 import SpeakersFlyer from "@/components/SpeakersFlyer";
 import ConferenceTopics from "@/components/ConferenceTopics";
 import ConferenceTnV from "@/components/ConferenceTnV";
+import Live from "@/components/LiveSession";
 // import ConferencePricing from "@/components/ConferencePricing";
 
 // import Sponsors from "@/components/Sponsors";
@@ -15,6 +16,7 @@ const Conference = () => {
   return (
     <>
       <Header />
+      <Live />
       <section id="topics" className=" bg-gray-50">
         <ConferenceTopics />
       </section>
@@ -22,8 +24,8 @@ const Conference = () => {
         <Speakers />
       </section>
       <div className="bg-gradient-to-bl from-white to-blue-50 pb-10">
-      <SpeakersFlyer />
-      <ConferenceTnV />
+        <SpeakersFlyer />
+        <ConferenceTnV />
       </div>
       {/* <div className="min-h-screen bg-white">
         <ConferencePricing />

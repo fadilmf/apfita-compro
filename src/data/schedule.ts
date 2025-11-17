@@ -266,6 +266,10 @@ export const schedule: DaySchedule[] = [
         type: "tour",
         title: "Participant Gathering and Boarding",
         time: "08.00 – 08.15",
+        subItems: [
+          { title: "Meeting Point 1: IPB Baranangsiang" },
+          { title: "Meeting Point 2: Gate 4 Bogor Botanical Garden" },
+        ],
       },
       {
         type: "tour",
@@ -274,19 +278,37 @@ export const schedule: DaySchedule[] = [
       },
       {
         type: "tour",
+        title: "Leisure Walk at Mexican Garden Area",
+        subItems: [{ title: "(inside Bogor Botanical Garden)" }],
+        time: "08.30 – 09.00",
+      },
+      {
+        type: "tour",
         title: "Guided Tour at Bogor Botanical Garden",
-        time: "08.30 – 10.00",
-        subItems: [{ title: "Exploring Historical and Scientific Highlights" }],
+        time: "09.00 – 10.00",
+        subItems: [{ title: "With Shuttle Bus 🚌" }],
+      },
+      {
+        type: "tour",
+        title: "Rest and Free Time",
+        time: "10.00 – 10.30",
+        subItems: [
+          { title: "Meeting Point: Parking Lot Bogor Botanical Garden" },
+          {
+            title: "Please make sure in 10.25 you are already in meeting point",
+          },
+          { title: "We are about continue our fun!" },
+        ],
       },
       {
         type: "tour",
         title: "Mobility to Soil and Agriculture Museum",
-        time: "10.00 – 10.15",
+        time: "10.30 – 10.45",
       },
       {
         type: "tour",
         title: "Guided Tour at Soil and Agriculture Museum",
-        time: "10.15 – 11.30",
+        time: "10.45 – 12.00",
         subItems: [
           {
             title:
@@ -296,8 +318,14 @@ export const schedule: DaySchedule[] = [
       },
       {
         type: "tour",
-        title: "Mobility Back to IPB Baranangsiang Campus",
-        time: "11.30 – 12.00",
+        title: "Free Time or Mobility Back to IPB Baranangsiang Campus",
+        subItems: [
+          {
+            title:
+              "You can choose to explore Bogor Culinary or directly head back to IPB with us",
+          },
+        ],
+        time: "12.00 - end",
       },
     ],
   },

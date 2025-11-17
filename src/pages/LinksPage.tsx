@@ -9,6 +9,7 @@ import {
   RadioTower,
   Globe,
 } from "lucide-react";
+import { Bus, TreePine } from "lucide-react";
 
 export default function APFITALinksPage() {
   const links = [
@@ -152,6 +153,62 @@ export default function APFITALinksPage() {
 
       {/* CARDS WITH LUXURY HOVER EFFECT */}
       <div className="w-full max-w-md space-y-6 z-10">
+        {/* CTA EXCURSION FIELD TRIP */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: links.length * 0.18 }}
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.07,
+              translateY: -4,
+              boxShadow: "0 0 26px rgba(0,255,120,0.55)",
+            }}
+            whileTap={{ scale: 0.97 }}
+            className="relative rounded-3xl overflow-hidden backdrop-blur-xl bg-emerald-300/15 border border-emerald-400/40 shadow-xl cursor-pointer"
+          >
+            {/* MOVING BUS + TREE BACKGROUND */}
+            <motion.div
+              className="absolute inset-0 flex gap-6 items-center opacity-35"
+              animate={{ x: ["0%", "-130%"] }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              {Array(9)
+                .fill(0)
+                .map((_, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <Bus
+                      size={26}
+                      className="text-lime-300 drop-shadow-[0_0_6px_rgba(0,255,120,0.9)]"
+                    />
+                    <TreePine
+                      size={26}
+                      className="text-emerald-300 drop-shadow-[0_0_6px_rgba(0,255,180,0.8)]"
+                    />
+                  </div>
+                ))}
+            </motion.div>
+
+            <a
+              href="https://apfita2025.com/time-schedule"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex items-center w-full py-6 px-6 gap-4 text-lg font-semibold text-lime-300"
+            >
+              <Bus
+                size={30}
+                className="drop-shadow-[0_0_10px_rgba(0,255,140,1)]"
+              />
+              Excursion Field Trip
+            </a>
+          </motion.div>
+        </motion.div>
+
         {links.map((item, i) => (
           <motion.div
             key={i}

@@ -9,6 +9,7 @@ import {
   MapPin,
   CornerDownRight,
 } from "lucide-react";
+import { MessageCircle, Check, X } from "lucide-react";
 import { Bus, TreePine } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { schedule } from "@/data/schedule";
@@ -37,6 +38,14 @@ const typeLabels: Record<string, { label: string; icon: JSX.Element }> = {
 
 export default function TimeScheduleContent() {
   const [activeDay, setActiveDay] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const openWA = (number: string, name: string) => {
+    if (typeof window === "undefined") return;
+    const msg = `Halo ${name}, I want to ask something about Field Trip APFITA 2025.`;
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
@@ -153,6 +162,7 @@ export default function TimeScheduleContent() {
                 </div>
 
                 {/* CTA Registration Box */}
+                {/* CARD CTA */}
                 <div className="p-6 rounded-xl bg-emerald-50 border border-emerald-200 shadow-sm text-center">
                   <h3 className="text-lg font-semibold text-emerald-800 mb-2">
                     Field Excursion Confirmation Required!
@@ -162,14 +172,72 @@ export default function TimeScheduleContent() {
                     (Bogor Botanical Garden & Soil and Agriculture Museum).
                   </p>
 
-                  <a
-                    href="https://ipb.link/fieldtrip-reg-apfita2025"
-                    target="_blank"
-                    className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
-                  >
-                    Confirm Your Participation
-                  </a>
+                  <div className="flex flex-col sm:flex-row justify-center gap-3">
+                    {/* CTA Utama */}
+                    <a
+                      href="https://ipb.link/fieldtrip-reg-apfita2025"
+                      target="_blank"
+                      className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
+                    >
+                      <Check size={20} />
+                      Wow it's Exciting! I'm in!
+                    </a>
+
+                    {/* CTA Sekunder */}
+                    <button
+                      onClick={() => setOpen(true)}
+                      className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
+                    >
+                      <MessageCircle size={20} />
+                      Let me ask first!
+                    </button>
+                  </div>
                 </div>
+
+                {/* MODAL */}
+                {open && (
+                  <div
+                    className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4"
+                    onClick={() => setOpen(false)} // Klik luar → close
+                  >
+                    <div
+                      className="bg-white rounded-xl p-6 shadow-xl max-w-sm w-full text-center"
+                      onClick={(e) => e.stopPropagation()} // Biar klik dalam ga nutup
+                    >
+                      <h3 className="text-lg font-semibold mb-4">
+                        Who do you want to contact?
+                      </h3>
+
+                      <div className="flex flex-col gap-3">
+                        {/* Zaky */}
+                        <button
+                          onClick={() => openWA("62895389934434", "Zaky")}
+                          className="w-full inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition-all"
+                        >
+                          <MessageCircle size={20} />
+                          Zaky (0895389934434)
+                        </button>
+
+                        {/* Priska */}
+                        <button
+                          onClick={() => openWA("6289653351202", "Priska")}
+                          className="w-full inline-flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-lg transition-all"
+                        >
+                          <MessageCircle size={20} />
+                          Priska (089653351202)
+                        </button>
+
+                        <button
+                          onClick={() => setOpen(false)}
+                          className="text-gray-600 mt-2 inline-flex items-center justify-center gap-2 hover:underline"
+                        >
+                          <X size={18} />
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
