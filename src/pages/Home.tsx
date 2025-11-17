@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     const lastShown = localStorage.getItem("modalLastShown");
     const now = Date.now();
-    const oneHour = 60 * 60 * 1000;
+    const oneHour = 30 * 1000;
 
     if (!lastShown || now - new Date(lastShown).getTime() > oneHour) {
       setTimeout(() => setShowModal(true), 1500);

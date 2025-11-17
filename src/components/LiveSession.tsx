@@ -17,9 +17,9 @@ const frameOptions: FrameDef[] = [
   {
     id: "neon-minimal",
     name: "Neon Minimal",
-    accent: "from-pink-500 to-pink-300",
+    accent: "from-blue-500 to-blue-300",
     preview:
-      "border-4 border-pink-400 rounded-xl shadow-[0_0_25px_rgba(255,0,150,0.9)]",
+      "border-[6px] border-blue-500 rounded-2xl shadow-[0_0_35px_rgba(255,0,150,1),0_0_60px_rgba(255,0,200,0.6)]",
     icon: "💖",
     unlockAt: 0,
   },
@@ -28,8 +28,8 @@ const frameOptions: FrameDef[] = [
     name: "Blossom Bloom",
     accent: "from-rose-400 to-pink-200",
     preview:
-      "border-[6px] border-rose-300 rounded-2xl shadow-[0_4px_20px_rgba(255,150,180,0.8)]",
-    icon: "🌸", // 🌸 Blossom
+      "border-[8px] border-rose-300 rounded-3xl shadow-[0_0_35px_rgba(255,180,200,0.9)_inset,0_8px_25px_rgba(255,150,180,0.9)]",
+    icon: "🌸",
     unlockAt: 50,
   },
   {
@@ -37,8 +37,8 @@ const frameOptions: FrameDef[] = [
     name: "Forest Glow",
     accent: "from-green-400 to-green-200",
     preview:
-      "border-[5px] border-green-400 rounded-xl shadow-[0_0_24px_rgba(0,255,120,0.7)]",
-    icon: "🌿", // 🌿 leaf
+      "border-[7px] border-green-400 rounded-2xl shadow-[0_0_30px_rgba(0,255,150,1),0_0_55px_rgba(0,255,120,0.6)]",
+    icon: "🌿",
     unlockAt: 100,
   },
   {
@@ -46,8 +46,8 @@ const frameOptions: FrameDef[] = [
     name: "Retro VHS",
     accent: "from-purple-400 to-fuchsia-300",
     preview:
-      "border-[5px] border-fuchsia-400 border-double shadow-[0_0_18px_rgba(180,0,255,0.8)]",
-    icon: "📼", // retro VHS tape icon
+      "border-[7px] border-fuchsia-400 border-double rounded-xl shadow-[0_0_40px_rgba(200,0,255,1),0_0_12px_rgba(255,0,255,0.6)_inset]",
+    icon: "📼",
     unlockAt: 200,
   },
   {
@@ -55,8 +55,8 @@ const frameOptions: FrameDef[] = [
     name: "Gold Plaque",
     accent: "from-yellow-400 to-yellow-200",
     preview:
-      "border-[6px] border-yellow-400 rounded-xl shadow-[0_0_30px_rgba(255,220,0,1)]",
-    icon: "🏆", // trophy
+      "border-[8px] border-yellow-400 rounded-2xl shadow-[0_0_45px_rgba(255,220,0,1),0_0_80px_rgba(255,200,0,0.75)]",
+    icon: "🏆",
     unlockAt: 500,
   },
   {
@@ -64,8 +64,8 @@ const frameOptions: FrameDef[] = [
     name: "Cosmic Galaxy",
     accent: "from-indigo-400 to-purple-300",
     preview:
-      "border-[6px] border-indigo-500 rounded-3xl shadow-[0_0_40px_rgba(160,80,255,0.95)]",
-    icon: "🌌", // galaxy icon
+      "border-[8px] border-indigo-500 rounded-3xl shadow-[0_0_50px_rgba(160,80,255,1),0_0_90px_rgba(120,60,255,0.7)]",
+    icon: "🌌",
     unlockAt: 1000,
   },
 ];
@@ -124,7 +124,7 @@ export default function LiveSession() {
       id: String(Date.now()) + Math.random().toString(36).slice(2),
       left: 75 + Math.random() * 10,
       size: 20,
-      text: "+1",
+      text: "+1 Love",
     };
 
     setBurstHearts((prev) => [...prev, newItem]);
@@ -180,7 +180,9 @@ export default function LiveSession() {
         {/* LEFT: FRAME SWITCHER */}
         <aside className="w-full lg:w-72 flex-shrink-0">
           <div className="rounded-2xl p-3 bg-slate-900/60 border border-white/6 shadow-lg">
-            <h3 className="text-sm font-semibold text-white/90 mb-3">Frames</h3>
+            <h3 className="text-md font-semibold text-white/90 mb-3">
+              Click Love to Unlock Frame!
+            </h3>
 
             <div className="flex flex-col gap-3">
               {frameOptions.map((f) => {
@@ -194,9 +196,7 @@ export default function LiveSession() {
                     }`}
                   >
                     <div
-                      className={`w-16 h-12 rounded-md overflow-hidden flex-shrink-0 
-            border border-white/10 shadow-inner shadow-black/40
-            hover:scale-105 transition-transform ${f.preview}`}
+                      className={`w-16 h-12 rounded-md overflow-hidden flex-shrink-0 hover:scale-105 transition-transform ${f.preview}`}
                     />
                     <div className="flex-1 text-sm">
                       <div className="flex items-center justify-between">
@@ -236,8 +236,8 @@ export default function LiveSession() {
               })}
             </div>
 
-            <div className="mt-4 flex items-center justify-between text-md text-white/50">
-              <div>Love</div>
+            <div className="mt-4 flex items-center justify-between text-lg text-white/50">
+              <div>Current Love:</div>
               <div className="font-semibold text-white/90">{loveCount}</div>
             </div>
 
@@ -344,47 +344,55 @@ export default function LiveSession() {
 
         {/* RIGHT: Live Frame + Video + Controls */}
         <main className="flex-1 w-full">
-          <div
-            className={`relative rounded-3xl overflow-hidden border border-white/6 shadow-xl ${activeFrameDef.preview}`}
-          >
-            {/* decorative top bar like youtube */}
+          <div className="relative p-1 rounded-3xl border border-white/6 shadow-xl">
+            {/* Outer glow layer */}
             <div
-              className={`absolute top-0 left-0 right-0 h-10 flex items-center gap-3 px-4 bg-black/40 border-b border-white/6`}
-            >
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80" />
-              </div>
+              className={`absolute inset-0 rounded-3xl pointer-events-none ${activeFrameDef.preview}`}
+            />
 
-              <div className="ml-2 text-xs text-white/50 animate-pulse">
-                LIVE
-              </div>
+            {/* Inner frame */}
+            <div className="relative rounded-3xl overflow-hidden">
+              {/* decorative top bar like youtube */}
+              <div
+                className={`rounded-3xl absolute top-0 left-0 right-0 h-10 flex items-center gap-3 px-4 bg-black/40 border-b border-white/6`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
+                  <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
 
-              <div className="ml-auto text-xs text-white/40">
-                {activeFrameDef.name}
+                <div className="ml-2 text-xs text-white/50 animate-pulse">
+                  LIVE
+                </div>
+
+                <div className="ml-auto text-xs text-white/40">
+                  {activeFrameDef.name}
+                </div>
               </div>
             </div>
 
             {/* video container */}
-            <div className="w-full aspect-video bg-black/80 flex items-center justify-center">
-              {/* Replace with your video player; using iframe for demo */}
-              <iframe
-                title="live-sample"
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/ub5Ysz4yKUM?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+            <div className="rounded-2xl overflow-hidden">
+              <div className="w-full aspect-video bg-black/80 flex items-center justify-center">
+                {/* Replace with your video player; using iframe for demo */}
+                <iframe
+                  title="live-sample"
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/ub5Ysz4yKUM?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture fullscreen"
+                />
 
-              {/* Floating LOVE button */}
-              <motion.button
-                onClick={handleLove}
-                whileTap={{ scale: 0.85 }}
-                className="absolute bottom-6 right-6 px-8 py-3 rounded-full bg-pink-500 text-white font-bold shadow-lg flex items-center gap-2"
-              >
-                <Heart className="w-6 h-6" />
-                LOVE!
-              </motion.button>
+                {/* Floating LOVE button */}
+                <motion.button
+                  onClick={handleLove}
+                  whileTap={{ scale: 0.85 }}
+                  className="absolute bottom-6 right-6 px-8 py-3 rounded-full bg-pink-500 text-white font-bold shadow-lg flex items-center gap-2"
+                >
+                  <Heart className="w-6 h-6" />
+                  LOVE!
+                </motion.button>
+              </div>
             </div>
 
             {/* controls overlay */}
@@ -399,7 +407,7 @@ export default function LiveSession() {
                 </button>
 
                 {isOwned(activeFrame) ? (
-                  <div className="text-xs text-emerald-300 font-medium">
+                  <div className="text-xs text-emerald-500 font-medium">
                     Equipped
                   </div>
                 ) : (
