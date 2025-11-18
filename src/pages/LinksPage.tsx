@@ -1,5 +1,15 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { Book, Map, LocateFixed, Phone, FileText, Share, MonitorPlay, Images } from "lucide-react";
+import {
+  Book,
+  Map,
+  LocateFixed,
+  Phone,
+  FileText,
+  Camera,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 import logoConf from "/src/assets/logo/logo_conf.png";
 import {
   Cpu,
@@ -11,8 +21,49 @@ import {
 } from "lucide-react";
 import { Bus } from "lucide-react";
 
-export default function APFITALinksPage() {
-  const links = [
+/**
+ * Type-safe variant definition
+ */
+type Variant = "documentation" | "instagram" | "youtube" | "default";
+
+/**
+ * Link item shape
+ */
+type LinkItem = {
+  label: string;
+  href: string;
+  icon: React.ComponentType<any>;
+  variant?: Variant;
+};
+
+export default function APFITALinksPage(): JSX.Element {
+  const variantStyles: Record<
+    Variant,
+    { wrapper: string; text: string; glow: string }
+  > = {
+    documentation: {
+      wrapper: "bg-blue-900/20 border-blue-500/40",
+      text: "text-blue-300",
+      glow: "0 0 20px rgba(60,120,255,0.55)",
+    },
+    instagram: {
+      wrapper: "bg-purple-600/20 border-purple-400/40",
+      text: "text-purple-300",
+      glow: "0 0 20px rgba(180,60,255,0.55)",
+    },
+    youtube: {
+      wrapper: "bg-red-600/20 border-red-400/40",
+      text: "text-red-300",
+      glow: "0 0 20px rgba(255,60,60,0.55)",
+    },
+    default: {
+      wrapper: "bg-white/10 border-cyan-300/20",
+      text: "text-white",
+      glow: "0 0 20px rgba(0,255,255,0.35)",
+    },
+  };
+
+  const links: LinkItem[] = [
     {
       label: "Guidebook APFITA 2025",
       href: "https://apfita2025.com/conference-guidebook",
@@ -42,20 +93,20 @@ export default function APFITALinksPage() {
     {
       label: "Day 1 Documentation",
       href: "https://ipb.link/apfita2025-documentation",
-      icon: Images,
-      variant: "highlight",
+      icon: Camera, // camera icon
+      variant: "documentation",
     },
     {
       label: "Share your experience! Tag Us!",
       href: "https://www.instagram.com/stories/apfita2025/3767263622704890304?utm_source=ig_story_item_share&igsh=MTh5eDg2NW80MzJrMQ==",
-      icon: Share,
-      variant: "highlight",
+      icon: Instagram, // instagram icon
+      variant: "instagram",
     },
     {
       label: "Online Live Streaming",
       href: "https://apfita2025.com/conference",
-      icon: MonitorPlay,
-      variant: "highlight",
+      icon: Youtube, // youtube icon
+      variant: "youtube",
     },
   ];
 
@@ -77,8 +128,12 @@ export default function APFITALinksPage() {
             key={`gold-${i}`}
             className="absolute"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerWidth : 1200),
+              y:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerHeight : 800),
               opacity: Math.random() * 0.5 + 0.1,
               scale: Math.random() * 0.4 + 0.2,
             }}
@@ -97,7 +152,6 @@ export default function APFITALinksPage() {
         ))}
 
         {/* Main Floating Icons: Cyan + Gold Mix */}
-        {/* Main Floating Icons: Agriculture + AI + Future */}
         {[Sprout, Cpu, Satellite, BrainCircuit, RadioTower, Globe]
           .flatMap((Icon) => Array(2).fill(Icon))
           .map((Icon, i) => {
@@ -108,8 +162,12 @@ export default function APFITALinksPage() {
                 key={i}
                 className="absolute"
                 initial={{
-                  x: Math.random() * window.innerWidth, // full horizontal width
-                  y: Math.random() * window.innerHeight, // full vertical height
+                  x:
+                    Math.random() *
+                    (typeof window !== "undefined" ? window.innerWidth : 1200),
+                  y:
+                    Math.random() *
+                    (typeof window !== "undefined" ? window.innerHeight : 800),
                   scale: Math.random() * 0.7 + 0.4,
                   opacity: Math.random() * 0.4 + 0.5,
                 }}
@@ -187,32 +245,6 @@ export default function APFITALinksPage() {
             whileTap={{ scale: 0.97 }}
             className="relative rounded-3xl overflow-hidden backdrop-blur-xl bg-emerald-300/15 border border-emerald-400/40 shadow-xl cursor-pointer"
           >
-            {/* MOVING BUS + TREE BACKGROUND */}
-            {/* <motion.div
-              className="absolute inset-0 flex gap-6 items-center opacity-35"
-              animate={{ x: ["0%", "-130%"] }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {Array(9)
-                .fill(0)
-                .map((_, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Bus
-                      size={26}
-                      className="text-lime-300 drop-shadow-[0_0_6px_rgba(0,255,120,0.9)]"
-                    />
-                    <TreePine
-                      size={26}
-                      className="text-emerald-300 drop-shadow-[0_0_6px_rgba(0,255,180,0.8)]"
-                    />
-                  </div>
-                ))}
-            </motion.div> */}
-
             <a
               href="https://apfita2025.com/time-schedule"
               target="_blank"
@@ -229,60 +261,48 @@ export default function APFITALinksPage() {
         </motion.div>
 
         {links.map((item, i) => {
-  const isHighlight = item.variant === "highlight";
+          // safe variant resolution for TypeScript + runtime
+          const variant: Variant = (item.variant ?? "default") as Variant;
+          const style = variantStyles[variant];
 
-  return (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, y: 25 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.18 }}
-    >
-      <motion.div
-        whileHover={{
-          scale: isHighlight ? 1.07 : 1.04,
-          translateY: isHighlight ? -4 : -3,
-          boxShadow: isHighlight
-            ? "0 0 26px rgba(0,255,120,0.55)"
-            : "0 0 20px rgba(0,255,255,0.35)",
-        }}
-        whileTap={{ scale: 0.97 }}
-        className={`
-          relative rounded-3xl overflow-hidden backdrop-blur-xl shadow-xl cursor-pointer
-          ${isHighlight
-            ? "bg-emerald-300/15 border-emerald-400/40"
-            : "bg-white/10 border-cyan-300/20 hover:bg-white/20"
-          }
-        `}
-      >
-        <a
-          href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`
-            relative flex items-center w-full py-6 px-6 gap-4 text-lg font-medium
-            ${isHighlight ? "text-lime-300 font-semibold" : "text-white"}
-          `}
-        >
-          <item.icon
-            size={28}
-            className={`
-              transition-all
-              ${isHighlight
-                ? "drop-shadow-[0_0_10px_rgba(0,255,140,1)] text-lime-300"
-                : "text-cyan-300/80 group-hover:text-cyan-100"
-              }
-            `}
-          />
+          const isHighlight = variant === "default" ? false : true;
 
-          {item.label}
-        </a>
-      </motion.div>
-    </motion.div>
-  );
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.18 }}
+            >
+              <motion.div
+                whileHover={{
+                  scale: isHighlight ? 1.07 : 1.04,
+                  translateY: isHighlight ? -4 : -3,
+                  boxShadow: style.glow,
+                }}
+                whileTap={{ scale: 0.97 }}
+                className={`relative rounded-3xl overflow-hidden backdrop-blur-xl shadow-xl cursor-pointer ${style.wrapper}`}
+              >
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`relative flex items-center w-full py-6 px-6 gap-4 text-lg font-medium ${style.text}`}
+                >
+                  <item.icon
+                    size={28}
+                    className={`transition-all ${
+                      isHighlight
+                        ? "drop-shadow-[0_0_10px_rgba(0,255,140,1)]"
+                        : "text-cyan-300/80 group-hover:text-cyan-100"
+                    }`}
+                  />
+                  {item.label}
+                </a>
+              </motion.div>
+            </motion.div>
+          );
         })}
-
-        
       </div>
 
       {/* FOOTER SHIMMER */}

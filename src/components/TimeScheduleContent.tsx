@@ -180,7 +180,7 @@ export default function TimeScheduleContent() {
                       className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
                     >
                       <Check size={20} />
-                      Wow it's Exciting! I'm in!
+                      Register Now!
                     </a>
 
                     {/* CTA Sekunder */}
@@ -188,8 +188,7 @@ export default function TimeScheduleContent() {
                       onClick={() => setOpen(true)}
                       className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
                     >
-                      <MessageCircle size={20} />
-                      Let me ask first!
+                      <MessageCircle size={20} />I want to ask first!
                     </button>
                   </div>
                 </div>

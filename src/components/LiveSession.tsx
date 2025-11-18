@@ -179,7 +179,7 @@ export default function LiveSession() {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* LEFT: FRAME SWITCHER */}
         <aside className="w-full lg:w-72 flex-shrink-0">
-          <div className="rounded-2xl p-3 bg-slate-900/60 border border-white/6 shadow-lg">
+          <div className="rounded-2xl p-3 bg-slate-900 border border-white/6 shadow-lg">
             <h3 className="text-md font-semibold text-white/90 mb-3">
               Click Love to Unlock Frame!
             </h3>
@@ -212,7 +212,7 @@ export default function LiveSession() {
                           {ownedFlag ? (
                             <button
                               onClick={() => setActiveFrame(f.id)}
-                              className="text-xs px-2 py-1 rounded-full bg-white/6 hover:bg-white/10 transition"
+                              className="text-xs px-2 py-1 rounded-full bg-white/50 hover:bg-white transition"
                             >
                               Equip
                             </button>
@@ -236,15 +236,17 @@ export default function LiveSession() {
               })}
             </div>
 
-            <div className="mt-4 flex items-center justify-between text-lg text-white/50">
+            <div className="mt-4 flex items-center justify-between text-lg text-white">
               <div>Current Love:</div>
-              <div className="font-semibold text-white/90">{loveCount}</div>
+              <div className="font-semibold text-2xl text-white/90">
+                {loveCount}
+              </div>
             </div>
 
             <div className="mt-3 flex gap-2">
               <button
                 onClick={() => setStoreOpen((s) => !s)}
-                className="flex-1 px-3 py-2 rounded-md bg-indigo-600/20 hover:bg-indigo-600/30 text-sm transition flex items-center justify-center gap-2"
+                className="flex-1 px-3 py-2 rounded-md bg-blue-300 hover:bg-blue-500 text-sm transition flex items-center justify-center gap-2"
               >
                 <ShoppingCart className="w-4 h-4" />
                 Store
@@ -260,7 +262,7 @@ export default function LiveSession() {
                   setOwned(["frame-default"]);
                   setActiveFrame("frame-default");
                 }}
-                className="px-3 py-2 rounded-md bg-white/6 hover:bg-white/10 text-sm"
+                className="px-3 py-2 rounded-md bg-white hover:bg-white/35 text-sm"
                 title="Reset (debug)"
               >
                 Reset
@@ -325,7 +327,7 @@ export default function LiveSession() {
                           ) : unlocked ? (
                             <button
                               onClick={() => claimFrame(f.id)}
-                              className="px-3 py-1 rounded-md bg-emerald-500/20 hover:bg-emerald-500/30 text-sm"
+                              className="px-3 py-1 rounded-md bg-emerald-500 hover:bg-emerald-500/30 text-sm"
                             >
                               Claim
                             </button>
@@ -379,7 +381,7 @@ export default function LiveSession() {
                 <iframe
                   title="live-sample"
                   className="w-full h-full"
-                  src={`https://www.youtube.com/embed/ub5Ysz4yKUM?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
+                  src={`https://youtube.com/embed/73sg1GxFCUo?autoplay=1&mute=0&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture fullscreen"
                 />
 

@@ -184,43 +184,71 @@ export const schedule: DaySchedule[] = [
     agenda: [
       {
         type: "special",
-        title: "Morning Exercise",
-        time: "07.30 – 09.00",
+        title: "Participant Registration & Arrival",
+        time: "07.30 – 08.00",
       },
       {
         type: "special",
-        title: "Participant Registration & Arrival",
-        time: "08.30 – 09.00",
+        title: "Dr. David & Dr. Leisa Armstrong : Digital Twin",
+        time: "08.00 – 09.30",
+        subItems: [
+          {
+            time: "",
+            title: "Room D, Ballroom",
+          },
+        ],
       },
       {
-        type: "session",
-        title: "Parallel Session I (Room A – D)",
-        time: "09.00 – 10.15",
+        type: "special",
+        title: "Prof Seishi Ninomiya: Plant Phenomics",
+        time: "08.00 – 09.30",
+        subItems: [
+          {
+            time: "",
+            title: "Room B, 3rd floor",
+          },
+        ],
+      },
+      {
+        type: "special",
+        title: "Prof Bambang: Artificial Intelligence in Smart Farming",
+        time: "08.00 – 09.30",
+        subItems: [
+          {
+            time: "",
+            title: "Room C, 3rd floor",
+          },
+        ],
       },
       {
         type: "break",
         title: "Coffee Break",
-        time: "10.15 – 10.30",
+        time: "09.30 – 10.00",
+      },
+      {
+        type: "session",
+        title: "Parallel Session I (Room A – D)",
+        time: "10.00 – 11.15",
       },
       {
         type: "session",
         title: "Parallel Session II (Room A – D)",
-        time: "10.30 – 11.45",
+        time: "11.15 – 12.30",
       },
       {
         type: "break",
         title: "Lunch Break",
-        time: "11.45 – 13.00",
+        time: "12.30 – 13.30",
       },
       {
         type: "session",
         title: "Parallel Session III (Room A – D)",
-        time: "13.00 – 14.15",
+        time: "13.30 – 14.45",
       },
       {
         type: "session",
         title: "Parallel Session IV (Room A – D)",
-        time: "14.15 – 15.30",
+        time: "14.45 – 15.30",
       },
       {
         type: "break",
@@ -256,6 +284,13 @@ export const schedule: DaySchedule[] = [
         type: "special",
         title: "Closing and Photo Session",
         time: "16.55 – 17.00",
+      },
+
+      // NOTE item added here
+      {
+        type: "tour",
+        title:
+          "Each presenter is allocated 7 minutes presentation + 2 minutes Q&A (total 9 minutes).",
       },
     ],
   },
